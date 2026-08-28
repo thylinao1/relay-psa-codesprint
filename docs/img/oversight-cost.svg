@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 236" width="980" height="236" role="img" aria-label="Share of approval cards that expire unanswered: 35.6 percent with one officer at half availability, 5.0 percent with two officers" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif">
+  <style>
+    .ttl{font-size:15px;font-weight:700;fill:#E8EDF2}
+    .sub{font-size:11.5px;fill:#8090A0}
+    .lab{font-size:12px;fill:#E8EDF2}
+    .ax{font-size:10.5px;fill:#8090A0}
+    .note{font-size:11.5px;fill:#E8EDF2}
+    .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px;font-weight:700}
+    .src{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;fill:#8090A0}
+    .grid{stroke:#1C2530;stroke-width:1}
+  </style>
+
+  <rect x="0" y="0" width="980" height="236" rx="6" fill="#0A0F14"/>
+  <text x="32" y="34" class="ttl">What the human in the loop costs</text>
+  <text x="32" y="54" class="sub">Share of approval cards that expire unanswered inside the 120 second window, Erlang C on 7.9 cards an hour and a 90 second read.</text>
+
+  <rect x="20" y="72" width="940" height="104" rx="5" fill="#111820"/>
+
+  <line x1="344" y1="88" x2="344" y2="152" class="grid"/>
+  <line x1="483" y1="88" x2="483" y2="152" class="grid"/>
+  <line x1="622" y1="88" x2="622" y2="152" class="grid"/>
+  <line x1="761" y1="88" x2="761" y2="152" class="grid"/>
+  <line x1="900" y1="88" x2="900" y2="152" class="grid"/>
+  <line x1="344" y1="152" x2="900" y2="152" stroke="#3A4654" stroke-width="1"/>
+  <text x="344" y="167" class="ax" text-anchor="middle">0%</text>
+  <text x="483" y="167" class="ax" text-anchor="middle">10%</text>
+  <text x="622" y="167" class="ax" text-anchor="middle">20%</text>
+  <text x="761" y="167" class="ax" text-anchor="middle">30%</text>
+  <text x="900" y="167" class="ax" text-anchor="middle">40%</text>
+
+  <text x="330" y="107" class="lab" text-anchor="end">one officer, half availability</text>
+  <rect x="344" y="92" width="494.8" height="20" rx="3" fill="#F5B942"/>
+  <text x="848" y="107" class="num" fill="#F5B942">35.6%</text>
+
+  <text x="330" y="141" class="lab" text-anchor="end">two officers, half availability</text>
+  <rect x="344" y="126" width="69.5" height="20" rx="3" fill="#4ADE80"/>
+  <text x="423" y="141" class="num" fill="#4ADE80">5.0%</text>
+
+  <text x="32" y="202" class="note">An expired card is denied by default, so a thin desk costs refused actions rather than unreviewed ones.</text>
+  <text x="32" y="222" class="src">source: evalx/results/oversight-load.json</text>
+</svg>

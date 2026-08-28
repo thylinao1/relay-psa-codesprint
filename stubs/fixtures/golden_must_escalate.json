@@ -1,0 +1,23 @@
+{
+  "golden_schema_version": "1.0.0",
+  "_frozen": "FROZEN 2026-08-24. Golden must-escalate case: advisory-only evidence, low completeness. Any feasibility implementation MUST reproduce the expected block below on connection CN-ESC-01 in world.json.",
+  "scenario_id": "GOLDEN-ESC-01",
+  "description": "A transhipment box group (BG-ESC-01) is asserted only by a free-text carrier advisory: the inbound vessel has no reconciled IMO, no ETA in the structured stream, no yard location and no discharge estimate. The cut-off and a default transfer estimate are the only evidenced fields. The completeness gate must refuse to compute a margin and must escalate to a human instead of acting or guessing. This is the scenario class where a rules-only pipeline silently produces nothing and the agentic path visibly escalates.",
+  "connection_id": "CN-ESC-01",
+  "advisory_ref": "ADV-2026-0824-002",
+  "expected": {
+    "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+    "must_escalate": true,
+    "feasible": null,
+    "margin_minutes": null,
+    "completeness_score": 0.4,
+    "completeness_score_max": 0.6,
+    "expected_missing_fields": ["discharge_estimate", "eta", "yard_location"],
+    "expected_escalation": {
+      "tier": "T1",
+      "reason_code": "LOW_COMPLETENESS",
+      "summary_required": true,
+      "deny_writes_until_resolved": true
+    }
+  }
+}

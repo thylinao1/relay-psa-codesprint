@@ -1,0 +1,15 @@
+# Normalise line endings for text; mark media and documents as binary.
+* text=auto eol=lf
+
+*.png binary
+*.webm binary
+*.pdf binary
+*.db binary
+
+# Frozen fixtures and generated result files: diffs stay on, but merges must
+# never auto-resolve (any change to a frozen fixture is contract-controlled).
+stubs/fixtures/* -merge
+
+# Keep generated preview images out of language statistics on hosting sites.
+deliverables/slides/preview/* linguist-generated
+deliverables/captures/* linguist-generated

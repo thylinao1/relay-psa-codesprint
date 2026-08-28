@@ -1,0 +1,1976 @@
+{
+  "_note": "All advisories are SYNTHETIC (SPEC CON-5): fictional vessels/voyages, structurally faithful to the CONTRACT \u00a7a7 unstructured channel. ground_truth/messiness_classes are eval-side annotations; the fusion node receives ONLY {advisory_id, received_at, source, free_text}.",
+  "advisories_schema_version": "1.0.0",
+  "generator": {
+    "count": 64,
+    "messiness_classes": [
+      "vessel_name_variant",
+      "voyage_code_confusion",
+      "partial_rotation",
+      "contradiction_vs_ais",
+      "ambiguous_cutoff"
+    ],
+    "paraphrase_cache": "advisories_cache.json",
+    "seed": 42,
+    "templates": [
+      "eta_slip",
+      "ais_contradiction",
+      "rotation",
+      "ambiguous_cutoff",
+      "held_no_eta",
+      "kitchen_sink"
+    ]
+  },
+  "label": "SYNTHETIC",
+  "records": [
+    {
+      "advisory_id": "ADV-SYN-20260825-001",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // PUNGGOL DAW. v.0184E \u2014 SIN ETA NOW 25/08 APPROX 1609 LT VICE 1154 LT, ETB SHIFTED ACCORDINGLY. PLS ADV YARD SIDE. RGDS OPS",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "e80a490d235f8f70f5831dd51c19919e3b5a8834c1bb422cd9631519eb26c68f"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-25T16:09:00+08:00",
+        "previous_eta": "2026-08-25T11:54:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "PUNGGOL DAWN",
+        "voyage": "184E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T08:09:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-002",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "fyi B.TRADER master advises eta SIN pilot stn 25/08 1344 hrs. NB our tracking shows her earlier than that \u2014 pls verify w/ AIS before replanning. voyage ref 673W.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "4daa93e867dbbfdbccf7b1125f7c344133764d571331f9114500476b324f63c9"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T12:29:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-25T13:44:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:46:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-003",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, got a schedule note for u - SPR 12E V.12E, rotation might drop CMB next call, still tbc by HQ, if CMB is out, SIN t/s volumes shift by 1 day, no firm word yet, will adv.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "0b59569c33fcb8dfafd68170412907e2fe56e451e014ff51d17cb6bc68be8695"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "CMB",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "SEA PANTHER",
+        "voyage": "12E"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T10:34:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-004",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to MV BUKIT TRADER V.673W \u2014 cutoff unchanged 26/08 0430 hrs?? some lists show 0630. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "f3bc3bceeacacc5a781fdf3a8916d2550b75316feffb4703f4dc369588d2cb05"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T04:30:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T06:30:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T17:34:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-005",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI - LION CITY GLORY (some lists show 'LCG 0221N') held ex VUT w/ engine issue, carries approx 33 t/s bxs for SIN. no firm ETA yet, agency will adv. pls hold planning. NB not sure if voyage is 0221N or 0221N in your system.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "75fd1ddc51ac0331806c1b8a317f4a71ae550f461a642aa0aeae1e400f55c282"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 33,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T20:10:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-006",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // RAFFLES WAVE v.0511-E \u2014 SIN eta now 25/08 approx 2040 LT vice 1740 LT, ETB shifted. cutoff unchanged 26/08 0226 hrs?? Note rotation may drop LCB next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "9dfd66f1b5c59d369e46e3791edd1081bca11cec732e1bba2439caddba516c20"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T20:30:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 180.0,
+        "new_eta": "2026-08-25T20:40:00+08:00",
+        "previous_eta": "2026-08-25T17:40:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "LCB",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "RAFFLES WAVE",
+        "voyage": "0511E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T10:03:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-007",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // L.CITY GLORY v.v221n \u2014 SIN eta now 26/08 approx 0401 LT vice 2346 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "b4eac21e57076998e5f344effff57b4561d5a44c27c48dabc5cf3c2fe2ff29be"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-26T04:01:00+08:00",
+        "previous_eta": "2026-08-25T23:46:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T19:54:00+08:00",
+      "source": "port_notice:harbour-ops-circular"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-008",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "fyi 'TEMASEK' master advises ETA SIN pilot stn 26/08 0025 hrs. NB our tracking shows her earlier than that \u2014 pls verify w/ AIS before replanning. voyage ref 0402-E.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "25b741fd3f8c809752fc07b4183db7e6ed334aa483bf91b94a9bcaef30d3301c"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T23:10:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-26T00:25:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "TEMASEK STAR",
+        "voyage": "0402E"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T16:02:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-009",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "schedule note: Bukit Trader V.0673W - rotation may drop PKG next call, TBC by HQ. if PKG omitted, SIN t/s volumes shift +1 day. no firm word yet, will adv.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "8460bbdf82b9b595467b45db4004e63cd6e0a9fed03aeccd7e78de5d1bbae01b"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "PKG",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:30:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-010",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to S.PANTHER V.12E \u2014 cutoff unchanged 26/08 0226 hrs?? some lists show 0426. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "c3430116aa8b3c6572722ad15f6a0ebe265d56179466dd4b80d1c9a7aa30572a"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T04:26:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "SEA PANTHER",
+        "voyage": "12E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T21:28:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-011",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI - MV RAFFLES WAVE (some lists show 'RFW 0511W??') held ex HKG w/ engine issue, carries approx 23 t/s bxs for SIN, no ETA yet, agency will adv, pls hold planning, NB not sure if voyage is 0511W?? or 00511E in your system.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "5b2072c12ae690209475b9a70c5b70ef4dd7fd45890d2adcba759ced1e88e022"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 23,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "RAFFLES WAVE",
+        "voyage": "0511E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T13:04:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-012",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // MV PUNGGOL DAWN v.V.184E \u2014 SIN eta now 25/08 approx 1828 LT vice 1413 LT, ETB shifted. cutoff unchanged 26/08 0226 hrs?? Note rotation may drop TPP next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "d404a0829448384a1cb978f1091a6dd1dff4dcba44a7673e952c6bd9147b196d"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T18:10:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-25T18:28:00+08:00",
+        "previous_eta": "2026-08-25T14:13:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "TPP",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "PUNGGOL DAWN",
+        "voyage": "184E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:38:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-013",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "Urgent // Punggol Dawn v.184-E \u2014 SIN eta now 26/08 approx 0344 LT vice 0144 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "c18b7987b3fdd9aa53946633a0df09d670ab0510c2a645638f7d3761d1387de5"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 120.0,
+        "new_eta": "2026-08-26T03:44:00+08:00",
+        "previous_eta": "2026-08-26T01:44:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "PUNGGOL DAWN",
+        "voyage": "184E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T17:48:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-014",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, FYI, MERLION EXP. master says ETA SIN pilot stn is 26/08 0544 hrs. - our tracking says she's earlier, so pls verify w/ AIS ASAP, voyage ref 437W.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "e3a49346aaec7ed1cd2080ca952222d0946bbfc6270fc18dfd08889ed018dba5"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T04:49:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-26T05:44:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "MERLION EXPRESS",
+        "voyage": "437W"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T19:58:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-015",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, got the schedule for Bukit Trader V.V.673W - rotation might drop TPP next call, not sure yet, HQ says TBC, if TPP is out, SIN t/s volumes shift by 1 day, no confirmation yet, will keep u posted",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "f18e30b6aeffc3bea6b054eede483c2b6fd3095b6edebd0c3d81a2557646c135"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "TPP",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T11:48:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-016",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, t/s ex inbound to Jurong Pioneer V.445S - cutoff remains 26/08 0300 hrs, some lists say 0400, but docs and cargo cutoffs are still up in the air, can u pls confirm which one takes priority?",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "10060e80e83ff8f4a548cdbc1789e4e9f4408c92092cd70da4365f34c9b7a922"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T03:00:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T04:00:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "JURONG PIONEER",
+        "voyage": "445S"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T09:02:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-017",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI - L.CITY GLORY (some lists show 'LCG v221n') held ex CMB w/ engine issue, carries approx 31 t/s bxs for SIN. no firm ETA yet, agency will adv. pls hold planning. NB not sure if voyage is v221n or 0221N in your system.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "9556dfdc33f98a0f4e12ea242a91ab54e090730e213f1909f2345ca0c0cf30b7"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 31,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T19:08:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-018",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // RAFFLES WAVE v.511E \u2014 SIN ETA now 26/08 approx 0241 LT vice 2341 LT, ETB shifted. CUTOFF UNCHANGED 26/08 0226 hrs?? NOTE ROTATION MAY DROP VUT NEXT CALL, TBC. Rgds, SG OPS DESK",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "714a23636dd509ab2ededb07ff7772fe27f873296f870fb5753574afdc90bd61"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T02:31:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 180.0,
+        "new_eta": "2026-08-26T02:41:00+08:00",
+        "previous_eta": "2026-08-25T23:41:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "VUT",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "RAFFLES WAVE",
+        "voyage": "0511E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T15:22:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-019",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "Urgent // P.DAWN v.V.184E \u2014 SIN eta now 25/08 approx 2242 LT vice 2112 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "f118091745e185521b81ceb5889e35d31dac625d496b53b69576a76cecef401b"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 90.0,
+        "new_eta": "2026-08-25T22:42:00+08:00",
+        "previous_eta": "2026-08-25T21:12:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "PUNGGOL DAWN",
+        "voyage": "184E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T13:51:00+08:00",
+      "source": "port_notice:harbour-ops-circular"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-020",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI, Marina Crest master says ETA is 25/08 1517 hrs. No pilot at station, btw. Our tracking shows her coming in earlier, so pls double-check w/ AIS before rescheduling, voyage ref V052W.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "e32aac4f6267bcc6c68475fe73ae7a8bbd1e343b3a10a1eb622e20fe81cd44de"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T15:05:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-25T15:17:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "MARINA CREST",
+        "voyage": "052W"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T10:35:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-021",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, got the schedule for u - S.BREEZE V.78E, rotation's a bit sketchy, might not hit HKG next stop, still gotta check w/ HQ, if it doesn't happen, SIN's volumes are gonna shift by 1 day, no confirmation yet, will keep u posted",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "c4a113593aad0ab25566377ca81ea76c738bb5baf43597390d91a4959343c21c"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "HKG",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "SENTOSA BREEZE",
+        "voyage": "078E"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T08:24:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-022",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to BKT 673W V.673W \u2014 cutoff unchanged 26/08 0426 hrs?? some lists show 0526. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "17e00bf3e8c5f8b8f369de832f08bfba28c1bb8b5f1b3e2586d9a40cf27782bb"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T04:26:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T05:26:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T21:03:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-023",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI - LCG 221N (some lists show 'LCG v221n') held ex JKT w/ engine issue, carries approx 18 t/s bxs for SIN. No firm ETA yet, agency will adv. pls hold planning. NB not sure if voyage is v221n or 0221N in your system.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "cb1ec0bf93a59d55c1c813348f4026beb032cd1d574e285fd3af705d955485a2"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 18,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T20:31:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-024",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // RAFFLES WAVE v.0511E \u2014 SIN eta now 26/08 approx 0127 LT vice 2112 LT, ETB shifted. cutoff unchanged 26/08 0226 hrs?? Note rotation may drop LCB next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "c7c4bcd27729b7857b0a1fdcb4f10cab9eaad05a154ec0e258993ffb8cc71faa"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T01:15:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-26T01:27:00+08:00",
+        "previous_eta": "2026-08-25T21:12:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "LCB",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "RAFFLES WAVE",
+        "voyage": "0511E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T15:36:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-025",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // SEA PANTHER v.12E \u2014 SIN eta now 25/08 approx 1559 LT vice 1159 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "58c0bee62cfc0729bb92330c1d1e9ad23eecc8223dce8b1f35bb53386fc8f51e"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 240.0,
+        "new_eta": "2026-08-25T15:59:00+08:00",
+        "previous_eta": "2026-08-25T11:59:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "SEA PANTHER",
+        "voyage": "12E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:31:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-026",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI, Marina Crest master says ETA is SIN pilot stn 26/08 0204 hrs. btw, our tracking shows her earlier than that - pls verify w/ AIS before replanning. voyage ref V.052W.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "9fc2ef10057bb40a8f3086b210757c94d7c993cc9ce579700b26be0c1e9312b8"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T01:39:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-26T02:04:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "MARINA CREST",
+        "voyage": "052W"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T19:40:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-027",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, got the schedule note, LCG 221N V.V.221N - rotation might drop VUT next call, TBC by HQ, if VUT is skipped, SIN t/s volumes shift +1 day, no firm word yet, will adv.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "bb9c2e2226a3a735b857746a3588ee4344b51f90790aa4415afb37c22356cc0b"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "VUT",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T15:14:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-028",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to B.TRADER V.673W \u2014 cutoff unchanged 26/08 0230 hrs?? some lists show 0430. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "1f9a4e3096749bd4d93d9495d7d799710a2b5705c5a440814e1ad1d68a7c1ca2"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T02:30:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T04:30:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T18:29:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-029",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, just a heads up, S.BREEZE (some lists show 'STB 078E') is stuck in CMB with engine probs, carrying 21 t/s bxs for SIN, no ETA yet, agency will let us know, pls hold planning, btw, not sure if its 078E or 0078E in your system, just FYI.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "5d119a242a261d8fc6e6d22a6804ffdd8b6017e8ea8da7c30874b1e7315af7e4"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 21,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "SENTOSA BREEZE",
+        "voyage": "078E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T13:43:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-030",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // SENTOSA BREEZE v.078W?? \u2014 SIN eta now 25/08 approx 1736 LT vice 1321 LT, ETB shifted. cutoff unchanged 26/08 0226 hrs?? Note rotation may drop PKG next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "d64eef804fe118ff86ad1ee6ad785b1cb7a5df067963191a9a0a6d05ce343081"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T17:26:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-25T17:36:00+08:00",
+        "previous_eta": "2026-08-25T13:21:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "PKG",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "SENTOSA BREEZE",
+        "voyage": "078E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:02:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-031",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // SEA PAN. v.12E \u2014 SIN ETA NOW 25/08 APPROX 1609 LT VICE 1109 LT, ETB SHIFTED ACCORDINGLY. PLS ADV YARD SIDE. RGDS OPS",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "70a30e4c6e7d6a9ebe3a3b4477a572f0346df6ab669ffd71c0a86667a360275d"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 300.0,
+        "new_eta": "2026-08-25T16:09:00+08:00",
+        "previous_eta": "2026-08-25T11:09:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "SEA PANTHER",
+        "voyage": "12E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:42:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-032",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "fyi LCG 221N master advises ETA SIN pilot stn 26/08 0525 hrs. NB our tracking shows her earlier than that \u2014 pls verify w/ AIS before replanning. voyage ref 0221N.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "91d2fa239c721fefb06939e45e046681c82360bc37c08811b88c2f7d830bf7e6"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T05:00:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-26T05:25:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T18:02:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-033",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, got a schedule note for u - J.PIONEER V.V.445S - rotation might drop VUT next call, TBC by HQ, if VUT is omitted, SIN t/s volumes shift +1 day, no firm word yet, will adv.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "ff83c325853a3fb4bed84debf1903799873c9c611dc62ae502e6266b805526a1"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "VUT",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "JURONG PIONEER",
+        "voyage": "445S"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T10:21:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-034",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to T.STAR V.0402E \u2014 cutoff unchanged 26/08 0326 hrs?? some lists show 0526. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "b3a6009457d232659cd8cab92ae69562e0cbf90de867984629c72e248f76ea06"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T03:26:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T05:26:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "TEMASEK STAR",
+        "voyage": "0402E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T17:44:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-035",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, just a heads up, Merlion Express (MLX 437W) is stuck in JKT with engine probs, supposedly carrying 9 t/s bxs for SIN, no ETA yet, agency will let us know, pls hold planning, btw, not sure if it's 437W or 0437W in your system, just FYI.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "ed6423694aa54ab7fc976d77ae25a7824d66112c68418a918a6b1be8b6599968"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 9,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "MERLION EXPRESS",
+        "voyage": "437W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T17:55:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-036",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // STB 078E v.V.078E \u2014 SIN ETA now 26/08 approx 0439 LT vs 0139 LT, ETB shifted. CUTOFF unchanged 26/08 0226 hrs, note rotation may drop TPP next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "6c09b38cd53e21d63dbb6189e1e1f0d16719117df4f0a33214018d35d7e1f165"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T04:29:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 180.0,
+        "new_eta": "2026-08-26T04:39:00+08:00",
+        "previous_eta": "2026-08-26T01:39:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "TPP",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "SENTOSA BREEZE",
+        "voyage": "078E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T19:48:00+08:00",
+      "source": "port_notice:harbour-ops-circular"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-037",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // 'RAFFLES' v.0511E \u2014 SIN ETA now 25/08 approx 1945 LT vice 1745 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "f92e057a0ea137ce0a1309fbce4df65c36d061b0da6e8d5fc55003f7eaa71d25"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 120.0,
+        "new_eta": "2026-08-25T19:45:00+08:00",
+        "previous_eta": "2026-08-25T17:45:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "RAFFLES WAVE",
+        "voyage": "0511E"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T11:14:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-038",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "fyi 'TEMASEK' master advises ETA SIN pilot stn 25/08 1151 hrs. NB our tracking shows her earlier than that \u2014 pls verify w/ AIS before replanning. voyage ref 402E.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "c43f962ad9a39ef1cc0f5e460c18bb63d3f525356c3e1e4d27ad2a15c5be277c"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T11:39:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-25T11:51:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "TEMASEK STAR",
+        "voyage": "0402E"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:02:00+08:00",
+      "source": "port_notice:harbour-ops-circular"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-039",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, just a heads up, 'JURONG' V.V.445S is on rotation, might drop TPP next call, still waiting on HQ to confirm, if TPP is out, SIN t/s volumes will shift by 1 day, no word yet on that, will keep u posted.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "e4d6e0d46a16c9c5b00c6e91c48e8ca06db7cd3482086afc1878f5d5536d1f01"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "TPP",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "JURONG PIONEER",
+        "voyage": "445S"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T14:16:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-040",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to KALLANG SPI. V.310W \u2014 cutoff unchanged 26/08 0326 hrs?? some lists show 0526. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "da0d2a9e75db43771d4edd72e5a6c558ba4e1f7d3796880e424712d4a8561550"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T03:26:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T05:26:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "KALLANG SPIRIT",
+        "voyage": "310W"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T06:30:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-041",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, just a heads up, Bukit Trader (some lists show 'BKT 673E??') is stuck in port ex CMB w/ engine probs, got 37 t/s bxs for SIN, no ETA yet, agency will fill u in, pls hold planning, btw not sure if its 673E?? or 0673W in ur system",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "cd3f548ad86a0625f008489a7a187f37d03a005d6f25858b1aa60da497ae2a87"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 37,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T19:32:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-042",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // LION CITY GLORY v.221W?? \u2014 SIN ETA NOW 25/08 APPX 1957 LT VICE 1542 LT, ETB SHIFTED. CUTOFF UNCHANGED 26/08 0226 HRS?? NOTE ROTATION MAY DROP CMB NEXT CALL, TBC. Rgds, SG OPS DESK",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "eac84f291d9500eb8099a67b5fec95460fd9eb120bbcbb211165b0eee5157ea8"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T19:39:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-25T19:57:00+08:00",
+        "previous_eta": "2026-08-25T15:42:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "CMB",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T10:03:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-043",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // 'MERLION' v.v437w \u2014 SIN eta now 26/08 approx 0258 LT vice 2258 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "af7b9f9b54b545d369f53dc8d54ea2973bc5d9661a28442cd9922de7c14b6846"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 240.0,
+        "new_eta": "2026-08-26T02:58:00+08:00",
+        "previous_eta": "2026-08-25T22:58:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "MERLION EXPRESS",
+        "voyage": "437W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T16:09:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-044",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI, MRC 052W master advises ETA SIN pilot stn 25/08 1422 hrs. NB our tracking shows her earlier than that - pls verify w/ AIS before replanning. Voyage ref 052W.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "a22ca85f9b9a97db0078676faaf5a358d67b055c74d14955785e1b9be98956e7"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T14:10:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-25T14:22:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "MARINA CREST",
+        "voyage": "052W"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T08:06:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-045",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "schedule note: MV KALLANG SPIRIT V.v310w \u2014 rotation may drop CMB next call, TBC by HQ. if CMB omitted, SIN t/s volumes shift +1 day. no firm word yet, will adv.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "6e8d956e614b57b53137ebc7cf1642b7c8107286ba06bf5ea1120b0d55730b44"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "CMB",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "KALLANG SPIRIT",
+        "voyage": "310W"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T08:41:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-046",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to CHANGI HOR. V.9012E \u2014 cutoff unchanged 26/08 0330 hrs?? some lists show 0530. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "401646444127da0323726b042a94739dd83b15f52f3e6bda7fe8dbc5777e7ab8"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T03:30:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T05:30:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "CHANGI HORIZON",
+        "voyage": "9012E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T07:37:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-047",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "fyi - BUKIT TRA. (some lists show 'BKT V.673W') held ex TPP w/ engine issue, carries approx 14 t/s bxs for SIN. no firm ETA yet, agency will adv. pls hold planning. NB not sure if voyage is V.673W or 0673W in your system.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "2ae351e7fa8392d598ab713e2bfdd723b5bcb79fdd254c491cc6bf215f669c72"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 14,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "BUKIT TRADER",
+        "voyage": "673W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T12:04:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-048",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // LCG 221N v.v221n \u2014 SIN ETA now 26/08 approx 0048 LT vice 2148 LT, ETB shifted. Cutoff unchanged 26/08 0226 hrs?? Note rotation may drop LCB next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "6c1b5556772a3bc7cb7080b571b0cdb1e6360c30d8988753ab7bf2abbfeee31e"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T00:38:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 180.0,
+        "new_eta": "2026-08-26T00:48:00+08:00",
+        "previous_eta": "2026-08-25T21:48:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "LCB",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T13:55:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-049",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // MV MARINA CREST v.052-W \u2014 SIN ETA now 25/08 approx 2008 LT vice 1738 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "752141c7d55f57688510e7e3745996fb3a93593bfe047bfd5f2ea543d1bc317d"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 150.0,
+        "new_eta": "2026-08-25T20:08:00+08:00",
+        "previous_eta": "2026-08-25T17:38:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "MARINA CREST",
+        "voyage": "052W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T09:43:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-050",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "fyi 'SENTOSA' master advises ETA SIN pilot stn 25/08 1751 hrs. NB our tracking shows her earlier than that \u2014 pls verify w/ AIS before replanning. voyage ref v078e.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "d02f4f65d4b4942bad9c27d9e15ffdd21f72869adddface663440c97eb0cc504"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T16:56:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-25T17:51:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "SENTOSA BREEZE",
+        "voyage": "078E"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T11:11:00+08:00",
+      "source": "carrier_email:meridian-shipping-sg"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-051",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, just a heads up, Punggol Dawn V.v184e - rotation might drop PKG at the next call, still TBC by HQ, if PKG is skipped, SIN t/s volumes shift by +1 day, no word yet, will keep u posted.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "a1a0f34143ab7094fc060df57e980084f08f21f54a95cfc30698b7ab980b0443"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "PKG",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "PUNGGOL DAWN",
+        "voyage": "184E"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T15:21:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-052",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, just a heads up, TEMASEK STAR V.0402E is comin in on 26/08, 0226 hrs, or is it 0326? docs and cargo cutoffs are still up in the air, some lists say docs, others say cargo, can u pls clarify?",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "067adf181ed1c6daee4cdea37b32f7c01f2a4e87587115868b7de4af886e5f9b"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T03:26:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "TEMASEK STAR",
+        "voyage": "0402E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T21:35:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-053",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, so MV LION CITY GLORY (LCG 221W??) is stuck in CMB with engine probs, supposedly carrying 27 t/s bxs for SIN, no ETA yet, agency will let us know, pls hold planning, btw, not sure if it's 221W?? or 0221N in your system.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "214d9b53b33272120351013533d28a69d7db15b5347b28582943e379b2a25565"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 27,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T11:02:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-054",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // 'PUNGGOL' v.184E \u2014 SIN eta now 26/08 approx 0848 LT vice 0433 LT, ETB shifted. cutoff unchanged 26/08 0226 hrs?? Note rotation may drop HKG next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "f2ede28631adde2d34d58425a840d809a905823b5fd4aa99990c736396ea0059"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T08:36:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-26T08:48:00+08:00",
+        "previous_eta": "2026-08-26T04:33:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "HKG",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "PUNGGOL DAWN",
+        "voyage": "184E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T20:39:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-055",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "Urgent // KALLANG SPIRIT v.310-W \u2014 SIN eta now 26/08 approx 0339 LT vs 0209 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "077a41f6a81210ce81bc066b9c3c7b78ff246973bd2ceab59a98cdf000c98ad3"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 90.0,
+        "new_eta": "2026-08-26T03:39:00+08:00",
+        "previous_eta": "2026-08-26T02:09:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "KALLANG SPIRIT",
+        "voyage": "310W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T20:18:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-056",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI, Lion City Glory master advises ETA SIN pilot stn 25/08 2045 hrs. NB our tracking shows her earlier than that - pls verify w/ AIS before replanning. Voyage ref V.221N.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "315ab4cd93bd6c46390f5336aba11461d1eb5a80961abc1aac9043702eb3eb6e"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T19:30:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-25T20:45:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "LION CITY GLORY",
+        "voyage": "221N"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T09:21:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-057",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "schedule note: MV TEMASEK STAR V.v0402e - rotation may drop JKT next call, TBC by HQ. if JKT omitted, SIN t/s volumes shift +1 day. no firm word yet, will adv.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "814f7b78d5c82006d983ddd19e1b029943ed7121349155d05373e2dfa5124233"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "JKT",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "TEMASEK STAR",
+        "voyage": "0402E"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T07:20:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-058",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to CHANGI HORIZON V.9012E \u2014 cutoff unchanged 26/08 0226 hrs?? some lists show 0326. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "67ddb44bf1b3c65772c0b969eecc95f782325b408c92709a3f4a8f5442a79dd3"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T03:26:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "CHANGI HORIZON",
+        "voyage": "9012E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T15:45:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-059",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "hey, just a heads up, MV MERLION EXPRESS (some lists show 'MLX 437E??') is stuck in HKG with engine probs, cargo's 21 t/s bxs for SIN, no ETA yet, agency will give us the deets, pls hold planning, btw, not sure if it's 437E?? or 0437W in ur system",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "held_no_eta",
+        "template_sha256": "dec2753383a7741b6ac0425e8c8494b764c1fecd0d9ae208aa2c43f2f77da68c"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "box_count_approx": 21,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "MERLION EXPRESS",
+        "voyage": "437W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T22:03:00+08:00",
+      "source": "carrier_email:oceanlink-sg-ops-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-060",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // MV SENTOSA BREEZE v.78E \u2014 SIN eta now 26/08 approx 0833 LT vice 0418 LT, ETB shifted. cutoff unchanged 26/08 0226 hrs?? Note rotation may drop TPP next call, TBC. Rgds, SG ops desk",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "kitchen_sink",
+        "template_sha256": "05ad026c95628017696ff22f426fe702cffbbd861dae5c105ef895b11ec60bed"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-26T08:15:00+08:00",
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "eta_drift_minutes": 255.0,
+        "new_eta": "2026-08-26T08:33:00+08:00",
+        "previous_eta": "2026-08-26T04:18:00+08:00",
+        "rotation_change": {
+          "asserted": false,
+          "port": "TPP",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "SENTOSA BREEZE",
+        "voyage": "078E"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "contradiction_vs_ais",
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T19:30:00+08:00",
+      "source": "port_notice:harbour-ops-circular"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-061",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "URGENT // 'MERLION' v.V.437W \u2014 SIN ETA now 25/08 approx 2033 LT v. 1803 LT, ETB shifted accordingly. pls adv yard side. rgds ops",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "eta_slip",
+        "template_sha256": "5bb08536917e9aef9bd8bd24525368d946000cf469fc49588f6c9b50b2175bd4"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": 150.0,
+        "new_eta": "2026-08-25T20:33:00+08:00",
+        "previous_eta": "2026-08-25T18:03:00+08:00",
+        "rotation_change": null,
+        "vessel_name_canonical": "MERLION EXPRESS",
+        "voyage": "437W"
+      },
+      "messiness_classes": [
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T09:46:00+08:00",
+      "source": "agency_email:straits-forwarding-desk"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-062",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "FYI, S.PANTHER master advises ETA SIN pilot stn 25/08 1733 hrs, NB our tracking shows her earlier than that, pls verify w/ AIS before replanning, voyage ref 12E.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "ais_contradiction",
+        "template_sha256": "7e4ed9e3433b998e48377bbba375c37a86c5a4e0006037b3ad6e94c5f94bd40a"
+      },
+      "ground_truth": {
+        "ais_eta": "2026-08-25T17:21:00+08:00",
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": "2026-08-25T17:33:00+08:00",
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "SEA PANTHER",
+        "voyage": "12E"
+      },
+      "messiness_classes": [
+        "contradiction_vs_ais",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T11:04:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-063",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "schedule note: SEA PAN. V.12-E \u2014 rotation may drop LCB next call, TBC by HQ. if LCB omitted, SIN t/s volumes shift +1 day. no firm word yet, will adv.",
+      "generator": {
+        "paraphrase_model": "llama3.2:3b",
+        "paraphrased": true,
+        "seed": 42,
+        "template_id": "rotation",
+        "template_sha256": "ad56e182fc547f202b783efe5eac8216c244d791ac5bdcdd33702ad628287fde"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": null,
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": {
+          "asserted": false,
+          "port": "LCB",
+          "type": "POSSIBLE_OMISSION"
+        },
+        "vessel_name_canonical": "SEA PANTHER",
+        "voyage": "12E"
+      },
+      "messiness_classes": [
+        "partial_rotation",
+        "vessel_name_variant",
+        "voyage_code_confusion"
+      ],
+      "received_at": "2026-08-25T20:11:00+08:00",
+      "source": "carrier_email:eastwind-lines-cs"
+    },
+    {
+      "advisory_id": "ADV-SYN-20260825-064",
+      "data_provenance": "SYNTHETIC",
+      "free_text": "pls adv t/s ex inbound to MERLION EXP. V.437W \u2014 cutoff unchanged 26/08 0226 hrs?? some lists show 0426. docs cutoff vs cargo cutoff also unclear our side. pls confirm which applies.",
+      "generator": {
+        "paraphrase_model": null,
+        "paraphrased": false,
+        "seed": 42,
+        "template_id": "ambiguous_cutoff",
+        "template_sha256": "64a4d883fa2dcd7ad81e9cffa912aa01908a218e56d535ad77222e3f1f0b7290"
+      },
+      "ground_truth": {
+        "ais_eta": null,
+        "cutoff": "2026-08-26T02:26:00+08:00",
+        "cutoff_ambiguous_alternative": "2026-08-26T04:26:00+08:00",
+        "eta_drift_minutes": null,
+        "new_eta": null,
+        "previous_eta": null,
+        "rotation_change": null,
+        "vessel_name_canonical": "MERLION EXPRESS",
+        "voyage": "437W"
+      },
+      "messiness_classes": [
+        "ambiguous_cutoff",
+        "vessel_name_variant"
+      ],
+      "received_at": "2026-08-25T17:20:00+08:00",
+      "source": "agency_email:sg-agency-desk-ops"
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+ "lead_dose_response_version": "1.0.0",
+ "label": "SYNTHETIC, simulator-internal: the N=500 sweep's at-risk advisory scenarios",
+ "first_sentence": "Detection lead has no save consequence in this simulator: the advisory and the carrier EDI carry the same fact and differ only in when they register, so the published mean lead of 81.5 minutes is a detection-time statistic and not an impact statistic.",
+ "source": {
+  "checkpoint": "evalx/sweep_ckpt/sweep-seed42-n500.json",
+  "run_id": "sweep-seed42-n500",
+  "seed": 42,
+  "n": 500,
+  "oracle_verified": true,
+  "results_digest": "2b27e6c4f9283c11a4f5cf83a988240b993cea19cf33c9881e7cec7ca37098b5",
+  "shipped_sweep": "evalx/results/sweep-full-n500.final.json",
+  "checkpoint_matches_shipped_sweep": true,
+  "published_detection_lead_minutes_mean": 81.4773
+ },
+ "population": {
+  "n_scenarios": 500,
+  "at_risk": 299,
+  "at_risk_with_advisory": 158,
+  "lead_range_minutes": [
+   31.0,
+   238.0
+  ],
+  "lead_equals_detect_at_difference": {
+   "agree": 158,
+   "n": 158
+  },
+  "outside_buckets": 0
+ },
+ "same_fact_by_construction": {
+  "packs_rebuilt": 158,
+  "advisory_and_edi_carry_the_same_fact": 158,
+  "fact_fields_compared": [
+   "new_eta",
+   "previous_eta",
+   "drift_minutes",
+   "berth",
+   "affected_connections"
+  ],
+  "lead_is_only_the_registration_gap": 158,
+  "where": "evalx/sweep_local.py, build_pack: both vessel_eta_update events take new_eta from the same connection; the advisory registers advisory_lead_minutes earlier"
+ },
+ "buckets": [
+  {
+   "bucket": "30 to 60",
+   "lo_minutes": 30.0,
+   "hi_minutes": 60.0,
+   "n": 20,
+   "save_rate": {
+    "mean": 0.5,
+    "ci95": [
+     0.3,
+     0.75
+    ],
+    "n": 20,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "rebooking_proposal_rate": {
+    "mean": 0.2,
+    "ci95": [
+     0.05,
+     0.35
+    ],
+    "n": 20,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "escalation_rate": {
+    "mean": 0.25,
+    "ci95": [
+     0.1,
+     0.45
+    ],
+    "n": 20,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "margin_gain_minutes": {
+    "mean": 26.25,
+    "ci95": [
+     15.0,
+     37.5
+    ],
+    "n": 20,
+    "distinct_values": 3,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   }
+  },
+  {
+   "bucket": "60 to 120",
+   "lo_minutes": 60.0,
+   "hi_minutes": 120.0,
+   "n": 41,
+   "save_rate": {
+    "mean": 0.6585,
+    "ci95": [
+     0.5366,
+     0.8049
+    ],
+    "n": 41,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "rebooking_proposal_rate": {
+    "mean": 0.2683,
+    "ci95": [
+     0.1463,
+     0.4146
+    ],
+    "n": 41,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "escalation_rate": {
+    "mean": 0.0244,
+    "ci95": [
+     0.0,
+     0.0732
+    ],
+    "n": 41,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "margin_gain_minutes": {
+    "mean": 36.5854,
+    "ci95": [
+     27.8049,
+     44.2683
+    ],
+    "n": 41,
+    "distinct_values": 3,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   }
+  },
+  {
+   "bucket": "120 to 180",
+   "lo_minutes": 120.0,
+   "hi_minutes": 180.0,
+   "n": 46,
+   "save_rate": {
+    "mean": 0.6739,
+    "ci95": [
+     0.5435,
+     0.8043
+    ],
+    "n": 46,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "rebooking_proposal_rate": {
+    "mean": 0.1522,
+    "ci95": [
+     0.0652,
+     0.2609
+    ],
+    "n": 46,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "escalation_rate": {
+    "mean": 0.1304,
+    "ci95": [
+     0.0435,
+     0.2391
+    ],
+    "n": 46,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "margin_gain_minutes": {
+    "mean": 38.8043,
+    "ci95": [
+     30.6522,
+     46.3043
+    ],
+    "n": 46,
+    "distinct_values": 3,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   }
+  },
+  {
+   "bucket": "180 to 240",
+   "lo_minutes": 180.0,
+   "hi_minutes": 240.0,
+   "n": 51,
+   "save_rate": {
+    "mean": 0.6471,
+    "ci95": [
+     0.5098,
+     0.7647
+    ],
+    "n": 51,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "rebooking_proposal_rate": {
+    "mean": 0.2353,
+    "ci95": [
+     0.1176,
+     0.3529
+    ],
+    "n": 51,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "escalation_rate": {
+    "mean": 0.0784,
+    "ci95": [
+     0.0196,
+     0.1569
+    ],
+    "n": 51,
+    "distinct_values": 2,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   },
+   "margin_gain_minutes": {
+    "mean": 35.8824,
+    "ci95": [
+     28.8235,
+     42.9412
+    ],
+    "n": 51,
+    "distinct_values": 3,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+   }
+  }
+ ],
+ "logistic": {
+  "model": "logit P(saved) = b0 + b1 * lead/60 + b2 * true_margin/100",
+  "method": "Firth bias-reduced logistic (Jeffreys-prior penalty), Newton with step halving. The true margin nearly separates the outcome, so the plain maximum-likelihood fit is reported only as a point estimate.",
+  "n": 158,
+  "n_saved": 101,
+  "slope_per_60min": -0.4307,
+  "slope_per_60min_ci95": [
+   -1.7459,
+   0.528
+  ],
+  "ci_contains_zero": true,
+  "odds_ratio_per_60min": 0.65,
+  "margin_coef_per_100min": 21.8077,
+  "intercept": -0.8884,
+  "converged": true,
+  "iterations": 26,
+  "plain_mle": {
+   "slope_per_60min": -0.5426,
+   "converged": true
+  },
+  "bootstrap": {
+   "ci95": [
+    -1.7459,
+    0.528
+   ],
+   "resamples": 1000,
+   "converged_resamples": 1000,
+   "failed_resamples": 0,
+   "seed": 42,
+   "method": "seeded bootstrap of the Firth lead slope, percentile CI"
+  }
+ },
+ "intervention": {
+  "n_scenarios": 158,
+  "counterfactual_leads_minutes": [
+   30.0,
+   240.0
+  ],
+  "runs": 474,
+  "outcome_fields_compared": [
+   "saved_by_expedite",
+   "rebook_proposed",
+   "escalated",
+   "escalation_class",
+   "action",
+   "outcome",
+   "margin_after",
+   "policy_row",
+   "approval_card_raised"
+  ],
+  "unchanged": 316,
+  "changed": 0,
+  "changed_runs": [],
+  "all_unchanged": true,
+  "rerun_at_original_lead_reproduces_checkpoint": {
+   "agree": 158,
+   "n": 158
+  },
+  "method": "each at-risk advisory scenario re-run through the real graph at its own lead and at each counterfactual lead; the outcome fields are compared with the re-run at the original lead"
+ },
+ "reading": "Over 158 at-risk scenarios with an advisory, the lead slope on save is -0.4307 log-odds per 60 minutes, CI -1.7459 to 0.528, which contains zero. Forcing the lead to [30.0, 240.0] minutes on the same worlds changed 0 of 316 outcomes. Lead is a detection-time statistic in this simulator, not an impact statistic.",
+ "honest_limits": [
+  "Simulator-internal. The simulated approver approves every card at once, so the time a human would need to act, which is what lead buys on a real terminal, is not modelled and cannot show up here.",
+  "The slope is observational, fitted on a sample of a few hundred rows, and its CI is wide; the intervention is the direct evidence, and it is the same deterministic code path the sweep ran.",
+  "The bucket CIs are bootstraps of small buckets and overlap by construction."
+ ]
+}

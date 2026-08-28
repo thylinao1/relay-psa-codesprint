@@ -1,0 +1,262 @@
+{
+ "behaviours_conformance_version": "1.0.0",
+ "episodes": {
+  "hero_save": {
+   "pack": "scenario_pack_hero.json",
+   "decision": "approve",
+   "events": 18
+  },
+  "deny_by_default": {
+   "pack": "scenario_pack_hero.json",
+   "decision": "timeout",
+   "events": 17
+  },
+  "no_policy_deny": {
+   "pack": "no_policy_trigger.json",
+   "decision": "none",
+   "events": 15
+  }
+ },
+ "total_events_examined": 50,
+ "behaviours": [
+  {
+   "behaviour": "B1",
+   "brief_wording": "analyse input and identify the objective or issue",
+   "pass": true,
+   "satisfied_by": [
+    "hero_save",
+    "deny_by_default",
+    "no_policy_deny"
+   ],
+   "per_episode": {
+    "hero_save": {
+     "pass": true,
+     "evidence": {
+      "structured_input_events": 1,
+      "unstructured_input_parsed": 3,
+      "first_action": "twin.ingest_event x6 (pack PACK-HERO-01, 6 attempt(s), replay path SC-1); advisory pending fusion"
+     }
+    },
+    "deny_by_default": {
+     "pass": true,
+     "evidence": {
+      "structured_input_events": 1,
+      "unstructured_input_parsed": 3,
+      "first_action": "twin.ingest_event x6 (pack PACK-HERO-01, 6 attempt(s), replay path SC-1); advisory pending fusion"
+     }
+    },
+    "no_policy_deny": {
+     "pass": true,
+     "evidence": {
+      "structured_input_events": 1,
+      "unstructured_input_parsed": 3,
+      "first_action": "twin.ingest_event x6 (pack PACK-NO-POLICY-TRIGGER-01, 6 attempt(s), replay path SC-1); advisory pending fusion"
+     }
+    }
+   }
+  },
+  {
+   "behaviour": "B2",
+   "brief_wording": "determine an appropriate course of action",
+   "pass": true,
+   "satisfied_by": [
+    "hero_save",
+    "deny_by_default",
+    "no_policy_deny"
+   ],
+   "per_episode": {
+    "hero_save": {
+     "pass": true,
+     "evidence": {
+      "feasibility_calls": 3,
+      "option_calls": 1,
+      "rule_decisions": 8
+     }
+    },
+    "deny_by_default": {
+     "pass": true,
+     "evidence": {
+      "feasibility_calls": 2,
+      "option_calls": 1,
+      "rule_decisions": 10
+     }
+    },
+    "no_policy_deny": {
+     "pass": true,
+     "evidence": {
+      "feasibility_calls": 2,
+      "option_calls": 1,
+      "rule_decisions": 9
+     }
+    }
+   }
+  },
+  {
+   "behaviour": "B3",
+   "brief_wording": "orchestrate relevant tools, systems or workflows",
+   "pass": true,
+   "satisfied_by": [
+    "hero_save",
+    "deny_by_default",
+    "no_policy_deny"
+   ],
+   "per_episode": {
+    "hero_save": {
+     "pass": true,
+     "evidence": {
+      "distinct_tools_called": [
+       "approval.request_card",
+       "portnet.set_transfer_priority",
+       "twin.feasibility_check",
+       "twin.ingest_event x6 ",
+       "twin.ingest_fact -> vessel_eta_update eta_source=ADVISORY_RECONCILED ",
+       "twin.replan_options"
+      ]
+     }
+    },
+    "deny_by_default": {
+     "pass": true,
+     "evidence": {
+      "distinct_tools_called": [
+       "approval.request_card",
+       "twin.feasibility_check",
+       "twin.ingest_event x6 ",
+       "twin.ingest_fact -> vessel_eta_update eta_source=ADVISORY_RECONCILED ",
+       "twin.replan_options"
+      ]
+     }
+    },
+    "no_policy_deny": {
+     "pass": true,
+     "evidence": {
+      "distinct_tools_called": [
+       "twin.feasibility_check",
+       "twin.ingest_event x6 ",
+       "twin.ingest_fact -> vessel_eta_update eta_source=ADVISORY_RECONCILED ",
+       "twin.replan_options"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "behaviour": "B4",
+   "brief_wording": "handle uncertainty, incomplete information and tool failures",
+   "pass": true,
+   "satisfied_by": [
+    "deny_by_default",
+    "no_policy_deny"
+   ],
+   "per_episode": {
+    "hero_save": {
+     "pass": false,
+     "evidence": {
+      "uncertainty_gates": 4,
+      "structured_errors": 0,
+      "degraded_mode_events": 0,
+      "fault_events": 0
+     }
+    },
+    "deny_by_default": {
+     "pass": true,
+     "evidence": {
+      "uncertainty_gates": 4,
+      "structured_errors": 0,
+      "degraded_mode_events": 0,
+      "fault_events": 1
+     }
+    },
+    "no_policy_deny": {
+     "pass": true,
+     "evidence": {
+      "uncertainty_gates": 4,
+      "structured_errors": 0,
+      "degraded_mode_events": 0,
+      "fault_events": 1
+     }
+    }
+   }
+  },
+  {
+   "behaviour": "B5",
+   "brief_wording": "invoke human review, approval or escalation where appropriate",
+   "pass": true,
+   "satisfied_by": [
+    "hero_save",
+    "deny_by_default",
+    "no_policy_deny"
+   ],
+   "per_episode": {
+    "hero_save": {
+     "pass": true,
+     "evidence": {
+      "approval_events": 3,
+      "human_actor_events": 1,
+      "escalation_events": 0
+     }
+    },
+    "deny_by_default": {
+     "pass": true,
+     "evidence": {
+      "approval_events": 3,
+      "human_actor_events": 0,
+      "escalation_events": 2
+     }
+    },
+    "no_policy_deny": {
+     "pass": true,
+     "evidence": {
+      "approval_events": 1,
+      "human_actor_events": 0,
+      "escalation_events": 2
+     }
+    }
+   }
+  },
+  {
+   "behaviour": "B6",
+   "brief_wording": "produce a clear execution trace of decisions, tool calls, approvals, actions, results and errors",
+   "pass": true,
+   "satisfied_by": [
+    "hero_save",
+    "deny_by_default",
+    "no_policy_deny"
+   ],
+   "per_episode": {
+    "hero_save": {
+     "pass": true,
+     "evidence": {
+      "events": 18,
+      "every_event_has_the_csa_fields": true,
+      "chain_verifies": true,
+      "chain_reason": "ok",
+      "rationale_events_labelled_not_audit": true
+     }
+    },
+    "deny_by_default": {
+     "pass": true,
+     "evidence": {
+      "events": 17,
+      "every_event_has_the_csa_fields": true,
+      "chain_verifies": true,
+      "chain_reason": "ok",
+      "rationale_events_labelled_not_audit": true
+     }
+    },
+    "no_policy_deny": {
+     "pass": true,
+     "evidence": {
+      "events": 15,
+      "every_event_has_the_csa_fields": true,
+      "chain_verifies": true,
+      "chain_reason": "ok",
+      "rationale_events_labelled_not_audit": true
+     }
+    }
+   }
+  }
+ ],
+ "all_six_demonstrated": true,
+ "method": "each behaviour is a predicate over the ledger a real episode wrote, not a claim in prose; the run is reproducible with the shipped replay entrypoint",
+ "honest_limits": "the episodes are SYNTHETIC scenarios on the deterministic replay tier, so this proves the behaviours are exercised end to end, not that they are exercised in a live terminal"
+}

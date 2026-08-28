@@ -1,0 +1,4296 @@
+{
+ "oversight_load_version": "2.1.0",
+ "label": "MODEL over SIMULATOR-INTERNAL card rates, not a staffing study",
+ "first_sentence": "The card rate assumes an approve-all approver: the sweep's simulated approver approved every card, so the action mix, and with it the card count, is the mix an approver who never says no produces; a human who denies changes the plan and the count, and this model cannot see that.",
+ "volume_module": "evalx/volume_inputs.py (shared with evalx/impact_model.py); the grid uses the base volume scenario",
+ "which_arm_the_grid_is": "EVERY figure in `grid`, `inputs`, `per_policy_row_share`, `staffed_cell_by_availability` and `EXPIRY_SHARE_AT_STAFFED` on this page is the UNGATED arm, evalx/results/sweep-full-n500.final.json, which is the sweep the agent ran before the expected-value gate. The arm that ships is the gated one, and it raises far fewer cards and escalates far more of them; `arms` prints both at the cell the impact model reads, so a reader can see which arm any figure quoted from this file belongs to. The expiry share the impact model consumes is deliberately the ungated one: it is computed on the higher card rate, so it is an upper bound on the share of proposed saves the desk loses, and using it makes the impact model's headline smaller rather than larger",
+ "arms": {
+  "ungated": {
+   "label": "the expected-value gate OFF: the arm this page's grid is built from",
+   "sweep": "evalx/results/sweep-full-n500.final.json",
+   "available": true,
+   "ev_gate_enabled": null,
+   "action_mix": {
+    "none": 261,
+    "portnet.set_transfer_priority": 173,
+    "portnet.propose_rebooking": 55,
+    "portnet.create_restow_order": 11
+   },
+   "escalation_classes": {
+    "insufficient_evidence": 35,
+    "no_feasible_option": 25
+   },
+   "at_risk_ending_advise_only": 0,
+   "CARDS_PER_AT_RISK": 0.7993,
+   "ESCALATIONS_PER_AT_RISK": 0.2007,
+   "ESCALATIONS_PER_EPISODE": 0.12,
+   "cell": {
+    "path": "grid.p10.per_box_group",
+    "cards_per_hour": 7.8838,
+    "cards_per_shift": 94.61,
+    "escalations_per_day": 47.51,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 68.48,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 13.7
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 21.77,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 7.3
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 4.35,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 2.2
+     }
+    }
+   },
+   "by_officers": {
+    "c1": {
+     "officers": 1,
+     "utilisation": 0.3942,
+     "stable": true,
+     "erlang_c_p_wait": 0.3942,
+     "mean_wait_s": 117.12,
+     "expiry_share": 0.3563,
+     "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.3942 erlangs (Erlang C)",
+     "sim_fixed_read": {
+      "expiry_share": 0.3538,
+      "p_wait": 0.3943,
+      "mean_wait_s": 58.86,
+      "n_cards": 100000,
+      "seed": 42,
+      "read": "fixed at response_s",
+      "se_binomial": 0.0015
+     },
+     "sim_exponential_read": {
+      "expiry_share": 0.36,
+      "p_wait": 0.3969,
+      "mean_wait_s": 120.66,
+      "n_cards": 100000,
+      "seed": 42,
+      "read": "exponential at the same mean",
+      "se_binomial": 0.0015,
+      "minus_erlang_c": 0.0037,
+      "within_tolerance": true,
+      "check_note": "counted as a check of the closed form: utilisation below 0.8"
+     }
+    },
+    "c2": {
+     "officers": 2,
+     "utilisation": 0.1971,
+     "stable": true,
+     "erlang_c_p_wait": 0.0649,
+     "mean_wait_s": 7.27,
+     "expiry_share": 0.0497,
+     "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 0.3942 erlangs (Erlang C)"
+    },
+    "c3": {
+     "officers": 3,
+     "utilisation": 0.1314,
+     "stable": true,
+     "erlang_c_p_wait": 0.0079,
+     "mean_wait_s": 0.55,
+     "expiry_share": 0.0051,
+     "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 0.3942 erlangs (Erlang C)"
+    }
+   },
+   "EXPIRY_SHARE_AT_STAFFED": 0.3563
+  },
+  "gated": {
+   "label": "the expected-value gate ON: the arm that ships",
+   "sweep": "evalx/results/sweep-full-n500-evgate.json",
+   "available": true,
+   "ev_gate_enabled": true,
+   "action_mix": {
+    "none": 418,
+    "portnet.set_transfer_priority": 29,
+    "portnet.propose_rebooking": 53,
+    "portnet.create_restow_order": 0,
+    "portnet.request_cutoff_extension": 0
+   },
+   "escalation_classes": {
+    "advise_only": 157,
+    "insufficient_evidence": 35,
+    "no_feasible_option": 25
+   },
+   "at_risk_ending_advise_only": 157,
+   "CARDS_PER_AT_RISK": 0.2742,
+   "ESCALATIONS_PER_AT_RISK": 0.7258,
+   "ESCALATIONS_PER_EPISODE": 0.434,
+   "cell": {
+    "path": "grid.p10.per_box_group",
+    "cards_per_hour": 2.7046,
+    "cards_per_shift": 32.45,
+    "escalations_per_day": 171.81,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 11.48,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 2.3
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 20.98,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 7.0
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 0.0,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 0.0
+     }
+    }
+   },
+   "by_officers": {
+    "c1": {
+     "officers": 1,
+     "utilisation": 0.1352,
+     "stable": true,
+     "erlang_c_p_wait": 0.1352,
+     "mean_wait_s": 28.15,
+     "expiry_share": 0.1171,
+     "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.1352 erlangs (Erlang C)",
+     "sim_fixed_read": {
+      "expiry_share": 0.1168,
+      "p_wait": 0.137,
+      "mean_wait_s": 14.19,
+      "n_cards": 100000,
+      "seed": 42,
+      "read": "fixed at response_s",
+      "se_binomial": 0.001
+     },
+     "sim_exponential_read": {
+      "expiry_share": 0.1192,
+      "p_wait": 0.1374,
+      "mean_wait_s": 28.56,
+      "n_cards": 100000,
+      "seed": 42,
+      "read": "exponential at the same mean",
+      "se_binomial": 0.001,
+      "minus_erlang_c": 0.0021,
+      "within_tolerance": true,
+      "check_note": "counted as a check of the closed form: utilisation below 0.8"
+     }
+    },
+    "c2": {
+     "officers": 2,
+     "utilisation": 0.0676,
+     "stable": true,
+     "erlang_c_p_wait": 0.0086,
+     "mean_wait_s": 0.83,
+     "expiry_share": 0.0063,
+     "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 0.1352 erlangs (Erlang C)"
+    },
+    "c3": {
+     "officers": 3,
+     "utilisation": 0.0451,
+     "stable": true,
+     "erlang_c_p_wait": 0.0004,
+     "mean_wait_s": 0.02,
+     "expiry_share": 0.0002,
+     "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 0.1352 erlangs (Erlang C)"
+    }
+   },
+   "EXPIRY_SHARE_AT_STAFFED": 0.1171
+  }
+ },
+ "EXPIRY_SHARE_AT_STAFFED": 0.3563,
+ "EXPIRY_SHARE_AT_STAFFED_CELL": {
+  "path": "grid.p10.per_box_group.r90.by_officers.c1.expiry_share",
+  "meaning": "share of approval cards that expire into DENY_BY_DEFAULT at p = 0.1 on the per_box_group denominator, a 90 s read, 1 officer at the base availability of 0.5; an expired card is a save the agent proposed and nobody landed, so a consumer of SAVES_PER_AT_RISK multiplies by (1 - this) to price the desk as staffed",
+  "cards_per_hour": 7.8838,
+  "utilisation": 0.3942,
+  "sim_fixed_read_expiry_share": 0.3538,
+  "sim_exponential_read_expiry_share": 0.36,
+  "at_full_availability_expiry_share": 0.1508,
+  "at_full_availability_utilisation": 0.1971
+ },
+ "inputs": {
+  "TEU_YEAR_PSA": {
+   "pessimistic": {
+    "kind": "CITED",
+    "value": 44500000,
+    "url": "https://www.globalpsa.com/wp-content/uploads/2026/01/nr260114.pdf",
+    "date": "2026-01-14",
+    "verbatim": "PSA's flagship terminal in Singapore also set a new record and registered a throughput of 44.5 million TEUs, representing more than 8% increase.",
+    "note": "PSA International news release, 'PSA International's 2025 Container Throughput Performance'."
+   },
+   "base": {
+    "kind": "CITED",
+    "value": 44500000,
+    "url": "https://www.globalpsa.com/wp-content/uploads/2026/01/nr260114.pdf",
+    "date": "2026-01-14",
+    "verbatim": "PSA's flagship terminal in Singapore also set a new record and registered a throughput of 44.5 million TEUs, representing more than 8% increase.",
+    "note": "PSA International news release, 'PSA International's 2025 Container Throughput Performance'."
+   },
+   "optimistic": {
+    "kind": "CITED",
+    "value": 44500000,
+    "url": "https://www.globalpsa.com/wp-content/uploads/2026/01/nr260114.pdf",
+    "date": "2026-01-14",
+    "verbatim": "PSA's flagship terminal in Singapore also set a new record and registered a throughput of 44.5 million TEUs, representing more than 8% increase.",
+    "note": "PSA International news release, 'PSA International's 2025 Container Throughput Performance'."
+   }
+  },
+  "TS_SHARE": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.85,
+    "why": "A five-point haircut on the MPA 2024 share, because the share is carried forward one year and stated as 'around 90%'. No 2025 figure was found.",
+    "range": [
+     0.85,
+     0.9
+    ]
+   },
+   "base": {
+    "kind": "CITED",
+    "value": 0.9,
+    "url": "https://www.mpa.gov.sg/media-centre/details/strong-growth-momentum-for-maritime-singapore",
+    "date": "2025-01-15",
+    "verbatim": "Around 90% of Singapore's container throughput is for transshipment to other destinations.",
+    "note": "Maritime and Port Authority of Singapore, 'Strong growth momentum for Maritime Singapore'. Stated for 2024 and applied to 2025 throughput; that carry-forward is a choice and is labelled as one here."
+   },
+   "optimistic": {
+    "kind": "CITED",
+    "value": 0.9,
+    "url": "https://www.mpa.gov.sg/media-centre/details/strong-growth-momentum-for-maritime-singapore",
+    "date": "2025-01-15",
+    "verbatim": "Around 90% of Singapore's container throughput is for transshipment to other destinations.",
+    "note": "Maritime and Port Authority of Singapore, 'Strong growth momentum for Maritime Singapore'. Stated for 2024 and applied to 2025 throughput; that carry-forward is a choice and is labelled as one here."
+   }
+  },
+  "TEU_PER_BOX": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 1.8,
+    "why": "NONE FOUND for a PSA TEU factor. A box is one or two TEU; a 40-foot-heavy mix sits near 1.8, a 20-foot-heavy mix near 1.6. The higher factor gives FEWER boxes for the same TEU, so it is the pessimistic end for the volume of connections.",
+    "range": [
+     1.6,
+     1.8
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 1.7,
+    "why": "NONE FOUND for a PSA TEU factor; the midpoint of the 1.6 to 1.8 mix.",
+    "range": [
+     1.6,
+     1.8
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 1.6,
+    "why": "NONE FOUND for a PSA TEU factor; the 20-foot-heavy end of the mix.",
+    "range": [
+     1.6,
+     1.8
+    ]
+   }
+  },
+  "BOXES_PER_CONNECTION": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 27.266,
+    "constant": "twin/generate.py: generate_world, box_count = rng.randint(8, 48)",
+    "derivation": "mean box_count of the target connection over the 500 sweep worlds, regenerated from twin.generate.generate_world with seed 42 through evalx.sweep_local's world_seed, N_CONNECTIONS and profile cycle; NOT a measurement of any terminal: the draw is uniform on the constant's range, whose expectation is 28",
+    "range": [
+     8,
+     48
+    ],
+    "n_worlds": 500,
+    "per_world_box_count": [
+     12,
+     13,
+     40,
+     17,
+     27,
+     46,
+     36,
+     44,
+     21,
+     9,
+     28,
+     20,
+     12,
+     17,
+     10,
+     22,
+     17,
+     23,
+     42,
+     9,
+     26,
+     22,
+     18,
+     27,
+     44,
+     27,
+     9,
+     33,
+     30,
+     9,
+     14,
+     39,
+     10,
+     27,
+     15,
+     44,
+     32,
+     36,
+     27,
+     9,
+     11,
+     39,
+     17,
+     30,
+     18,
+     37,
+     40,
+     19,
+     15,
+     10,
+     21,
+     14,
+     25,
+     37,
+     43,
+     17,
+     46,
+     10,
+     32,
+     48,
+     36,
+     35,
+     28,
+     19,
+     26,
+     45,
+     43,
+     46,
+     20,
+     29,
+     44,
+     33,
+     23,
+     33,
+     48,
+     45,
+     44,
+     25,
+     46,
+     25,
+     12,
+     24,
+     20,
+     38,
+     21,
+     13,
+     24,
+     11,
+     43,
+     24,
+     36,
+     26,
+     25,
+     8,
+     21,
+     23,
+     43,
+     9,
+     8,
+     29,
+     22,
+     8,
+     22,
+     33,
+     22,
+     14,
+     33,
+     39,
+     35,
+     14,
+     34,
+     18,
+     42,
+     23,
+     39,
+     15,
+     39,
+     43,
+     21,
+     26,
+     41,
+     47,
+     34,
+     12,
+     45,
+     33,
+     40,
+     14,
+     15,
+     14,
+     38,
+     33,
+     22,
+     17,
+     20,
+     43,
+     41,
+     20,
+     40,
+     27,
+     36,
+     19,
+     33,
+     13,
+     14,
+     40,
+     29,
+     35,
+     42,
+     23,
+     30,
+     23,
+     22,
+     13,
+     15,
+     20,
+     26,
+     46,
+     18,
+     9,
+     28,
+     28,
+     9,
+     22,
+     18,
+     42,
+     27,
+     37,
+     35,
+     18,
+     13,
+     12,
+     15,
+     36,
+     24,
+     48,
+     9,
+     8,
+     46,
+     43,
+     18,
+     21,
+     19,
+     33,
+     18,
+     15,
+     37,
+     32,
+     15,
+     20,
+     36,
+     17,
+     24,
+     14,
+     46,
+     10,
+     28,
+     33,
+     21,
+     16,
+     11,
+     46,
+     19,
+     19,
+     28,
+     24,
+     13,
+     17,
+     39,
+     28,
+     47,
+     17,
+     13,
+     9,
+     23,
+     24,
+     24,
+     19,
+     18,
+     33,
+     41,
+     24,
+     17,
+     21,
+     15,
+     48,
+     13,
+     16,
+     33,
+     28,
+     46,
+     10,
+     40,
+     43,
+     35,
+     25,
+     17,
+     40,
+     45,
+     17,
+     47,
+     19,
+     25,
+     23,
+     22,
+     19,
+     8,
+     21,
+     15,
+     40,
+     34,
+     19,
+     41,
+     19,
+     40,
+     41,
+     25,
+     40,
+     11,
+     24,
+     34,
+     25,
+     19,
+     15,
+     43,
+     32,
+     44,
+     15,
+     43,
+     40,
+     42,
+     31,
+     9,
+     39,
+     46,
+     20,
+     30,
+     27,
+     44,
+     36,
+     18,
+     10,
+     44,
+     19,
+     44,
+     33,
+     10,
+     36,
+     30,
+     45,
+     20,
+     39,
+     15,
+     15,
+     21,
+     27,
+     18,
+     19,
+     14,
+     39,
+     12,
+     25,
+     42,
+     19,
+     31,
+     34,
+     39,
+     31,
+     11,
+     26,
+     36,
+     26,
+     17,
+     20,
+     48,
+     20,
+     23,
+     12,
+     31,
+     11,
+     29,
+     35,
+     30,
+     28,
+     26,
+     19,
+     37,
+     30,
+     19,
+     23,
+     17,
+     9,
+     46,
+     20,
+     38,
+     18,
+     45,
+     44,
+     45,
+     38,
+     26,
+     35,
+     34,
+     36,
+     36,
+     23,
+     11,
+     27,
+     38,
+     30,
+     44,
+     14,
+     48,
+     47,
+     40,
+     46,
+     22,
+     35,
+     36,
+     45,
+     41,
+     24,
+     37,
+     17,
+     17,
+     9,
+     11,
+     27,
+     8,
+     18,
+     47,
+     43,
+     48,
+     12,
+     40,
+     31,
+     19,
+     13,
+     17,
+     42,
+     30,
+     22,
+     14,
+     24,
+     20,
+     41,
+     37,
+     25,
+     28,
+     27,
+     19,
+     26,
+     44,
+     23,
+     8,
+     25,
+     46,
+     39,
+     22,
+     28,
+     22,
+     44,
+     47,
+     37,
+     21,
+     41,
+     19,
+     42,
+     8,
+     37,
+     38,
+     14,
+     34,
+     38,
+     10,
+     16,
+     25,
+     32,
+     31,
+     22,
+     43,
+     23,
+     27,
+     18,
+     48,
+     8,
+     38,
+     29,
+     37,
+     37,
+     28,
+     37,
+     9,
+     8,
+     27,
+     8,
+     13,
+     34,
+     17,
+     26,
+     18,
+     24,
+     43,
+     18,
+     38,
+     39,
+     14,
+     15,
+     30,
+     31,
+     35,
+     9,
+     20,
+     21,
+     46,
+     27,
+     22,
+     39,
+     12,
+     47,
+     33,
+     40,
+     42,
+     19,
+     34,
+     15,
+     40,
+     22,
+     26,
+     40,
+     11,
+     34,
+     31,
+     25,
+     41,
+     16,
+     43,
+     47,
+     17,
+     28,
+     47,
+     15,
+     8,
+     26,
+     26,
+     11,
+     33,
+     48,
+     13,
+     36,
+     18,
+     33,
+     44,
+     36,
+     30,
+     21,
+     13,
+     16,
+     8,
+     48
+    ],
+    "range_meaning": "the draw range of ONE connection, not an interval on the mean; the impact tornado swings it. Under version 2.0.0 the annual figure barely depended on it; since 2.1.0 it is the largest swing, because the action spend is charged per connection while the value accrues per box, so a small box group loses most"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 27.266,
+    "constant": "twin/generate.py: generate_world, box_count = rng.randint(8, 48)",
+    "derivation": "mean box_count of the target connection over the 500 sweep worlds, regenerated from twin.generate.generate_world with seed 42 through evalx.sweep_local's world_seed, N_CONNECTIONS and profile cycle; NOT a measurement of any terminal: the draw is uniform on the constant's range, whose expectation is 28",
+    "range": [
+     8,
+     48
+    ],
+    "n_worlds": 500,
+    "per_world_box_count": [
+     12,
+     13,
+     40,
+     17,
+     27,
+     46,
+     36,
+     44,
+     21,
+     9,
+     28,
+     20,
+     12,
+     17,
+     10,
+     22,
+     17,
+     23,
+     42,
+     9,
+     26,
+     22,
+     18,
+     27,
+     44,
+     27,
+     9,
+     33,
+     30,
+     9,
+     14,
+     39,
+     10,
+     27,
+     15,
+     44,
+     32,
+     36,
+     27,
+     9,
+     11,
+     39,
+     17,
+     30,
+     18,
+     37,
+     40,
+     19,
+     15,
+     10,
+     21,
+     14,
+     25,
+     37,
+     43,
+     17,
+     46,
+     10,
+     32,
+     48,
+     36,
+     35,
+     28,
+     19,
+     26,
+     45,
+     43,
+     46,
+     20,
+     29,
+     44,
+     33,
+     23,
+     33,
+     48,
+     45,
+     44,
+     25,
+     46,
+     25,
+     12,
+     24,
+     20,
+     38,
+     21,
+     13,
+     24,
+     11,
+     43,
+     24,
+     36,
+     26,
+     25,
+     8,
+     21,
+     23,
+     43,
+     9,
+     8,
+     29,
+     22,
+     8,
+     22,
+     33,
+     22,
+     14,
+     33,
+     39,
+     35,
+     14,
+     34,
+     18,
+     42,
+     23,
+     39,
+     15,
+     39,
+     43,
+     21,
+     26,
+     41,
+     47,
+     34,
+     12,
+     45,
+     33,
+     40,
+     14,
+     15,
+     14,
+     38,
+     33,
+     22,
+     17,
+     20,
+     43,
+     41,
+     20,
+     40,
+     27,
+     36,
+     19,
+     33,
+     13,
+     14,
+     40,
+     29,
+     35,
+     42,
+     23,
+     30,
+     23,
+     22,
+     13,
+     15,
+     20,
+     26,
+     46,
+     18,
+     9,
+     28,
+     28,
+     9,
+     22,
+     18,
+     42,
+     27,
+     37,
+     35,
+     18,
+     13,
+     12,
+     15,
+     36,
+     24,
+     48,
+     9,
+     8,
+     46,
+     43,
+     18,
+     21,
+     19,
+     33,
+     18,
+     15,
+     37,
+     32,
+     15,
+     20,
+     36,
+     17,
+     24,
+     14,
+     46,
+     10,
+     28,
+     33,
+     21,
+     16,
+     11,
+     46,
+     19,
+     19,
+     28,
+     24,
+     13,
+     17,
+     39,
+     28,
+     47,
+     17,
+     13,
+     9,
+     23,
+     24,
+     24,
+     19,
+     18,
+     33,
+     41,
+     24,
+     17,
+     21,
+     15,
+     48,
+     13,
+     16,
+     33,
+     28,
+     46,
+     10,
+     40,
+     43,
+     35,
+     25,
+     17,
+     40,
+     45,
+     17,
+     47,
+     19,
+     25,
+     23,
+     22,
+     19,
+     8,
+     21,
+     15,
+     40,
+     34,
+     19,
+     41,
+     19,
+     40,
+     41,
+     25,
+     40,
+     11,
+     24,
+     34,
+     25,
+     19,
+     15,
+     43,
+     32,
+     44,
+     15,
+     43,
+     40,
+     42,
+     31,
+     9,
+     39,
+     46,
+     20,
+     30,
+     27,
+     44,
+     36,
+     18,
+     10,
+     44,
+     19,
+     44,
+     33,
+     10,
+     36,
+     30,
+     45,
+     20,
+     39,
+     15,
+     15,
+     21,
+     27,
+     18,
+     19,
+     14,
+     39,
+     12,
+     25,
+     42,
+     19,
+     31,
+     34,
+     39,
+     31,
+     11,
+     26,
+     36,
+     26,
+     17,
+     20,
+     48,
+     20,
+     23,
+     12,
+     31,
+     11,
+     29,
+     35,
+     30,
+     28,
+     26,
+     19,
+     37,
+     30,
+     19,
+     23,
+     17,
+     9,
+     46,
+     20,
+     38,
+     18,
+     45,
+     44,
+     45,
+     38,
+     26,
+     35,
+     34,
+     36,
+     36,
+     23,
+     11,
+     27,
+     38,
+     30,
+     44,
+     14,
+     48,
+     47,
+     40,
+     46,
+     22,
+     35,
+     36,
+     45,
+     41,
+     24,
+     37,
+     17,
+     17,
+     9,
+     11,
+     27,
+     8,
+     18,
+     47,
+     43,
+     48,
+     12,
+     40,
+     31,
+     19,
+     13,
+     17,
+     42,
+     30,
+     22,
+     14,
+     24,
+     20,
+     41,
+     37,
+     25,
+     28,
+     27,
+     19,
+     26,
+     44,
+     23,
+     8,
+     25,
+     46,
+     39,
+     22,
+     28,
+     22,
+     44,
+     47,
+     37,
+     21,
+     41,
+     19,
+     42,
+     8,
+     37,
+     38,
+     14,
+     34,
+     38,
+     10,
+     16,
+     25,
+     32,
+     31,
+     22,
+     43,
+     23,
+     27,
+     18,
+     48,
+     8,
+     38,
+     29,
+     37,
+     37,
+     28,
+     37,
+     9,
+     8,
+     27,
+     8,
+     13,
+     34,
+     17,
+     26,
+     18,
+     24,
+     43,
+     18,
+     38,
+     39,
+     14,
+     15,
+     30,
+     31,
+     35,
+     9,
+     20,
+     21,
+     46,
+     27,
+     22,
+     39,
+     12,
+     47,
+     33,
+     40,
+     42,
+     19,
+     34,
+     15,
+     40,
+     22,
+     26,
+     40,
+     11,
+     34,
+     31,
+     25,
+     41,
+     16,
+     43,
+     47,
+     17,
+     28,
+     47,
+     15,
+     8,
+     26,
+     26,
+     11,
+     33,
+     48,
+     13,
+     36,
+     18,
+     33,
+     44,
+     36,
+     30,
+     21,
+     13,
+     16,
+     8,
+     48
+    ],
+    "range_meaning": "the draw range of ONE connection, not an interval on the mean; the impact tornado swings it. Under version 2.0.0 the annual figure barely depended on it; since 2.1.0 it is the largest swing, because the action spend is charged per connection while the value accrues per box, so a small box group loses most"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 27.266,
+    "constant": "twin/generate.py: generate_world, box_count = rng.randint(8, 48)",
+    "derivation": "mean box_count of the target connection over the 500 sweep worlds, regenerated from twin.generate.generate_world with seed 42 through evalx.sweep_local's world_seed, N_CONNECTIONS and profile cycle; NOT a measurement of any terminal: the draw is uniform on the constant's range, whose expectation is 28",
+    "range": [
+     8,
+     48
+    ],
+    "n_worlds": 500,
+    "per_world_box_count": [
+     12,
+     13,
+     40,
+     17,
+     27,
+     46,
+     36,
+     44,
+     21,
+     9,
+     28,
+     20,
+     12,
+     17,
+     10,
+     22,
+     17,
+     23,
+     42,
+     9,
+     26,
+     22,
+     18,
+     27,
+     44,
+     27,
+     9,
+     33,
+     30,
+     9,
+     14,
+     39,
+     10,
+     27,
+     15,
+     44,
+     32,
+     36,
+     27,
+     9,
+     11,
+     39,
+     17,
+     30,
+     18,
+     37,
+     40,
+     19,
+     15,
+     10,
+     21,
+     14,
+     25,
+     37,
+     43,
+     17,
+     46,
+     10,
+     32,
+     48,
+     36,
+     35,
+     28,
+     19,
+     26,
+     45,
+     43,
+     46,
+     20,
+     29,
+     44,
+     33,
+     23,
+     33,
+     48,
+     45,
+     44,
+     25,
+     46,
+     25,
+     12,
+     24,
+     20,
+     38,
+     21,
+     13,
+     24,
+     11,
+     43,
+     24,
+     36,
+     26,
+     25,
+     8,
+     21,
+     23,
+     43,
+     9,
+     8,
+     29,
+     22,
+     8,
+     22,
+     33,
+     22,
+     14,
+     33,
+     39,
+     35,
+     14,
+     34,
+     18,
+     42,
+     23,
+     39,
+     15,
+     39,
+     43,
+     21,
+     26,
+     41,
+     47,
+     34,
+     12,
+     45,
+     33,
+     40,
+     14,
+     15,
+     14,
+     38,
+     33,
+     22,
+     17,
+     20,
+     43,
+     41,
+     20,
+     40,
+     27,
+     36,
+     19,
+     33,
+     13,
+     14,
+     40,
+     29,
+     35,
+     42,
+     23,
+     30,
+     23,
+     22,
+     13,
+     15,
+     20,
+     26,
+     46,
+     18,
+     9,
+     28,
+     28,
+     9,
+     22,
+     18,
+     42,
+     27,
+     37,
+     35,
+     18,
+     13,
+     12,
+     15,
+     36,
+     24,
+     48,
+     9,
+     8,
+     46,
+     43,
+     18,
+     21,
+     19,
+     33,
+     18,
+     15,
+     37,
+     32,
+     15,
+     20,
+     36,
+     17,
+     24,
+     14,
+     46,
+     10,
+     28,
+     33,
+     21,
+     16,
+     11,
+     46,
+     19,
+     19,
+     28,
+     24,
+     13,
+     17,
+     39,
+     28,
+     47,
+     17,
+     13,
+     9,
+     23,
+     24,
+     24,
+     19,
+     18,
+     33,
+     41,
+     24,
+     17,
+     21,
+     15,
+     48,
+     13,
+     16,
+     33,
+     28,
+     46,
+     10,
+     40,
+     43,
+     35,
+     25,
+     17,
+     40,
+     45,
+     17,
+     47,
+     19,
+     25,
+     23,
+     22,
+     19,
+     8,
+     21,
+     15,
+     40,
+     34,
+     19,
+     41,
+     19,
+     40,
+     41,
+     25,
+     40,
+     11,
+     24,
+     34,
+     25,
+     19,
+     15,
+     43,
+     32,
+     44,
+     15,
+     43,
+     40,
+     42,
+     31,
+     9,
+     39,
+     46,
+     20,
+     30,
+     27,
+     44,
+     36,
+     18,
+     10,
+     44,
+     19,
+     44,
+     33,
+     10,
+     36,
+     30,
+     45,
+     20,
+     39,
+     15,
+     15,
+     21,
+     27,
+     18,
+     19,
+     14,
+     39,
+     12,
+     25,
+     42,
+     19,
+     31,
+     34,
+     39,
+     31,
+     11,
+     26,
+     36,
+     26,
+     17,
+     20,
+     48,
+     20,
+     23,
+     12,
+     31,
+     11,
+     29,
+     35,
+     30,
+     28,
+     26,
+     19,
+     37,
+     30,
+     19,
+     23,
+     17,
+     9,
+     46,
+     20,
+     38,
+     18,
+     45,
+     44,
+     45,
+     38,
+     26,
+     35,
+     34,
+     36,
+     36,
+     23,
+     11,
+     27,
+     38,
+     30,
+     44,
+     14,
+     48,
+     47,
+     40,
+     46,
+     22,
+     35,
+     36,
+     45,
+     41,
+     24,
+     37,
+     17,
+     17,
+     9,
+     11,
+     27,
+     8,
+     18,
+     47,
+     43,
+     48,
+     12,
+     40,
+     31,
+     19,
+     13,
+     17,
+     42,
+     30,
+     22,
+     14,
+     24,
+     20,
+     41,
+     37,
+     25,
+     28,
+     27,
+     19,
+     26,
+     44,
+     23,
+     8,
+     25,
+     46,
+     39,
+     22,
+     28,
+     22,
+     44,
+     47,
+     37,
+     21,
+     41,
+     19,
+     42,
+     8,
+     37,
+     38,
+     14,
+     34,
+     38,
+     10,
+     16,
+     25,
+     32,
+     31,
+     22,
+     43,
+     23,
+     27,
+     18,
+     48,
+     8,
+     38,
+     29,
+     37,
+     37,
+     28,
+     37,
+     9,
+     8,
+     27,
+     8,
+     13,
+     34,
+     17,
+     26,
+     18,
+     24,
+     43,
+     18,
+     38,
+     39,
+     14,
+     15,
+     30,
+     31,
+     35,
+     9,
+     20,
+     21,
+     46,
+     27,
+     22,
+     39,
+     12,
+     47,
+     33,
+     40,
+     42,
+     19,
+     34,
+     15,
+     40,
+     22,
+     26,
+     40,
+     11,
+     34,
+     31,
+     25,
+     41,
+     16,
+     43,
+     47,
+     17,
+     28,
+     47,
+     15,
+     8,
+     26,
+     26,
+     11,
+     33,
+     48,
+     13,
+     36,
+     18,
+     33,
+     44,
+     36,
+     30,
+     21,
+     13,
+     16,
+     8,
+     48
+    ],
+    "range_meaning": "the draw range of ONE connection, not an interval on the mean; the impact tornado swings it. Under version 2.0.0 the annual figure barely depended on it; since 2.1.0 it is the largest swing, because the action spend is charged per connection while the value accrues per box, so a small box group loses most"
+   }
+  },
+  "ROLLOVER_RATE": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.1,
+    "why": "A post-pandemic normalisation well below the dated aggregate; no current Singapore rollover series is public.",
+    "range": [
+     0.1,
+     0.311
+    ]
+   },
+   "base": {
+    "kind": "CITED",
+    "value": 0.222,
+    "url": "https://container-news.com/rollover-cargo-still-on-the-increase-says-ocean-insights/",
+    "date": "2020-11-24",
+    "verbatim": "rose to 28.5% last month, up from 26.9% in September and 22.2% in October 2019",
+    "note": "Container News, 'Rollover cargo still on the increase says Ocean Insights'. An aggregate across leading transhipment hubs, NOT Singapore alone, and dated October 2019. Ocean Insights counts a rollover as cargo that left a port on a different vessel than originally scheduled."
+   },
+   "optimistic": {
+    "kind": "CITED",
+    "value": 0.311,
+    "url": "https://www.supplychaindive.com/news/rolled-cargo-port-maersk-msc-coronavirus-singapore/589626/",
+    "date": "2020-11-24",
+    "verbatim": "Singapore ... saw its rollover ratio increase to 31.1% in October from 30.2% in September.",
+    "note": "Singapore, October 2020, pandemic-distorted; the optimistic end of the chain because a higher rollover rate means more connections RELAY could address."
+   }
+  },
+  "CONNECTION_DRIVEN_FRACTION": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.05,
+    "why": "Ocean Insights counts EVERY rollover, and most are carrier capacity decisions RELAY cannot touch. RELAY addresses only the subset where a late inbound arrival breaks a transhipment connection. No public split of rollovers by cause was found.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0.15,
+    "why": "Ocean Insights counts EVERY rollover, and most are carrier capacity decisions RELAY cannot touch. RELAY addresses only the subset where a late inbound arrival breaks a transhipment connection. No public split of rollovers by cause was found.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 0.3,
+    "why": "Ocean Insights counts EVERY rollover, and most are carrier capacity decisions RELAY cannot touch. RELAY addresses only the subset where a late inbound arrival breaks a transhipment connection. No public split of rollovers by cause was found.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   }
+  },
+  "CARDS_PER_AT_RISK": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.7993,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "action_mix",
+      "portnet.set_transfer_priority"
+     ],
+     [
+      "action_mix",
+      "portnet.propose_rebooking"
+     ],
+     [
+      "action_mix",
+      "portnet.create_restow_order"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "cards are not recorded in the final sweep JSON; every non-none action in the sweep is one T1 write (policy rows 3, 6, 7 are all T1) preceded by exactly one approval card, and action_mix sums to one action per episode, so cards raised equals the non-none action count over at-risk scenarios"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.7993,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "action_mix",
+      "portnet.set_transfer_priority"
+     ],
+     [
+      "action_mix",
+      "portnet.propose_rebooking"
+     ],
+     [
+      "action_mix",
+      "portnet.create_restow_order"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "cards are not recorded in the final sweep JSON; every non-none action in the sweep is one T1 write (policy rows 3, 6, 7 are all T1) preceded by exactly one approval card, and action_mix sums to one action per episode, so cards raised equals the non-none action count over at-risk scenarios"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.7993,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "action_mix",
+      "portnet.set_transfer_priority"
+     ],
+     [
+      "action_mix",
+      "portnet.propose_rebooking"
+     ],
+     [
+      "action_mix",
+      "portnet.create_restow_order"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "cards are not recorded in the final sweep JSON; every non-none action in the sweep is one T1 write (policy rows 3, 6, 7 are all T1) preceded by exactly one approval card, and action_mix sums to one action per episode, so cards raised equals the non-none action count over at-risk scenarios"
+   }
+  },
+  "ESCALATIONS_PER_EPISODE": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.12,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "n_scenarios"
+    ],
+    "note": "written escalation summaries per episode, over all 500 episodes; summed over EVERY class this arm's escalation_classes records (insufficient_evidence, no_feasible_option)"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.12,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "n_scenarios"
+    ],
+    "note": "written escalation summaries per episode, over all 500 episodes; summed over EVERY class this arm's escalation_classes records (insufficient_evidence, no_feasible_option)"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.12,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "n_scenarios"
+    ],
+    "note": "written escalation summaries per episode, over all 500 episodes; summed over EVERY class this arm's escalation_classes records (insufficient_evidence, no_feasible_option)"
+   }
+  },
+  "ESCALATIONS_PER_AT_RISK": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.2007,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "the same escalations over at-risk episodes, which is the population the grid scales; every escalation was on an at-risk episode (false_escalations.count is read below and is zero); summed over EVERY class this arm's escalation_classes records (insufficient_evidence, no_feasible_option)"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.2007,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "the same escalations over at-risk episodes, which is the population the grid scales; every escalation was on an at-risk episode (false_escalations.count is read below and is zero); summed over EVERY class this arm's escalation_classes records (insufficient_evidence, no_feasible_option)"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.2007,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "the same escalations over at-risk episodes, which is the population the grid scales; every escalation was on an at-risk episode (false_escalations.count is read below and is zero); summed over EVERY class this arm's escalation_classes records (insufficient_evidence, no_feasible_option)"
+   }
+  },
+  "FALSE_ESCALATIONS": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "false_escalations",
+     "count"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "false_escalations",
+     "count"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "false_escalations",
+     "count"
+    ]
+   }
+  },
+  "RESPONSE_TIME_S": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 180,
+    "why": "Seconds an officer spends on one card: reading the options, the justification and the board. NONE FOUND; the pessimistic end is a careful read, and it is longer than the deny window, so every card read this carefully expires by contract.",
+    "range": [
+     30,
+     180
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 90,
+    "why": "A minute and a half per card, the middle of the range.",
+    "range": [
+     30,
+     180
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 30,
+    "why": "A glance at a familiar card type.",
+    "range": [
+     30,
+     180
+    ]
+   }
+  },
+  "OFFICER_AVAILABILITY": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.2,
+    "why": "NONE FOUND. The desk officer has other duties; the share of the shift spent able to read a card. One fifth is a desk checked between other work.",
+    "range": [
+     0.2,
+     1.0
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0.5,
+    "why": "NONE FOUND. Half the shift at the desk, the middle of the range; applied as a service-rate scale, so the queue is that of a desk reading at half speed.",
+    "range": [
+     0.2,
+     1.0
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 1.0,
+    "why": "A dedicated approval desk with nothing else to do.",
+    "range": [
+     0.2,
+     1.0
+    ]
+   }
+  },
+  "SHIFT_H": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 12,
+    "why": "Two shifts a day; the policy table's per-shift budgets are stated against the same unit. NONE FOUND for PSA's shift pattern.",
+    "range": [
+     8,
+     12
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 12,
+    "why": "Two shifts a day; the policy table's per-shift budgets are stated against the same unit. NONE FOUND for PSA's shift pattern.",
+    "range": [
+     8,
+     12
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 12,
+    "why": "Two shifts a day; the policy table's per-shift budgets are stated against the same unit. NONE FOUND for PSA's shift pattern.",
+    "range": [
+     8,
+     12
+    ]
+   }
+  },
+  "DENY_WINDOW_S": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 120,
+    "constant": "stubs/__init__.py:APPROVAL_DENY_AFTER_S",
+    "derivation": "docs/CONTRACT.md: 'after APPROVAL_DENY_AFTER_S = 120 seconds (demo constant; configurable), the action is DENIED automatically'; the clock runs from the card being raised to the decision landing, so a card expires when its queue wait plus its read exceeds this"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 120,
+    "constant": "stubs/__init__.py:APPROVAL_DENY_AFTER_S",
+    "derivation": "docs/CONTRACT.md: 'after APPROVAL_DENY_AFTER_S = 120 seconds (demo constant; configurable), the action is DENIED automatically'; the clock runs from the card being raised to the decision landing, so a card expires when its queue wait plus its read exceeds this"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 120,
+    "constant": "stubs/__init__.py:APPROVAL_DENY_AFTER_S",
+    "derivation": "docs/CONTRACT.md: 'after APPROVAL_DENY_AFTER_S = 120 seconds (demo constant; configurable), the action is DENIED automatically'; the clock runs from the card being raised to the decision landing, so a card expires when its queue wait plus its read exceeds this"
+   }
+  },
+  "CARDS_ROW3": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 173,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.set_transfer_priority"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 173,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.set_transfer_priority"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 173,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.set_transfer_priority"
+    ]
+   }
+  },
+  "CARDS_ROW6": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 55,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.propose_rebooking"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 55,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.propose_rebooking"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 55,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.propose_rebooking"
+    ]
+   }
+  },
+  "CARDS_ROW7": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 11,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.create_restow_order"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 11,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.create_restow_order"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 11,
+    "source": "evalx/results/sweep-full-n500.final.json",
+    "path": [
+     "action_mix",
+     "portnet.create_restow_order"
+    ]
+   }
+  },
+  "RATE_LIMIT_ROW3_PER_SHIFT": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 5,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=3].rate_limit",
+    "derivation": "the demo per-shift budget for expedite_transfer (portnet.set_transfer_priority); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 5,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=3].rate_limit",
+    "derivation": "the demo per-shift budget for expedite_transfer (portnet.set_transfer_priority); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 5,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=3].rate_limit",
+    "derivation": "the demo per-shift budget for expedite_transfer (portnet.set_transfer_priority); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   }
+  },
+  "RATE_LIMIT_ROW6_PER_SHIFT": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 3,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=6].rate_limit",
+    "derivation": "the demo per-shift budget for rebooking_proposal (portnet.propose_rebooking); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 3,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=6].rate_limit",
+    "derivation": "the demo per-shift budget for rebooking_proposal (portnet.propose_rebooking); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 3,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=6].rate_limit",
+    "derivation": "the demo per-shift budget for rebooking_proposal (portnet.propose_rebooking); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   }
+  },
+  "RATE_LIMIT_ROW7_PER_SHIFT": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=7].rate_limit",
+    "derivation": "the demo per-shift budget for restow_order (portnet.create_restow_order); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=7].rate_limit",
+    "derivation": "the demo per-shift budget for restow_order (portnet.create_restow_order); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2,
+    "constant": "stubs/policy_stub.py:POLICY_TABLE[row=7].rate_limit",
+    "derivation": "the demo per-shift budget for restow_order (portnet.create_restow_order); docs/CONTRACT.md calls these demo placeholders sized with operations in production"
+   }
+  }
+ },
+ "per_policy_row_share": {
+  "row3_expedite_transfer": {
+   "cards_in_sweep": 173,
+   "share_of_cards": 0.7238,
+   "demo_rate_limit_per_shift": 5
+  },
+  "row6_rebooking_proposal": {
+   "cards_in_sweep": 55,
+   "share_of_cards": 0.2301,
+   "demo_rate_limit_per_shift": 3
+  },
+  "row7_restow_order": {
+   "cards_in_sweep": 11,
+   "share_of_cards": 0.046,
+   "demo_rate_limit_per_shift": 2
+  }
+ },
+ "denominators": {
+  "per_teu": "every TEU is its own at-risk episode: the upper bound",
+  "per_box_group": "one episode per box group at the sweep's measured mean boxes per connection",
+  "per_box": "one episode per box"
+ },
+ "response_times_s": [
+  30,
+  90,
+  180
+ ],
+ "officer_counts": [
+  1,
+  2,
+  3
+ ],
+ "grid": {
+  "p05": {
+   "per_teu": {
+    "p_at_risk": 0.05,
+    "units_per_day": 109726.0,
+    "at_risk_per_day": 5486.3,
+    "cards_per_day": 4385.2,
+    "cards_per_hour": 182.7167,
+    "cards_per_shift": 2192.6,
+    "escalations_per_day": 1101.1,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 1587.0,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 317.4
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 504.52,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 168.2
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 100.86,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 50.4
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 1.5226,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 3.0453,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 3.05 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 1.5226,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 3.05 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 1.0151,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 3.05 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 4,
+      "utilisation": 0.7613,
+      "stable": true,
+      "erlang_c_p_wait": 0.5286,
+      "mean_wait_s": 33.22,
+      "expiry_share": 0.1262,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/4 queue offered 3.0453 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 4.5679,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 9.1358,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 9.14 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 4.5679,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 9.14 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 3.0453,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 9.14 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 10,
+      "utilisation": 0.9136,
+      "stable": true,
+      "erlang_c_p_wait": 0.7096,
+      "mean_wait_s": 147.8,
+      "expiry_share": 0.6144,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/10 queue offered 9.1358 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 9.1358,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 18.2717,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 9.1358,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 6.0906,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 19,
+      "utilisation": 0.9617,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   },
+   "per_box_group": {
+    "p_at_risk": 0.05,
+    "units_per_day": 2367.2,
+    "at_risk_per_day": 118.36,
+    "cards_per_day": 94.61,
+    "cards_per_hour": 3.9419,
+    "cards_per_shift": 47.3,
+    "escalations_per_day": 23.76,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 34.24,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 6.8
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 10.88,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 3.6
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 2.18,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 1.1
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 0.0328,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 0.0657,
+       "stable": true,
+       "erlang_c_p_wait": 0.0657,
+       "mean_wait_s": 4.22,
+       "expiry_share": 0.0162,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/1 queue offered 0.0657 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0007,
+        "p_wait": 0.0654,
+        "mean_wait_s": 2.09,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0001
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0163,
+        "p_wait": 0.0657,
+        "mean_wait_s": 4.22,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0004,
+        "minus_erlang_c": 0.0001,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.0328,
+       "stable": true,
+       "erlang_c_p_wait": 0.0021,
+       "mean_wait_s": 0.06,
+       "expiry_share": 0.0001,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/2 queue offered 0.0657 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0,
+        "p_wait": 0.0019,
+        "mean_wait_s": 0.04,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0001,
+        "p_wait": 0.0019,
+        "mean_wait_s": 0.06,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0,
+        "minus_erlang_c": 0.0,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.0219,
+       "stable": true,
+       "erlang_c_p_wait": 0.0,
+       "mean_wait_s": 0.0,
+       "expiry_share": 0.0,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/3 queue offered 0.0657 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0,
+        "p_wait": 0.0,
+        "mean_wait_s": 0.0,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0,
+        "p_wait": 0.0001,
+        "mean_wait_s": 0.0,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0,
+        "minus_erlang_c": 0.0,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 1,
+      "utilisation": 0.0657,
+      "stable": true,
+      "erlang_c_p_wait": 0.0657,
+      "mean_wait_s": 4.22,
+      "expiry_share": 0.0162,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/1 queue offered 0.0657 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 0.0985,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 0.1971,
+       "stable": true,
+       "erlang_c_p_wait": 0.1971,
+       "mean_wait_s": 44.19,
+       "expiry_share": 0.1724,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.1971 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.1717,
+        "p_wait": 0.1987,
+        "mean_wait_s": 22.37,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0012
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.1742,
+        "p_wait": 0.1991,
+        "mean_wait_s": 45.18,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0012,
+        "minus_erlang_c": 0.0018,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.0985,
+       "stable": true,
+       "erlang_c_p_wait": 0.0177,
+       "mean_wait_s": 1.77,
+       "expiry_share": 0.0131,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 0.1971 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0124,
+        "p_wait": 0.0175,
+        "mean_wait_s": 1.08,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0004
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0136,
+        "p_wait": 0.0181,
+        "mean_wait_s": 1.79,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0004,
+        "minus_erlang_c": 0.0005,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.0657,
+       "stable": true,
+       "erlang_c_p_wait": 0.0011,
+       "mean_wait_s": 0.07,
+       "expiry_share": 0.0007,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 0.1971 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0006,
+        "p_wait": 0.0012,
+        "mean_wait_s": 0.05,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0001
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0006,
+        "p_wait": 0.001,
+        "mean_wait_s": 0.07,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0001,
+        "minus_erlang_c": -0.0001,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 1,
+      "utilisation": 0.1971,
+      "stable": true,
+      "erlang_c_p_wait": 0.1971,
+      "mean_wait_s": 44.19,
+      "expiry_share": 0.1724,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.1971 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 0.1971,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 0.3942,
+       "stable": true,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.1971,
+       "stable": true,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.1314,
+       "stable": true,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 1,
+      "utilisation": 0.3942,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   },
+   "per_box": {
+    "p_at_risk": 0.05,
+    "units_per_day": 64544.7,
+    "at_risk_per_day": 3227.24,
+    "cards_per_day": 2579.53,
+    "cards_per_hour": 107.4804,
+    "cards_per_shift": 1289.76,
+    "escalations_per_day": 647.71,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 933.53,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 186.7
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 296.77,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 98.9
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 59.33,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 29.7
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 0.8957,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 1.7913,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 1.79 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.8957,
+       "stable": true,
+       "erlang_c_p_wait": 0.8464,
+       "mean_wait_s": 243.37,
+       "expiry_share": 0.6189,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/2 queue offered 1.7913 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.4457,
+        "p_wait": 0.8372,
+        "mean_wait_s": 119.68,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0016
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.6371,
+        "p_wait": 0.8528,
+        "mean_wait_s": 266.27,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0015,
+        "minus_erlang_c": 0.0182,
+        "within_tolerance": null,
+        "check_note": "printed, not counted: at utilisation 0.896 the waits are too autocorrelated for 100,000 cards to have converged, and the closed form is exact for exponential reads"
+       }
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.5971,
+       "stable": true,
+       "erlang_c_p_wait": 0.3511,
+       "mean_wait_s": 17.43,
+       "expiry_share": 0.0573,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/3 queue offered 1.7913 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0072,
+        "p_wait": 0.3348,
+        "mean_wait_s": 9.36,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0003
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0624,
+        "p_wait": 0.3547,
+        "mean_wait_s": 18.24,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0008,
+        "minus_erlang_c": 0.0051,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 2,
+      "utilisation": 0.8957,
+      "stable": true,
+      "erlang_c_p_wait": 0.8464,
+      "mean_wait_s": 243.37,
+      "expiry_share": 0.6189,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/2 queue offered 1.7913 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 2.687,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 5.374,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 5.37 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 2.687,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 5.37 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 1.7913,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 5.37 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 6,
+      "utilisation": 0.8957,
+      "stable": true,
+      "erlang_c_p_wait": 0.7297,
+      "mean_wait_s": 209.82,
+      "expiry_share": 0.6574,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/6 queue offered 5.3740 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 5.374,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 10.748,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 5.374,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 3.5827,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 11,
+      "utilisation": 0.9771,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   }
+  },
+  "p10": {
+   "per_teu": {
+    "p_at_risk": 0.1,
+    "units_per_day": 109726.0,
+    "at_risk_per_day": 10972.6,
+    "cards_per_day": 8770.4,
+    "cards_per_hour": 365.4334,
+    "cards_per_shift": 4385.2,
+    "escalations_per_day": 2202.2,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 3174.01,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 634.8
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 1009.03,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 336.3
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 201.72,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 100.9
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 3.0453,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 6.0906,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 6.09 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 3.0453,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 6.09 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 2.0302,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 6.09 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 7,
+      "utilisation": 0.8701,
+      "stable": true,
+      "erlang_c_p_wait": 0.645,
+      "mean_wait_s": 42.55,
+      "expiry_share": 0.1648,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/7 queue offered 6.0906 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 9.1358,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 18.2717,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 18.27 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 9.1358,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 18.27 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 6.0906,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 18.27 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 19,
+      "utilisation": 0.9617,
+      "stable": true,
+      "erlang_c_p_wait": 0.8136,
+      "mean_wait_s": 201.08,
+      "expiry_share": 0.7206,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/19 queue offered 18.2717 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 18.2717,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 36.5433,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 18.2717,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 12.1811,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 37,
+      "utilisation": 0.9877,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   },
+   "per_box_group": {
+    "p_at_risk": 0.1,
+    "units_per_day": 2367.2,
+    "at_risk_per_day": 236.72,
+    "cards_per_day": 189.21,
+    "cards_per_hour": 7.8838,
+    "cards_per_shift": 94.61,
+    "escalations_per_day": 47.51,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 68.48,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 13.7
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 21.77,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 7.3
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 4.35,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 2.2
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 0.0657,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 0.1314,
+       "stable": true,
+       "erlang_c_p_wait": 0.1314,
+       "mean_wait_s": 9.08,
+       "expiry_share": 0.0357,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/1 queue offered 0.1314 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.003,
+        "p_wait": 0.1329,
+        "mean_wait_s": 4.57,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0002
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0364,
+        "p_wait": 0.1336,
+        "mean_wait_s": 9.2,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0006,
+        "minus_erlang_c": 0.0007,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.0657,
+       "stable": true,
+       "erlang_c_p_wait": 0.0081,
+       "mean_wait_s": 0.26,
+       "expiry_share": 0.0005,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/2 queue offered 0.1314 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0,
+        "p_wait": 0.0077,
+        "mean_wait_s": 0.16,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0005,
+        "p_wait": 0.0083,
+        "mean_wait_s": 0.26,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0001,
+        "minus_erlang_c": 0.0,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.0438,
+       "stable": true,
+       "erlang_c_p_wait": 0.0003,
+       "mean_wait_s": 0.01,
+       "expiry_share": 0.0,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/3 queue offered 0.1314 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0,
+        "p_wait": 0.0003,
+        "mean_wait_s": 0.0,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0,
+        "p_wait": 0.0003,
+        "mean_wait_s": 0.01,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0,
+        "minus_erlang_c": 0.0,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 1,
+      "utilisation": 0.1314,
+      "stable": true,
+      "erlang_c_p_wait": 0.1314,
+      "mean_wait_s": 9.08,
+      "expiry_share": 0.0357,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/1 queue offered 0.1314 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 0.1971,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 0.3942,
+       "stable": true,
+       "erlang_c_p_wait": 0.3942,
+       "mean_wait_s": 117.12,
+       "expiry_share": 0.3563,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.3942 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.3538,
+        "p_wait": 0.3943,
+        "mean_wait_s": 58.86,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0015
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.36,
+        "p_wait": 0.3969,
+        "mean_wait_s": 120.66,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0015,
+        "minus_erlang_c": 0.0037,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.1971,
+       "stable": true,
+       "erlang_c_p_wait": 0.0649,
+       "mean_wait_s": 7.28,
+       "expiry_share": 0.0497,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 0.3942 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0469,
+        "p_wait": 0.0629,
+        "mean_wait_s": 4.32,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0007
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0508,
+        "p_wait": 0.0659,
+        "mean_wait_s": 7.55,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0007,
+        "minus_erlang_c": 0.0011,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.1314,
+       "stable": true,
+       "erlang_c_p_wait": 0.0079,
+       "mean_wait_s": 0.55,
+       "expiry_share": 0.0051,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 0.3942 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0047,
+        "p_wait": 0.008,
+        "mean_wait_s": 0.38,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0002
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0052,
+        "p_wait": 0.0081,
+        "mean_wait_s": 0.56,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0002,
+        "minus_erlang_c": 0.0001,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 1,
+      "utilisation": 0.3942,
+      "stable": true,
+      "erlang_c_p_wait": 0.3942,
+      "mean_wait_s": 117.12,
+      "expiry_share": 0.3563,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.3942 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 0.3942,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 0.7884,
+       "stable": true,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.3942,
+       "stable": true,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.2628,
+       "stable": true,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 1,
+      "utilisation": 0.7884,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   },
+   "per_box": {
+    "p_at_risk": 0.1,
+    "units_per_day": 64544.7,
+    "at_risk_per_day": 6454.47,
+    "cards_per_day": 5159.06,
+    "cards_per_hour": 214.9608,
+    "cards_per_shift": 2579.53,
+    "escalations_per_day": 1295.41,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 1867.06,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 373.4
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 593.55,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 197.8
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 118.66,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 59.3
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 1.7913,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 3.5827,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 3.58 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 1.7913,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 3.58 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 1.1942,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 3.58 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 4,
+      "utilisation": 0.8957,
+      "stable": true,
+      "erlang_c_p_wait": 0.779,
+      "mean_wait_s": 112.0,
+      "expiry_share": 0.4166,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/4 queue offered 3.5827 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 5.374,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 10.748,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 10.75 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 5.374,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 10.75 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 3.5827,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 10.75 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 11,
+      "utilisation": 0.9771,
+      "stable": true,
+      "erlang_c_p_wait": 0.9138,
+      "mean_wait_s": 652.81,
+      "expiry_share": 0.8762,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/11 queue offered 10.7480 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 10.748,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 21.4961,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 10.748,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 7.1654,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 22,
+      "utilisation": 0.9771,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   }
+  },
+  "p30": {
+   "per_teu": {
+    "p_at_risk": 0.3,
+    "units_per_day": 109726.0,
+    "at_risk_per_day": 32917.81,
+    "cards_per_day": 26311.2,
+    "cards_per_hour": 1096.3002,
+    "cards_per_shift": 13155.6,
+    "escalations_per_day": 6606.6,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 9522.02,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 1904.4
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 3027.1,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 1009.0
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 605.16,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 302.6
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 9.1358,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 18.2717,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 18.27 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 9.1358,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 18.27 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 6.0906,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 18.27 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 19,
+      "utilisation": 0.9617,
+      "stable": true,
+      "erlang_c_p_wait": 0.8136,
+      "mean_wait_s": 67.03,
+      "expiry_share": 0.2729,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/19 queue offered 18.2717 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 27.4075,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 54.815,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 54.82 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 27.4075,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 54.82 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 18.2717,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 54.82 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 55,
+      "utilisation": 0.9966,
+      "stable": true,
+      "erlang_c_p_wait": 0.9701,
+      "mean_wait_s": 943.93,
+      "expiry_share": 0.9406,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/55 queue offered 54.8150 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 54.815,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 109.63,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 54.815,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 36.5433,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 110,
+      "utilisation": 0.9966,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   },
+   "per_box_group": {
+    "p_at_risk": 0.3,
+    "units_per_day": 2367.2,
+    "at_risk_per_day": 710.17,
+    "cards_per_day": 567.64,
+    "cards_per_hour": 23.6515,
+    "cards_per_shift": 283.82,
+    "escalations_per_day": 142.53,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 205.43,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 41.1
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 65.31,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 21.8
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 13.06,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 6.5
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 0.1971,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 0.3942,
+       "stable": true,
+       "erlang_c_p_wait": 0.3942,
+       "mean_wait_s": 39.04,
+       "expiry_share": 0.1589,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/1 queue offered 0.3942 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0516,
+        "p_wait": 0.3943,
+        "mean_wait_s": 19.62,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0007
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.1626,
+        "p_wait": 0.3969,
+        "mean_wait_s": 40.22,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0012,
+        "minus_erlang_c": 0.0037,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.1971,
+       "stable": true,
+       "erlang_c_p_wait": 0.0649,
+       "mean_wait_s": 2.43,
+       "expiry_share": 0.0058,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/2 queue offered 0.3942 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0001,
+        "p_wait": 0.0629,
+        "mean_wait_s": 1.44,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0062,
+        "p_wait": 0.0659,
+        "mean_wait_s": 2.52,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0002,
+        "minus_erlang_c": 0.0004,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.1314,
+       "stable": true,
+       "erlang_c_p_wait": 0.0079,
+       "mean_wait_s": 0.18,
+       "expiry_share": 0.0002,
+       "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/3 queue offered 0.3942 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0,
+        "p_wait": 0.008,
+        "mean_wait_s": 0.13,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.0002,
+        "p_wait": 0.0081,
+        "mean_wait_s": 0.19,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0,
+        "minus_erlang_c": 0.0,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 1,
+      "utilisation": 0.3942,
+      "stable": true,
+      "erlang_c_p_wait": 0.3942,
+      "mean_wait_s": 39.04,
+      "expiry_share": 0.1589,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/1 queue offered 0.3942 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 0.5913,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 1.1826,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 1.18 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 0.5913,
+       "stable": true,
+       "erlang_c_p_wait": 0.4394,
+       "mean_wait_s": 96.76,
+       "expiry_share": 0.3835,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 1.1826 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.3619,
+        "p_wait": 0.4266,
+        "mean_wait_s": 50.6,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0015
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.3874,
+        "p_wait": 0.444,
+        "mean_wait_s": 100.74,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.0015,
+        "minus_erlang_c": 0.0039,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.3942,
+       "stable": true,
+       "erlang_c_p_wait": 0.1364,
+       "mean_wait_s": 13.5,
+       "expiry_share": 0.1007,
+       "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 1.1826 erlangs (Erlang C)",
+       "sim_fixed_read": {
+        "expiry_share": 0.0897,
+        "p_wait": 0.1295,
+        "mean_wait_s": 7.81,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "fixed at response_s",
+        "se_binomial": 0.0009
+       },
+       "sim_exponential_read": {
+        "expiry_share": 0.1032,
+        "p_wait": 0.1395,
+        "mean_wait_s": 14.37,
+        "n_cards": 100000,
+        "seed": 42,
+        "read": "exponential at the same mean",
+        "se_binomial": 0.001,
+        "minus_erlang_c": 0.0025,
+        "within_tolerance": true,
+        "check_note": "counted as a check of the closed form: utilisation below 0.8"
+       }
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 2,
+      "utilisation": 0.5913,
+      "stable": true,
+      "erlang_c_p_wait": 0.4394,
+      "mean_wait_s": 96.76,
+      "expiry_share": 0.3835,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 1.1826 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 1.1826,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 2.3652,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 1.1826,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 0.7884,
+       "stable": true,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 3,
+      "utilisation": 0.7884,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   },
+   "per_box": {
+    "p_at_risk": 0.3,
+    "units_per_day": 64544.7,
+    "at_risk_per_day": 19363.42,
+    "cards_per_day": 15477.18,
+    "cards_per_hour": 644.8825,
+    "cards_per_shift": 7738.59,
+    "escalations_per_day": 3886.24,
+    "per_policy_row_cards_per_shift": {
+     "row3_expedite_transfer": {
+      "cards_per_shift": 5601.19,
+      "demo_rate_limit_per_shift": 5,
+      "multiple_of_demo_limit": 1120.2
+     },
+     "row6_rebooking_proposal": {
+      "cards_per_shift": 1780.65,
+      "demo_rate_limit_per_shift": 3,
+      "multiple_of_demo_limit": 593.5
+     },
+     "row7_restow_order": {
+      "cards_per_shift": 355.98,
+      "demo_rate_limit_per_shift": 2,
+      "multiple_of_demo_limit": 178.0
+     }
+    },
+    "officer_availability": 0.5,
+    "headcount_minimum_per_shift": 1,
+    "headcount_note": "a desk that exists has one officer on it per shift for coverage whatever the utilisation reads; the offered load and utilisation below are shares of that officer's time, not fractions of a headcount",
+    "r30": {
+     "response_s": 30,
+     "offered_load_erlangs": 5.374,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 10.748,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 10.75 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 5.374,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 10.75 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 3.5827,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 10.75 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 11,
+      "utilisation": 0.9771,
+      "stable": true,
+      "erlang_c_p_wait": 0.9138,
+      "mean_wait_s": 217.6,
+      "expiry_share": 0.6262,
+      "expiry_reason": "share of cards whose queue wait exceeds 90 s, the 120 s window less the 30 s read, in an M/M/11 queue offered 10.7480 erlangs (Erlang C)"
+     }
+    },
+    "r90": {
+     "response_s": 90,
+     "offered_load_erlangs": 16.1221,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": false,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 32.2441,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 32.24 erlangs at availability 0.5 is not below 1 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 16.1221,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 32.24 erlangs at availability 0.5 is not below 2 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 10.748,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": 1.0,
+       "expiry_reason": "offered load 32.24 erlangs at availability 0.5 is not below 3 officer(s), so the queue has no steady state and grows without bound; every card eventually expires"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 33,
+      "utilisation": 0.9771,
+      "stable": true,
+      "erlang_c_p_wait": 0.8498,
+      "mean_wait_s": 202.38,
+      "expiry_share": 0.7493,
+      "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/33 queue offered 32.2441 erlangs (Erlang C)"
+     }
+    },
+    "r180": {
+     "response_s": 180,
+     "offered_load_erlangs": 32.2441,
+     "offered_load_meaning": "officer-equivalents of reading time, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600; a share of one officer's time, not a share of a headcount",
+     "read_exceeds_window": true,
+     "by_officers": {
+      "c1": {
+       "officers": 1,
+       "utilisation": 64.4882,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c2": {
+       "officers": 2,
+       "utilisation": 32.2441,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      },
+      "c3": {
+       "officers": 3,
+       "utilisation": 21.4961,
+       "stable": false,
+       "expiry_share": 1.0,
+       "erlang_c_p_wait": null,
+       "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+      }
+     },
+     "smallest_stable_desk": {
+      "officers": 65,
+      "utilisation": 0.9921,
+      "stable": true,
+      "expiry_share": 1.0,
+      "erlang_c_p_wait": null,
+      "expiry_reason": "a 180 s read is not shorter than the 120 s deny window, so every card read this carefully expires by contract before its decision can land; no queue is needed to say so"
+     }
+    }
+   }
+  }
+ },
+ "staffed_cell_by_availability": {
+  "pessimistic": {
+   "officer_availability": 0.2,
+   "c1": {
+    "officers": 1,
+    "utilisation": 0.9855,
+    "stable": true,
+    "erlang_c_p_wait": 0.9855,
+    "mean_wait_s": 30531.07,
+    "expiry_share": 0.9845,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.9855 erlangs (Erlang C)"
+   },
+   "c2": {
+    "officers": 2,
+    "utilisation": 0.4927,
+    "stable": true,
+    "erlang_c_p_wait": 0.3253,
+    "mean_wait_s": 144.29,
+    "expiry_share": 0.304,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 0.9855 erlangs (Erlang C)"
+   },
+   "c3": {
+    "officers": 3,
+    "utilisation": 0.3285,
+    "stable": true,
+    "erlang_c_p_wait": 0.0877,
+    "mean_wait_s": 19.59,
+    "expiry_share": 0.0767,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 0.9855 erlangs (Erlang C)"
+   }
+  },
+  "base": {
+   "officer_availability": 0.5,
+   "c1": {
+    "officers": 1,
+    "utilisation": 0.3942,
+    "stable": true,
+    "erlang_c_p_wait": 0.3942,
+    "mean_wait_s": 117.12,
+    "expiry_share": 0.3563,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.3942 erlangs (Erlang C)"
+   },
+   "c2": {
+    "officers": 2,
+    "utilisation": 0.1971,
+    "stable": true,
+    "erlang_c_p_wait": 0.0649,
+    "mean_wait_s": 7.27,
+    "expiry_share": 0.0497,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 0.3942 erlangs (Erlang C)"
+   },
+   "c3": {
+    "officers": 3,
+    "utilisation": 0.1314,
+    "stable": true,
+    "erlang_c_p_wait": 0.0079,
+    "mean_wait_s": 0.55,
+    "expiry_share": 0.0051,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 0.3942 erlangs (Erlang C)"
+   }
+  },
+  "optimistic": {
+   "officer_availability": 1.0,
+   "c1": {
+    "officers": 1,
+    "utilisation": 0.1971,
+    "stable": true,
+    "erlang_c_p_wait": 0.1971,
+    "mean_wait_s": 22.09,
+    "expiry_share": 0.1508,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/1 queue offered 0.1971 erlangs (Erlang C)"
+   },
+   "c2": {
+    "officers": 2,
+    "utilisation": 0.0985,
+    "stable": true,
+    "erlang_c_p_wait": 0.0177,
+    "mean_wait_s": 0.88,
+    "expiry_share": 0.0097,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/2 queue offered 0.1971 erlangs (Erlang C)"
+   },
+   "c3": {
+    "officers": 3,
+    "utilisation": 0.0657,
+    "stable": true,
+    "erlang_c_p_wait": 0.0011,
+    "mean_wait_s": 0.04,
+    "expiry_share": 0.0004,
+    "expiry_reason": "share of cards whose queue wait exceeds 30 s, the 120 s window less the 90 s read, in an M/M/3 queue offered 0.1971 erlangs (Erlang C)"
+   }
+  }
+ },
+ "method": "M/M/c queue: cards arrive as a Poisson process at CARDS_PER_HOUR, c officers each clear cards at OFFICER_AVAILABILITY x 3600 / RESPONSE_TIME_S an hour, OFFERED_LOAD = CARDS_PER_HOUR x RESPONSE_TIME_S / 3600 erlangs, UTILISATION = OFFERED_LOAD / (c x OFFICER_AVAILABILITY), and a card expires as DENY_BY_DEFAULT when its queue wait exceeds DENY_WINDOW_S - RESPONSE_TIME_S, which Erlang C gives in closed form as C(c, a) exp(-(c mu - lambda) t). A read at or beyond the window expires by contract (1.0). Each closed-form figure is checked by a seeded discrete-event simulation (seed 42, 100,000 cards, Poisson arrivals, FCFS, started empty), run twice: with the read fixed at RESPONSE_TIME_S, which is what a desk does, and with the read exponential at the same mean, which is what the closed form assumes and must agree with it within 0.01.",
+ "sim": {
+  "seed": 42,
+  "cards": 100000,
+  "tolerance": 0.01,
+  "check_max_utilisation": 0.8,
+  "run_where": "every desk with the read shorter than the window and the queue stable at c officers; unstable and by-contract desks carry their reason instead",
+  "counted_where": "utilisation below 0.8; nearer saturation the run is printed and not counted, because the waits are too autocorrelated for this many cards to have converged",
+  "one_seed": "every run draws from the same seed, so the runs share their noise and their differences from the closed form share a sign; across other seeds the sign flips"
+ },
+ "honest_limits": [
+  "The card rate assumes an approve-all approver.",
+  "Arrivals are Poisson at a constant rate; the sweep's cascade profile is a burst, and a burst loses more cards than Poisson at the same mean.",
+  "Officer availability scales the service rate, so the queue is that of a desk reading at a fraction of speed; an officer absent in long blocks would lose more cards than this, and NONE FOUND for how PSA staffs such a desk.",
+  "The closed form has an exponential read; a real read is closer to fixed, and the fixed-read simulation printed beside each figure is the lower end.",
+  "Escalations per day scale the at-risk population by the sweep's escalations per at-risk episode; each escalation is a written summary a duty supervisor reads, and that reading time is not in the officer count.",
+  "The per-TEU denominator is an upper bound that treats every TEU as its own decision; the per-box-group denominator is the sweep's own unit.",
+  "The demo per-shift rate limits in the policy table are placeholders; the multiples printed beside them say how far a real shift would exceed them, not that the limits are wrong.",
+  "The deny window is a demo constant the contract calls configurable; every expiry share on this page is a function of it, and it is the lever a real desk would size first.",
+  "The grid is the UNGATED arm. Its card rate is the one an approver who never says no produced with no expected-value gate in front of it, and the shipping arm raises roughly a third as many cards and writes roughly three and a half times as many escalation summaries; `arms` prints both and `which_arm_the_grid_is` says which figure belongs to which."
+ ]
+}

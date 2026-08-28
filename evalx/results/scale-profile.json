@@ -1,0 +1,2408 @@
+{
+  "profile_version": "1.0.0",
+  "kind": "scale",
+  "label": "MEASURED on one machine (Apple M2 Air, 8 GB, macOS 14.6), single process, replay LLM tier, SYNTHETIC worlds from twin.generate.",
+  "run_id": "scale-50-200-1000-5000-seed42",
+  "oracle_verified": true,
+  "seed": 42,
+  "volumes": [
+    50,
+    200,
+    1000,
+    5000
+  ],
+  "levels": {
+    "50": {
+      "episodes": 50,
+      "wall_clock_s": 13.597,
+      "cpu_time_s": 13.364,
+      "cpu_seconds_per_episode": 0.26727,
+      "throughput_episodes_per_min": 220.6,
+      "throughput_episodes_per_cpu_min": 224.5,
+      "machine_load_1min": {
+        "mean": 4.74,
+        "max": 4.89,
+        "note": "this laptop ran other jobs during the sweep, so wall clock is an upper bound and CPU time is the load-independent figure"
+      },
+      "latency_ms": {
+        "p50": 259.996666,
+        "p90": 344.16675,
+        "p99": 397.694459,
+        "max": 397.694,
+        "mean": 271.646,
+        "note": "end to end per episode, including synthetic world preparation"
+      },
+      "graph_only_latency_ms": {
+        "p50": 18.811,
+        "p90": 34.621,
+        "p99": 49.581,
+        "max": 49.581,
+        "mean": 22.96,
+        "note": "the relay_decision_graph invocation alone"
+      },
+      "world_prep_latency_ms": {
+        "p50": 236.95525,
+        "p90": 318.475416,
+        "p99": 361.200667,
+        "max": 361.201,
+        "mean": 248.553,
+        "note": "twin.generate world synthesis, the simulator's cost and not the system's"
+      },
+      "rss": {
+        "peak_mb": 74.77,
+        "samples": [
+          {
+            "episode": 0,
+            "rss_mb": 64.17
+          },
+          {
+            "episode": 25,
+            "rss_mb": 69.78
+          },
+          {
+            "episode": 50,
+            "rss_mb": 67.34
+          }
+        ],
+        "slope_mb_per_1000_episodes": 63.4
+      },
+      "ledger": {
+        "bytes_per_episode_mean": 6832.0,
+        "bytes_per_episode_p90": 10931,
+        "events_per_episode_mean": 7.68,
+        "total_bytes_if_retained": 341598,
+        "total_mib_if_retained": 0.326,
+        "projected_gib_per_million_episodes": 6.363
+      },
+      "sqlite_checkpointer": {
+        "samples": [
+          {
+            "episode": 0,
+            "sqlite_bytes": 226416
+          },
+          {
+            "episode": 25,
+            "sqlite_bytes": 6135264
+          },
+          {
+            "episode": 50,
+            "sqlite_bytes": 7122544
+          }
+        ],
+        "final_bytes": 7122544,
+        "bytes_per_episode": 142450.9,
+        "note": "one LangGraph thread_id per episode and no pruning, so this grows linearly by construction; production prunes closed episodes"
+      },
+      "outcome_mix": {
+        "COMPLETED": 44,
+        "ESCALATED": 6
+      },
+      "tier_counters": {
+        "rules": 208,
+        "local": 0,
+        "frontier": 0
+      },
+      "tokens_measured_total": 0,
+      "tokens_measured_per_episode": 0.0,
+      "chain_failures": 0,
+      "distinct_episode_digests": 50,
+      "aggregate_digest": "a84d01c784eb7b170575700df82cbdc44905a2ef6bb5b1767913b121ee037ad3",
+      "determinism_probe": null
+    },
+    "200": {
+      "episodes": 200,
+      "wall_clock_s": 50.34,
+      "cpu_time_s": 47.752,
+      "cpu_seconds_per_episode": 0.23876,
+      "throughput_episodes_per_min": 238.4,
+      "throughput_episodes_per_cpu_min": 251.3,
+      "machine_load_1min": {
+        "mean": 5.71,
+        "max": 6.01,
+        "note": "this laptop ran other jobs during the sweep, so wall clock is an upper bound and CPU time is the load-independent figure"
+      },
+      "latency_ms": {
+        "p50": 248.6075,
+        "p90": 350.608875,
+        "p99": 518.907916,
+        "max": 601.534,
+        "mean": 251.43,
+        "note": "end to end per episode, including synthetic world preparation"
+      },
+      "graph_only_latency_ms": {
+        "p50": 17.332,
+        "p90": 39.197,
+        "p99": 63.974,
+        "max": 75.348,
+        "mean": 21.157,
+        "note": "the relay_decision_graph invocation alone"
+      },
+      "world_prep_latency_ms": {
+        "p50": 228.507833,
+        "p90": 322.349625,
+        "p99": 500.221083,
+        "max": 541.779,
+        "mean": 230.166,
+        "note": "twin.generate world synthesis, the simulator's cost and not the system's"
+      },
+      "rss": {
+        "peak_mb": 74.77,
+        "samples": [
+          {
+            "episode": 0,
+            "rss_mb": 43.31
+          },
+          {
+            "episode": 25,
+            "rss_mb": 69.09
+          },
+          {
+            "episode": 50,
+            "rss_mb": 70.06
+          },
+          {
+            "episode": 75,
+            "rss_mb": 41.72
+          },
+          {
+            "episode": 100,
+            "rss_mb": 70.38
+          },
+          {
+            "episode": 125,
+            "rss_mb": 70.03
+          },
+          {
+            "episode": 150,
+            "rss_mb": 42.02
+          },
+          {
+            "episode": 175,
+            "rss_mb": 70.05
+          },
+          {
+            "episode": 200,
+            "rss_mb": 70.14
+          }
+        ],
+        "slope_mb_per_1000_episodes": 54.9533
+      },
+      "ledger": {
+        "bytes_per_episode_mean": 7316.5,
+        "bytes_per_episode_p90": 10931,
+        "events_per_episode_mean": 8.21,
+        "total_bytes_if_retained": 1463305,
+        "total_mib_if_retained": 1.396,
+        "projected_gib_per_million_episodes": 6.814
+      },
+      "sqlite_checkpointer": {
+        "samples": [
+          {
+            "episode": 0,
+            "sqlite_bytes": 226416
+          },
+          {
+            "episode": 25,
+            "sqlite_bytes": 6155816
+          },
+          {
+            "episode": 50,
+            "sqlite_bytes": 7986728
+          },
+          {
+            "episode": 75,
+            "sqlite_bytes": 9891392
+          },
+          {
+            "episode": 100,
+            "sqlite_bytes": 11787840
+          },
+          {
+            "episode": 125,
+            "sqlite_bytes": 13626968
+          },
+          {
+            "episode": 150,
+            "sqlite_bytes": 15511128
+          },
+          {
+            "episode": 175,
+            "sqlite_bytes": 18341464
+          },
+          {
+            "episode": 200,
+            "sqlite_bytes": 20135512
+          }
+        ],
+        "final_bytes": 20135512,
+        "bytes_per_episode": 100677.6,
+        "note": "one LangGraph thread_id per episode and no pruning, so this grows linearly by construction; production prunes closed episodes"
+      },
+      "outcome_mix": {
+        "COMPLETED": 176,
+        "ESCALATED": 24
+      },
+      "tier_counters": {
+        "rules": 877,
+        "local": 0,
+        "frontier": 0
+      },
+      "tokens_measured_total": 0,
+      "tokens_measured_per_episode": 0.0,
+      "chain_failures": 0,
+      "distinct_episode_digests": 200,
+      "aggregate_digest": "4143c96cda49587be5b7e8b013eb65b8066a8d4273004e1ea88f7acc70bd5d4e",
+      "determinism_probe": null
+    },
+    "1000": {
+      "episodes": 1000,
+      "wall_clock_s": 144.614,
+      "cpu_time_s": 145.601,
+      "cpu_seconds_per_episode": 0.1456,
+      "throughput_episodes_per_min": 414.9,
+      "throughput_episodes_per_cpu_min": 412.1,
+      "machine_load_1min": {
+        "mean": 4.01,
+        "max": 5.46,
+        "note": "this laptop ran other jobs during the sweep, so wall clock is an upper bound and CPU time is the load-independent figure"
+      },
+      "latency_ms": {
+        "p50": 142.939792,
+        "p90": 190.092166,
+        "p99": 246.324583,
+        "max": 274.519,
+        "mean": 144.427,
+        "note": "end to end per episode, including synthetic world preparation"
+      },
+      "graph_only_latency_ms": {
+        "p50": 8.539,
+        "p90": 16.341,
+        "p99": 22.094,
+        "max": 39.384,
+        "mean": 10.581,
+        "note": "the relay_decision_graph invocation alone"
+      },
+      "world_prep_latency_ms": {
+        "p50": 131.703708,
+        "p90": 176.306791,
+        "p99": 234.504667,
+        "max": 251.672,
+        "mean": 133.782,
+        "note": "twin.generate world synthesis, the simulator's cost and not the system's"
+      },
+      "rss": {
+        "peak_mb": 74.77,
+        "samples": [
+          {
+            "episode": 0,
+            "rss_mb": 71.42
+          },
+          {
+            "episode": 25,
+            "rss_mb": 54.66
+          },
+          {
+            "episode": 50,
+            "rss_mb": 72.05
+          },
+          {
+            "episode": 75,
+            "rss_mb": 69.97
+          },
+          {
+            "episode": 100,
+            "rss_mb": 69.72
+          },
+          {
+            "episode": 125,
+            "rss_mb": 69.77
+          },
+          {
+            "episode": 150,
+            "rss_mb": 69.17
+          },
+          {
+            "episode": 175,
+            "rss_mb": 69.39
+          },
+          {
+            "episode": 200,
+            "rss_mb": 69.09
+          },
+          {
+            "episode": 225,
+            "rss_mb": 69.09
+          },
+          {
+            "episode": 250,
+            "rss_mb": 69.14
+          },
+          {
+            "episode": 275,
+            "rss_mb": 69.27
+          },
+          {
+            "episode": 300,
+            "rss_mb": 69.41
+          },
+          {
+            "episode": 325,
+            "rss_mb": 57.3
+          },
+          {
+            "episode": 350,
+            "rss_mb": 69.23
+          },
+          {
+            "episode": 375,
+            "rss_mb": 69.53
+          },
+          {
+            "episode": 400,
+            "rss_mb": 69.55
+          },
+          {
+            "episode": 425,
+            "rss_mb": 68.7
+          },
+          {
+            "episode": 450,
+            "rss_mb": 69.09
+          },
+          {
+            "episode": 475,
+            "rss_mb": 69.44
+          },
+          {
+            "episode": 500,
+            "rss_mb": 69.23
+          },
+          {
+            "episode": 525,
+            "rss_mb": 68.89
+          },
+          {
+            "episode": 550,
+            "rss_mb": 69.39
+          },
+          {
+            "episode": 575,
+            "rss_mb": 69.14
+          },
+          {
+            "episode": 600,
+            "rss_mb": 69.22
+          },
+          {
+            "episode": 625,
+            "rss_mb": 69.41
+          },
+          {
+            "episode": 650,
+            "rss_mb": 69.59
+          },
+          {
+            "episode": 675,
+            "rss_mb": 41.22
+          },
+          {
+            "episode": 700,
+            "rss_mb": 69.38
+          },
+          {
+            "episode": 725,
+            "rss_mb": 69.38
+          },
+          {
+            "episode": 750,
+            "rss_mb": 69.44
+          },
+          {
+            "episode": 775,
+            "rss_mb": 69.73
+          },
+          {
+            "episode": 800,
+            "rss_mb": 69.8
+          },
+          {
+            "episode": 825,
+            "rss_mb": 69.67
+          },
+          {
+            "episode": 850,
+            "rss_mb": 69.66
+          },
+          {
+            "episode": 875,
+            "rss_mb": 69.69
+          },
+          {
+            "episode": 900,
+            "rss_mb": 69.72
+          },
+          {
+            "episode": 925,
+            "rss_mb": 69.73
+          },
+          {
+            "episode": 950,
+            "rss_mb": 69.7
+          },
+          {
+            "episode": 975,
+            "rss_mb": 68.44
+          },
+          {
+            "episode": 1000,
+            "rss_mb": 69.45
+          }
+        ],
+        "slope_mb_per_1000_episodes": 0.653
+      },
+      "ledger": {
+        "bytes_per_episode_mean": 7359.6,
+        "bytes_per_episode_p90": 10936,
+        "events_per_episode_mean": 8.25,
+        "total_bytes_if_retained": 7359553,
+        "total_mib_if_retained": 7.019,
+        "projected_gib_per_million_episodes": 6.854
+      },
+      "sqlite_checkpointer": {
+        "samples": [
+          {
+            "episode": 0,
+            "sqlite_bytes": 226416
+          },
+          {
+            "episode": 25,
+            "sqlite_bytes": 6155840
+          },
+          {
+            "episode": 50,
+            "sqlite_bytes": 7994992
+          },
+          {
+            "episode": 75,
+            "sqlite_bytes": 9903728
+          },
+          {
+            "episode": 100,
+            "sqlite_bytes": 10829424
+          },
+          {
+            "episode": 125,
+            "sqlite_bytes": 13643400
+          },
+          {
+            "episode": 150,
+            "sqlite_bytes": 15523464
+          },
+          {
+            "episode": 175,
+            "sqlite_bytes": 18353800
+          },
+          {
+            "episode": 200,
+            "sqlite_bytes": 20156040
+          },
+          {
+            "episode": 225,
+            "sqlite_bytes": 22011528
+          },
+          {
+            "episode": 250,
+            "sqlite_bytes": 23895688
+          },
+          {
+            "episode": 275,
+            "sqlite_bytes": 26717856
+          },
+          {
+            "episode": 300,
+            "sqlite_bytes": 28552864
+          },
+          {
+            "episode": 325,
+            "sqlite_bytes": 30396064
+          },
+          {
+            "episode": 350,
+            "sqlite_bytes": 33255072
+          },
+          {
+            "episode": 375,
+            "sqlite_bytes": 35126944
+          },
+          {
+            "episode": 400,
+            "sqlite_bytes": 36994720
+          },
+          {
+            "episode": 425,
+            "sqlite_bytes": 39669408
+          },
+          {
+            "episode": 450,
+            "sqlite_bytes": 41459360
+          },
+          {
+            "episode": 475,
+            "sqlite_bytes": 43298464
+          },
+          {
+            "episode": 500,
+            "sqlite_bytes": 45149856
+          },
+          {
+            "episode": 525,
+            "sqlite_bytes": 46927520
+          },
+          {
+            "episode": 550,
+            "sqlite_bytes": 49725088
+          },
+          {
+            "episode": 575,
+            "sqlite_bytes": 51523232
+          },
+          {
+            "episode": 600,
+            "sqlite_bytes": 53395104
+          },
+          {
+            "episode": 625,
+            "sqlite_bytes": 55168672
+          },
+          {
+            "episode": 650,
+            "sqlite_bytes": 56909472
+          },
+          {
+            "episode": 675,
+            "sqlite_bytes": 58740384
+          },
+          {
+            "episode": 700,
+            "sqlite_bytes": 61456032
+          },
+          {
+            "episode": 725,
+            "sqlite_bytes": 63360672
+          },
+          {
+            "episode": 750,
+            "sqlite_bytes": 65212064
+          },
+          {
+            "episode": 775,
+            "sqlite_bytes": 67055264
+          },
+          {
+            "episode": 800,
+            "sqlite_bytes": 69856928
+          },
+          {
+            "episode": 825,
+            "sqlite_bytes": 71728800
+          },
+          {
+            "episode": 850,
+            "sqlite_bytes": 73535160
+          },
+          {
+            "episode": 875,
+            "sqlite_bytes": 75447992
+          },
+          {
+            "episode": 900,
+            "sqlite_bytes": 77270712
+          },
+          {
+            "episode": 925,
+            "sqlite_bytes": 79056568
+          },
+          {
+            "episode": 950,
+            "sqlite_bytes": 81018552
+          },
+          {
+            "episode": 975,
+            "sqlite_bytes": 83893944
+          },
+          {
+            "episode": 1000,
+            "sqlite_bytes": 85843640
+          }
+        ],
+        "final_bytes": 85843640,
+        "bytes_per_episode": 85843.6,
+        "note": "one LangGraph thread_id per episode and no pruning, so this grows linearly by construction; production prunes closed episodes"
+      },
+      "outcome_mix": {
+        "COMPLETED": 863,
+        "ESCALATED": 137
+      },
+      "tier_counters": {
+        "rules": 4402,
+        "local": 0,
+        "frontier": 0
+      },
+      "tokens_measured_total": 0,
+      "tokens_measured_per_episode": 0.0,
+      "chain_failures": 0,
+      "distinct_episode_digests": 1000,
+      "aggregate_digest": "0231a0bac8403a39dcdc385f0027f23cd5521db87ebe492e49ebf4b00f527718",
+      "determinism_probe": null
+    },
+    "5000": {
+      "episodes": 5000,
+      "wall_clock_s": 935.54,
+      "cpu_time_s": 914.852,
+      "cpu_seconds_per_episode": 0.18297,
+      "throughput_episodes_per_min": 320.7,
+      "throughput_episodes_per_cpu_min": 327.9,
+      "machine_load_1min": {
+        "mean": 5.42,
+        "max": 8.37,
+        "note": "this laptop ran other jobs during the sweep, so wall clock is an upper bound and CPU time is the load-independent figure"
+      },
+      "latency_ms": {
+        "p50": 169.197542,
+        "p90": 273.690167,
+        "p99": 492.392334,
+        "max": 862.154,
+        "mean": 186.856,
+        "note": "end to end per episode, including synthetic world preparation"
+      },
+      "graph_only_latency_ms": {
+        "p50": 12.7,
+        "p90": 24.621,
+        "p99": 61.054,
+        "max": 290.391,
+        "mean": 14.762,
+        "note": "the relay_decision_graph invocation alone"
+      },
+      "world_prep_latency_ms": {
+        "p50": 156.452584,
+        "p90": 253.973417,
+        "p99": 450.098041,
+        "max": 762.175,
+        "mean": 171.995,
+        "note": "twin.generate world synthesis, the simulator's cost and not the system's"
+      },
+      "rss": {
+        "peak_mb": 74.77,
+        "samples": [
+          {
+            "episode": 0,
+            "rss_mb": 70.81
+          },
+          {
+            "episode": 25,
+            "rss_mb": 70.84
+          },
+          {
+            "episode": 50,
+            "rss_mb": 70.39
+          },
+          {
+            "episode": 75,
+            "rss_mb": 68.92
+          },
+          {
+            "episode": 100,
+            "rss_mb": 68.88
+          },
+          {
+            "episode": 125,
+            "rss_mb": 68.7
+          },
+          {
+            "episode": 150,
+            "rss_mb": 68.91
+          },
+          {
+            "episode": 175,
+            "rss_mb": 68.19
+          },
+          {
+            "episode": 200,
+            "rss_mb": 67.52
+          },
+          {
+            "episode": 225,
+            "rss_mb": 68.23
+          },
+          {
+            "episode": 250,
+            "rss_mb": 68.3
+          },
+          {
+            "episode": 275,
+            "rss_mb": 68.52
+          },
+          {
+            "episode": 300,
+            "rss_mb": 68.58
+          },
+          {
+            "episode": 325,
+            "rss_mb": 40.25
+          },
+          {
+            "episode": 350,
+            "rss_mb": 68.42
+          },
+          {
+            "episode": 375,
+            "rss_mb": 68.36
+          },
+          {
+            "episode": 400,
+            "rss_mb": 68.53
+          },
+          {
+            "episode": 425,
+            "rss_mb": 68.59
+          },
+          {
+            "episode": 450,
+            "rss_mb": 68.66
+          },
+          {
+            "episode": 475,
+            "rss_mb": 68.66
+          },
+          {
+            "episode": 500,
+            "rss_mb": 68.78
+          },
+          {
+            "episode": 525,
+            "rss_mb": 68.55
+          },
+          {
+            "episode": 550,
+            "rss_mb": 67.84
+          },
+          {
+            "episode": 575,
+            "rss_mb": 39.8
+          },
+          {
+            "episode": 600,
+            "rss_mb": 67.86
+          },
+          {
+            "episode": 625,
+            "rss_mb": 68.09
+          },
+          {
+            "episode": 650,
+            "rss_mb": 68.12
+          },
+          {
+            "episode": 675,
+            "rss_mb": 67.59
+          },
+          {
+            "episode": 700,
+            "rss_mb": 68.09
+          },
+          {
+            "episode": 725,
+            "rss_mb": 68.03
+          },
+          {
+            "episode": 750,
+            "rss_mb": 39.55
+          },
+          {
+            "episode": 775,
+            "rss_mb": 68.11
+          },
+          {
+            "episode": 800,
+            "rss_mb": 67.56
+          },
+          {
+            "episode": 825,
+            "rss_mb": 38.31
+          },
+          {
+            "episode": 850,
+            "rss_mb": 36.67
+          },
+          {
+            "episode": 875,
+            "rss_mb": 34.73
+          },
+          {
+            "episode": 900,
+            "rss_mb": 31.69
+          },
+          {
+            "episode": 925,
+            "rss_mb": 35.36
+          },
+          {
+            "episode": 950,
+            "rss_mb": 63.72
+          },
+          {
+            "episode": 975,
+            "rss_mb": 42.92
+          },
+          {
+            "episode": 1000,
+            "rss_mb": 63.89
+          },
+          {
+            "episode": 1025,
+            "rss_mb": 35.45
+          },
+          {
+            "episode": 1050,
+            "rss_mb": 63.7
+          },
+          {
+            "episode": 1075,
+            "rss_mb": 63.92
+          },
+          {
+            "episode": 1100,
+            "rss_mb": 34.95
+          },
+          {
+            "episode": 1125,
+            "rss_mb": 63.69
+          },
+          {
+            "episode": 1150,
+            "rss_mb": 63.81
+          },
+          {
+            "episode": 1175,
+            "rss_mb": 63.8
+          },
+          {
+            "episode": 1200,
+            "rss_mb": 63.31
+          },
+          {
+            "episode": 1225,
+            "rss_mb": 63.34
+          },
+          {
+            "episode": 1250,
+            "rss_mb": 61.94
+          },
+          {
+            "episode": 1275,
+            "rss_mb": 61.97
+          },
+          {
+            "episode": 1300,
+            "rss_mb": 34.61
+          },
+          {
+            "episode": 1325,
+            "rss_mb": 62.36
+          },
+          {
+            "episode": 1350,
+            "rss_mb": 61.98
+          },
+          {
+            "episode": 1375,
+            "rss_mb": 34.64
+          },
+          {
+            "episode": 1400,
+            "rss_mb": 62.5
+          },
+          {
+            "episode": 1425,
+            "rss_mb": 62.34
+          },
+          {
+            "episode": 1450,
+            "rss_mb": 62.36
+          },
+          {
+            "episode": 1475,
+            "rss_mb": 61.88
+          },
+          {
+            "episode": 1500,
+            "rss_mb": 61.95
+          },
+          {
+            "episode": 1525,
+            "rss_mb": 62.31
+          },
+          {
+            "episode": 1550,
+            "rss_mb": 62.38
+          },
+          {
+            "episode": 1575,
+            "rss_mb": 62.5
+          },
+          {
+            "episode": 1600,
+            "rss_mb": 32.81
+          },
+          {
+            "episode": 1625,
+            "rss_mb": 34.05
+          },
+          {
+            "episode": 1650,
+            "rss_mb": 62.47
+          },
+          {
+            "episode": 1675,
+            "rss_mb": 62.09
+          },
+          {
+            "episode": 1700,
+            "rss_mb": 33.31
+          },
+          {
+            "episode": 1725,
+            "rss_mb": 29.55
+          },
+          {
+            "episode": 1750,
+            "rss_mb": 34.61
+          },
+          {
+            "episode": 1775,
+            "rss_mb": 29.19
+          },
+          {
+            "episode": 1800,
+            "rss_mb": 32.0
+          },
+          {
+            "episode": 1825,
+            "rss_mb": 30.42
+          },
+          {
+            "episode": 1850,
+            "rss_mb": 61.92
+          },
+          {
+            "episode": 1875,
+            "rss_mb": 32.56
+          },
+          {
+            "episode": 1900,
+            "rss_mb": 32.72
+          },
+          {
+            "episode": 1925,
+            "rss_mb": 31.3
+          },
+          {
+            "episode": 1950,
+            "rss_mb": 61.69
+          },
+          {
+            "episode": 1975,
+            "rss_mb": 61.95
+          },
+          {
+            "episode": 2000,
+            "rss_mb": 53.25
+          },
+          {
+            "episode": 2025,
+            "rss_mb": 61.17
+          },
+          {
+            "episode": 2050,
+            "rss_mb": 61.97
+          },
+          {
+            "episode": 2075,
+            "rss_mb": 61.8
+          },
+          {
+            "episode": 2100,
+            "rss_mb": 44.27
+          },
+          {
+            "episode": 2125,
+            "rss_mb": 31.53
+          },
+          {
+            "episode": 2150,
+            "rss_mb": 33.52
+          },
+          {
+            "episode": 2175,
+            "rss_mb": 61.92
+          },
+          {
+            "episode": 2200,
+            "rss_mb": 61.66
+          },
+          {
+            "episode": 2225,
+            "rss_mb": 61.78
+          },
+          {
+            "episode": 2250,
+            "rss_mb": 62.03
+          },
+          {
+            "episode": 2275,
+            "rss_mb": 61.05
+          },
+          {
+            "episode": 2300,
+            "rss_mb": 62.11
+          },
+          {
+            "episode": 2325,
+            "rss_mb": 61.81
+          },
+          {
+            "episode": 2350,
+            "rss_mb": 62.0
+          },
+          {
+            "episode": 2375,
+            "rss_mb": 62.02
+          },
+          {
+            "episode": 2400,
+            "rss_mb": 32.7
+          },
+          {
+            "episode": 2425,
+            "rss_mb": 62.28
+          },
+          {
+            "episode": 2450,
+            "rss_mb": 62.05
+          },
+          {
+            "episode": 2475,
+            "rss_mb": 32.89
+          },
+          {
+            "episode": 2500,
+            "rss_mb": 33.28
+          },
+          {
+            "episode": 2525,
+            "rss_mb": 61.91
+          },
+          {
+            "episode": 2550,
+            "rss_mb": 62.06
+          },
+          {
+            "episode": 2575,
+            "rss_mb": 62.38
+          },
+          {
+            "episode": 2600,
+            "rss_mb": 33.88
+          },
+          {
+            "episode": 2625,
+            "rss_mb": 61.94
+          },
+          {
+            "episode": 2650,
+            "rss_mb": 56.25
+          },
+          {
+            "episode": 2675,
+            "rss_mb": 61.73
+          },
+          {
+            "episode": 2700,
+            "rss_mb": 62.02
+          },
+          {
+            "episode": 2725,
+            "rss_mb": 62.0
+          },
+          {
+            "episode": 2750,
+            "rss_mb": 61.95
+          },
+          {
+            "episode": 2775,
+            "rss_mb": 61.84
+          },
+          {
+            "episode": 2800,
+            "rss_mb": 61.81
+          },
+          {
+            "episode": 2825,
+            "rss_mb": 61.77
+          },
+          {
+            "episode": 2850,
+            "rss_mb": 61.38
+          },
+          {
+            "episode": 2875,
+            "rss_mb": 32.78
+          },
+          {
+            "episode": 2900,
+            "rss_mb": 61.88
+          },
+          {
+            "episode": 2925,
+            "rss_mb": 61.84
+          },
+          {
+            "episode": 2950,
+            "rss_mb": 61.91
+          },
+          {
+            "episode": 2975,
+            "rss_mb": 62.17
+          },
+          {
+            "episode": 3000,
+            "rss_mb": 62.3
+          },
+          {
+            "episode": 3025,
+            "rss_mb": 62.28
+          },
+          {
+            "episode": 3050,
+            "rss_mb": 31.88
+          },
+          {
+            "episode": 3075,
+            "rss_mb": 29.42
+          },
+          {
+            "episode": 3100,
+            "rss_mb": 61.8
+          },
+          {
+            "episode": 3125,
+            "rss_mb": 31.36
+          },
+          {
+            "episode": 3150,
+            "rss_mb": 32.22
+          },
+          {
+            "episode": 3175,
+            "rss_mb": 32.16
+          },
+          {
+            "episode": 3200,
+            "rss_mb": 61.02
+          },
+          {
+            "episode": 3225,
+            "rss_mb": 31.19
+          },
+          {
+            "episode": 3250,
+            "rss_mb": 31.89
+          },
+          {
+            "episode": 3275,
+            "rss_mb": 32.45
+          },
+          {
+            "episode": 3300,
+            "rss_mb": 32.19
+          },
+          {
+            "episode": 3325,
+            "rss_mb": 61.97
+          },
+          {
+            "episode": 3350,
+            "rss_mb": 30.09
+          },
+          {
+            "episode": 3375,
+            "rss_mb": 32.45
+          },
+          {
+            "episode": 3400,
+            "rss_mb": 32.45
+          },
+          {
+            "episode": 3425,
+            "rss_mb": 30.02
+          },
+          {
+            "episode": 3450,
+            "rss_mb": 60.81
+          },
+          {
+            "episode": 3475,
+            "rss_mb": 32.19
+          },
+          {
+            "episode": 3500,
+            "rss_mb": 31.23
+          },
+          {
+            "episode": 3525,
+            "rss_mb": 32.94
+          },
+          {
+            "episode": 3550,
+            "rss_mb": 61.52
+          },
+          {
+            "episode": 3575,
+            "rss_mb": 32.72
+          },
+          {
+            "episode": 3600,
+            "rss_mb": 33.0
+          },
+          {
+            "episode": 3625,
+            "rss_mb": 33.08
+          },
+          {
+            "episode": 3650,
+            "rss_mb": 62.36
+          },
+          {
+            "episode": 3675,
+            "rss_mb": 62.73
+          },
+          {
+            "episode": 3700,
+            "rss_mb": 30.47
+          },
+          {
+            "episode": 3725,
+            "rss_mb": 32.8
+          },
+          {
+            "episode": 3750,
+            "rss_mb": 62.12
+          },
+          {
+            "episode": 3775,
+            "rss_mb": 62.11
+          },
+          {
+            "episode": 3800,
+            "rss_mb": 62.41
+          },
+          {
+            "episode": 3825,
+            "rss_mb": 60.75
+          },
+          {
+            "episode": 3850,
+            "rss_mb": 61.56
+          },
+          {
+            "episode": 3875,
+            "rss_mb": 62.31
+          },
+          {
+            "episode": 3900,
+            "rss_mb": 62.44
+          },
+          {
+            "episode": 3925,
+            "rss_mb": 62.53
+          },
+          {
+            "episode": 3950,
+            "rss_mb": 62.36
+          },
+          {
+            "episode": 3975,
+            "rss_mb": 62.22
+          },
+          {
+            "episode": 4000,
+            "rss_mb": 32.83
+          },
+          {
+            "episode": 4025,
+            "rss_mb": 33.16
+          },
+          {
+            "episode": 4050,
+            "rss_mb": 62.3
+          },
+          {
+            "episode": 4075,
+            "rss_mb": 62.33
+          },
+          {
+            "episode": 4100,
+            "rss_mb": 32.95
+          },
+          {
+            "episode": 4125,
+            "rss_mb": 62.58
+          },
+          {
+            "episode": 4150,
+            "rss_mb": 62.59
+          },
+          {
+            "episode": 4175,
+            "rss_mb": 62.42
+          },
+          {
+            "episode": 4200,
+            "rss_mb": 31.48
+          },
+          {
+            "episode": 4225,
+            "rss_mb": 30.42
+          },
+          {
+            "episode": 4250,
+            "rss_mb": 32.58
+          },
+          {
+            "episode": 4275,
+            "rss_mb": 62.08
+          },
+          {
+            "episode": 4300,
+            "rss_mb": 62.2
+          },
+          {
+            "episode": 4325,
+            "rss_mb": 62.31
+          },
+          {
+            "episode": 4350,
+            "rss_mb": 62.2
+          },
+          {
+            "episode": 4375,
+            "rss_mb": 62.61
+          },
+          {
+            "episode": 4400,
+            "rss_mb": 62.56
+          },
+          {
+            "episode": 4425,
+            "rss_mb": 62.39
+          },
+          {
+            "episode": 4450,
+            "rss_mb": 62.56
+          },
+          {
+            "episode": 4475,
+            "rss_mb": 62.52
+          },
+          {
+            "episode": 4500,
+            "rss_mb": 62.47
+          },
+          {
+            "episode": 4525,
+            "rss_mb": 62.56
+          },
+          {
+            "episode": 4550,
+            "rss_mb": 62.61
+          },
+          {
+            "episode": 4575,
+            "rss_mb": 62.77
+          },
+          {
+            "episode": 4600,
+            "rss_mb": 62.72
+          },
+          {
+            "episode": 4625,
+            "rss_mb": 62.41
+          },
+          {
+            "episode": 4650,
+            "rss_mb": 62.61
+          },
+          {
+            "episode": 4675,
+            "rss_mb": 62.66
+          },
+          {
+            "episode": 4700,
+            "rss_mb": 62.66
+          },
+          {
+            "episode": 4725,
+            "rss_mb": 40.59
+          },
+          {
+            "episode": 4750,
+            "rss_mb": 62.84
+          },
+          {
+            "episode": 4775,
+            "rss_mb": 62.84
+          },
+          {
+            "episode": 4800,
+            "rss_mb": 62.59
+          },
+          {
+            "episode": 4825,
+            "rss_mb": 62.78
+          },
+          {
+            "episode": 4850,
+            "rss_mb": 62.75
+          },
+          {
+            "episode": 4875,
+            "rss_mb": 62.59
+          },
+          {
+            "episode": 4900,
+            "rss_mb": 33.55
+          },
+          {
+            "episode": 4925,
+            "rss_mb": 33.69
+          },
+          {
+            "episode": 4950,
+            "rss_mb": 62.55
+          },
+          {
+            "episode": 4975,
+            "rss_mb": 53.88
+          },
+          {
+            "episode": 5000,
+            "rss_mb": 33.83
+          }
+        ],
+        "slope_mb_per_1000_episodes": -1.7845
+      },
+      "ledger": {
+        "bytes_per_episode_mean": 7308.7,
+        "bytes_per_episode_p90": 10957,
+        "events_per_episode_mean": 8.18,
+        "total_bytes_if_retained": 36543469,
+        "total_mib_if_retained": 34.851,
+        "projected_gib_per_million_episodes": 6.807
+      },
+      "sqlite_checkpointer": {
+        "samples": [
+          {
+            "episode": 0,
+            "sqlite_bytes": 226416
+          },
+          {
+            "episode": 25,
+            "sqlite_bytes": 6139408
+          },
+          {
+            "episode": 50,
+            "sqlite_bytes": 7970320
+          },
+          {
+            "episode": 75,
+            "sqlite_bytes": 9891392
+          },
+          {
+            "episode": 100,
+            "sqlite_bytes": 10817088
+          },
+          {
+            "episode": 125,
+            "sqlite_bytes": 13639304
+          },
+          {
+            "episode": 150,
+            "sqlite_bytes": 15519368
+          },
+          {
+            "episode": 175,
+            "sqlite_bytes": 18366112
+          },
+          {
+            "episode": 200,
+            "sqlite_bytes": 20180664
+          },
+          {
+            "episode": 225,
+            "sqlite_bytes": 22040248
+          },
+          {
+            "episode": 250,
+            "sqlite_bytes": 23912120
+          },
+          {
+            "episode": 275,
+            "sqlite_bytes": 26750648
+          },
+          {
+            "episode": 300,
+            "sqlite_bytes": 28573368
+          },
+          {
+            "episode": 325,
+            "sqlite_bytes": 30412472
+          },
+          {
+            "episode": 350,
+            "sqlite_bytes": 33283768
+          },
+          {
+            "episode": 375,
+            "sqlite_bytes": 35147448
+          },
+          {
+            "episode": 400,
+            "sqlite_bytes": 37007032
+          },
+          {
+            "episode": 425,
+            "sqlite_bytes": 39689912
+          },
+          {
+            "episode": 450,
+            "sqlite_bytes": 41475768
+          },
+          {
+            "episode": 475,
+            "sqlite_bytes": 43323064
+          },
+          {
+            "episode": 500,
+            "sqlite_bytes": 45162168
+          },
+          {
+            "episode": 525,
+            "sqlite_bytes": 46943928
+          },
+          {
+            "episode": 550,
+            "sqlite_bytes": 49737400
+          },
+          {
+            "episode": 575,
+            "sqlite_bytes": 51535544
+          },
+          {
+            "episode": 600,
+            "sqlite_bytes": 53411512
+          },
+          {
+            "episode": 625,
+            "sqlite_bytes": 55193272
+          },
+          {
+            "episode": 650,
+            "sqlite_bytes": 56917688
+          },
+          {
+            "episode": 675,
+            "sqlite_bytes": 58769080
+          },
+          {
+            "episode": 700,
+            "sqlite_bytes": 61484728
+          },
+          {
+            "episode": 725,
+            "sqlite_bytes": 63377080
+          },
+          {
+            "episode": 750,
+            "sqlite_bytes": 65228472
+          },
+          {
+            "episode": 775,
+            "sqlite_bytes": 67075768
+          },
+          {
+            "episode": 800,
+            "sqlite_bytes": 68951736
+          },
+          {
+            "episode": 825,
+            "sqlite_bytes": 71745208
+          },
+          {
+            "episode": 850,
+            "sqlite_bytes": 73531064
+          },
+          {
+            "episode": 875,
+            "sqlite_bytes": 75447992
+          },
+          {
+            "episode": 900,
+            "sqlite_bytes": 77258424
+          },
+          {
+            "episode": 925,
+            "sqlite_bytes": 79052472
+          },
+          {
+            "episode": 950,
+            "sqlite_bytes": 80989880
+          },
+          {
+            "episode": 975,
+            "sqlite_bytes": 83902136
+          },
+          {
+            "episode": 1000,
+            "sqlite_bytes": 85831352
+          },
+          {
+            "episode": 1025,
+            "sqlite_bytes": 87649976
+          },
+          {
+            "episode": 1050,
+            "sqlite_bytes": 89505464
+          },
+          {
+            "episode": 1075,
+            "sqlite_bytes": 91270840
+          },
+          {
+            "episode": 1100,
+            "sqlite_bytes": 94027448
+          },
+          {
+            "episode": 1125,
+            "sqlite_bytes": 94903992
+          },
+          {
+            "episode": 1150,
+            "sqlite_bytes": 97570488
+          },
+          {
+            "episode": 1175,
+            "sqlite_bytes": 99393208
+          },
+          {
+            "episode": 1200,
+            "sqlite_bytes": 101224120
+          },
+          {
+            "episode": 1225,
+            "sqlite_bytes": 103988920
+          },
+          {
+            "episode": 1250,
+            "sqlite_bytes": 105770680
+          },
+          {
+            "episode": 1275,
+            "sqlite_bytes": 107540152
+          },
+          {
+            "episode": 1300,
+            "sqlite_bytes": 109444792
+          },
+          {
+            "episode": 1325,
+            "sqlite_bytes": 111320760
+          },
+          {
+            "episode": 1350,
+            "sqlite_bytes": 113983160
+          },
+          {
+            "episode": 1375,
+            "sqlite_bytes": 115793592
+          },
+          {
+            "episode": 1400,
+            "sqlite_bytes": 117624504
+          },
+          {
+            "episode": 1425,
+            "sqlite_bytes": 119439032
+          },
+          {
+            "episode": 1450,
+            "sqlite_bytes": 121298616
+          },
+          {
+            "episode": 1475,
+            "sqlite_bytes": 124042936
+          },
+          {
+            "episode": 1500,
+            "sqlite_bytes": 125923000
+          },
+          {
+            "episode": 1525,
+            "sqlite_bytes": 127782584
+          },
+          {
+            "episode": 1550,
+            "sqlite_bytes": 129588920
+          },
+          {
+            "episode": 1575,
+            "sqlite_bytes": 132271800
+          },
+          {
+            "episode": 1600,
+            "sqlite_bytes": 134057656
+          },
+          {
+            "episode": 1625,
+            "sqlite_bytes": 135876280
+          },
+          {
+            "episode": 1650,
+            "sqlite_bytes": 138604288
+          },
+          {
+            "episode": 1675,
+            "sqlite_bytes": 140398336
+          },
+          {
+            "episode": 1700,
+            "sqlite_bytes": 142159616
+          },
+          {
+            "episode": 1725,
+            "sqlite_bytes": 143974144
+          },
+          {
+            "episode": 1750,
+            "sqlite_bytes": 146743040
+          },
+          {
+            "episode": 1775,
+            "sqlite_bytes": 148582144
+          },
+          {
+            "episode": 1800,
+            "sqlite_bytes": 150368000
+          },
+          {
+            "episode": 1825,
+            "sqlite_bytes": 152141568
+          },
+          {
+            "episode": 1850,
+            "sqlite_bytes": 153976576
+          },
+          {
+            "episode": 1875,
+            "sqlite_bytes": 156688128
+          },
+          {
+            "episode": 1900,
+            "sqlite_bytes": 158539520
+          },
+          {
+            "episode": 1925,
+            "sqlite_bytes": 160329472
+          },
+          {
+            "episode": 1950,
+            "sqlite_bytes": 163041024
+          },
+          {
+            "episode": 1975,
+            "sqlite_bytes": 164867840
+          },
+          {
+            "episode": 2000,
+            "sqlite_bytes": 166629120
+          },
+          {
+            "episode": 2025,
+            "sqlite_bytes": 168374016
+          },
+          {
+            "episode": 2050,
+            "sqlite_bytes": 170163968
+          },
+          {
+            "episode": 2075,
+            "sqlite_bytes": 172011264
+          },
+          {
+            "episode": 2100,
+            "sqlite_bytes": 173801216
+          },
+          {
+            "episode": 2125,
+            "sqlite_bytes": 176512768
+          },
+          {
+            "episode": 2150,
+            "sqlite_bytes": 178339584
+          },
+          {
+            "episode": 2175,
+            "sqlite_bytes": 180121344
+          },
+          {
+            "episode": 2200,
+            "sqlite_bytes": 181907200
+          },
+          {
+            "episode": 2225,
+            "sqlite_bytes": 183766784
+          },
+          {
+            "episode": 2250,
+            "sqlite_bytes": 186511104
+          },
+          {
+            "episode": 2275,
+            "sqlite_bytes": 188251904
+          },
+          {
+            "episode": 2300,
+            "sqlite_bytes": 190070528
+          },
+          {
+            "episode": 2325,
+            "sqlite_bytes": 191905536
+          },
+          {
+            "episode": 2350,
+            "sqlite_bytes": 193769216
+          },
+          {
+            "episode": 2375,
+            "sqlite_bytes": 195563264
+          },
+          {
+            "episode": 2400,
+            "sqlite_bytes": 198242048
+          },
+          {
+            "episode": 2425,
+            "sqlite_bytes": 200093440
+          },
+          {
+            "episode": 2450,
+            "sqlite_bytes": 201916160
+          },
+          {
+            "episode": 2475,
+            "sqlite_bytes": 203726592
+          },
+          {
+            "episode": 2500,
+            "sqlite_bytes": 206540544
+          },
+          {
+            "episode": 2525,
+            "sqlite_bytes": 208318208
+          },
+          {
+            "episode": 2550,
+            "sqlite_bytes": 210116352
+          },
+          {
+            "episode": 2575,
+            "sqlite_bytes": 211889920
+          },
+          {
+            "episode": 2600,
+            "sqlite_bytes": 213708544
+          },
+          {
+            "episode": 2625,
+            "sqlite_bytes": 216456960
+          },
+          {
+            "episode": 2650,
+            "sqlite_bytes": 218291968
+          },
+          {
+            "episode": 2675,
+            "sqlite_bytes": 220086016
+          },
+          {
+            "episode": 2700,
+            "sqlite_bytes": 221916928
+          },
+          {
+            "episode": 2725,
+            "sqlite_bytes": 224653056
+          },
+          {
+            "episode": 2750,
+            "sqlite_bytes": 226418432
+          },
+          {
+            "episode": 2775,
+            "sqlite_bytes": 228187904
+          },
+          {
+            "episode": 2800,
+            "sqlite_bytes": 230027008
+          },
+          {
+            "episode": 2825,
+            "sqlite_bytes": 231780096
+          },
+          {
+            "episode": 2850,
+            "sqlite_bytes": 233594624
+          },
+          {
+            "episode": 2875,
+            "sqlite_bytes": 235364096
+          },
+          {
+            "episode": 2900,
+            "sqlite_bytes": 238141184
+          },
+          {
+            "episode": 2925,
+            "sqlite_bytes": 239959808
+          },
+          {
+            "episode": 2950,
+            "sqlite_bytes": 241721088
+          },
+          {
+            "episode": 2975,
+            "sqlite_bytes": 244522752
+          },
+          {
+            "episode": 3000,
+            "sqlite_bytes": 246390528
+          },
+          {
+            "episode": 3025,
+            "sqlite_bytes": 248246016
+          },
+          {
+            "episode": 3050,
+            "sqlite_bytes": 250953472
+          },
+          {
+            "episode": 3075,
+            "sqlite_bytes": 251846400
+          },
+          {
+            "episode": 3100,
+            "sqlite_bytes": 254508800
+          },
+          {
+            "episode": 3125,
+            "sqlite_bytes": 256302848
+          },
+          {
+            "episode": 3150,
+            "sqlite_bytes": 258076416
+          },
+          {
+            "episode": 3175,
+            "sqlite_bytes": 259899136
+          },
+          {
+            "episode": 3200,
+            "sqlite_bytes": 261758720
+          },
+          {
+            "episode": 3225,
+            "sqlite_bytes": 263540480
+          },
+          {
+            "episode": 3250,
+            "sqlite_bytes": 265314048
+          },
+          {
+            "episode": 3275,
+            "sqlite_bytes": 268066560
+          },
+          {
+            "episode": 3300,
+            "sqlite_bytes": 269795072
+          },
+          {
+            "episode": 3325,
+            "sqlite_bytes": 271703808
+          },
+          {
+            "episode": 3350,
+            "sqlite_bytes": 273481472
+          },
+          {
+            "episode": 3375,
+            "sqlite_bytes": 275279616
+          },
+          {
+            "episode": 3400,
+            "sqlite_bytes": 277954304
+          },
+          {
+            "episode": 3425,
+            "sqlite_bytes": 279781120
+          },
+          {
+            "episode": 3450,
+            "sqlite_bytes": 281571072
+          },
+          {
+            "episode": 3475,
+            "sqlite_bytes": 283410176
+          },
+          {
+            "episode": 3500,
+            "sqlite_bytes": 285196032
+          },
+          {
+            "episode": 3525,
+            "sqlite_bytes": 287964928
+          },
+          {
+            "episode": 3550,
+            "sqlite_bytes": 289824512
+          },
+          {
+            "episode": 3575,
+            "sqlite_bytes": 291573504
+          },
+          {
+            "episode": 3600,
+            "sqlite_bytes": 294313728
+          },
+          {
+            "episode": 3625,
+            "sqlite_bytes": 296161024
+          },
+          {
+            "episode": 3650,
+            "sqlite_bytes": 298016512
+          },
+          {
+            "episode": 3675,
+            "sqlite_bytes": 300740352
+          },
+          {
+            "episode": 3700,
+            "sqlite_bytes": 302534400
+          },
+          {
+            "episode": 3725,
+            "sqlite_bytes": 304418560
+          },
+          {
+            "episode": 3750,
+            "sqlite_bytes": 306200320
+          },
+          {
+            "episode": 3775,
+            "sqlite_bytes": 308879104
+          },
+          {
+            "episode": 3800,
+            "sqlite_bytes": 310730496
+          },
+          {
+            "episode": 3825,
+            "sqlite_bytes": 312553216
+          },
+          {
+            "episode": 3850,
+            "sqlite_bytes": 315326208
+          },
+          {
+            "episode": 3875,
+            "sqlite_bytes": 317136640
+          },
+          {
+            "episode": 3900,
+            "sqlite_bytes": 318951168
+          },
+          {
+            "episode": 3925,
+            "sqlite_bytes": 320769792
+          },
+          {
+            "episode": 3950,
+            "sqlite_bytes": 322547456
+          },
+          {
+            "episode": 3975,
+            "sqlite_bytes": 325304064
+          },
+          {
+            "episode": 4000,
+            "sqlite_bytes": 327114496
+          },
+          {
+            "episode": 4025,
+            "sqlite_bytes": 328961792
+          },
+          {
+            "episode": 4050,
+            "sqlite_bytes": 331734784
+          },
+          {
+            "episode": 4075,
+            "sqlite_bytes": 333594368
+          },
+          {
+            "episode": 4100,
+            "sqlite_bytes": 335392512
+          },
+          {
+            "episode": 4125,
+            "sqlite_bytes": 337215232
+          },
+          {
+            "episode": 4150,
+            "sqlite_bytes": 339017472
+          },
+          {
+            "episode": 4175,
+            "sqlite_bytes": 340860672
+          },
+          {
+            "episode": 4200,
+            "sqlite_bytes": 342589184
+          },
+          {
+            "episode": 4225,
+            "sqlite_bytes": 344366848
+          },
+          {
+            "episode": 4250,
+            "sqlite_bytes": 347041536
+          },
+          {
+            "episode": 4275,
+            "sqlite_bytes": 348884736
+          },
+          {
+            "episode": 4300,
+            "sqlite_bytes": 350732032
+          },
+          {
+            "episode": 4325,
+            "sqlite_bytes": 353439488
+          },
+          {
+            "episode": 4350,
+            "sqlite_bytes": 355266304
+          },
+          {
+            "episode": 4375,
+            "sqlite_bytes": 357150464
+          },
+          {
+            "episode": 4400,
+            "sqlite_bytes": 358977280
+          },
+          {
+            "episode": 4425,
+            "sqlite_bytes": 361668352
+          },
+          {
+            "episode": 4450,
+            "sqlite_bytes": 363536128
+          },
+          {
+            "episode": 4475,
+            "sqlite_bytes": 366321408
+          },
+          {
+            "episode": 4500,
+            "sqlite_bytes": 368148224
+          },
+          {
+            "episode": 4525,
+            "sqlite_bytes": 369979136
+          },
+          {
+            "episode": 4550,
+            "sqlite_bytes": 371777280
+          },
+          {
+            "episode": 4575,
+            "sqlite_bytes": 373587712
+          },
+          {
+            "episode": 4600,
+            "sqlite_bytes": 375389952
+          },
+          {
+            "episode": 4625,
+            "sqlite_bytes": 378101504
+          },
+          {
+            "episode": 4650,
+            "sqlite_bytes": 379920128
+          },
+          {
+            "episode": 4675,
+            "sqlite_bytes": 381759232
+          },
+          {
+            "episode": 4700,
+            "sqlite_bytes": 383491840
+          },
+          {
+            "episode": 4725,
+            "sqlite_bytes": 386240256
+          },
+          {
+            "episode": 4750,
+            "sqlite_bytes": 388017920
+          },
+          {
+            "episode": 4775,
+            "sqlite_bytes": 389877504
+          },
+          {
+            "episode": 4800,
+            "sqlite_bytes": 391675648
+          },
+          {
+            "episode": 4825,
+            "sqlite_bytes": 394399488
+          },
+          {
+            "episode": 4850,
+            "sqlite_bytes": 396148480
+          },
+          {
+            "episode": 4875,
+            "sqlite_bytes": 398020352
+          },
+          {
+            "episode": 4900,
+            "sqlite_bytes": 400776960
+          },
+          {
+            "episode": 4925,
+            "sqlite_bytes": 402513664
+          },
+          {
+            "episode": 4950,
+            "sqlite_bytes": 404336384
+          },
+          {
+            "episode": 4975,
+            "sqlite_bytes": 406105856
+          },
+          {
+            "episode": 5000,
+            "sqlite_bytes": 409779968
+          }
+        ],
+        "final_bytes": 409779968,
+        "bytes_per_episode": 81956.0,
+        "note": "one LangGraph thread_id per episode and no pruning, so this grows linearly by construction; production prunes closed episodes"
+      },
+      "outcome_mix": {
+        "COMPLETED": 4248,
+        "ESCALATED": 752
+      },
+      "tier_counters": {
+        "rules": 21857,
+        "local": 0,
+        "frontier": 0
+      },
+      "tokens_measured_total": 0,
+      "tokens_measured_per_episode": 0.0,
+      "chain_failures": 0,
+      "distinct_episode_digests": 5000,
+      "aggregate_digest": "3cb044ad12c063f33cbe0cdd9a8fcf00ea75c554c9c1e47a92bd7a5b49b2b44d",
+      "determinism_probe": {
+        "scenarios_probed": 25,
+        "run_again_after_episodes": 5000,
+        "digest_mismatches": 0,
+        "mismatch_detail": [],
+        "stable": true
+      }
+    }
+  },
+  "constant_cost_check": {
+    "p50_episode_ms_by_volume": {
+      "50": 259.996666,
+      "200": 248.6075,
+      "1000": 142.939792,
+      "5000": 169.197542
+    },
+    "cpu_seconds_per_episode_by_volume": {
+      "50": 0.26727,
+      "200": 0.23876,
+      "1000": 0.1456,
+      "5000": 0.18297
+    },
+    "throughput_episodes_per_min_by_volume": {
+      "50": 220.6,
+      "200": 238.4,
+      "1000": 414.9,
+      "5000": 320.7
+    },
+    "rss_slope_mb_per_1000_by_volume": {
+      "50": 63.4,
+      "200": 54.9533,
+      "1000": 0.653,
+      "5000": -1.7845
+    },
+    "p50_drift_ratio_largest_over_smallest": 0.651,
+    "cpu_drift_ratio_largest_over_smallest": 0.685,
+    "reading": "per-episode cost is flat across volume when these ratios stay near 1.0; a rising ratio would mean per-episode work grows with how many episodes have already run"
+  },
+  "ledger_append_cost_curve": {
+    "samples": [
+      {
+        "chain_length": 100,
+        "append_ms": 0.8278,
+        "file_bytes": 78600
+      },
+      {
+        "chain_length": 500,
+        "append_ms": 3.1576,
+        "file_bytes": 340600
+      },
+      {
+        "chain_length": 2000,
+        "append_ms": 13.1344,
+        "file_bytes": 1323100
+      },
+      {
+        "chain_length": 8000,
+        "append_ms": 38.896,
+        "file_bytes": 5253100
+      }
+    ],
+    "append_ms_growth_factor": 46.99,
+    "chain_length_growth_factor": 80.0,
+    "reading": "append cost rises with chain length because the JSONL stub re-reads the file to find the tip; CONTRACT section d.4 specifies SQLite with one chain per shift and sharding by correlation_id for the real build"
+  },
+  "total_wall_clock_s": 1334.0,
+  "machine": {
+    "platform": "darwin",
+    "python": "3.13.1",
+    "note": "single process, no parallelism, no GPU"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "pack_schema_version": "1.0.0",
+  "pack_id": "PACK-CALM-01",
+  "label": "SYNTHETIC: all vessels, voyages, containers and terminal state are fictional; structurally faithful to DCSA Port Call 2.0 / JIT shapes",
+  "description": "A routine evening at TUAS-T3: both inbound ETAs move EARLIER, the board goes green, no action class is needed anywhere. The one permanent exception is CN-ESC-01 (evidence completeness 0.40 < 0.60), which must still escalate, calm never means guessing on thin evidence. Baseline expectation: the rules-only lane flags nothing either (all margins > 60 min).",
+  "expected_ref": "calm.expected.json",
+  "events": [
+    {
+      "event_id": "EVT-CALM-000001",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:05:00+08:00",
+      "registered_at": "2026-08-25T14:05:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-0002",
+        "load_window_start": "2026-08-26T00:30:00+08:00",
+        "load_window_end": "2026-08-26T02:26:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CALM-000002",
+      "event_type": "vessel_eta_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T15:20:00+08:00",
+      "registered_at": "2026-08-25T15:20:04+08:00",
+      "source_system": "AIS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "previous_eta": "2026-08-25T20:30:00+08:00",
+        "new_eta": "2026-08-25T18:30:00+08:00",
+        "eta_source": "AIS",
+        "drift_minutes": -120.0,
+        "position": {
+          "lat": 1.201,
+          "lon": 103.741
+        },
+        "berth": "T3-B12",
+        "affected_connections": [
+          "CN-0002"
+        ]
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CALM-000003",
+      "event_type": "vessel_eta_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T15:45:00+08:00",
+      "registered_at": "2026-08-25T15:45:06+08:00",
+      "source_system": "CARRIER_EDI",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "previous_eta": "2026-08-25T23:45:00+08:00",
+        "new_eta": "2026-08-25T19:00:00+08:00",
+        "eta_source": "CARRIER_SCHEDULE",
+        "drift_minutes": -285.0,
+        "position": null,
+        "berth": "T3-B12",
+        "affected_connections": [
+          "CN-0003"
+        ]
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CALM-000004",
+      "event_type": "yard_move",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T16:30:00+08:00",
+      "registered_at": "2026-08-25T16:31:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "container_id": null,
+        "box_group_id": "BG-0001",
+        "move_type": "DISCHARGE_TO_YARD",
+        "from_location": null,
+        "to_location": {
+          "block": "Y21",
+          "bay": 6,
+          "row": 2,
+          "tier": 1
+        },
+        "equipment_id": "ARMG-Y21-01",
+        "started_at": "2026-08-25T16:00:00+08:00",
+        "completed_at": "2026-08-25T16:30:00+08:00",
+        "status": "COMPLETED"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CALM-000005",
+      "event_type": "weather_alert",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T17:00:00+08:00",
+      "registered_at": "2026-08-25T17:00:08+08:00",
+      "source_system": "WEATHER",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "alert_type": "WIND_LIMIT",
+        "station_id": "S117",
+        "value": 22.0,
+        "unit": "km/h",
+        "threshold": 60.0,
+        "effective_from": "2026-08-25T17:00:00+08:00",
+        "effective_until": null,
+        "operational_impact": "NONE"
+      },
+      "label": "SYNTHETIC"
+    }
+  ]
+}

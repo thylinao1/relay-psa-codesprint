@@ -1,0 +1,193 @@
+{
+  "pack_schema_version": "1.0.0",
+  "pack_id": "PACK-HERO-01",
+  "label": "SYNTHETIC: all vessels, voyages, containers and terminal state are fictional; structurally faithful to DCSA Port Call 2.0 / JIT shapes",
+  "_frozen": "FROZEN 2026-08-24. The hero-scenario structured event stream: one instance of EVERY §a event type, replayable byte-identically through twin.ingest_event (SPEC SC-1). The end state of this pack IS world.json. The detection-lead-time headline falls out of expected_outcomes: the agent lane flags CN-0002 at 19:05 off the reconciled advisory; baseline.rules_only cannot see fusion products and first flags at 21:10 when carrier EDI catches up.",
+  "description": "MSKU 481007-3 / connection CN-0002, the 41-minute save. Advisory ADV-2026-0824-001 (golden_advisory.json) lands 19:02; fusion reconciles it; the reconciled vessel_eta_update re-enters the structured stream (EVT-HERO-000003, eta_source=ADVISORY_RECONCILED), the §a7 loop, closed. The carrier's own EDI DELAY arrives only at 21:10.",
+  "advisory_ref": "ADV-2026-0824-001",
+  "events": [
+    {
+      "event_id": "EVT-HERO-000001",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:00:00+08:00",
+      "registered_at": "2026-08-25T14:00:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-0002",
+        "load_window_start": "2026-08-26T00:30:00+08:00",
+        "load_window_end": "2026-08-26T02:26:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-HERO-000002",
+      "event_type": "weather_alert",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T17:30:00+08:00",
+      "registered_at": "2026-08-25T17:30:10+08:00",
+      "source_system": "WEATHER",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "alert_type": "WIND_LIMIT",
+        "station_id": "S117",
+        "value": 38.0,
+        "unit": "km/h",
+        "threshold": 60.0,
+        "effective_from": "2026-08-25T17:30:00+08:00",
+        "effective_until": null,
+        "operational_impact": "NONE"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-HERO-000003",
+      "event_type": "vessel_eta_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T20:30:00+08:00",
+      "registered_at": "2026-08-25T19:05:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "previous_eta": "2026-08-25T16:15:00+08:00",
+        "new_eta": "2026-08-25T20:30:00+08:00",
+        "eta_source": "ADVISORY_RECONCILED",
+        "drift_minutes": 255.0,
+        "position": {
+          "lat": 1.1385,
+          "lon": 103.6355
+        },
+        "berth": "T3-B12",
+        "affected_connections": [
+          "CN-0002"
+        ],
+        "advisory_id": "ADV-2026-0824-001"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-HERO-000004",
+      "event_type": "yard_move",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T18:40:00+08:00",
+      "registered_at": "2026-08-25T18:41:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "container_id": null,
+        "box_group_id": "BG-0002",
+        "move_type": "DISCHARGE_TO_YARD",
+        "from_location": null,
+        "to_location": {
+          "block": "Y12",
+          "bay": 14,
+          "row": 3,
+          "tier": 2
+        },
+        "equipment_id": "ARMG-Y12-02",
+        "started_at": "2026-08-25T18:10:00+08:00",
+        "completed_at": "2026-08-25T18:40:00+08:00",
+        "status": "COMPLETED"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-HERO-000005",
+      "event_type": "discharge_complete",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T18:35:00+08:00",
+      "registered_at": "2026-08-25T18:36:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "box_group_id": "BG-0001",
+        "containers_discharged": 42,
+        "berth": "T3-B12",
+        "completed_at": "2026-08-25T18:35:00+08:00",
+        "crane_count": 3,
+        "avg_moves_per_hour": 28.5
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-HERO-000006",
+      "event_type": "carrier_schedule_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T21:05:00+08:00",
+      "registered_at": "2026-08-25T21:10:00+08:00",
+      "source_system": "CARRIER_EDI",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "carrier_code": "OCLK",
+        "service_code": "AEX1",
+        "voyage": "437W",
+        "change_type": "DELAY",
+        "new_eta": "2026-08-25T20:30:00+08:00",
+        "new_etd": null,
+        "affected_port": "SGSIN",
+        "effective_at": "2026-08-25T21:05:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    }
+  ],
+  "expected_outcomes": {
+    "replay": {
+      "note": "feeding events through twin.ingest_event 3x must be byte-identical; end state equals world.json for CN-0002",
+      "CN-0002": {
+        "verdict": "AT_RISK",
+        "margin_minutes": 41.0,
+        "completeness_score": 1.0
+      }
+    },
+    "agent_lane": {
+      "flags": [
+        "CN-0002"
+      ],
+      "first_flag_ts": "2026-08-25T19:05:00+08:00",
+      "basis": "fusion.parse_reconcile on ADV-2026-0824-001 -> twin.ingest_fact -> feasibility AT_RISK 41 min"
+    },
+    "baseline_rules_only": {
+      "component": "baseline.rules_only",
+      "flags": [
+        "CN-0002"
+      ],
+      "first_flag_ts": "2026-08-25T21:10:00+08:00",
+      "basis": "only the carrier EDI DELAY (EVT-HERO-000006); the ADVISORY_RECONCILED event is fusion product and is dropped"
+    },
+    "detection_lead_minutes": 125.0
+  }
+}

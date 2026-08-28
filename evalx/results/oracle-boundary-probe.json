@@ -1,0 +1,238 @@
+{
+  "profile_version": "1.0.0",
+  "kind": "boundary_probe",
+  "label": "Hand-constructed connections placed exactly on each decision boundary of CONTRACT section b.1, graded by the engine and by the independent oracle.",
+  "why": "the mutation study showed the generated scenario distribution never lands on the completeness gate, the eta weight or a zero margin, so those boundaries were untested by the sweep alone",
+  "boundary_cases": 9,
+  "independent_matches_hand_computation": 9,
+  "implementations_agree": 9,
+  "rows": [
+    {
+      "case_id": "BND-MARGIN-MINUS-1",
+      "note": "one minute past the cut-off",
+      "hand_expected_verdict": "INFEASIBLE",
+      "independent_verdict": "INFEASIBLE",
+      "engine_verdict": "INFEASIBLE",
+      "independent_margin_minutes": -1.0,
+      "engine_margin_minutes": -1.0,
+      "independent_completeness": 1.0,
+      "engine_completeness": 1.0,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-MARGIN-ZERO",
+      "note": "margin exactly zero, the <= 0 edge",
+      "hand_expected_verdict": "INFEASIBLE",
+      "independent_verdict": "INFEASIBLE",
+      "engine_verdict": "INFEASIBLE",
+      "independent_margin_minutes": 0.0,
+      "engine_margin_minutes": 0.0,
+      "independent_completeness": 1.0,
+      "engine_completeness": 1.0,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-MARGIN-PLUS-TENTH",
+      "note": "the first minute inside the window",
+      "hand_expected_verdict": "AT_RISK",
+      "independent_verdict": "AT_RISK",
+      "engine_verdict": "AT_RISK",
+      "independent_margin_minutes": 0.1,
+      "engine_margin_minutes": 0.1,
+      "independent_completeness": 1.0,
+      "engine_completeness": 1.0,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-MARGIN-59-9",
+      "note": "just inside the at-risk band",
+      "hand_expected_verdict": "AT_RISK",
+      "independent_verdict": "AT_RISK",
+      "engine_verdict": "AT_RISK",
+      "independent_margin_minutes": 59.9,
+      "engine_margin_minutes": 59.9,
+      "independent_completeness": 1.0,
+      "engine_completeness": 1.0,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-MARGIN-60",
+      "note": "margin exactly 60, the <= 60 edge",
+      "hand_expected_verdict": "AT_RISK",
+      "independent_verdict": "AT_RISK",
+      "engine_verdict": "AT_RISK",
+      "independent_margin_minutes": 60.0,
+      "engine_margin_minutes": 60.0,
+      "independent_completeness": 1.0,
+      "engine_completeness": 1.0,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-MARGIN-60-1",
+      "note": "the first minute outside the band",
+      "hand_expected_verdict": "FEASIBLE",
+      "independent_verdict": "FEASIBLE",
+      "engine_verdict": "FEASIBLE",
+      "independent_margin_minutes": 60.1,
+      "engine_margin_minutes": 60.1,
+      "independent_completeness": 1.0,
+      "engine_completeness": 1.0,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-COMPLETENESS-055",
+      "note": "0.55, the highest score below the 0.60 gate",
+      "hand_expected_verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "independent_verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "engine_verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "independent_margin_minutes": null,
+      "engine_margin_minutes": null,
+      "independent_completeness": 0.55,
+      "engine_completeness": 0.55,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-COMPLETENESS-060",
+      "note": "0.60 exactly, which the contract does NOT escalate",
+      "hand_expected_verdict": "FEASIBLE",
+      "independent_verdict": "FEASIBLE",
+      "engine_verdict": "FEASIBLE",
+      "independent_margin_minutes": 300.0,
+      "engine_margin_minutes": 300.0,
+      "independent_completeness": 0.6,
+      "engine_completeness": 0.6,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    },
+    {
+      "case_id": "BND-COMPLETENESS-040",
+      "note": "the frozen golden-escalate score",
+      "hand_expected_verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "independent_verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "engine_verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "independent_margin_minutes": null,
+      "engine_margin_minutes": null,
+      "independent_completeness": 0.4,
+      "engine_completeness": 0.4,
+      "independent_matches_hand": true,
+      "implementations_agree": true,
+      "engine_raised": false,
+      "engine_exception": null,
+      "engine_exception_message": null
+    }
+  ],
+  "mutation_coverage_on_this_set": {
+    "mutations_tested": 7,
+    "mutations_detected": 7,
+    "undetected": [],
+    "by_mutation": {
+      "at_risk_boundary_60_to_45": {
+        "scenarios_with_a_changed_verdict": 2,
+        "detection_rate": 0.2222,
+        "at_risk_connections_hidden": 2,
+        "false_alarms_introduced": 0,
+        "detected": true
+      },
+      "completeness_gate_060_to_050": {
+        "scenarios_with_a_changed_verdict": 1,
+        "detection_rate": 0.1111,
+        "at_risk_connections_hidden": 1,
+        "false_alarms_introduced": 0,
+        "detected": true
+      },
+      "ready_time_drops_restow": {
+        "scenarios_with_a_changed_verdict": 4,
+        "detection_rate": 0.4444,
+        "at_risk_connections_hidden": 2,
+        "false_alarms_introduced": 0,
+        "detected": true
+      },
+      "ready_time_drops_buffer_p90": {
+        "scenarios_with_a_changed_verdict": 4,
+        "detection_rate": 0.4444,
+        "at_risk_connections_hidden": 2,
+        "false_alarms_introduced": 0,
+        "detected": true
+      },
+      "ready_time_drops_discharge": {
+        "scenarios_with_a_changed_verdict": 5,
+        "detection_rate": 0.5556,
+        "at_risk_connections_hidden": 3,
+        "false_alarms_introduced": 0,
+        "detected": true
+      },
+      "eta_weight_030_to_020": {
+        "scenarios_with_a_changed_verdict": 1,
+        "detection_rate": 0.1111,
+        "at_risk_connections_hidden": 0,
+        "false_alarms_introduced": 1,
+        "detected": true
+      },
+      "infeasible_only_strictly_below_zero": {
+        "scenarios_with_a_changed_verdict": 1,
+        "detection_rate": 0.1111,
+        "at_risk_connections_hidden": 0,
+        "false_alarms_introduced": 0,
+        "detected": true
+      }
+    },
+    "note": "the same seven rule mutations that the 320-scenario sweep could not all detect, re-run on this boundary set; a full sweep of the taxonomy here is what closes the coverage gap"
+  },
+  "engine_raised_instead_of_returning": [
+    "AMB-FLAG-WITHOUT-VALUE"
+  ],
+  "contract_ambiguities": {
+    "cases": 1,
+    "agree": 0,
+    "rows": [
+      {
+        "case_id": "AMB-FLAG-WITHOUT-VALUE",
+        "note": "evidence.discharge_estimate is true but estimates.discharge_minutes is null",
+        "hand_expected_verdict": null,
+        "independent_verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+        "engine_verdict": "ENGINE_RAISED",
+        "independent_margin_minutes": null,
+        "engine_margin_minutes": null,
+        "independent_completeness": 1.0,
+        "engine_completeness": null,
+        "independent_matches_hand": true,
+        "implementations_agree": false,
+        "engine_raised": true,
+        "engine_exception": "TypeError",
+        "engine_exception_message": "unsupported operand type(s) for +: 'NoneType' and 'float'"
+      }
+    ],
+    "note": "the contract sentence does not say what a flagged field with no value means, so a divergence here is an ambiguity in the specification and is reported as such rather than counted against either implementation. CONTRACT section b.0 does settle the error CHANNEL, however: tools return structured errors and never raise across the MCP boundary, so an entry in engine_raised_instead_of_returning is a robustness gap in its own right."
+  }
+}

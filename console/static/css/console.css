@@ -1,0 +1,774 @@
+/* RELAY console: layout + components (direction: console/DESIGN-DIRECTION.md) */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.45;
+}
+
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+[hidden] { display: none !important; }
+input, textarea { font: inherit; color: var(--ink); }
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--act);
+  outline-offset: 1px;
+}
+
+/* board tally in the panel head: state counts read at a glance */
+.count .t-warn { color: var(--warn); }
+.count .t-bad { color: var(--bad); }
+.count .t-hold { color: var(--hold); }
+
+.microlabel {
+  font-size: var(--text-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* ---------------------------------------------------------------- header */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-4);
+  padding: var(--gap-3) var(--gap-4);
+  border-bottom: 1px solid var(--line);
+  /* Sticky so the SYNTHETIC chip and the wall clock stay in frame when a
+     raised approval card pushes the trace panel below the fold (a live demo
+     then matches the recorded footage; see deliverables/captures/MANIFEST.md). */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ground);
+}
+.wordmark { font-size: var(--text-title); font-weight: 700; letter-spacing: 0.18em; }
+.wordmark small { color: var(--ink-dim); font-weight: 400; letter-spacing: 0.06em; }
+
+.chip {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: var(--radius-chip);
+  font-size: var(--text-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-dim);
+}
+.chip.synthetic { color: var(--warn); border-color: rgba(242, 177, 53, 0.4); }
+.chip.mode-normal { color: var(--ok); border-color: rgba(63, 206, 124, 0.4); }
+.chip.mode-degraded {
+  color: var(--warn);
+  border-color: var(--warn);
+  background: var(--warn-bg);
+  animation: pulse 2s infinite;
+}
+.chip.mode-replay { color: var(--act); border-color: rgba(63, 167, 242, 0.5); }
+.chip.chain-ok { color: var(--ok); border-color: rgba(63, 206, 124, 0.4); }
+.chip.chain-bad { color: var(--bad); border-color: var(--bad); background: var(--bad-bg); }
+
+.topbar .spacer { flex: 1; }
+.clockbox { text-align: right; }
+.clockbox .wall {
+  font-family: var(--font-mono);
+  font-size: var(--text-clock);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.clockbox .asof { font-size: var(--text-small); color: var(--ink-faint); }
+
+/* -------------------------------------------------------------- offline */
+.banner-offline {
+  display: none;
+  padding: var(--gap-2) var(--gap-4);
+  background: var(--bad-bg);
+  color: var(--bad);
+  border-bottom: 1px solid var(--bad);
+  font-size: var(--text-small);
+}
+.banner-offline.show { display: block; }
+
+/* ---------------------------------------------------------------- layout */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(320px, 3fr);
+  gap: var(--gap-4);
+  padding: var(--gap-4);
+  align-items: start;
+}
+.band {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(320px, 3fr);
+  gap: var(--gap-4);
+  padding: 0 var(--gap-4) var(--gap-5);
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .layout, .band { grid-template-columns: 1fr; }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  /* Grid items default to min-width:auto, which lets a wide child (board rows,
+     mono action lines) force the track, and the page, wider than the
+     viewport. Panels must always shrink to the track instead. */
+  min-width: 0;
+}
+.panel-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-2);
+  padding: var(--gap-2) var(--gap-3);
+  border-bottom: 1px solid var(--line);
+}
+.panel-head h2 { font-size: var(--text-small); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim); font-weight: 600; }
+.panel-head .count { color: var(--ink-faint); font-size: var(--text-small); }
+.panel-head .spacer { flex: 1; }
+
+.empty, .loading {
+  padding: var(--gap-4) var(--gap-3);
+  color: var(--ink-faint);
+  font-size: var(--text-small);
+}
+/* A refresh that failed, shown where the content was (format.js panelErrorHtml). */
+.empty.err { color: var(--bad); }
+.empty.err .err-detail { color: var(--ink-faint); margin-top: var(--gap-1); font-family: var(--font-mono); }
+.skeleton-row {
+  height: 46px;
+  margin: var(--gap-2) var(--gap-3);
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--panel-raised) 25%, var(--line) 50%, var(--panel-raised) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* ----------------------------------------------------------------- board */
+.conn-row {
+  display: grid;
+  grid-template-columns: 4px minmax(150px, 1.4fr) minmax(110px, 1fr) minmax(0, 2fr) 96px;
+  gap: var(--gap-3);
+  align-items: center;
+  padding: var(--gap-2) var(--gap-3) var(--gap-2) 0;
+  border-bottom: 1px solid var(--line);
+  transition: background var(--duration-normal) var(--ease-out);
+}
+.conn-row:last-child { border-bottom: none; }
+.conn-row .rail { align-self: stretch; border-radius: 0 2px 2px 0; }
+.conn-row.v-FEASIBLE .rail { background: var(--ok); }
+.conn-row.v-AT_RISK .rail { background: var(--warn); animation: pulse 2s infinite; }
+.conn-row.v-AT_RISK { background: var(--warn-bg); }
+.conn-row.v-INFEASIBLE .rail { background: var(--bad); }
+.conn-row.v-INFEASIBLE { background: var(--bad-bg); }
+.conn-row.v-ESCALATE_INSUFFICIENT_EVIDENCE .rail { background: var(--hold); }
+.conn-row.v-ESCALATE_INSUFFICIENT_EVIDENCE { background: var(--hold-bg); }
+
+.conn-id { font-weight: 600; }
+.conn-id .sub { display: block; font-size: var(--text-small); color: var(--ink-dim); font-weight: 400; }
+.cutoff .t-minus { font-family: var(--font-mono); font-size: 15px; font-weight: 600; }
+.cutoff .abs { display: block; font-size: var(--text-micro); color: var(--ink-faint); }
+
+.marginbar { position: relative; height: 26px; }
+.marginbar .zero {
+  position: absolute; top: 0; bottom: 0; left: 33%;
+  width: 1px; background: var(--line-strong);
+}
+.marginbar .bar {
+  position: absolute; top: 7px; height: 12px; border-radius: 2px;
+  transition: width var(--duration-normal) var(--ease-out), left var(--duration-normal) var(--ease-out);
+}
+.marginbar .bar.pos { left: calc(33% + 1px); background: var(--ok); }
+.marginbar .bar.pos.warn { background: var(--warn); }
+.marginbar .bar.neg { background: var(--bad); }
+.marginbar .bar.none { background: var(--hold); left: calc(33% + 1px); width: 8px; opacity: 0.6; }
+.marginbar .scale {
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  font-size: 8px; color: var(--ink-faint);
+  display: flex; justify-content: space-between;
+}
+
+.margin-num { text-align: right; }
+.margin-num .n {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.conn-row.hero .margin-num .n { font-size: var(--text-margin); }
+.margin-num.m-ok .n { color: var(--ok); }
+.margin-num.m-warn .n { color: var(--warn); }
+.margin-num.m-bad .n { color: var(--bad); }
+.margin-num.m-hold .n { color: var(--hold); font-size: 15px; }
+.margin-num .unit { font-size: var(--text-micro); color: var(--ink-dim); }
+
+/* Narrow screens: the five-column board row cannot honour its 150/110/96px
+   column minimums inside a ~375px viewport, so it reflows into a stacked
+   grid: identity + margin number on top, cut-off beneath, bar full-width. */
+@media (max-width: 640px) {
+  .topbar { flex-wrap: wrap; row-gap: var(--gap-1); }
+  .clockbox { text-align: left; }
+  .conn-row {
+    grid-template-columns: 4px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "rail id     num"
+      "rail cutoff num"
+      "rail bar    bar";
+    row-gap: var(--gap-1);
+    padding-right: var(--gap-2);
+  }
+  .conn-row .rail { grid-area: rail; }
+  .conn-row .conn-id { grid-area: id; min-width: 0; overflow-wrap: anywhere; }
+  .conn-row .cutoff { grid-area: cutoff; }
+  .conn-row .marginbar { grid-area: bar; }
+  .conn-row .margin-num { grid-area: num; align-self: center; }
+  .conn-row.hero .margin-num .n { font-size: 26px; }
+}
+
+/* ------------------------------------------------------------- approvals */
+.card {
+  margin: var(--gap-3);
+  background: var(--panel-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-panel);
+  padding: var(--gap-3);
+  animation: rise var(--duration-normal) var(--ease-out);
+}
+.card .head { display: flex; gap: var(--gap-2); align-items: baseline; margin-bottom: var(--gap-2); }
+.card .head .id { font-family: var(--font-mono); font-size: var(--text-small); color: var(--ink-dim); }
+.chip.tier { color: var(--act); border-color: rgba(63, 167, 242, 0.5); }
+.chip.risk-LOW { color: var(--ok); border-color: rgba(63, 206, 124, 0.4); }
+.chip.risk-MEDIUM { color: var(--warn); border-color: rgba(242, 177, 53, 0.5); }
+.chip.risk-HIGH { color: var(--bad); border-color: rgba(242, 84, 91, 0.5); }
+.chip.status-PENDING { color: var(--warn); }
+.chip.status-APPROVED { color: var(--ok); }
+.chip.status-DENIED, .chip.status-EXPIRED_DENIED { color: var(--bad); border-color: var(--bad); }
+
+.card .action-line {
+  font-family: var(--font-mono); font-size: var(--text-small);
+  margin: var(--gap-1) 0 var(--gap-2);
+  overflow-wrap: anywhere; /* JSON args preview must never widen the page */
+}
+.card .risk-basis { font-size: var(--text-small); color: var(--ink-dim); margin-bottom: var(--gap-2); }
+
+.conf { margin: var(--gap-2) 0; }
+.conf .row { display: flex; align-items: center; gap: var(--gap-2); font-size: var(--text-small); }
+.conf .row .label { width: 118px; color: var(--ink-dim); }
+.conf .meter { flex: 1; height: 5px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.conf .meter i { display: block; height: 100%; background: var(--act); border-radius: 3px; }
+.conf .val { width: 34px; text-align: right; font-family: var(--font-mono); }
+.conf .basis { font-size: var(--text-micro); color: var(--ink-faint); margin-top: var(--gap-1); }
+
+.plan { margin: var(--gap-2) 0; }
+.plan li { list-style: none; display: flex; gap: var(--gap-2); align-items: center; padding: 3px 0; font-size: var(--text-small); }
+.plan .step-no { font-family: var(--font-mono); color: var(--ink-faint); }
+.plan input[type="text"] {
+  flex: 1; background: var(--ground); border: 1px solid var(--line-strong);
+  border-radius: 4px; padding: 3px 7px; font-size: var(--text-small);
+}
+.plan .fixed { flex: 1; color: var(--ink-dim); }
+.plan .lock { font-size: var(--text-micro); color: var(--ink-faint); }
+
+.options { margin: var(--gap-2) 0; }
+.options .opt { display: flex; gap: var(--gap-2); font-size: var(--text-small); padding: 3px 0; align-items: baseline; }
+.options .opt .cost { font-family: var(--font-mono); color: var(--ink-dim); min-width: 62px; }
+.options .opt .constraint { color: var(--bad); font-size: var(--text-micro); }
+
+.justify textarea {
+  width: 100%; min-height: 52px; background: var(--ground);
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  padding: var(--gap-2); font-size: var(--text-small); resize: vertical;
+}
+.justify .req { color: var(--warn); font-size: var(--text-micro); }
+
+.card .buttons { display: flex; gap: var(--gap-2); margin-top: var(--gap-3); }
+.btn {
+  padding: 6px 14px; border-radius: 6px; font-size: var(--text-small);
+  font-weight: 600; letter-spacing: 0.04em;
+  border: 1px solid var(--line-strong);
+  transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 2px solid var(--act); outline-offset: 2px; }
+.btn.approve { background: var(--ok-bg); color: var(--ok); border-color: rgba(63, 206, 124, 0.5); }
+.btn.approve:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+.btn.deny { background: var(--bad-bg); color: var(--bad); border-color: rgba(242, 84, 91, 0.5); }
+.btn.ghost { color: var(--ink-dim); }
+.btn.ghost:hover { background: var(--panel-raised); color: var(--ink); }
+.deny-after { font-size: var(--text-micro); color: var(--ink-faint); margin-left: auto; align-self: center; }
+/* SC-6 is not running for this card: a control that is off, not a missing readout. */
+.deny-after.unenforced {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border-radius: var(--radius-chip);
+  padding: 2px var(--gap-2);
+  cursor: help;
+}
+.deny-after.unenforced b { text-transform: uppercase; letter-spacing: 0.06em; }
+/* gate check line: what the refusing layers would answer an Approve, advice only */
+.card .readiness { margin-top: var(--gap-2); font-size: var(--text-micro); color: var(--ink-faint); }
+.card .readiness.ok { color: var(--ok); }
+.card .readiness.blocked { color: var(--bad); }
+
+.card .outcome { margin-top: var(--gap-2); font-size: var(--text-small); }
+.card .outcome.ok { color: var(--ok); }
+.card .outcome.err { color: var(--bad); }
+.card .escalation {
+  margin-top: var(--gap-2); padding: var(--gap-2);
+  background: var(--bad-bg); border-left: 3px solid var(--bad);
+  font-size: var(--text-small); border-radius: 0 4px 4px 0;
+}
+
+/* -------------------------------------------- what-if (simulate-before-approve) */
+.whatif {
+  margin: var(--gap-2) 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: var(--gap-2) var(--gap-3) var(--gap-3);
+  background: var(--panel);
+}
+.whatif legend { padding: 0 4px; }
+.whatif .variants { display: flex; flex-direction: column; gap: 2px; margin-top: var(--gap-1); }
+.variant {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 2px var(--gap-2);
+  align-items: baseline;
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: var(--text-small);
+  transition: background var(--duration-fast), border-color var(--duration-fast);
+}
+.variant:hover { background: var(--panel-raised); }
+.variant:focus-within { outline: 2px solid var(--act); outline-offset: 1px; }
+.variant.sel { border-color: rgba(63, 167, 242, 0.5); background: var(--act-bg); }
+.variant input { accent-color: var(--act); }
+.variant .v-main { min-width: 0; overflow-wrap: anywhere; }
+.variant .v-meta {
+  font-family: var(--font-mono); font-size: var(--text-micro);
+  color: var(--ink-dim); text-align: right; white-space: nowrap;
+}
+.variant .v-constraint { grid-column: 2 / -1; color: var(--bad); font-size: var(--text-micro); }
+
+/* An option the expected-value gate declined is offered but LABELLED: the chip carries
+   the same two numbers the plan panel's advise-only rows carry, and the row is dimmed so
+   the officer reads the decline before the radio button rather than in a 409. */
+.variant.declined { background: var(--warn-bg); }
+.variant.declined .v-main { color: var(--ink-dim); }
+.variant .v-advise {
+  grid-column: 2 / -1;
+  color: var(--warn);
+  font-size: var(--text-micro);
+  overflow-wrap: anywhere;
+}
+.variant .v-advise b {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 4px;
+}
+
+.whatif-actions {
+  display: flex; align-items: center; gap: var(--gap-2);
+  margin-top: var(--gap-2); flex-wrap: wrap;
+}
+.whatif-actions .priority {
+  display: flex; align-items: center; gap: 5px;
+  font-size: var(--text-micro); color: var(--ink-dim);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  transition: opacity var(--duration-fast);
+}
+.whatif-actions .priority.off { opacity: 0.4; }
+.whatif-actions select {
+  background: var(--ground); border: 1px solid var(--line-strong);
+  border-radius: 4px; padding: 2px 6px; font-size: var(--text-small);
+  letter-spacing: normal; cursor: pointer;
+}
+.btn.resim { background: var(--act-bg); color: var(--act); border-color: rgba(63, 167, 242, 0.5); }
+.btn.resim:disabled { opacity: 0.5; transform: none; cursor: progress; }
+.edit-flag {
+  font-size: var(--text-micro); color: var(--warn);
+  letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
+}
+
+.whatif-result {
+  margin-top: var(--gap-2);
+  font-family: var(--font-mono); font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+}
+.whatif-result:empty { display: none; }
+.whatif-result.err { color: var(--bad); font-family: var(--font-sans); }
+.whatif-result .d-ok { color: var(--ok); }
+.whatif-result .d-warn { color: var(--warn); }
+.whatif-result .d-bad { color: var(--bad); }
+.whatif-result .w-note {
+  display: block; color: var(--warn);
+  font-family: var(--font-sans); font-size: var(--text-micro); margin-top: 2px;
+}
+.whatif-result .w-constraint {
+  display: block; color: var(--bad);
+  font-family: var(--font-sans); font-size: var(--text-micro); margin-top: 2px;
+}
+
+.whatif-history { display: flex; gap: var(--gap-1); flex-wrap: wrap; margin-top: var(--gap-2); }
+.wchip {
+  border: 1px solid var(--line-strong); border-radius: 3px;
+  padding: 0 6px; font-size: var(--text-micro);
+  font-family: var(--font-mono); color: var(--ink-dim);
+}
+.wchip.latest { color: var(--act); border-color: rgba(63, 167, 242, 0.5); }
+.wchip.none { border-style: dashed; color: var(--ink-faint); }
+
+/* ----------------------------------------------------------------- trace */
+.trace-list { max-height: 420px; overflow-y: auto; overflow-x: auto; }
+.trace-ev {
+  display: flex; gap: var(--gap-2); align-items: baseline;
+  padding: 4px var(--gap-3); border-bottom: 1px solid var(--line);
+  font-size: var(--text-small); animation: fadein var(--duration-fast) ease-out;
+  white-space: nowrap;
+}
+.trace-ev .seq { font-family: var(--font-mono); color: var(--ink-faint); min-width: 74px; }
+.trace-ev .ts { font-family: var(--font-mono); color: var(--ink-dim); min-width: 66px; }
+.actor {
+  min-width: 46px; text-align: center; border-radius: 3px;
+  font-size: var(--text-micro); text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0 4px;
+}
+.actor-llm { background: var(--rationale-bg); color: var(--rationale); }
+.actor-tool { background: var(--act-bg); color: var(--act); }
+.actor-rule { background: rgba(133, 149, 165, 0.16); color: var(--ink-dim); }
+.actor-human { background: var(--ok-bg); color: var(--ok); }
+.trace-ev .action { overflow: hidden; text-overflow: ellipsis; flex: 1 1 auto; min-width: 24ch; }
+.trace-ev .change {
+  color: var(--ink-faint); font-family: var(--font-mono); font-size: var(--text-micro);
+  flex: 0 1 auto; max-width: 36ch; overflow: hidden; text-overflow: ellipsis;
+}
+
+.badge {
+  border-radius: 3px; padding: 0 5px; font-size: var(--text-micro);
+  letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
+}
+.badge-fail { background: var(--bad-bg); color: var(--bad); border: 1px solid var(--bad); }
+.badge-degraded { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn); }
+.badge-recovered { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok); }
+.badge-deny { background: var(--bad-bg); color: var(--bad); border: 1px solid var(--bad); }
+.badge-escalated { background: var(--hold-bg); color: var(--hold); border: 1px solid var(--hold); }
+.badge-held { background: var(--hold-bg); color: var(--hold); border: 1px dashed var(--hold); }
+.badge-seeded { background: var(--rationale-bg); color: var(--rationale); border: 1px solid var(--rationale); }
+
+.trace-ev:not(.has-error):not(.rationale):hover { background: var(--panel-raised); }
+
+.trace-ev.rationale {
+  background: var(--rationale-bg);
+  border-left: 3px solid var(--rationale);
+  white-space: normal;
+}
+.trace-ev.rationale .action { font-style: italic; color: var(--ink-dim); max-width: none; }
+.trace-ev.has-error { background: var(--bad-bg); }
+
+/* ------------------------------------------------------------ governance */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: var(--gap-3);
+  padding: var(--gap-3);
+}
+.tile {
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: var(--gap-3);
+}
+.tile .value { font-family: var(--font-mono); font-size: 24px; font-weight: 650; margin: 2px 0; }
+.tile .denom { font-size: var(--text-small); color: var(--ink-dim); }
+.tile .note { font-size: var(--text-micro); color: var(--ink-faint); margin-top: var(--gap-1); }
+.tile .value.warn { color: var(--warn); }
+.tile .value.ok { color: var(--ok); }
+.tile .value.hold { color: var(--hold); }
+.tile .tiers { display: flex; gap: var(--gap-2); font-family: var(--font-mono); font-size: 15px; }
+.tile .tiers b { font-size: 20px; }
+
+/* -------------------------------------------------------------- controls */
+.controls-strip {
+  display: flex; gap: var(--gap-4); align-items: center;
+  padding: var(--gap-3) var(--gap-4);
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.control-block { display: flex; flex-direction: column; gap: var(--gap-1); }
+
+.killswitch {
+  display: flex; align-items: center; gap: var(--gap-2);
+  padding: var(--gap-2) var(--gap-3);
+  background: var(--panel-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  font-size: var(--text-small); font-weight: 600;
+}
+.killswitch .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ink-faint); }
+.killswitch:not(.armed):hover { border-color: rgba(242, 84, 91, 0.5); }
+.killswitch.armed { border-color: var(--bad); background: var(--bad-bg); color: var(--bad); }
+.killswitch.armed .dot { background: var(--bad); animation: pulse 1s infinite; }
+.killswitch:focus-visible { outline: 2px solid var(--act); outline-offset: 2px; }
+
+.switch {
+  display: flex; border: 1px solid var(--line-strong);
+  border-radius: 6px; overflow: hidden; font-size: var(--text-small);
+}
+.switch button { padding: 5px 12px; color: var(--ink-dim); transition: color var(--duration-fast), background var(--duration-fast); }
+.switch button:hover { color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--act); outline-offset: -2px; }
+.switch button.on { background: var(--act-bg); color: var(--act); font-weight: 700; }
+
+.driver { margin-left: auto; display: flex; gap: var(--gap-2); align-items: center; }
+.driver .btn { font-size: var(--text-micro); padding: 4px 9px; }
+.driver-note { font-size: var(--text-micro); color: var(--ink-faint); max-width: 220px; }
+
+.toast {
+  position: fixed; right: var(--gap-4); bottom: var(--gap-4);
+  background: var(--panel-raised); border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--ok);
+  padding: var(--gap-2) var(--gap-3); border-radius: 6px;
+  font-size: var(--text-small);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity var(--duration-normal), transform var(--duration-normal) var(--ease-out);
+  pointer-events: none; max-width: min(380px, calc(100vw - 2 * var(--gap-4)));
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.err { border-left-color: var(--bad); }
+
+/* ------------------------------------------------------------- keyframes */
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------------------------------------------------- joint recovery plan
+   The panel's subject is a SHARED budget, so the budget rail is the visual
+   anchor and the chosen steps hang off it. Full width between the board and
+   the trace band, because the allocation spans the whole board rather than
+   belonging to any one connection. */
+.plan-panel {
+  margin: 0 var(--gap-4) var(--gap-4);
+}
+
+.plan-head-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-3);
+  padding: var(--gap-3) var(--gap-4);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.plan-head-line .objective {
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+.plan-total {
+  font-size: var(--text-title);
+  color: var(--ink);
+}
+.plan-total .unit {
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+  margin-left: var(--gap-1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* The budget rail: what the allocation is competing over. */
+.budget-rail {
+  list-style: none;
+  margin: 0;
+  padding: var(--gap-3) var(--gap-4);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--gap-2) var(--gap-4);
+  background: var(--panel-raised);
+  border-bottom: 1px solid var(--line);
+}
+.budget-row {
+  display: grid;
+  grid-template-columns: 1fr 64px auto;
+  align-items: center;
+  gap: var(--gap-2);
+  font-size: var(--text-small);
+  color: var(--ink-faint);
+}
+.budget-row.spent { color: var(--ink-dim); }
+.budget-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.budget-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+  display: block;
+}
+.budget-fill {
+  display: block;
+  height: 100%;
+  background: var(--act);
+  transform-origin: left center;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+.budget-count { color: var(--ink-dim); font-size: var(--text-small); }
+.budget-row.spent .budget-count { color: var(--act); }
+.budget-count .of { color: var(--ink-faint); }
+
+/* Steps: rank first, because the order is the solver's deterministic tiebreak
+   and not an arbitrary listing. */
+.plan-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: none;
+}
+.plan-step {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 3fr) minmax(0, 2fr) auto auto;
+  align-items: center;
+  gap: var(--gap-3);
+  padding: var(--gap-3) var(--gap-4);
+  border-bottom: 1px solid var(--line);
+  opacity: 0;
+  transform: translateY(4px);
+  animation: plan-step-in var(--duration-normal) var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+@keyframes plan-step-in {
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plan-step { animation: none; opacity: 1; transform: none; }
+  .budget-fill { transition: none; }
+}
+.plan-step:last-child { border-bottom: 0; }
+.step-rank {
+  color: var(--ink-faint);
+  font-size: var(--text-small);
+  text-align: right;
+}
+.step-conn { min-width: 0; font-size: var(--text-base); color: var(--ink); }
+.step-conn .sub {
+  display: block;
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+}
+.step-action {
+  font-size: var(--text-small);
+  color: var(--act);
+  background: var(--act-bg);
+  border-radius: var(--radius-chip);
+  padding: 2px var(--gap-2);
+  justify-self: start;
+}
+.step-margin { font-size: var(--text-base); color: var(--ok); text-align: right; }
+.step-margin .unit {
+  display: block;
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.step-cost { font-size: var(--text-small); color: var(--ink-dim); text-align: right; }
+
+.plan-unsaved {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-3);
+  padding: var(--gap-3) var(--gap-4);
+  border-top: 1px solid var(--line);
+  background: var(--bad-bg);
+  font-size: var(--text-small);
+  color: var(--bad);
+}
+/* One row per unsaved connection: the id, then the binding constraint that explains it. */
+.unsaved-rows { list-style: none; margin: 0; padding: 0; min-width: 0; }
+.unsaved-row { display: flex; align-items: baseline; gap: var(--gap-2); min-width: 0; }
+.unsaved-row + .unsaved-row { margin-top: 4px; }
+.unsaved-conn { white-space: nowrap; }
+.unsaved-why {
+  color: var(--ink-dim);
+  font-size: var(--text-micro);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/* Advise only: the connections the expected-value gate priced below their own cost.
+   Read as a third state between a plan step and an unsaved connection, so it borrows the
+   plan step's grid rather than inventing a second rhythm, and takes the warn hue rather
+   than the bad one: nothing failed here, the system declined to spend. */
+.plan-advise {
+  border-top: 1px solid var(--line);
+  background: var(--warn-bg);
+}
+.plan-advise .microlabel {
+  display: block;
+  padding: var(--gap-3) var(--gap-4) 0;
+  color: var(--warn);
+}
+.advise-rows { list-style: none; margin: 0; padding: 0; }
+.advise-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto auto;
+  align-items: baseline;
+  gap: var(--gap-3);
+  padding: var(--gap-2) var(--gap-4) var(--gap-3);
+  font-size: var(--text-small);
+}
+.advise-conn { min-width: 0; color: var(--ink); }
+.advise-conn .sub {
+  display: block;
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+}
+.advise-action {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border-radius: var(--radius-chip);
+  padding: 2px var(--gap-2);
+  justify-self: start;
+}
+.advise-prob { color: var(--ink-dim); text-align: right; }
+.advise-prob .unit { padding: 0 4px; color: var(--ink-faint); }
+.advise-value { color: var(--ink-dim); text-align: right; }
+.advise-cost { color: var(--warn); text-align: right; }
+.advise-value .unit,
+.advise-cost .unit {
+  display: block;
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+@media (max-width: 640px) {
+  .advise-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: var(--gap-2); }
+}
+
+.plan-idle { padding: var(--gap-4); }
+.plan-note {
+  margin: 0;
+  padding: var(--gap-3) var(--gap-4);
+  font-size: var(--text-micro);
+  line-height: 1.6;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--line);
+}
+.plan-idle .plan-note { border-top: 0; padding: var(--gap-2) 0 0; }
+
+/* The deny window is env-configurable; a shortened one says so on the header. */
+#deny-window.shortened { color: var(--warn); }

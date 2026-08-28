@@ -1,0 +1,854 @@
+{
+ "audit_version": "1.1.0",
+ "label": "SIMULATOR-INTERNAL: yard-transfer variance only; vessel ETA slip is not in this distribution",
+ "first_sentence": "Each of the 29 expedite saves the sweep booked is re-priced in the simulator's own 40-replication transfer distribution: the probability the box group would have rolled without the expedite, and with it. The sum of the differences is the number of rollovers the expedites are expected to have avoided, which is what a save is worth, and it is a fraction of the 29 booked. This arm ran with the expected-value gate ON: every booked expedite had expected_value_usd >= cost_usd at decision time, so the headline figure here is priced on a HELD-OUT replication block the gate never saw, and the in-sample figure the gate selected on is printed beside it under `selection`.",
+ "source": {
+  "checkpoint": "evalx/sweep_ckpt/sweep-seed42-n500-evgate.json",
+  "checkpoint_sha256": "344653b71616c3fc149d6991c3e9368ac48621070ab9318656e965894d4e144e",
+  "sweep_file": "evalx/results/sweep-full-n500-evgate.json",
+  "shipped_sweep_results_digest": "6b31e678e665951d42f643704c9090e808618341543cf77153d2ef67ab79ba0c",
+  "ev_gate_enabled": true,
+  "arithmetic": "twin.ev_gate.p_roll, shared with the expected-value gate",
+  "replications": 40,
+  "replications_source": "twin.generate.generate_world signature, twin_replications",
+  "sensitivity_replications": 120,
+  "band_minutes": 60.0
+ },
+ "population": {
+  "sweep_rows": 500,
+  "expedite_saves_booked": 29,
+  "restow_actions": 0,
+  "advise_only_episodes": 157,
+  "verdict_before_of_expedites": {
+   "AT_RISK": 29
+  },
+  "margin_before_deciles": [
+   5.0,
+   6.0,
+   7.0,
+   8.0,
+   9.0,
+   10.0,
+   11.0,
+   13.0,
+   18.0,
+   22.0,
+   35.0
+  ]
+ },
+ "tie_to_shipped_worlds": {
+  "saves_checked": 29,
+  "buffer_mismatches": 0,
+  "ok": true
+ },
+ "headline": {
+  "expected_rollovers_avoided": 1.15,
+  "over_saves_booked": 29,
+  "avoided_per_booked_save": 0.0397,
+  "mean_p_roll_before": 0.0405,
+  "mean_p_roll_after": 0.0009,
+  "sensitivity_120_samples_expected_rollovers_avoided": 1.417,
+  "basis": "held_out"
+ },
+ "selection": {
+  "gate_selected_on_these_draws": true,
+  "held_out": {
+   "seed_offset": 1,
+   "samples_per_save": 120,
+   "expected_rollovers_avoided": 1.15,
+   "avoided_per_booked_save": 0.0397,
+   "mean_p_roll_before": 0.0405,
+   "mean_p_roll_after": 0.0009
+  },
+  "in_sample": {
+   "samples_per_save": 120,
+   "why_this_pool": "the gate decides at twin.ev_gate.DECISION_REPLICATIONS draws, so this is the statistic it selected on",
+   "expected_rollovers_avoided": 1.417,
+   "avoided_per_booked_save": 0.0489,
+   "mean_p_roll_before": 0.0489,
+   "mean_p_roll_after": 0.0
+  },
+  "in_sample_at_generator_replications": {
+   "samples_per_save": 40,
+   "why_this_pool": "the count the world's stored buffer_p90_minutes was built from; provenance, not the decision rule",
+   "expected_rollovers_avoided": 1.175,
+   "avoided_per_booked_save": 0.0405,
+   "mean_p_roll_before": 0.0405,
+   "mean_p_roll_after": 0.0
+  },
+  "held_out_minus_in_sample": -0.0092,
+  "winners_curse_share": 0.1881,
+  "note": "the expected-value gate admits a save by computing P(roll) with this function, on this seed, over these draws, so on a gated arm an in-sample re-pricing restates the selection rule instead of testing it. The held-out block is an independent replication of the same distribution for the same worlds, drawn at world_seed + 1, which the gate never saw. On a gated arm the held-out figure is the estimate and the in-sample one is a diagnostic; on an ungated arm nothing selected on either, so the shipped figure stays the in-sample one and the held-out block is a second sample beside it"
+ },
+ "by_margin_band": [
+  {
+   "margin_before_band": "0 to 15",
+   "n": 20,
+   "mean_p_roll_before": 0.0437,
+   "mean_p_roll_after": 0.0,
+   "expected_rollovers_avoided": 0.875
+  },
+  {
+   "margin_before_band": "15 to 30",
+   "n": 7,
+   "mean_p_roll_before": 0.0393,
+   "mean_p_roll_after": 0.0,
+   "expected_rollovers_avoided": 0.275
+  },
+  {
+   "margin_before_band": "30 to 45",
+   "n": 2,
+   "mean_p_roll_before": 0.0125,
+   "mean_p_roll_after": 0.0,
+   "expected_rollovers_avoided": 0.025
+  }
+ ],
+ "spend": {
+  "expedite_cost_usd_each": 800.0,
+  "expedite_spend_usd": 23200.0,
+  "spend_per_rollover_avoided_usd": 19744.7,
+  "note": "restow spend excluded here; the 0 restows this arm executed are listed by count only"
+ },
+ "planner_floor": {
+  "available": true,
+  "cp_sat_saved": 423,
+  "greedy_saved": 408,
+  "broken_connections": 567,
+  "greedy_shortfall_share": 0.0265,
+  "note": "a floor by definition: a planner with the twin's option list saves every single-target connection the agent saves; the only measured gap is the solver's strict win over greedy on the cascade instances"
+ },
+ "honest_limits": [
+  "Yard-transfer variance is the only randomness in P_roll; a late vessel is not in it.",
+  "The samples are the twin's own seeded replications, so this audits the entry against itself, not against a terminal.",
+  "The expedite gain is read from stubs.twin_stub._expedite_gain, the same function the feasibility engine uses, so the audit cannot invent a larger gain than the agent had.",
+  "The buffer term is left out of ready_i because it is derived from these same samples; adding it would count the variance twice.",
+  "On an arm the expected-value gate selected, the in-sample probability is the gate's own admission criterion and cannot falsify it; the held-out replication block can, and it is the figure the impact model reads for that arm."
+ ],
+ "per_save": [
+  {
+   "connection_id": "CN-G130-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 35.0,
+   "recomputed_buffer_p90_minutes": 35.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.05,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.05
+   },
+   "held_out": {
+    "seed": 4200131,
+    "samples": 120,
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0667
+   },
+   "margin_before": 8.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G146-04",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200147,
+    "samples": 120,
+    "p_roll_before": 0.05,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.05
+   },
+   "margin_before": 10.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G149-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 35.0,
+   "recomputed_buffer_p90_minutes": 35.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.075,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.075,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0583,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0583
+   },
+   "held_out": {
+    "seed": 4200150,
+    "samples": 120,
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "margin_before": 8.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G160-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200161,
+    "samples": 120,
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "margin_before": 6.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G190-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200191,
+    "samples": 120,
+    "p_roll_before": 0.0083,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0083
+   },
+   "margin_before": 5.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G199-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 35.0,
+   "recomputed_buffer_p90_minutes": 35.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200200,
+    "samples": 120,
+    "p_roll_before": 0.0,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0
+   },
+   "margin_before": 31.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G207-01",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.05,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.05
+   },
+   "held_out": {
+    "seed": 4200208,
+    "samples": 120,
+    "p_roll_before": 0.0167,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0167
+   },
+   "margin_before": 11.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G225-01",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 35.0,
+   "recomputed_buffer_p90_minutes": 35.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.075,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.075,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200226,
+    "samples": 120,
+    "p_roll_before": 0.0167,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0167
+   },
+   "margin_before": 6.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G244-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 45.0,
+   "p_roll_before": 0.075,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.075,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200245,
+    "samples": 120,
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0083,
+    "p_roll_avoided": 0.0583
+   },
+   "margin_before": 16.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G246-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0667
+   },
+   "held_out": {
+    "seed": 4200247,
+    "samples": 120,
+    "p_roll_before": 0.025,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.025
+   },
+   "margin_before": 9.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G267-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0833,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0833
+   },
+   "held_out": {
+    "seed": 4200268,
+    "samples": 120,
+    "p_roll_before": 0.05,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.05
+   },
+   "margin_before": 10.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G311-04",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200312,
+    "samples": 120,
+    "p_roll_before": 0.0,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0
+   },
+   "margin_before": 11.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G335-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 45.0,
+   "p_roll_before": 0.0,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.0,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200336,
+    "samples": 120,
+    "p_roll_before": 0.0083,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0083
+   },
+   "margin_before": 35.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G337-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.0,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.0,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200338,
+    "samples": 120,
+    "p_roll_before": 0.0167,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0167
+   },
+   "margin_before": 7.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G338-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 35.0,
+   "recomputed_buffer_p90_minutes": 35.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.075,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.075,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0583,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0583
+   },
+   "held_out": {
+    "seed": 4200339,
+    "samples": 120,
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "margin_before": 9.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G377-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 15.0,
+   "recomputed_buffer_p90_minutes": 15.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200378,
+    "samples": 120,
+    "p_roll_before": 0.0917,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0917
+   },
+   "margin_before": 11.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G411-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.075,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.075,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0667
+   },
+   "held_out": {
+    "seed": 4200412,
+    "samples": 120,
+    "p_roll_before": 0.05,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.05
+   },
+   "margin_before": 6.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G419-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 20.0,
+   "recomputed_buffer_p90_minutes": 20.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.0,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.0,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0667
+   },
+   "held_out": {
+    "seed": 4200420,
+    "samples": 120,
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0667
+   },
+   "margin_before": 7.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G425-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0833,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0833
+   },
+   "held_out": {
+    "seed": 4200426,
+    "samples": 120,
+    "p_roll_before": 0.125,
+    "p_roll_after": 0.0083,
+    "p_roll_avoided": 0.1167
+   },
+   "margin_before": 7.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G478-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.05,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.05
+   },
+   "held_out": {
+    "seed": 4200479,
+    "samples": 120,
+    "p_roll_before": 0.0083,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0083
+   },
+   "margin_before": 8.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G483-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200484,
+    "samples": 120,
+    "p_roll_before": 0.0083,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0083
+   },
+   "margin_before": 24.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G491-01",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 15.0,
+   "recomputed_buffer_p90_minutes": 15.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200492,
+    "samples": 120,
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "margin_before": 22.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G501-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 20.0,
+   "recomputed_buffer_p90_minutes": 20.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200502,
+    "samples": 120,
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "margin_before": 13.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G506-03",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.025,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.025,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0667
+   },
+   "held_out": {
+    "seed": 4200507,
+    "samples": 120,
+    "p_roll_before": 0.1,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.1
+   },
+   "margin_before": 15.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G544-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0667,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0667
+   },
+   "held_out": {
+    "seed": 4200545,
+    "samples": 120,
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "margin_before": 13.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G554-04",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 30.0,
+   "recomputed_buffer_p90_minutes": 30.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200555,
+    "samples": 120,
+    "p_roll_before": 0.075,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.075
+   },
+   "margin_before": 5.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G558-01",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 25.0,
+   "recomputed_buffer_p90_minutes": 25.0,
+   "expedite_gain_minutes": 45.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.05,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.05
+   },
+   "held_out": {
+    "seed": 4200559,
+    "samples": 120,
+    "p_roll_before": 0.025,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.025
+   },
+   "margin_before": 18.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G585-04",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 35.0,
+   "recomputed_buffer_p90_minutes": 35.0,
+   "expedite_gain_minutes": 45.0,
+   "p_roll_before": 0.05,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.05,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "held_out": {
+    "seed": 4200586,
+    "samples": 120,
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0083,
+    "p_roll_avoided": 0.025
+   },
+   "margin_before": 19.0,
+   "verdict_before": "AT_RISK"
+  },
+  {
+   "connection_id": "CN-G599-02",
+   "samples": 40,
+   "buffer_tied_to_shipped_world": true,
+   "stored_buffer_p90_minutes": 15.0,
+   "recomputed_buffer_p90_minutes": 15.0,
+   "expedite_gain_minutes": 60.0,
+   "p_roll_before": 0.0,
+   "p_roll_after": 0.0,
+   "p_roll_avoided": 0.0,
+   "sensitivity_120_samples": {
+    "p_roll_before": 0.0333,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0333
+   },
+   "held_out": {
+    "seed": 4200600,
+    "samples": 120,
+    "p_roll_before": 0.0417,
+    "p_roll_after": 0.0,
+    "p_roll_avoided": 0.0417
+   },
+   "margin_before": 18.0,
+   "verdict_before": "AT_RISK"
+  }
+ ]
+}

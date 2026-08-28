@@ -1,0 +1,11 @@
+{
+ "claims_check_version": "1.0.0",
+ "claims_registered": 461,
+ "by_status": {
+  "OK": 461
+ },
+ "ok": true,
+ "failures": [],
+ "method": "each claim names a results file, a path inside it, the print format, and the deliverables that quote it; the check resolves the path in the live file, renders it, and requires that exact string to appear in every page registered as printing it",
+ "ok_count": 461
+}

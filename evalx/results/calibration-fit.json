@@ -1,0 +1,293 @@
+{
+  "calibration_fit_version": "1.0.0",
+  "label": "empirical side RECORDED_AIS (aggregates only, no vessel identifiers); generator side SYNTHETIC (twin/generate.py, twin/CALIBRATION.md)",
+  "method": {
+    "generator_sampling": {
+      "interarrival_worlds": 200,
+      "lateness_draws": 20000,
+      "seed": "relay-calibration-fit"
+    },
+    "ks": "two-sample Kolmogorov-Smirnov, asymptotic p-value",
+    "verdict_rule": "FIT when p > 0.05; PARTIAL_FIT when D < 0.25; NOT_FIT otherwise; NOT_MODELLED and CHOSEN_NOT_FIT are declared, not computed"
+  },
+  "note": "The generator is calibrated to cited public rates and is NOT fitted to this recording; this file quantifies where the two agree and where they do not, and names every parameter that is a choice rather than a measurement (SPEC SIG-5 honest seam).",
+  "parameters": [
+    {
+      "empirical": {
+        "label": "RECORDED_AIS",
+        "source": "consecutive broadcast-ETA revisions per vessel (ShipStaticData)",
+        "stats": {
+          "cdf_deciles": [
+            5.0,
+            30.0,
+            90.0,
+            120.0,
+            180.0,
+            204.0,
+            300.0,
+            390.0,
+            420.0,
+            450.0,
+            600.0
+          ],
+          "max": 600.0,
+          "mean": 257.2,
+          "median": 277.0,
+          "min": 5.0,
+          "n": 26
+        },
+        "stats_all_revisions": {
+          "cdf_deciles": [
+            5.0,
+            90.0,
+            180.0,
+            360.0,
+            450.0,
+            1218.0,
+            2220.0,
+            3900.0,
+            7320.0,
+            13080.0,
+            55800.0
+          ],
+          "max": 55800.0,
+          "mean": 5648.1,
+          "median": 1218.0,
+          "min": 5.0,
+          "n": 55
+        },
+        "windowing": {
+          "cap_minutes": 720.0,
+          "fraction_beyond_window": 0.527,
+          "n_total": 55,
+          "n_within_window": 26,
+          "reason": "the generator caps in-window drift at 12 h by definition: anything larger is a schedule change, not an ETA update (twin/CALIBRATION.md section 1). Values beyond the cap are excluded from the comparison and counted here, not hidden."
+        }
+      },
+      "fit_verdict": "NOT_FIT",
+      "generator": {
+        "definition": "abs(_draw_lateness): P(late) = 0.374 (CITED), on-time jitter U(-30, 30) (CHOSEN), late tail Exp(mean 240) capped 720 (CHOSEN, cited-derived; twin/CALIBRATION.md section 1)",
+        "label": "SYNTHETIC",
+        "stats": {
+          "cdf_deciles": [
+            1.0,
+            5.0,
+            9.0,
+            14.0,
+            18.0,
+            22.0,
+            27.0,
+            56.0,
+            149.0,
+            317.0,
+            720.0
+          ],
+          "max": 720.0,
+          "mean": 95.2,
+          "median": 22.0,
+          "min": 1.0,
+          "n": 19742
+        }
+      },
+      "ks_p_value_asymptotic": 0.0,
+      "ks_statistic": 0.5902,
+      "parameter": "eta_drift_magnitude_minutes",
+      "plain_language": "The generator draws the in-window slip of a late arrival; the recording shows how far broadcast ETAs actually moved between revisions. Compared on the common support (revisions inside the generator's 12 h window). The generator reproduces cited RATES (lateness incidence, slip scale), it is not fitted to this recording; the KS number quantifies the remaining gap instead of hiding it."
+    },
+    {
+      "empirical": {
+        "label": "RECORDED_AIS",
+        "source": "minutes past the last broadcast ETA for vessels not yet moored (ETA_OVERDUE detector, censored below 60 min by the detector floor; stale never-updated broadcast ETAs beyond the 12 h window are excluded and counted)",
+        "stats": {
+          "cdf_deciles": [
+            60.7,
+            120.7,
+            135.7,
+            195.7,
+            195.7,
+            255.7,
+            300.7,
+            435.7,
+            465.7,
+            537.7,
+            621.7
+          ],
+          "max": 621.7,
+          "mean": 297.7,
+          "median": 255.7,
+          "min": 60.7,
+          "n": 62
+        },
+        "stats_all_overdue": {
+          "cdf_deciles": [
+            60.7,
+            195.7,
+            405.7,
+            735.7,
+            1515.7,
+            2534.7,
+            4485.7,
+            7215.7,
+            26310.7,
+            110535.7,
+            274635.7
+          ],
+          "max": 274635.7,
+          "mean": 28567.7,
+          "median": 2534.7,
+          "min": 60.7,
+          "n": 211
+        },
+        "windowing": {
+          "cap_minutes": 720.0,
+          "fraction_beyond_window": 0.706,
+          "n_total": 211,
+          "n_within_window": 62,
+          "reason": "the generator caps in-window drift at 12 h by definition: anything larger is a schedule change, not an ETA update (twin/CALIBRATION.md section 1). Values beyond the cap are excluded from the comparison and counted here, not hidden."
+        }
+      },
+      "fit_verdict": "PARTIAL_FIT",
+      "generator": {
+        "definition": "late-tail draws >= 60 min from the same _draw_lateness distribution (censoring matched to the detector floor so both samples cover the same support)",
+        "label": "SYNTHETIC",
+        "stats": {
+          "cdf_deciles": [
+            60.0,
+            84.0,
+            113.0,
+            143.0,
+            178.0,
+            221.0,
+            276.0,
+            346.0,
+            447.0,
+            616.0,
+            720.0
+          ],
+          "max": 720.0,
+          "mean": 283.2,
+          "median": 221.0,
+          "min": 60.0,
+          "n": 5812
+        }
+      },
+      "ks_p_value_asymptotic": 0.005006,
+      "ks_statistic": 0.2172,
+      "parameter": "arrival_lateness_minutes",
+      "plain_language": "Both samples measure materialised lateness beyond one hour. The empirical side is right-open (vessels may still be waiting when the recording ends), so the comparison favours neither side; the verdict is reported as computed."
+    },
+    {
+      "empirical": {
+        "label": "RECORDED_AIS",
+        "source": "gaps between successive moored-transition times across vessels in the Singapore box (43 arrivals observed in the recording)",
+        "stats": {
+          "cdf_deciles": [
+            0.5,
+            0.8,
+            3.0,
+            4.3,
+            5.1,
+            6.7,
+            8.9,
+            10.9,
+            13.1,
+            24.8,
+            78.6
+          ],
+          "max": 78.6,
+          "mean": 10.6,
+          "median": 6.9,
+          "min": 0.5,
+          "n": 42
+        }
+      },
+      "fit_verdict": "FIT",
+      "generator": {
+        "definition": "within-world gaps between the 4 inbound berthing_dt draws (scheduled U(-360, 480) min around the world clock plus the calibrated lateness draw), 200 seeded worlds",
+        "label": "SYNTHETIC",
+        "stats": {
+          "cdf_deciles": [
+            0.7,
+            25.5,
+            43.3,
+            68.0,
+            91.8,
+            119.2,
+            157.0,
+            199.2,
+            254.3,
+            351.2,
+            590.1
+          ],
+          "max": 590.1,
+          "mean": 155.9,
+          "median": 119.2,
+          "min": 0.7,
+          "n": 600
+        }
+      },
+      "ks_p_value_asymptotic": 0.366708,
+      "ks_statistic": 0.1436,
+      "parameter": "inter_arrival_minutes",
+      "plain_language": "The generator schedules 4 inbound vessels per decision window for a single terminal; the recording sees every berth in the port. Scale differs by construction, so this row anchors the SHAPE of arrival spacing only.",
+      "scale": {
+        "comparison": "mean-normalised SHAPE comparison: the recording sees every berth in the port, the generator schedules 4 inbound vessels for one terminal window, so absolute spacing differs by construction and is reported here instead of being compared",
+        "empirical_mean_min": 10.6,
+        "generator_mean_min": 155.9
+      }
+    },
+    {
+      "empirical": {
+        "label": "RECORDED_AIS",
+        "source": "abs SOG change between consecutive position reports at most 15 min apart",
+        "stats": {
+          "cdf_deciles": [
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.2,
+            0.2,
+            0.3,
+            0.5,
+            0.9,
+            1.9,
+            102.3
+          ],
+          "max": 102.3,
+          "mean": 0.9,
+          "median": 0.2,
+          "min": 0.1,
+          "n": 13414
+        }
+      },
+      "fit_verdict": "NOT_MODELLED",
+      "generator": null,
+      "ks_p_value_asymptotic": null,
+      "ks_statistic": null,
+      "parameter": "speed_change_knots",
+      "plain_language": "The generator does not model vessel kinematics at all; ETA drift enters as a direct ETA change, never as a speed profile. The empirical distribution is published here so the omission is visible, not hidden."
+    },
+    {
+      "empirical": null,
+      "fit_verdict": "CHOSEN_NOT_FIT",
+      "generator": {
+        "definition": "U(30, 240) minutes before the carrier EDI (evalx/sweep_local.ADVISORY_LEAD_RANGE)",
+        "label": "SYNTHETIC",
+        "stats": null
+      },
+      "ks_p_value_asymptotic": null,
+      "ks_statistic": null,
+      "parameter": "advisory_lead_minutes",
+      "plain_language": "Advisory lead times are CHOSEN demo constants: nothing in an AIS recording observes when a carrier emails an advisory. The nearest public anchor is project44's report of roll risk detected about 35 hours early on the shipper side; the demo keeps the effect inside one shift on purpose. This parameter is a choice, stated as one, not a fit."
+    }
+  ],
+  "recording": {
+    "as_of": "2026-08-24T10:15:42.357685+00:00",
+    "files": [
+      "ais-20260824.jsonl"
+    ],
+    "rows_parsed": 33684,
+    "vessels_seen": 968
+  }
+}

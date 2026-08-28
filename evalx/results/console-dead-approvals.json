@@ -1,0 +1,953 @@
+{
+ "by_construction": "The 12-card session is by construction: four conditions times three cards, each condition set up by this script so the refusing layer's answer is known in advance. This is a regression fixture for the console, not a measurement of anything in the world, and it must not be quoted as one.",
+ "console_dead_approvals_version": "1.0.0",
+ "question": "does the approval card tell the duty officer, before the click, what the refusing layer will answer, and does the countdown on the card follow the wall clock",
+ "conditions": {
+  "NORMAL": {
+   "expected_refusal": null,
+   "refused_by": "nothing; the write executes"
+  },
+  "DEGRADED_MODE": {
+   "expected_refusal": "DEGRADED_MODE",
+   "refused_by": "portnet write gate"
+  },
+  "RATE_LIMITED": {
+   "expected_refusal": "RATE_LIMITED",
+   "refused_by": "portnet write gate (policy rate budget)"
+  },
+  "WINDOW_PASSED": {
+   "expected_refusal": "INVALID_ARGS",
+   "refused_by": "approval.decide (card already EXPIRED_DENIED)"
+  }
+ },
+ "cards": [
+  {
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "args_preview": {
+    "box_group_id": "BG-0002",
+    "priority": "EXPEDITE"
+   }
+  },
+  {
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "args_preview": {
+    "box_group_id": "BG-0002",
+    "outbound_voyage": "0402E",
+    "requested_new_cutoff": "2026-08-26T04:26:00+08:00"
+   }
+  },
+  {
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "args_preview": {
+    "box_group_id": "BG-0002",
+    "from_voyage": "0402E",
+    "to_voyage": "0511E"
+   }
+  }
+ ],
+ "agreement": {
+  "n": 12,
+  "agree": 12,
+  "disagreements": [],
+  "poll_race_excluded": "the browser reads readiness at poll time and sends the click later; a condition that changes in that gap (up to 2 s) is refused by the gate with a code the card did not show. That race cannot occur on this harness's injected clock and is excluded by statement, not measured; the gate, not the card, is what handles it"
+ },
+ "blind": {
+  "cards": 12,
+  "decisions_sent": 12,
+  "withheld_by_readiness": 0,
+  "executed": 3,
+  "refused_by_approval_server": 3,
+  "approvals_recorded_final": 9,
+  "dead_approvals": 6
+ },
+ "preflight": {
+  "cards": 12,
+  "decisions_sent": 3,
+  "withheld_by_readiness": 9,
+  "executed": 3,
+  "refused_by_approval_server": 0,
+  "approvals_recorded_final": 3,
+  "dead_approvals": 0
+ },
+ "budget_polls": {
+  "polls": 50,
+  "classes": [
+   "expedite_transfer",
+   "critical_priority",
+   "cutoff_extension_request",
+   "rebooking_proposal",
+   "restow_order"
+  ],
+  "class_polls": 250,
+  "class_polls_spent": 0,
+  "budgets_before": {
+   "expedite_transfer": 5,
+   "critical_priority": 2,
+   "cutoff_extension_request": 3,
+   "rebooking_proposal": 3,
+   "restow_order": 2
+  },
+  "budgets_after": {
+   "expedite_transfer": 5,
+   "critical_priority": 2,
+   "cutoff_extension_request": 3,
+   "rebooking_proposal": 3,
+   "restow_order": 2
+  }
+ },
+ "displayed_expiry": {
+  "before": {
+   "what_was_printed": "hhmm(card.expires_at), the fixture constant",
+   "fixture_constant": "2026-08-25T21:49:12+08:00",
+   "cards": 12,
+   "cards_printing_the_constant_on_every_poll": 12
+  },
+  "after": {
+   "what_is_printed": "auto-deny in <span data-remaining>N</span> s, N synced from deny_window.remaining_s on every poll and ticked in place",
+   "tolerance_s": 2.0,
+   "cards": 12,
+   "polls_compared": 54,
+   "max_abs_diff_s": 0.0,
+   "cards_outside_tolerance": 0,
+   "cards_frozen": 0
+  },
+  "frozen_definition": "a card is frozen when what it displays is identical across two or more pending polls while the clock moves; before, that is the fixture constant on every card; after, the replayed ticker must move on every card"
+ },
+ "rows": [
+  {
+   "condition": "NORMAL",
+   "arm": "BLIND",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-normal-blind-expedite",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": true,
+   "readiness_code": null,
+   "readiness_refused_by": null,
+   "expected_refusal": null,
+   "expected_refused_by": "nothing; the write executes",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": null,
+   "executed": true,
+   "recorded_status": "APPROVED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "NORMAL",
+   "arm": "BLIND",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-normal-blind-cutoff",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": true,
+   "readiness_code": null,
+   "readiness_refused_by": null,
+   "expected_refusal": null,
+   "expected_refused_by": "nothing; the write executes",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": null,
+   "executed": true,
+   "recorded_status": "APPROVED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "NORMAL",
+   "arm": "BLIND",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-normal-blind-rebook",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": true,
+   "readiness_code": null,
+   "readiness_refused_by": null,
+   "expected_refusal": null,
+   "expected_refused_by": "nothing; the write executes",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": null,
+   "executed": true,
+   "recorded_status": "APPROVED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "NORMAL",
+   "arm": "PREFLIGHT",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-normal-preflight-expedite",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": true,
+   "readiness_code": null,
+   "readiness_refused_by": null,
+   "expected_refusal": null,
+   "expected_refused_by": "nothing; the write executes",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": null,
+   "executed": true,
+   "recorded_status": "APPROVED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "NORMAL",
+   "arm": "PREFLIGHT",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-normal-preflight-cutoff",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": true,
+   "readiness_code": null,
+   "readiness_refused_by": null,
+   "expected_refusal": null,
+   "expected_refused_by": "nothing; the write executes",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": null,
+   "executed": true,
+   "recorded_status": "APPROVED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "NORMAL",
+   "arm": "PREFLIGHT",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-normal-preflight-rebook",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": true,
+   "readiness_code": null,
+   "readiness_refused_by": null,
+   "expected_refusal": null,
+   "expected_refused_by": "nothing; the write executes",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": null,
+   "executed": true,
+   "recorded_status": "APPROVED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "DEGRADED_MODE",
+   "arm": "BLIND",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-degraded_mode-blind-expedite",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "DEGRADED_MODE",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "DEGRADED_MODE",
+   "expected_refused_by": "portnet write gate",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": "DEGRADED_MODE",
+   "executed": false,
+   "recorded_status": "APPROVED",
+   "dead_approval": true,
+   "agrees": true
+  },
+  {
+   "condition": "DEGRADED_MODE",
+   "arm": "BLIND",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-degraded_mode-blind-cutoff",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "DEGRADED_MODE",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "DEGRADED_MODE",
+   "expected_refused_by": "portnet write gate",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": "DEGRADED_MODE",
+   "executed": false,
+   "recorded_status": "APPROVED",
+   "dead_approval": true,
+   "agrees": true
+  },
+  {
+   "condition": "DEGRADED_MODE",
+   "arm": "BLIND",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-degraded_mode-blind-rebook",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "DEGRADED_MODE",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "DEGRADED_MODE",
+   "expected_refused_by": "portnet write gate",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": "DEGRADED_MODE",
+   "executed": false,
+   "recorded_status": "APPROVED",
+   "dead_approval": true,
+   "agrees": true
+  },
+  {
+   "condition": "DEGRADED_MODE",
+   "arm": "PREFLIGHT",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-degraded_mode-preflight-expedite",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "DEGRADED_MODE",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "DEGRADED_MODE",
+   "expected_refused_by": "portnet write gate",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "PENDING",
+   "dead_approval": false,
+   "withheld_reason": "DEGRADED_TO_ADVISORY (TOOL_FAILURE on portnet.get_vessel_schedule); all writes are denied while degraded",
+   "agrees": true
+  },
+  {
+   "condition": "DEGRADED_MODE",
+   "arm": "PREFLIGHT",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-degraded_mode-preflight-cutoff",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "DEGRADED_MODE",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "DEGRADED_MODE",
+   "expected_refused_by": "portnet write gate",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "PENDING",
+   "dead_approval": false,
+   "withheld_reason": "DEGRADED_TO_ADVISORY (TOOL_FAILURE on portnet.get_vessel_schedule); all writes are denied while degraded",
+   "agrees": true
+  },
+  {
+   "condition": "DEGRADED_MODE",
+   "arm": "PREFLIGHT",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-degraded_mode-preflight-rebook",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "DEGRADED_MODE",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "DEGRADED_MODE",
+   "expected_refused_by": "portnet write gate",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "PENDING",
+   "dead_approval": false,
+   "withheld_reason": "DEGRADED_TO_ADVISORY (TOOL_FAILURE on portnet.get_vessel_schedule); all writes are denied while degraded",
+   "agrees": true
+  },
+  {
+   "condition": "RATE_LIMITED",
+   "arm": "BLIND",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-rate_limited-blind-expedite",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "RATE_LIMITED",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "RATE_LIMITED",
+   "expected_refused_by": "portnet write gate (policy rate budget)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": "RATE_LIMITED",
+   "executed": false,
+   "recorded_status": "APPROVED",
+   "dead_approval": true,
+   "agrees": true
+  },
+  {
+   "condition": "RATE_LIMITED",
+   "arm": "BLIND",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-rate_limited-blind-cutoff",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "RATE_LIMITED",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "RATE_LIMITED",
+   "expected_refused_by": "portnet write gate (policy rate budget)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": "RATE_LIMITED",
+   "executed": false,
+   "recorded_status": "APPROVED",
+   "dead_approval": true,
+   "agrees": true
+  },
+  {
+   "condition": "RATE_LIMITED",
+   "arm": "BLIND",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-rate_limited-blind-rebook",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "RATE_LIMITED",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "RATE_LIMITED",
+   "expected_refused_by": "portnet write gate (policy rate budget)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 200,
+   "gate_code": "RATE_LIMITED",
+   "executed": false,
+   "recorded_status": "APPROVED",
+   "dead_approval": true,
+   "agrees": true
+  },
+  {
+   "condition": "RATE_LIMITED",
+   "arm": "PREFLIGHT",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-rate_limited-preflight-expedite",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "RATE_LIMITED",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "RATE_LIMITED",
+   "expected_refused_by": "portnet write gate (policy rate budget)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "PENDING",
+   "dead_approval": false,
+   "withheld_reason": "expedite_transfer budget spent this shift (5 per shift); the gate refuses RATE_LIMITED",
+   "agrees": true
+  },
+  {
+   "condition": "RATE_LIMITED",
+   "arm": "PREFLIGHT",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-rate_limited-preflight-cutoff",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "RATE_LIMITED",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "RATE_LIMITED",
+   "expected_refused_by": "portnet write gate (policy rate budget)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "PENDING",
+   "dead_approval": false,
+   "withheld_reason": "cutoff_extension_request budget spent this shift (3 per shift); the gate refuses RATE_LIMITED",
+   "agrees": true
+  },
+  {
+   "condition": "RATE_LIMITED",
+   "arm": "PREFLIGHT",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-rate_limited-preflight-rebook",
+   "status_at_poll": "PENDING",
+   "readiness_executable_now": false,
+   "readiness_code": "RATE_LIMITED",
+   "readiness_refused_by": "portnet write gate",
+   "expected_refusal": "RATE_LIMITED",
+   "expected_refused_by": "portnet write gate (policy rate budget)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 3,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     120,
+     118,
+     116,
+     114
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "PENDING",
+   "dead_approval": false,
+   "withheld_reason": "rebooking_proposal budget spent this shift (3 per shift); the gate refuses RATE_LIMITED",
+   "agrees": true
+  },
+  {
+   "condition": "WINDOW_PASSED",
+   "arm": "BLIND",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-window_passed-blind-expedite",
+   "status_at_poll": "EXPIRED_DENIED",
+   "readiness_executable_now": false,
+   "readiness_code": "INVALID_ARGS",
+   "readiness_refused_by": "approval.decide",
+   "expected_refusal": "INVALID_ARGS",
+   "expected_refused_by": "approval.decide (card already EXPIRED_DENIED)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 9,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     20,
+     18,
+     16,
+     14,
+     12,
+     10,
+     8,
+     6,
+     4,
+     2
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 400,
+   "gate_code": "INVALID_ARGS",
+   "executed": false,
+   "recorded_status": "EXPIRED_DENIED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "WINDOW_PASSED",
+   "arm": "BLIND",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-window_passed-blind-cutoff",
+   "status_at_poll": "EXPIRED_DENIED",
+   "readiness_executable_now": false,
+   "readiness_code": "INVALID_ARGS",
+   "readiness_refused_by": "approval.decide",
+   "expected_refusal": "INVALID_ARGS",
+   "expected_refused_by": "approval.decide (card already EXPIRED_DENIED)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 9,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     20,
+     18,
+     16,
+     14,
+     12,
+     10,
+     8,
+     6,
+     4,
+     2
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 400,
+   "gate_code": "INVALID_ARGS",
+   "executed": false,
+   "recorded_status": "EXPIRED_DENIED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "WINDOW_PASSED",
+   "arm": "BLIND",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-window_passed-blind-rebook",
+   "status_at_poll": "EXPIRED_DENIED",
+   "readiness_executable_now": false,
+   "readiness_code": "INVALID_ARGS",
+   "readiness_refused_by": "approval.decide",
+   "expected_refusal": "INVALID_ARGS",
+   "expected_refused_by": "approval.decide (card already EXPIRED_DENIED)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 9,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     20,
+     18,
+     16,
+     14,
+     12,
+     10,
+     8,
+     6,
+     4,
+     2
+    ],
+    "frozen": false
+   },
+   "decision_sent": true,
+   "http_status": 400,
+   "gate_code": "INVALID_ARGS",
+   "executed": false,
+   "recorded_status": "EXPIRED_DENIED",
+   "dead_approval": false,
+   "agrees": true
+  },
+  {
+   "condition": "WINDOW_PASSED",
+   "arm": "PREFLIGHT",
+   "card": "expedite",
+   "tool": "portnet.set_transfer_priority",
+   "card_id": "CARD-dead-window_passed-preflight-expedite",
+   "status_at_poll": "EXPIRED_DENIED",
+   "readiness_executable_now": false,
+   "readiness_code": "INVALID_ARGS",
+   "readiness_refused_by": "approval.decide",
+   "expected_refusal": "INVALID_ARGS",
+   "expected_refused_by": "approval.decide (card already EXPIRED_DENIED)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 9,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     20,
+     18,
+     16,
+     14,
+     12,
+     10,
+     8,
+     6,
+     4,
+     2
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "EXPIRED_DENIED",
+   "dead_approval": false,
+   "withheld_reason": "card already EXPIRED_DENIED; decisions are final",
+   "agrees": true
+  },
+  {
+   "condition": "WINDOW_PASSED",
+   "arm": "PREFLIGHT",
+   "card": "cutoff",
+   "tool": "portnet.request_cutoff_extension",
+   "card_id": "CARD-dead-window_passed-preflight-cutoff",
+   "status_at_poll": "EXPIRED_DENIED",
+   "readiness_executable_now": false,
+   "readiness_code": "INVALID_ARGS",
+   "readiness_refused_by": "approval.decide",
+   "expected_refusal": "INVALID_ARGS",
+   "expected_refused_by": "approval.decide (card already EXPIRED_DENIED)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 9,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     20,
+     18,
+     16,
+     14,
+     12,
+     10,
+     8,
+     6,
+     4,
+     2
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "EXPIRED_DENIED",
+   "dead_approval": false,
+   "withheld_reason": "card already EXPIRED_DENIED; decisions are final",
+   "agrees": true
+  },
+  {
+   "condition": "WINDOW_PASSED",
+   "arm": "PREFLIGHT",
+   "card": "rebook",
+   "tool": "portnet.propose_rebooking",
+   "card_id": "CARD-dead-window_passed-preflight-rebook",
+   "status_at_poll": "EXPIRED_DENIED",
+   "readiness_executable_now": false,
+   "readiness_code": "INVALID_ARGS",
+   "readiness_refused_by": "approval.decide",
+   "expected_refusal": "INVALID_ARGS",
+   "expected_refused_by": "approval.decide (card already EXPIRED_DENIED)",
+   "before_printed_fixture_constant": true,
+   "after_display": {
+    "polls_compared": 9,
+    "max_abs_diff_s": 0.0,
+    "within_tolerance": true,
+    "shown_sequence": [
+     20,
+     18,
+     16,
+     14,
+     12,
+     10,
+     8,
+     6,
+     4,
+     2
+    ],
+    "frozen": false
+   },
+   "decision_sent": false,
+   "gate_code": null,
+   "executed": false,
+   "recorded_status": "EXPIRED_DENIED",
+   "dead_approval": false,
+   "withheld_reason": "card already EXPIRED_DENIED; decisions are final",
+   "agrees": true
+  }
+ ],
+ "fail_open": "readiness is advice: /decide never reads it, a predicate error leaves executable_now null with Approve enabled, and the portnet write gate remains the only control (console/tests/test_card_readiness.py proves both)",
+ "honest_limits": "twelve cards this script constructed, on one in-process console, on an injected clock; the ticker arithmetic is replayed from card.js in Python and the DOM was not driven, so what the browser paints is a re-verification debt; the server's remaining_s following the real clock is proven separately by console/tests/test_oversight_and_deny_window.py",
+ "rerun": "/path/to/.venv/bin/python evalx/console_dead_approvals.py --out evalx/out/console-dead-approvals-check.json",
+ "result_digest": "f90670698e882e1bd4efbd857c5a791be4ac1c4902210c1067e3448d8a323bdd"
+}

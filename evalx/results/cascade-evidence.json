@@ -1,0 +1,211 @@
+{
+  "arrival_order": [
+    "CN-0001",
+    "CN-0002",
+    "CN-0003"
+  ],
+  "board_end_state": [
+    {
+      "completeness_score": 1.0,
+      "connection_id": "CN-0001",
+      "margin_minutes": 15.0,
+      "verdict": "AT_RISK"
+    },
+    {
+      "completeness_score": 1.0,
+      "connection_id": "CN-0002",
+      "margin_minutes": -79.0,
+      "verdict": "INFEASIBLE"
+    },
+    {
+      "completeness_score": 1.0,
+      "connection_id": "CN-0003",
+      "margin_minutes": -135.0,
+      "verdict": "INFEASIBLE"
+    },
+    {
+      "completeness_score": 0.4,
+      "connection_id": "CN-ESC-01",
+      "margin_minutes": null,
+      "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE"
+    }
+  ],
+  "broken_connections": [
+    "CN-0001",
+    "CN-0002",
+    "CN-0003"
+  ],
+  "cascade_evidence_version": "1.0.0",
+  "digest": "aa48a9ee4a9c84003bc255abd8e7d990396e015a6d8934cc251364773590b5fd",
+  "label": "SYNTHETIC - frozen cascade pack replayed through twin.ingest_event; both planners run on the identical twin-visible end state",
+  "method": {
+    "arrival_order_definition": "first structured event naming the box group; deterministic and documented in this file",
+    "joint": "twin.solver.replan_terminal: CP-SAT over all affected connections under shared CSA 3.1 budgets; lexicographic max saves, min cost, min rank; seed 42, num_search_workers 1",
+    "replay": "twin.ingest_event over a fresh world overlay (SC-1 replay path)",
+    "sequential": "per-box greedy in arrival order (order each box group first appears in the pack's structured stream), cheapest feasible option under the remaining budgets, no lookahead"
+  },
+  "note": "simulator-internal numbers on the frozen SYNTHETIC cascade pack; the escalation-class connection (CN-ESC-01) is excluded from planning by the completeness gate and remains a written escalation, by design",
+  "pack_id": "PACK-CASCADE-01",
+  "pack_path": "data/packs/cascade.json",
+  "variants": [
+    {
+      "budgets": {
+        "propose_rebooking": 3,
+        "request_cutoff_extension": 3,
+        "restow_order": 2,
+        "set_transfer_priority": 5
+      },
+      "comparison": {
+        "cost_delta_sequential_minus_joint_usd": 0.0,
+        "joint_never_lexicographically_worse": true,
+        "saves_delta_joint_minus_sequential": 0,
+        "verdict": "identical outcome on this instance"
+      },
+      "joint_cpsat": {
+        "connections_saved": 3,
+        "plan": [
+          {
+            "action_class": "set_transfer_priority",
+            "connection_id": "CN-0001",
+            "cost_usd_est": 800.0,
+            "margin_after_minutes": 75.0,
+            "option_id": "OPT-CN-0001-EXPEDITE"
+          },
+          {
+            "action_class": "propose_rebooking",
+            "connection_id": "CN-0002",
+            "cost_usd_est": 2400.0,
+            "margin_after_minutes": 855.0,
+            "option_id": "OPT-CN-0002-REBOOK"
+          },
+          {
+            "action_class": "propose_rebooking",
+            "connection_id": "CN-0003",
+            "cost_usd_est": 2400.0,
+            "margin_after_minutes": 705.0,
+            "option_id": "OPT-CN-0003-REBOOK"
+          }
+        ],
+        "saved": [
+          "CN-0001",
+          "CN-0002",
+          "CN-0003"
+        ],
+        "total_cost_usd": 5600.0,
+        "unsaved": []
+      },
+      "note": "CONTRACT section c rate limits as shipped (rows 3, 5, 6)",
+      "sequential_arrival_order": {
+        "connections_saved": 3,
+        "plan": [
+          {
+            "action_class": "set_transfer_priority",
+            "connection_id": "CN-0001",
+            "cost_usd_est": 800.0,
+            "margin_after_minutes": 75.0,
+            "option_id": "OPT-CN-0001-EXPEDITE"
+          },
+          {
+            "action_class": "propose_rebooking",
+            "connection_id": "CN-0002",
+            "cost_usd_est": 2400.0,
+            "margin_after_minutes": 855.0,
+            "option_id": "OPT-CN-0002-REBOOK"
+          },
+          {
+            "action_class": "propose_rebooking",
+            "connection_id": "CN-0003",
+            "cost_usd_est": 2400.0,
+            "margin_after_minutes": 705.0,
+            "option_id": "OPT-CN-0003-REBOOK"
+          }
+        ],
+        "saved": [
+          "CN-0001",
+          "CN-0002",
+          "CN-0003"
+        ],
+        "total_cost_usd": 5600.0,
+        "unsaved": []
+      },
+      "variant": "contract_budgets"
+    },
+    {
+      "budgets": {
+        "propose_rebooking": 1,
+        "request_cutoff_extension": 3,
+        "set_transfer_priority": 1
+      },
+      "comparison": {
+        "cost_delta_sequential_minus_joint_usd": 0.0,
+        "joint_never_lexicographically_worse": true,
+        "saves_delta_joint_minus_sequential": 0,
+        "verdict": "identical outcome on this instance"
+      },
+      "joint_cpsat": {
+        "connections_saved": 2,
+        "plan": [
+          {
+            "action_class": "set_transfer_priority",
+            "connection_id": "CN-0001",
+            "cost_usd_est": 800.0,
+            "margin_after_minutes": 75.0,
+            "option_id": "OPT-CN-0001-EXPEDITE"
+          },
+          {
+            "action_class": "propose_rebooking",
+            "connection_id": "CN-0002",
+            "cost_usd_est": 2400.0,
+            "margin_after_minutes": 855.0,
+            "option_id": "OPT-CN-0002-REBOOK"
+          }
+        ],
+        "saved": [
+          "CN-0001",
+          "CN-0002"
+        ],
+        "total_cost_usd": 3200.0,
+        "unsaved": [
+          {
+            "binding_constraint": "propose_rebooking budget exhausted (CSA 3.1 rate limit): CP-SAT allocated the shared budget to higher-value saves",
+            "connection_id": "CN-0003",
+            "margin_minutes": -135.0
+          }
+        ]
+      },
+      "note": "CHOSEN variant: one expedite and one rebooking slot left for the shift; models a shift where earlier exceptions consumed the shared budget",
+      "sequential_arrival_order": {
+        "connections_saved": 2,
+        "plan": [
+          {
+            "action_class": "set_transfer_priority",
+            "connection_id": "CN-0001",
+            "cost_usd_est": 800.0,
+            "margin_after_minutes": 75.0,
+            "option_id": "OPT-CN-0001-EXPEDITE"
+          },
+          {
+            "action_class": "propose_rebooking",
+            "connection_id": "CN-0002",
+            "cost_usd_est": 2400.0,
+            "margin_after_minutes": 855.0,
+            "option_id": "OPT-CN-0002-REBOOK"
+          }
+        ],
+        "saved": [
+          "CN-0001",
+          "CN-0002"
+        ],
+        "total_cost_usd": 3200.0,
+        "unsaved": [
+          {
+            "binding_constraint": "propose_rebooking budget exhausted (CSA 3.1 rate limit) by boxes handled earlier in arrival order",
+            "connection_id": "CN-0003",
+            "margin_minutes": -135.0
+          }
+        ]
+      },
+      "variant": "stressed_shared_capacity"
+    }
+  ]
+}

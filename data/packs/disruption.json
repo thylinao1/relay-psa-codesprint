@@ -1,0 +1,131 @@
+{
+  "pack_schema_version": "1.0.0",
+  "pack_id": "PACK-DISRUPTION-01",
+  "label": "SYNTHETIC terminal state; ONE event (EVT-DISR-000003) carries label RECORDED_AIS, its drift magnitude is real, recorded from Singapore waters (SPEC SC-1, CON-5)",
+  "description": "THE REAL-DRIFT PACK: the inbound ETA slip that breaks CN-0002 is not invented, it is the recorded arrival drift of a real vessel (pseudonymised SYNTH-2B011F, destination a Singapore berth) observed 103 minutes past its broadcast ETA and still at anchor in the day-one AIS recording. Applied to the synthetic inbound MERLION EXPRESS, CN-0002 goes 41 -> -62 minutes (INFEASIBLE); the only feasible option is a rebooking proposal (T1). The carrier's own EDI confirms the delay 140 minutes after the AIS signal.",
+  "expected_ref": "disruption.expected.json",
+  "real_drift_trigger": {
+    "source_file": "data/flagged_arrivals.json",
+    "vessel": "SYNTH-2B011F",
+    "flag_type": "ETA_OVERDUE",
+    "recorded_overdue_minutes": 103.3,
+    "recorded_broadcast_eta_utc": "2026-08-24T00:00:00+00:00",
+    "recorded_nav_status": 1,
+    "recorded_destination_class": "Singapore container berth",
+    "applied_drift_minutes": 103.0,
+    "camera_policy": "vessel shown ONLY as its deterministic pseudonym; MMSI/IMO stay in flagged_arrivals.json *_internal fields and never appear on camera",
+    "honest_seam": "the ETA drift triggering this scenario is real, recorded from Singapore waters on 24 Aug 2026; the terminal state, vessels and connections it lands on are synthetic"
+  },
+  "events": [
+    {
+      "event_id": "EVT-DISR-000001",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:00:00+08:00",
+      "registered_at": "2026-08-25T14:00:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-0002",
+        "load_window_start": "2026-08-26T00:30:00+08:00",
+        "load_window_end": "2026-08-26T02:26:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-DISR-000002",
+      "event_type": "yard_move",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T18:40:00+08:00",
+      "registered_at": "2026-08-25T18:41:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "container_id": null,
+        "box_group_id": "BG-0002",
+        "move_type": "DISCHARGE_TO_YARD",
+        "from_location": null,
+        "to_location": {
+          "block": "Y12",
+          "bay": 14,
+          "row": 3,
+          "tier": 2
+        },
+        "equipment_id": "ARMG-Y12-02",
+        "started_at": "2026-08-25T18:10:00+08:00",
+        "completed_at": "2026-08-25T18:40:00+08:00",
+        "status": "COMPLETED"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-DISR-000003",
+      "event_type": "vessel_eta_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T19:20:00+08:00",
+      "registered_at": "2026-08-25T19:20:03+08:00",
+      "source_system": "AIS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": null,
+        "name": "SYNTH-2B011F",
+        "mmsi": null
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "previous_eta": "2026-08-25T20:30:00+08:00",
+        "new_eta": "2026-08-25T22:13:00+08:00",
+        "eta_source": "AIS",
+        "drift_minutes": 103.0,
+        "position": {
+          "lat": 1.27,
+          "lon": 103.93
+        },
+        "berth": "T3-B12",
+        "affected_connections": [
+          "CN-0002"
+        ],
+        "drift_provenance": "RECORDED_AIS drift magnitude from data/flagged_arrivals.json (SYNTH-2B011F, ETA_OVERDUE 103.3 min), applied to the synthetic inbound"
+      },
+      "label": "RECORDED_AIS"
+    },
+    {
+      "event_id": "EVT-DISR-000004",
+      "event_type": "carrier_schedule_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T21:35:00+08:00",
+      "registered_at": "2026-08-25T21:40:00+08:00",
+      "source_system": "CARRIER_EDI",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "carrier_code": "OCLK",
+        "service_code": "AEX1",
+        "voyage": "437W",
+        "change_type": "DELAY",
+        "new_eta": "2026-08-25T22:13:00+08:00",
+        "new_etd": null,
+        "affected_port": "SGSIN",
+        "effective_at": "2026-08-25T21:35:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# RELAY runtime + test dependencies (Python 3.12+). Install: pip install -r requirements.txt
+langgraph>=0.2
+langgraph-checkpoint-sqlite>=2.0
+langchain-core>=0.3
+ortools>=9.10
+simpy>=4.1
+websockets>=13
+requests>=2.32
+pytest>=8
+# deliverables tooling (optional for judges):
+pypdf>=5
+playwright>=1.47

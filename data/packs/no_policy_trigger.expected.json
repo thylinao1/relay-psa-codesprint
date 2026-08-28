@@ -1,0 +1,111 @@
+{
+ "_note": "Expected END state after replaying no_policy_trigger.json through twin.ingest_event (fresh overlay), identical to the hero board, PLUS the graph-episode outcome under the declared scripted_trigger (CONTRACT \u00a7c row 10). Hand arithmetic: CN-0002 margin 41.0 (oracle_pack.md \u00a71); the scripted berth-window proposal gains 90 -> 131.0 min (feasible, cost $0) and therefore ranks first by the twin's own rule (feasible, cheapest, option_id); the dissent check reproduces 131.0 via the real twin.simulate_what_if; policy.lookup('relay.berth_window_shift') has no row -> row 10 auto_deny=true -> escalate BEFORE any approval card. Validated by agentcore/replay.py --pack no_policy_trigger.json --validate and agentcore/tests/test_replay_packs.py.",
+ "_note_connections_after_agent": "Two boards, because they are two different questions. `connections` is the twin END STATE after replaying this pack's own events through twin.ingest_event, which is what the pack itself asserts and is unchanged. `connections_after_agent` is the board the AGENT saw, and it differs on CN-0001 because the episode ingested a reconciled advisory fact (a T2 act-and-audit action, policy row 11) that slipped voyage 437W by 255 minutes. CN-0001 shares that voyage, so the agent's own triage reads 390 - 255 = 135. It stays FEASIBLE, nothing is written, no approval card is raised, and the row-10 auto-deny proof this pack exists for is untouched. Before the fix the agent scoped a vessel-level ETA fact to one connection and left CN-0001 holding a superseded arrival, so the two boards agreed only because the agent was wrong.",
+ "connections_after_agent": {
+  "CN-0001": {
+   "completeness_score": 1.0,
+   "margin_minutes": 135.0,
+   "verdict": "FEASIBLE"
+  },
+  "CN-0002": {
+   "completeness_score": 1.0,
+   "margin_minutes": 41.0,
+   "verdict": "AT_RISK"
+  },
+  "CN-0003": {
+   "completeness_score": 1.0,
+   "margin_minutes": -210.0,
+   "verdict": "INFEASIBLE"
+  },
+  "CN-ESC-01": {
+   "completeness_score": 0.4,
+   "margin_minutes": null,
+   "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE"
+  }
+ },
+ "action_classes": {
+  "CN-0001": null,
+  "CN-0002": "berth_window_shift",
+  "CN-0003": "propose_rebooking",
+  "CN-ESC-01": "escalation_summary"
+ },
+ "baseline_rules_only": {
+  "basis": "identical to the hero pack: the rules lane flags CN-0002 off the carrier EDI DELAY at 21:10 and drops the one ADVISORY_RECONCILED event",
+  "component": "baseline.rules_only",
+  "dropped_advisory_reconciled_events": 1,
+  "first_signal_ts": "2026-08-25T21:10:00+08:00",
+  "flags": [
+   "CN-0002"
+  ],
+  "margin_minutes": 41.0
+ },
+ "connections": {
+  "CN-0001": {
+   "completeness_score": 1.0,
+   "margin_minutes": 390.0,
+   "verdict": "FEASIBLE"
+  },
+  "CN-0002": {
+   "completeness_score": 1.0,
+   "margin_minutes": 41.0,
+   "verdict": "AT_RISK"
+  },
+  "CN-0003": {
+   "completeness_score": 1.0,
+   "margin_minutes": -210.0,
+   "verdict": "INFEASIBLE"
+  },
+  "CN-ESC-01": {
+   "completeness_score": 0.4,
+   "margin_minutes": null,
+   "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE"
+  }
+ },
+ "expected_schema_version": "1.0.0",
+ "graph_outcome": {
+  "_note": "row-10 branch of agentcore/graph.py::policy_gate: the policy_gate trace event carries label DENY_BY_DEFAULT, no card is requested, the episode seals after the written escalation (T2, policy row 8)",
+  "actions_executed": [],
+  "approval_card_raised": false,
+  "auto_deny": true,
+  "escalate_reason_contains": "policy row 10",
+  "final_margin_minutes": 41.0,
+  "final_verdict": "AT_RISK",
+  "forbidden_trace_events": [
+   "approval_requested",
+   "approval_granted",
+   "action_executed"
+  ],
+  "outcome": "ESCALATED",
+  "policy_row": 10,
+  "policy_tool": "relay.berth_window_shift",
+  "required_labels": [
+   "DENY_BY_DEFAULT",
+   "ESCALATED"
+  ],
+  "required_trace_events": [
+   "event_ingested",
+   "llm_call",
+   "rule_eval",
+   "tool_call",
+   "policy_gate",
+   "escalated",
+   "replay_marker"
+  ],
+  "selected_option_id": "OPT-CN-0002-BERTH-WINDOW",
+  "target_connection_id": "CN-0002",
+  "writes_executed": 0
+ },
+ "must_escalate": [
+  "CN-ESC-01"
+ ],
+ "option_checks": {
+  "CN-0002": {
+   "_note": "the scripted berth-window proposal (cost $0, +90 -> 131.0) outranks the twin's own expedite ($800, 101.0) and rebook ($2400, 975.0) under the twin's deterministic ranking; with max_options=3 the never-feasible cut-off extension drops off the list for this connection",
+   "expedite_feasible_after": true,
+   "expedite_margin_after_minutes": 101.0,
+   "rebook_margin_after_minutes": 975.0,
+   "top_feasible_option": "OPT-CN-0002-BERTH-WINDOW"
+  }
+ },
+ "pack_id": "PACK-NO-POLICY-TRIGGER-01"
+}

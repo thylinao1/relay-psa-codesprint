@@ -1,0 +1,266 @@
+{
+  "artifact": "governance/examples/refunds/run.py",
+  "checks": [
+    {
+      "detail": "EXPIRED_DENIED",
+      "guarantee": "G1",
+      "name": "card expires DENIED when the approver never answers",
+      "ok": true
+    },
+    {
+      "detail": "DENY_BY_DEFAULT",
+      "guarantee": "G1",
+      "name": "the outcome is labelled DENY_BY_DEFAULT",
+      "ok": true
+    },
+    {
+      "detail": "ESCALATION: action DENIED BY DEFAULT (no decision within deny_after_s=90). Card CARD-G1 (T1, risk MEDIUM) requested payments.issue_refund for dispute DSP-0007; approver did not respond within 90 s. Options considered: OPT-DSP-0007-CREDIT: Store credit of 80.00 USD; OPT-DSP-0007-PARTIAL: Refund the damaged item, 80.00 USD; OPT-DSP-0007-FULL: Refund the whole order, 420.00 USD; OPT-DSP-0007-DECLINE: Decline the claim with a written reason; OPT-DSP-0007-CLOSE: Close the customer account for repeated claims. Requested by refund-agent/executor@run-01. Dispute desk lead: review and re-raise if the action is still wanted.",
+      "guarantee": "G1",
+      "name": "a WRITTEN escalation summary is produced",
+      "ok": true
+    },
+    {
+      "detail": "refunded_usd 0.0 -> 0.0",
+      "guarantee": "G1",
+      "name": "no money moved",
+      "ok": true
+    },
+    {
+      "detail": "decisions are final",
+      "guarantee": "G1",
+      "name": "a decided card cannot be re-decided into an approval",
+      "ok": true
+    },
+    {
+      "detail": "{\"action_class\":\"NO_ESTABLISHED_POLICY\",\"auto_deny\":true,\"note\":\"no approval policy exists for this action class; deny and escalate\",\"per\":\"day\",\"rate_limit\":0,\"requires_justification\":true,\"risk_level\":\"HIGH\",\"row\":99,\"tier\":null,\"tool\":\"payments.close_account\"}",
+      "guarantee": "G2",
+      "name": "an action class with no policy row resolves to auto-deny",
+      "ok": true
+    },
+    {
+      "detail": "policy row 99: edited action class 'close_account' has no established approval policy (AUTO-DENY)",
+      "guarantee": "G2",
+      "name": "the edit protocol refuses it",
+      "ok": true
+    },
+    {
+      "detail": "policy row 99: edited action class 'close_account' has no established approval policy (AUTO-DENY)",
+      "guarantee": "G2",
+      "name": "the refusal names the auto-deny row",
+      "ok": true
+    },
+    {
+      "detail": "no token",
+      "guarantee": "G2",
+      "name": "no token was minted on the refusal path",
+      "ok": true
+    },
+    {
+      "detail": "ACTIVE",
+      "guarantee": "G2",
+      "name": "the account is untouched",
+      "ok": true
+    },
+    {
+      "detail": "{\"justification_required\":false,\"risk\":\"MEDIUM\"}",
+      "guarantee": "G3",
+      "name": "the proposed action is row 3, MEDIUM, no justification",
+      "ok": true
+    },
+    {
+      "detail": "{\"action_class\":\"refund_large\",\"auto_deny\":false,\"per\":\"day\",\"rate_limit\":3,\"requires_justification\":true,\"risk_level\":\"HIGH\",\"row\":4,\"tier\":\"T1\",\"tool\":\"payments.issue_refund\"}",
+      "guarantee": "G3",
+      "name": "the gate RE-RUNS and lands on a different row",
+      "ok": true
+    },
+    {
+      "detail": "simulated merchant cost 420.00 against the planner's 420.00 USD (seed 42)",
+      "guarantee": "G3",
+      "name": "the edit is re-simulated before any approval",
+      "ok": true
+    },
+    {
+      "detail": "policy row 4 requires a WRITTEN justification for this action class and none was given",
+      "guarantee": "G3",
+      "name": "the edit is REFUSED without the newly required justification",
+      "ok": true
+    },
+    {
+      "detail": "no token",
+      "guarantee": "G3",
+      "name": "the refusal minted no token",
+      "ok": true
+    },
+    {
+      "detail": "DENIED",
+      "guarantee": "G3",
+      "name": "the original card was superseded, not silently approved",
+      "ok": true
+    },
+    {
+      "detail": "refunded_usd 0.0",
+      "guarantee": "G3",
+      "name": "no money moved on the refusal path",
+      "ok": true
+    },
+    {
+      "detail": "APPLIED",
+      "guarantee": "G3",
+      "name": "with the justification the edit is APPLIED",
+      "ok": true
+    },
+    {
+      "detail": "{\"risk\":\"HIGH\"}",
+      "guarantee": "G3",
+      "name": "the new card carries the re-run row's tier and risk",
+      "ok": true
+    },
+    {
+      "detail": "{\"amount_usd\":420.0,\"order_id\":\"ORD-4471\",\"payout\":\"STANDARD\"}",
+      "guarantee": "G3",
+      "name": "the new card's arguments are the EDITED arguments",
+      "ok": true
+    },
+    {
+      "detail": "[\"human_note\",\"tool_call\",\"policy_gate\",\"approval_denied\",\"approval_requested\",\"approval_granted\"]",
+      "guarantee": "G3",
+      "name": "the protocol emitted an auditable step sequence",
+      "ok": true
+    },
+    {
+      "detail": "{\"error\":{\"code\":\"UNAUTHORIZED\",\"context\":{\"card_id\":\"CARD-G3B-edit\",\"reason\":\"BINDING_MISMATCH\"},\"message\":\"write refused: approval token invalid (BINDING_MISMATCH). Tokens are minted ONLY by the approval server on an APPROVED card and are bound to tool + action args_digest + expiry, an agent cannot construct one.\",\"retryable\":false}}",
+      "guarantee": "G4",
+      "name": "the token is a BINDING MISMATCH against the original arguments",
+      "ok": true
+    },
+    {
+      "detail": "gate passed",
+      "guarantee": "G4",
+      "name": "the token passes for the arguments the human actually approved",
+      "ok": true
+    },
+    {
+      "detail": "{\"error\":{\"code\":\"UNAUTHORIZED\",\"context\":{},\"message\":\"write refused: credential 'refund-agent/planner@run-01' is not a write-scoped credential (^refund-agent/executor@[A-Za-z0-9._-]+$)\",\"retryable\":false}}",
+      "guarantee": "G4",
+      "name": "a credential outside the write scope is refused",
+      "ok": true
+    },
+    {
+      "detail": "{\"error\":{\"code\":\"APPROVAL_REQUIRED\",\"context\":{},\"message\":\"write refused: no approval token. All writes are gated; obtain an approval card decision first.\",\"retryable\":false}}",
+      "guarantee": "G5",
+      "name": "a call with no approval token is refused",
+      "ok": true
+    },
+    {
+      "detail": "{\"error\":{\"code\":\"UNAUTHORIZED\",\"context\":{\"card_id\":null,\"reason\":\"UNKNOWN_TOKEN\"},\"message\":\"write refused: approval token invalid (UNKNOWN_TOKEN). Tokens are minted ONLY by the approval server on an APPROVED card and are bound to tool + action args_digest + expiry, an agent cannot construct one.\",\"retryable\":false}}",
+      "guarantee": "G5",
+      "name": "a fabricated token is refused as UNKNOWN_TOKEN",
+      "ok": true
+    },
+    {
+      "detail": "refunded_usd 0.0",
+      "guarantee": "G5",
+      "name": "no money moved on either refusal",
+      "ok": true
+    },
+    {
+      "detail": "{\"applied_at\":\"2026-08-25T09:15:00+00:00\",\"currency\":\"USD\",\"justification_recorded\":false,\"ok\":true,\"payout\":\"STANDARD\",\"payout_fee_usd\":0.0,\"reference\":\"RFND-11D2DDEE\",\"state_change\":{\"after\":420.0,\"before\":0.0,\"entity\":\"ORD-4471\",\"field\":\"refunded_usd\"},\"tool\":\"payments.issue_refund\"}",
+      "guarantee": "G5",
+      "name": "the approved action executes exactly once",
+      "ok": true
+    },
+    {
+      "detail": "420.0",
+      "guarantee": "G5",
+      "name": "a repeated idempotency key replays the identical result and does not double-refund",
+      "ok": true
+    },
+    {
+      "detail": "{\"anchor\":\"verified\",\"count\":23,\"ok\":true,\"reason\":\"ok\"}",
+      "guarantee": "G6",
+      "name": "the chain verifies over every governed call and edit step",
+      "ok": true
+    },
+    {
+      "detail": "23",
+      "guarantee": "G6",
+      "name": "the case replays from the ledger alone",
+      "ok": true
+    },
+    {
+      "detail": "[\"action_executed\",\"action_failed\",\"approval_denied\",\"approval_granted\",\"approval_requested\",\"escalated\",\"human_note\",\"policy_gate\",\"tool_call\"]",
+      "guarantee": "G6",
+      "name": "the chain covers the tool boundary AND the edit protocol",
+      "ok": true
+    },
+    {
+      "detail": "{\"anchor\":\"verified\",\"count\":23,\"ok\":false,\"reason\":\"event 2: this_hash mismatch\"}",
+      "guarantee": "G6",
+      "name": "one edited field breaks the chain at that event",
+      "ok": true
+    },
+    {
+      "detail": "{\"error\":{\"code\":\"INTERNAL\",\"context\":{},\"message\":\"refusing to replay a broken chain: event 2: this_hash mismatch\",\"retryable\":false}}",
+      "guarantee": "G6",
+      "name": "a broken chain refuses to replay",
+      "ok": true
+    },
+    {
+      "detail": "{\"action_class\":\"refund_instant\",\"auto_deny\":false,\"per\":\"day\",\"rate_limit\":1,\"requires_justification\":true,\"risk_level\":\"HIGH\",\"row\":5,\"tier\":\"T1\",\"tool\":\"payments.issue_refund\"}",
+      "guarantee": "G7",
+      "name": "an instant payout is classified by its arguments, not its name",
+      "ok": true
+    },
+    {
+      "detail": "{\"first\":true,\"second\":false}",
+      "guarantee": "G7",
+      "name": "the one-per-day instant budget allows exactly one",
+      "ok": true
+    },
+    {
+      "detail": "{\"error\":{\"code\":\"RATE_LIMITED\",\"context\":{\"action_class\":\"refund_instant\",\"limit\":1,\"tool\":\"payments.issue_refund\"},\"message\":\"write refused: refund_instant exceeded 1/day (dispute-desk rate limit)\",\"retryable\":false}}",
+      "guarantee": "G7",
+      "name": "the refusal names the class and the budget",
+      "ok": true
+    }
+  ],
+  "claim": "the governance package delivers the same guarantees on a domain with no port, no vessel and no container: a payments dispute agent with its own policy table and simulator",
+  "domain": "payments dispute resolution (SYNTHETIC)",
+  "ledger_events": 23,
+  "policy_rows": 7,
+  "summary": {
+    "by_guarantee": {
+      "G1": {
+        "passed": 5,
+        "total": 5
+      },
+      "G2": {
+        "passed": 5,
+        "total": 5
+      },
+      "G3": {
+        "passed": 11,
+        "total": 11
+      },
+      "G4": {
+        "passed": 3,
+        "total": 3
+      },
+      "G5": {
+        "passed": 5,
+        "total": 5
+      },
+      "G6": {
+        "passed": 5,
+        "total": 5
+      },
+      "G7": {
+        "passed": 3,
+        "total": 3
+      }
+    },
+    "failed": 0,
+    "passed": 37,
+    "total": 37
+  }
+}

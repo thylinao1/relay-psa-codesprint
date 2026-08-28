@@ -1,0 +1,69 @@
+{
+  "profile_version": "1.0.0",
+  "kind": "mutation_power",
+  "label": "Detection power of the engine-versus-independent-oracle agreement check, measured on the same SYNTHETIC scenario set.",
+  "inputs": "independent-oracle-inputs-n320.json",
+  "n_scenarios": 320,
+  "mutations_tested": 7,
+  "mutations_detected": 4,
+  "mutations_undetected": [
+    "completeness_gate_060_to_050",
+    "eta_weight_030_to_020",
+    "infeasible_only_strictly_below_zero"
+  ],
+  "weakest_mutation": "completeness_gate_060_to_050",
+  "weakest_mutation_detected_on": 0,
+  "strongest_mutation_detected_on": 155,
+  "by_mutation": {
+    "at_risk_boundary_60_to_45": {
+      "scenarios_with_a_changed_verdict": 38,
+      "detection_rate": 0.1187,
+      "at_risk_connections_hidden": 38,
+      "false_alarms_introduced": 0,
+      "detected": true
+    },
+    "completeness_gate_060_to_050": {
+      "scenarios_with_a_changed_verdict": 0,
+      "detection_rate": 0.0,
+      "at_risk_connections_hidden": 0,
+      "false_alarms_introduced": 0,
+      "detected": false
+    },
+    "ready_time_drops_restow": {
+      "scenarios_with_a_changed_verdict": 27,
+      "detection_rate": 0.0844,
+      "at_risk_connections_hidden": 23,
+      "false_alarms_introduced": 0,
+      "detected": true
+    },
+    "ready_time_drops_buffer_p90": {
+      "scenarios_with_a_changed_verdict": 79,
+      "detection_rate": 0.2469,
+      "at_risk_connections_hidden": 72,
+      "false_alarms_introduced": 0,
+      "detected": true
+    },
+    "ready_time_drops_discharge": {
+      "scenarios_with_a_changed_verdict": 155,
+      "detection_rate": 0.4844,
+      "at_risk_connections_hidden": 144,
+      "false_alarms_introduced": 0,
+      "detected": true
+    },
+    "eta_weight_030_to_020": {
+      "scenarios_with_a_changed_verdict": 0,
+      "detection_rate": 0.0,
+      "at_risk_connections_hidden": 0,
+      "false_alarms_introduced": 0,
+      "detected": false
+    },
+    "infeasible_only_strictly_below_zero": {
+      "scenarios_with_a_changed_verdict": 0,
+      "detection_rate": 0.0,
+      "at_risk_connections_hidden": 0,
+      "false_alarms_introduced": 0,
+      "detected": false
+    }
+  },
+  "reading": "each row is a single-point change to the CONTRACT section b.1 rule; a non-zero count is a bug the agreement check would have caught, so the measured agreement of 1.00 is a result rather than an artefact of a comparison that cannot fail. An undetected mutation is a COVERAGE GAP in the generated scenario distribution, not a clean bill of health; the boundary probe in evalx/results/oracle-boundary-probe.json covers those edges directly."
+}

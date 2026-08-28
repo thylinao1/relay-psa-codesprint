@@ -1,0 +1,1499 @@
+{
+ "ais_warning_lead_version": "1.0.0",
+ "label": "RECORDED_AIS, STRUCTURED stream only: broadcast ETAs entered by crews, not a carrier advisory channel; the lead is an UPPER BOUND on what an advisory channel would give and the trigger rate an UPPER BOUND on how often the band fires",
+ "inputs": {
+  "derived": "data/ais/derived/eta-revisions-20260824-25.jsonl",
+  "derived_sha256": "2243607ca0299a3780492733b4880969ec25395c8f245eb0851884af875641a9",
+  "manifest": "data/ais/frozen/MANIFEST.json",
+  "days": [
+   "2026-08-24",
+   "2026-08-25"
+  ]
+ },
+ "definitions": {
+  "T_m": "first non-moored to moored (nav status 5) transition on class A position rows",
+  "t_star": "first broadcast ETA at least 60 min from the first observed ETA, required before T_m",
+  "warning_lead_minutes": "T_m minus t_star",
+  "in_window": "a qualifying revision 720 min or less before T_m",
+  "revision_min_minutes": 60.0,
+  "revision_strong_min_minutes": 120.0,
+  "in_window_minutes": 720.0,
+  "trigger_rate_per_day": "vessels with an in-window revision, divided by the hours the recorder covered that day, times 24",
+  "cargo_tanker_subset": "AIS ship type 70 to 89 from the vessel's last static row"
+ },
+ "denominators": {
+  "messages_in_raw_recording": 151906,
+  "derived_rows": 3413,
+  "vessels_seen": 1551,
+  "vessels_with_class_a_nav_status": 1182,
+  "vessels_with_any_broadcast_eta": 816,
+  "vessels_with_two_or_more_distinct_etas": 207,
+  "vessels_with_a_moored_transition": 146,
+  "moored_transitions_total": 159,
+  "vessels_with_more_than_one_moored_transition": 11
+ },
+ "basis": "from_first_observed_eta",
+ "warning_lead": {
+  "n": 20,
+  "median_minutes": 282.1,
+  "mean_minutes": 459.1,
+  "min_minutes": 50.9,
+  "max_minutes": 1724.9,
+  "deciles_minutes": [
+   50.9,
+   85.0,
+   117.7,
+   210.7,
+   221.6,
+   298.8,
+   338.8,
+   402.1,
+   700.5,
+   1232.4,
+   1724.9
+  ],
+  "share_at_least_60_min": 0.9,
+  "share_at_least_120_min": 0.75,
+  "share_within_720_min": 0.8
+ },
+ "signal_vessels_whose_first_eta_was_already_past_when_first_seen": 8,
+ "censored": {
+  "count": 126,
+  "by_reason": {
+   "censored_no_eta": 5,
+   "censored_one_eta": 63,
+   "censored_no_qualifying_revision_before_moored": 58
+  }
+ },
+ "no_signal_never_moored": 1405,
+ "ks_vs_generator_advisory_lead": {
+  "reference": "U(30, 240) minutes, evalx/sweep_local.ADVISORY_LEAD_RANGE",
+  "D": 0.5605,
+  "n": 20,
+  "reading": "one-sample KS distance between the recorded structured-stream lead and the generator's chosen advisory-lead distribution; the two are different quantities, so D describes the gap and is not a fit test"
+ },
+ "per_day": {
+  "2026-08-24": {
+   "vessels_seen": 1318,
+   "vessels_moored": 109,
+   "signal_n": 12,
+   "in_window_revision_ge_60": 12,
+   "in_window_revision_ge_120": 12,
+   "hours_covered": 20.92,
+   "span_hours": 23.55,
+   "gap_minutes": 157.5,
+   "partial_day": true,
+   "trigger_rate_per_day_60": 13.77,
+   "trigger_rate_per_day_120": 13.77
+  },
+  "2026-08-25": {
+   "vessels_seen": 427,
+   "vessels_moored": 37,
+   "signal_n": 8,
+   "in_window_revision_ge_60": 6,
+   "in_window_revision_ge_120": 5,
+   "hours_covered": 9.18,
+   "span_hours": 10.35,
+   "gap_minutes": 70.0,
+   "partial_day": true,
+   "trigger_rate_per_day_60": 15.69,
+   "trigger_rate_per_day_120": 13.07
+  }
+ },
+ "trigger_rate_per_day_60": 14.35,
+ "trigger_rate_per_day_120": 13.55,
+ "cargo_tanker_subset": {
+  "vessels_seen": 640,
+  "vessels_with_a_moored_transition": 133,
+  "basis": "from_first_observed_eta",
+  "warning_lead": {
+   "n": 18,
+   "median_minutes": 318.8,
+   "mean_minutes": 485.9,
+   "min_minutes": 50.9,
+   "max_minutes": 1724.9,
+   "deciles_minutes": [
+    50.9,
+    85.0,
+    116.9,
+    179.3,
+    265.5,
+    298.8,
+    346.2,
+    526.1,
+    772.4,
+    1232.4,
+    1724.9
+   ],
+   "share_at_least_60_min": 0.889,
+   "share_at_least_120_min": 0.722,
+   "share_within_720_min": 0.778
+  },
+  "signal_vessels_whose_first_eta_was_already_past_when_first_seen": 7,
+  "censored": {
+   "count": 115,
+   "by_reason": {
+    "censored_no_eta": 0,
+    "censored_one_eta": 60,
+    "censored_no_qualifying_revision_before_moored": 55
+   }
+  },
+  "no_signal_never_moored": 507,
+  "ks_vs_generator_advisory_lead": {
+   "reference": "U(30, 240) minutes, evalx/sweep_local.ADVISORY_LEAD_RANGE",
+   "D": 0.6111,
+   "n": 18,
+   "reading": "one-sample KS distance between the recorded structured-stream lead and the generator's chosen advisory-lead distribution; the two are different quantities, so D describes the gap and is not a fit test"
+  },
+  "per_day": {
+   "2026-08-24": {
+    "vessels_seen": 557,
+    "vessels_moored": 102,
+    "signal_n": 11,
+    "in_window_revision_ge_60": 11,
+    "in_window_revision_ge_120": 11,
+    "hours_covered": 20.92,
+    "span_hours": 23.55,
+    "gap_minutes": 157.5,
+    "partial_day": true,
+    "trigger_rate_per_day_60": 12.62,
+    "trigger_rate_per_day_120": 12.62
+   },
+   "2026-08-25": {
+    "vessels_seen": 220,
+    "vessels_moored": 31,
+    "signal_n": 7,
+    "in_window_revision_ge_60": 5,
+    "in_window_revision_ge_120": 4,
+    "hours_covered": 9.18,
+    "span_hours": 10.35,
+    "gap_minutes": 70.0,
+    "partial_day": true,
+    "trigger_rate_per_day_60": 13.07,
+    "trigger_rate_per_day_120": 10.46
+   }
+  },
+  "trigger_rate_per_day_60": 12.76,
+  "trigger_rate_per_day_120": 11.96
+ },
+ "variant_consecutive_revision": {
+  "why": "the headline measures the move from the FIRST observed ETA, and that first ETA is often left over from a previous port call, so the first revision is large and early; this variant measures the move from the immediately preceding broadcast instead, which is what twin/calibration_fit.py compares. Where the two agree it is because the first crossing of the band is the same broadcast under both bases, and that agreement is computed here rather than assumed",
+  "basis": "from_previous_broadcast",
+  "warning_lead": {
+   "n": 20,
+   "median_minutes": 282.1,
+   "mean_minutes": 459.1,
+   "min_minutes": 50.9,
+   "max_minutes": 1724.9,
+   "deciles_minutes": [
+    50.9,
+    85.0,
+    117.7,
+    210.7,
+    221.6,
+    298.8,
+    338.8,
+    402.1,
+    700.5,
+    1232.4,
+    1724.9
+   ],
+   "share_at_least_60_min": 0.9,
+   "share_at_least_120_min": 0.75,
+   "share_within_720_min": 0.8
+  },
+  "signal_vessels_whose_first_eta_was_already_past_when_first_seen": 8,
+  "censored": {
+   "count": 126,
+   "by_reason": {
+    "censored_no_eta": 5,
+    "censored_one_eta": 63,
+    "censored_no_qualifying_revision_before_moored": 58
+   }
+  },
+  "no_signal_never_moored": 1405,
+  "ks_vs_generator_advisory_lead": {
+   "reference": "U(30, 240) minutes, evalx/sweep_local.ADVISORY_LEAD_RANGE",
+   "D": 0.5605,
+   "n": 20,
+   "reading": "one-sample KS distance between the recorded structured-stream lead and the generator's chosen advisory-lead distribution; the two are different quantities, so D describes the gap and is not a fit test"
+  },
+  "per_day": {
+   "2026-08-24": {
+    "vessels_seen": 1318,
+    "vessels_moored": 109,
+    "signal_n": 12,
+    "in_window_revision_ge_60": 12,
+    "in_window_revision_ge_120": 12,
+    "hours_covered": 20.92,
+    "span_hours": 23.55,
+    "gap_minutes": 157.5,
+    "partial_day": true,
+    "trigger_rate_per_day_60": 13.77,
+    "trigger_rate_per_day_120": 13.77
+   },
+   "2026-08-25": {
+    "vessels_seen": 427,
+    "vessels_moored": 37,
+    "signal_n": 8,
+    "in_window_revision_ge_60": 6,
+    "in_window_revision_ge_120": 5,
+    "hours_covered": 9.18,
+    "span_hours": 10.35,
+    "gap_minutes": 70.0,
+    "partial_day": true,
+    "trigger_rate_per_day_60": 15.69,
+    "trigger_rate_per_day_120": 13.07
+   }
+  },
+  "trigger_rate_per_day_60": 14.35,
+  "trigger_rate_per_day_120": 13.55
+ },
+ "vessels_with_signal": [
+  {
+   "vessel": "SYNTH-057A2E",
+   "basis": "from_first_observed_eta",
+   "ship_type": 79,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T09:52:18+00:00",
+   "t_moored_last": "2026-08-25T09:52:18+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-24T04:00:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-25T04:13:32+00:00",
+   "eta_at_t_star": "2026-08-25T16:00:00+00:00",
+   "revision_minutes": 2160.0,
+   "warning_lead_minutes": 338.8,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-05E484",
+   "basis": "from_first_observed_eta",
+   "ship_type": 71,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T03:57:30+00:00",
+   "t_moored_last": "2026-08-25T03:57:30+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-25T00:30:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T23:32:00+00:00",
+   "eta_at_t_star": "2026-08-25T01:30:00+00:00",
+   "revision_minutes": 60.0,
+   "warning_lead_minutes": 265.5,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": false,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-0ACD86",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T08:14:12+00:00",
+   "t_moored_last": "2026-08-25T08:14:12+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-24T06:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T03:29:16+00:00",
+   "eta_at_t_star": "2026-08-24T13:05:00+00:00",
+   "revision_minutes": 425.0,
+   "warning_lead_minutes": 1724.9,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-0B23B8",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T17:59:43+00:00",
+   "t_moored_last": "2026-08-24T17:59:43+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-22T12:00:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-24T05:07:17+00:00",
+   "eta_at_t_star": "2026-08-24T07:00:00+00:00",
+   "revision_minutes": 2580.0,
+   "warning_lead_minutes": 772.4,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-0D17D0",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T14:27:17+00:00",
+   "t_moored_last": "2026-08-24T14:27:17+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-24T03:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T12:29:38+00:00",
+   "eta_at_t_star": "2026-08-24T12:00:00+00:00",
+   "revision_minutes": 540.0,
+   "warning_lead_minutes": 117.7,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-21A865",
+   "basis": "from_first_observed_eta",
+   "ship_type": 71,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T06:36:07+00:00",
+   "t_moored_last": "2026-08-25T06:36:07+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-30T19:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T10:03:45+00:00",
+   "eta_at_t_star": "2026-08-31T02:00:00+00:00",
+   "revision_minutes": 420.0,
+   "warning_lead_minutes": 1232.4,
+   "in_window_revision_ge_60": false,
+   "in_window_revision_ge_120": false,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-29A3D2",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T20:56:55+00:00",
+   "t_moored_last": "2026-08-24T20:56:55+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-21T18:00:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-24T20:06:01+00:00",
+   "eta_at_t_star": "2026-08-24T21:00:00+00:00",
+   "revision_minutes": 4500.0,
+   "warning_lead_minutes": 50.9,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-3ADAEB",
+   "basis": "from_first_observed_eta",
+   "ship_type": 70,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T07:37:37+00:00",
+   "t_moored_last": "2026-08-24T07:37:37+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-23T21:00:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-24T04:38:18+00:00",
+   "eta_at_t_star": "2026-08-24T05:10:00+00:00",
+   "revision_minutes": 490.0,
+   "warning_lead_minutes": 179.3,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-7A0191",
+   "basis": "from_first_observed_eta",
+   "ship_type": 82,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T07:28:09+00:00",
+   "t_moored_last": "2026-08-24T07:28:09+00:00",
+   "distinct_etas": 4,
+   "first_eta": "2026-08-21T04:00:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-24T03:57:30+00:00",
+   "eta_at_t_star": "2026-08-24T05:00:00+00:00",
+   "revision_minutes": 4380.0,
+   "warning_lead_minutes": 210.7,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-7AEF66",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T19:44:05+00:00",
+   "t_moored_last": "2026-08-24T19:44:05+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-24T08:00:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-24T18:19:03+00:00",
+   "eta_at_t_star": "2026-08-24T19:00:00+00:00",
+   "revision_minutes": 660.0,
+   "warning_lead_minutes": 85.0,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-835DB9",
+   "basis": "from_first_observed_eta",
+   "ship_type": 83,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T00:41:09+00:00",
+   "t_moored_last": "2026-08-25T00:41:09+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-24T09:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T02:37:01+00:00",
+   "eta_at_t_star": "2026-08-24T12:00:00+00:00",
+   "revision_minutes": 180.0,
+   "warning_lead_minutes": 1324.1,
+   "in_window_revision_ge_60": false,
+   "in_window_revision_ge_120": false,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-8CED41",
+   "basis": "from_first_observed_eta",
+   "ship_type": 82,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T17:17:34+00:00",
+   "t_moored_last": "2026-08-24T17:17:34+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-22T13:45:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-24T05:37:07+00:00",
+   "eta_at_t_star": "2026-08-24T14:00:00+00:00",
+   "revision_minutes": 2895.0,
+   "warning_lead_minutes": 700.5,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-953779",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T11:05:03+00:00",
+   "t_moored_last": "2026-08-24T11:05:03+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-24T08:30:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T09:08:09+00:00",
+   "eta_at_t_star": "2026-08-24T10:30:00+00:00",
+   "revision_minutes": 120.0,
+   "warning_lead_minutes": 116.9,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-9A7AE3",
+   "basis": "from_first_observed_eta",
+   "ship_type": 71,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T08:00:16+00:00",
+   "t_moored_last": "2026-08-25T08:00:16+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-24T22:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-25T03:01:30+00:00",
+   "eta_at_t_star": "2026-08-25T05:05:00+00:00",
+   "revision_minutes": 425.0,
+   "warning_lead_minutes": 298.8,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-B69712",
+   "basis": "from_first_observed_eta",
+   "ship_type": 33,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T09:55:59+00:00",
+   "t_moored_last": "2026-08-24T09:55:59+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-24T09:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T06:14:21+00:00",
+   "eta_at_t_star": "2026-08-24T04:00:00+00:00",
+   "revision_minutes": 300.0,
+   "warning_lead_minutes": 221.6,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-D08194",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T17:14:14+00:00",
+   "t_moored_last": "2026-08-24T17:14:14+00:00",
+   "distinct_etas": 4,
+   "first_eta": "2026-08-24T13:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T16:20:11+00:00",
+   "eta_at_t_star": "2026-08-25T01:00:00+00:00",
+   "revision_minutes": 720.0,
+   "warning_lead_minutes": 54.0,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-DC5389",
+   "basis": "from_first_observed_eta",
+   "ship_type": 81,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T08:55:00+00:00",
+   "t_moored_last": "2026-08-25T08:55:00+00:00",
+   "distinct_etas": 3,
+   "first_eta": "2026-08-24T09:30:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-25T00:08:55+00:00",
+   "eta_at_t_star": "2026-08-25T01:15:00+00:00",
+   "revision_minutes": 945.0,
+   "warning_lead_minutes": 526.1,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-DFFFBA",
+   "basis": "from_first_observed_eta",
+   "ship_type": 90,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-25T04:46:56+00:00",
+   "t_moored_last": "2026-08-25T04:46:56+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-16T03:00:00+00:00",
+   "first_eta_stale_at_first_observation": true,
+   "t_star": "2026-08-25T01:13:43+00:00",
+   "eta_at_t_star": "2026-08-25T03:00:00+00:00",
+   "revision_minutes": 12960.0,
+   "warning_lead_minutes": 213.2,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-E5DFD8",
+   "basis": "from_first_observed_eta",
+   "ship_type": 84,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T14:14:10+00:00",
+   "t_moored_last": "2026-08-24T14:14:10+00:00",
+   "distinct_etas": 6,
+   "first_eta": "2026-08-24T06:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T07:32:04+00:00",
+   "eta_at_t_star": "2026-08-24T11:06:00+00:00",
+   "revision_minutes": 306.0,
+   "warning_lead_minutes": 402.1,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  },
+  {
+   "vessel": "SYNTH-F65B05",
+   "basis": "from_first_observed_eta",
+   "ship_type": 80,
+   "moored_transitions": 1,
+   "t_moored_first": "2026-08-24T15:06:43+00:00",
+   "t_moored_last": "2026-08-24T15:06:43+00:00",
+   "distinct_etas": 2,
+   "first_eta": "2026-08-24T07:00:00+00:00",
+   "first_eta_stale_at_first_observation": false,
+   "t_star": "2026-08-24T09:20:33+00:00",
+   "eta_at_t_star": "2026-08-24T09:00:00+00:00",
+   "revision_minutes": 120.0,
+   "warning_lead_minutes": 346.2,
+   "in_window_revision_ge_60": true,
+   "in_window_revision_ge_120": true,
+   "status": "signal"
+  }
+ ],
+ "vessels_censored": [
+  {
+   "vessel": "SYNTH-00555A",
+   "ship_type": 3,
+   "t_moored_first": "2026-08-24T12:28:50+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-010C38",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T09:15:03+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-01FFFE",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T05:07:33+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-046C62",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T09:31:12+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-070FC7",
+   "ship_type": null,
+   "t_moored_first": "2026-08-24T04:28:09+00:00",
+   "distinct_etas": 0,
+   "status": "censored_no_eta"
+  },
+  {
+   "vessel": "SYNTH-09F76C",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-25T08:40:43+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-0ABF1F",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-25T09:53:45+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-0C20B2",
+   "ship_type": 99,
+   "t_moored_first": "2026-08-25T10:05:39+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-0DC3A8",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T21:21:03+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-0EE4C5",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T09:21:20+00:00",
+   "distinct_etas": 4,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-146EE7",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T07:47:24+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-150A37",
+   "ship_type": null,
+   "t_moored_first": "2026-08-25T02:39:03+00:00",
+   "distinct_etas": 0,
+   "status": "censored_no_eta"
+  },
+  {
+   "vessel": "SYNTH-162996",
+   "ship_type": 82,
+   "t_moored_first": "2026-08-24T11:08:46+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-179F73",
+   "ship_type": 79,
+   "t_moored_first": "2026-08-24T08:11:45+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-1B29A8",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-25T01:27:52+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-1D073B",
+   "ship_type": 81,
+   "t_moored_first": "2026-08-24T21:22:04+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-25D863",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T03:07:40+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-27B958",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T18:04:03+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-284EFC",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T12:54:18+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-2A80EF",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-25T03:59:32+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-2AC636",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T16:59:53+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-2E0039",
+   "ship_type": 37,
+   "t_moored_first": "2026-08-24T03:56:56+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-33F312",
+   "ship_type": 72,
+   "t_moored_first": "2026-08-25T07:20:32+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-36D54C",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T17:23:28+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-371018",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T22:57:51+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-3AF417",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-25T08:15:46+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-3E18C4",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T09:08:10+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-3E5DBD",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T03:03:43+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-3E9E07",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T22:56:25+00:00",
+   "distinct_etas": 4,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-405E93",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-25T08:40:16+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-40656B",
+   "ship_type": 89,
+   "t_moored_first": "2026-08-24T10:37:38+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-4F6C65",
+   "ship_type": 84,
+   "t_moored_first": "2026-08-24T23:28:50+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-4FB6EE",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-25T00:59:21+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-505FF7",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-25T06:29:41+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-5441B0",
+   "ship_type": 81,
+   "t_moored_first": "2026-08-24T15:46:59+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-56A2B3",
+   "ship_type": 86,
+   "t_moored_first": "2026-08-24T10:05:14+00:00",
+   "distinct_etas": 4,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-5737E4",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T14:54:56+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-58A063",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-25T02:49:32+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-5AD14F",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T13:29:06+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-5C1057",
+   "ship_type": 72,
+   "t_moored_first": "2026-08-25T10:06:15+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-5E2BC2",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T17:07:44+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-5EC9C8",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T08:06:55+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-65A127",
+   "ship_type": 83,
+   "t_moored_first": "2026-08-24T11:41:32+00:00",
+   "distinct_etas": 5,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-65AFE9",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-24T12:18:13+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-67B143",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T03:41:54+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-689CA6",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T20:33:26+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-69326A",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T23:02:16+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-6D7E21",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-25T04:03:51+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-721CDA",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T02:47:09+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-737E72",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-25T00:09:52+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-74459A",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T19:40:57+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-74D84F",
+   "ship_type": 0,
+   "t_moored_first": "2026-08-24T09:15:33+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-764B9D",
+   "ship_type": 83,
+   "t_moored_first": "2026-08-25T06:07:37+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-7A0286",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-24T15:47:30+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-7A3FC4",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T10:13:11+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-80B4AB",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T05:38:22+00:00",
+   "distinct_etas": 4,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-812694",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T11:29:43+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-81D7E0",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-25T10:18:06+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-8245E2",
+   "ship_type": 89,
+   "t_moored_first": "2026-08-24T04:41:12+00:00",
+   "distinct_etas": 4,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-82A57D",
+   "ship_type": null,
+   "t_moored_first": "2026-08-25T02:07:21+00:00",
+   "distinct_etas": 0,
+   "status": "censored_no_eta"
+  },
+  {
+   "vessel": "SYNTH-83F328",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T07:37:01+00:00",
+   "distinct_etas": 4,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-89F421",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T08:03:56+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-924871",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-25T05:59:07+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-95BD6D",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T20:18:22+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-96290D",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T23:26:43+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-973DC7",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T17:29:13+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-977DBA",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T19:09:06+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-9A9552",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-25T02:28:08+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-9AC2CE",
+   "ship_type": 82,
+   "t_moored_first": "2026-08-24T10:22:45+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-9B302C",
+   "ship_type": 60,
+   "t_moored_first": "2026-08-24T22:24:09+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-9E4BD5",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T03:32:35+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-9F8454",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T05:24:29+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-9F86EC",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T11:16:45+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-A27E76",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T16:31:16+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-A4F8F9",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T02:48:33+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-A5B181",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T23:07:21+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-A6BB01",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T02:47:55+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-A6F337",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-25T03:22:07+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-A9D55E",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T19:23:16+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-AB7C7C",
+   "ship_type": 84,
+   "t_moored_first": "2026-08-24T18:46:28+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-AC1AE9",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T03:38:39+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-B354F2",
+   "ship_type": 73,
+   "t_moored_first": "2026-08-24T17:31:01+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-B89EED",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T09:30:00+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-B8EBE6",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T07:52:29+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-BA4661",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T21:39:39+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-BAB0D9",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T04:53:34+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-BD6D78",
+   "ship_type": 84,
+   "t_moored_first": "2026-08-24T22:21:38+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-BD8AD4",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T11:56:51+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-BE579F",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-24T03:45:44+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-BF0661",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T16:20:51+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-C1F6B0",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T05:27:30+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-C2852C",
+   "ship_type": 0,
+   "t_moored_first": "2026-08-24T04:52:25+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-C2E320",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T13:15:12+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-C336E9",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T04:57:51+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-C4BD10",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-25T10:09:36+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-C7502F",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T23:47:26+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-C76E24",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-25T10:03:41+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-C77A04",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-25T06:00:47+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-CBAE50",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T05:56:52+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-CBD0A4",
+   "ship_type": null,
+   "t_moored_first": "2026-08-25T01:58:28+00:00",
+   "distinct_etas": 0,
+   "status": "censored_no_eta"
+  },
+  {
+   "vessel": "SYNTH-CBD44D",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T10:26:40+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-CE0772",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T18:51:55+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-CFBE9E",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T14:43:03+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-D18E85",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T10:55:17+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-D4693D",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-25T07:22:44+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-D60EF4",
+   "ship_type": 88,
+   "t_moored_first": "2026-08-24T18:23:42+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-D9D9A3",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T06:09:30+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-DA5E81",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-25T08:38:27+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-DCCC33",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-24T12:58:18+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-DCD08F",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T04:45:32+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-DE9AA6",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T08:28:50+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-E0D57F",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T11:48:28+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-E0EEE8",
+   "ship_type": 86,
+   "t_moored_first": "2026-08-24T18:52:08+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-E6B569",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T23:06:19+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-EA0117",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T17:59:32+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-EA9936",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T10:06:04+00:00",
+   "distinct_etas": 3,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-EBF69B",
+   "ship_type": 89,
+   "t_moored_first": "2026-08-25T07:55:08+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-F26C8D",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T11:49:49+00:00",
+   "distinct_etas": 4,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-F53C13",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T16:43:32+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-F7F95E",
+   "ship_type": 89,
+   "t_moored_first": "2026-08-24T07:42:57+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-F9144D",
+   "ship_type": 74,
+   "t_moored_first": "2026-08-24T05:14:16+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-F93B0B",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T14:49:11+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  },
+  {
+   "vessel": "SYNTH-F9B855",
+   "ship_type": null,
+   "t_moored_first": "2026-08-25T00:59:59+00:00",
+   "distinct_etas": 0,
+   "status": "censored_no_eta"
+  },
+  {
+   "vessel": "SYNTH-FBDB2C",
+   "ship_type": 70,
+   "t_moored_first": "2026-08-24T14:15:16+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-FC64C1",
+   "ship_type": 71,
+   "t_moored_first": "2026-08-24T15:19:58+00:00",
+   "distinct_etas": 1,
+   "status": "censored_one_eta"
+  },
+  {
+   "vessel": "SYNTH-FDC4B1",
+   "ship_type": 80,
+   "t_moored_first": "2026-08-24T11:20:33+00:00",
+   "distinct_etas": 2,
+   "status": "censored_no_qualifying_revision_before_moored"
+  }
+ ],
+ "honest_limits": "Broadcast ETAs are typed by crews on their own schedule, so a revision here is the earliest the structured stream could have warned; nothing in the recording shows when a carrier would have sent an advisory, so this bounds the advisory channel from above. The first observed ETA is often stale from a previous port call, which makes the first revision large and early and pushes the lead up. Both days are partial and the per-day rate is normalised to the hours actually recorded. The box holds every vessel class, so the cargo-and-tanker cut is reported beside the whole. Moored is a crew-set status, not a berth event."
+}

@@ -1,0 +1,63 @@
+{
+ "golden_schema_version": "1.0.0",
+ "_frozen": "FROZEN 2026-08-24. Golden advisory-reconciliation case. The advisory-fusion node, given the free-text advisory below plus the structured world state (world.json) and AIS context, must emit a reconciled fact matching expected_fact (keys frozen; datetime values exact) and a confidence object matching expected_confidence_shape (keys frozen; per-field float values are targets with tolerance +/-0.15 because they are LLM-derived). | AMENDED 2026-08-25: affected_connections widened from [CN-0002] to [CN-0001, CN-0002]. An ETA slip is a VESSEL fact and CN-0001 was still holding the superseded 16:15 arrival, so the advisory lane was silently leaving it stale while the structured lane (vessel_eta_update, voyage 437W) correctly listed every connection on the voyage. CN-0003 holds a third value (23:45), was not addressed by this advisory, and is deliberately NOT included.",
+ "advisory": {
+  "advisory_id": "ADV-2026-0824-001",
+  "received_at": "2026-08-25T19:02:44+08:00",
+  "source": "carrier_email:oceanlink-sg-ops-desk",
+  "free_text": "URGENT // MV MERLION EXPRESS v.437W (MLX 437-W in our sys, some msgs show 'MERLION EXP') \u2014 SIN eta now 25/08 approx 2030 LT vice 1615 LT, ETB shifted accordingly. Pls adv t/s ex MERLION to TEMASEK STAR V.0402E \u2014 cutoff unchanged 26/08 0226 hrs?? Note rotation may drop PKG next call, TBC. Rgds, SG ops desk"
+ },
+ "ais_context": {
+  "vessel_imo": "9700001",
+  "mmsi": "563000001",
+  "ais_eta_estimate": "2026-08-25T20:18:00+08:00",
+  "note": "AIS-derived ETA at time of advisory receipt; disagrees with the advisory by 12 minutes"
+ },
+ "expected_fact": {
+  "fact_type": "carrier_advisory_reconciled",
+  "advisory_id": "ADV-2026-0824-001",
+  "vessel_imo": "9700001",
+  "vessel_name_normalised": "MERLION EXPRESS",
+  "voyage_in": "437W",
+  "previous_eta": "2026-08-25T16:15:00+08:00",
+  "new_eta": "2026-08-25T20:30:00+08:00",
+  "eta_drift_minutes": 255,
+  "outbound_vessel_name_normalised": "TEMASEK STAR",
+  "voyage_out": "0402E",
+  "cutoff_confirmed": "2026-08-26T02:26:00+08:00",
+  "rotation_change": {
+   "type": "POSSIBLE_OMISSION",
+   "port": "PKG",
+   "asserted": false
+  },
+  "affected_connections": [
+   "CN-0001",
+   "CN-0002"
+  ],
+  "contradictions": [
+   {
+    "field": "new_eta",
+    "advisory_value": "2026-08-25T20:30:00+08:00",
+    "ais_value": "2026-08-25T20:18:00+08:00",
+    "resolution": "ADVISORY_ACCEPTED_WITHIN_TOLERANCE"
+   }
+  ]
+ },
+ "expected_confidence_shape": {
+  "method": "3-sample self-consistency vote",
+  "samples": 3,
+  "range": [
+   0.0,
+   1.0
+  ],
+  "per_field": {
+   "vessel_identity": 0.95,
+   "voyage_in": 0.9,
+   "new_eta": 0.8,
+   "cutoff_confirmed": 0.85,
+   "rotation_change": 0.45
+  },
+  "fusion_completeness_score": 0.87,
+  "_note": "fusion_completeness_score is the LLM-side reconciliation completeness (gated by FUSION_COMPLETENESS_THRESHOLD). It is a DIFFERENT quantity from the twin feasibility evidence completeness_score (COMPLETENESS_WEIGHTS over evidenced fields, gated by COMPLETENESS_ESCALATE_THRESHOLD). Same 0.60 gate value, distinct names everywhere."
+ }
+}

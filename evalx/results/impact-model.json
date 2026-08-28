@@ -1,0 +1,4638 @@
+{
+ "impact_model_version": "2.3.0",
+ "label": "MODEL over SIMULATOR-INTERNAL measurements, not a field result",
+ "first_sentence": "Every RELAY figure here is simulator-internal, from seeded SYNTHETIC worlds graded by the agent's own feasibility engine; the volume and transhipment share are public figures read from their primary sources; the rollover rate is a dated public aggregate; the catch increment is a generator parameter, not a finding; the inputs that move the answer most have NO public source and are stated as ranges, with the tornado section ranking them; and version 2.0.0 booked every save as a rollover avoided where version 2.1.0 does not, pricing each save at the audit's expected rollovers avoided per booked save and printing the version 2.0.0 booking beside it. Version 2.2.0 changes whose run is being priced: the base scenario is the sweep the agent ran with the expected-value gate ON, in which it proposed only the actions its own twin priced at or above their cost, and the ungated arm version 2.1.0 priced is printed beside it under arms.ungated; and it subtracts the share of cards that expire into deny-by-default at the one-officer desk, so what is priced is the saves that reach a write rather than the saves proposed. Version 2.3.0 stops asserting the sign of its own headline: the probability that decides it is a mean over a handful of saves, so it now carries a seeded bootstrap interval and `sign_of_the_headline` prints what share of that interval sits on the losing side of break-even; and the same tornado, break-even and corner analysis is run a second time on psa_pnl_usd_net_of_operations, the column a terminal actually decides on, where the answer is negative everywhere.",
+ "input_kinds": {
+  "MEASURED": "read from a results file in this repository at run time, by path",
+  "CITED": "a public figure with the URL, the date and the verbatim sentence",
+  "CHOSEN": "an assumption with a why and a range, because no source was found",
+  "GENERATOR_DERIVED": "a parameter of this repository's simulator, read from the named constant at run time; not a finding"
+ },
+ "beneficiaries": {
+  "PSA_PNL": "PSA's own profit and loss: the yard slot freed, less the storage it no longer bills, less the expedite and restow it pays for, less the desk and the supervisor; the column PSA would decide on",
+  "CARRIER": "the storage the carrier no longer pays PSA for a rolled box",
+  "SHIPPER": "the cargo owner's demurrage and the carrying cost of a delayed shipment"
+ },
+ "volume_module": "evalx/volume_inputs.py (shared with evalx/oversight_load_model.py)",
+ "arms": {
+  "gated": {
+   "label": "the expected-value gate ON: the base scenario's source",
+   "sweep": "evalx/results/sweep-full-n500-evgate.json",
+   "audit": "evalx/results/save-value-audit-n500-evgate.json",
+   "ev_gate_enabled": true,
+   "expedites_executed": 29,
+   "restows_executed": 0,
+   "rebooking_proposals": 53,
+   "expedite_spend_usd": 23200.0,
+   "saved_by_expedite": 29,
+   "expected_rollovers_avoided": 1.15,
+   "roll_probability_given_save": 0.0397,
+   "spend_per_rollover_avoided_usd": 19744.7,
+   "escalation_classes": {
+    "advise_only": 157,
+    "insufficient_evidence": 35,
+    "no_feasible_option": 25
+   },
+   "escalations_per_at_risk": 0.7258,
+   "at_risk_ending_advise_only": 157,
+   "value_per_save_usd": 27152.0804,
+   "spend_per_save_usd": 800.0,
+   "net_per_save_usd": 277.94,
+   "saves_per_at_risk": 0.064213,
+   "saves_per_at_risk_reaching_a_write": 0.041334,
+   "annual_usd": 330543,
+   "annual_usd_millions": 0.3,
+   "annual_usd_net_of_operations": 87215,
+   "annual_usd_net_of_operations_millions": 0.1,
+   "psa_pnl_usd_net_of_operations": -1329916,
+   "psa_pnl_usd_net_of_operations_millions": -1.3,
+   "operations_total_usd_year": 243327.96,
+   "median_margin_before_minutes": 10.0,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 27152.08,
+    "roll_probability_given_save": 0.0397,
+    "expected_value_per_expedite_usd": 1077.94,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": true,
+    "roll_probability_basis": "held_out",
+    "breakeven_roll_probability": 0.0295,
+    "psa_pnl_expected_value_per_expedite_usd": -913.66,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   }
+  },
+  "ungated": {
+   "label": "the expected-value gate OFF: what the agent did before the gate, and what version 2.1.0 priced",
+   "sweep": "evalx/results/sweep-full-n500.final.json",
+   "audit": "evalx/results/save-value-audit-n500.json",
+   "ev_gate_enabled": null,
+   "expedites_executed": 173,
+   "restows_executed": 11,
+   "rebooking_proposals": 55,
+   "expedite_spend_usd": 138400.0,
+   "saved_by_expedite": 173,
+   "expected_rollovers_avoided": 2.275,
+   "roll_probability_given_save": 0.0132,
+   "spend_per_rollover_avoided_usd": 60835.2,
+   "escalation_classes": {
+    "insufficient_evidence": 35,
+    "no_feasible_option": 25
+   },
+   "escalations_per_at_risk": 0.2007,
+   "at_risk_ending_advise_only": 0,
+   "value_per_save_usd": 27152.0804,
+   "spend_per_save_usd": 952.6012,
+   "net_per_save_usd": -594.19,
+   "saves_per_at_risk": 0.208699,
+   "saves_per_at_risk_reaching_a_write": 0.13434,
+   "annual_usd": -2296725,
+   "annual_usd_millions": -2.3,
+   "annual_usd_net_of_operations": -2388969,
+   "annual_usd_net_of_operations_millions": -2.4,
+   "psa_pnl_usd_net_of_operations": -3920385,
+   "psa_pnl_usd_net_of_operations_millions": -3.9,
+   "operations_total_usd_year": 92243.98,
+   "median_margin_before_minutes": 37.0,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 27152.08,
+    "roll_probability_given_save": 0.0132,
+    "expected_value_per_expedite_usd": 358.41,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": false,
+    "roll_probability_basis": "in_sample",
+    "breakeven_roll_probability": 0.0295,
+    "psa_pnl_expected_value_per_expedite_usd": -837.79,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   }
+  }
+ },
+ "arms_reading": "one model, two sweep arms. `gated` is the base scenario and every other block in this artifact; `ungated` is the same arithmetic over the pre-gate sweep and its own save-value audit, which is what version 2.1.0 published. The gate does not make the agent better at saving connections; it stops it buying the saves that were not worth buying, and it moves the cost from the terminal's money to a supervisor's reading time, which is why the escalation rows move with the spend rows",
+ "breakeven": {
+  "scenario": "base",
+  "annual_usd_net_of_operations": 87215,
+  "positive": true,
+  "roll_probability_today": 0.0397,
+  "roll_probability_for_zero_net_per_save": 0.0295,
+  "roll_probability_for_zero_annual_net_of_operations": 0.037,
+  "value_per_rollover_today_usd": 27152.08,
+  "value_per_rollover_for_zero_net_per_save_usd": 20151.13,
+  "value_per_rollover_for_zero_annual_net_of_operations_usd": 25304.73,
+  "expiry_share_at_staffed_today": 0.3563,
+  "expiry_share_for_zero_annual_net_of_operations": 0.5261,
+  "expiry_share_reading": "the share of approval cards expiring into DENY_BY_DEFAULT at which annual_usd_net_of_operations reaches zero, found by bisecting compute() itself rather than by a formula that could drift from it. Read it against the 0.3563 the base desk is priced at: a value in [0, 1] means the desk staffing alone can move the bottom line across zero, and null means it cannot at any expiry share",
+  "reading": "at the audit's probability the value of a save is VALUE_PER_SAVE x P; the first pair is where that equals the agent's own spend per save, the second is where it also carries the desk and the supervisor. Either number moving is a claim about the world, not about the code"
+ },
+ "sign_of_the_headline": {
+  "available": true,
+  "scenario": "base",
+  "metric": "annual_usd_net_of_operations",
+  "annual_usd_net_of_operations": 87215,
+  "roll_probability_today": 0.0397,
+  "roll_probability_ci95": [
+   0.0293,
+   0.0509
+  ],
+  "roll_probability_ci95_source": "evalx/results/save-value-bootstrap-n500-evgate.json",
+  "bootstrap": {
+   "n_saves": 29,
+   "resamples": 10000,
+   "seed": 20260826,
+   "method": "seeded non-parametric bootstrap of the mean: `resamples` draws of `n_saves` per-save probabilities with replacement, the mean of each"
+  },
+  "breakeven_roll_probability_for_zero_annual_net_of_operations": 0.037,
+  "breakeven_roll_probability_for_zero_net_per_save": 0.0295,
+  "share_of_resamples_below_breakeven_net_of_operations": 0.3171,
+  "share_of_resamples_below_breakeven_per_expedite": 0.0278,
+  "probability_annual_net_of_operations_above_zero": 0.6829,
+  "annual_usd_net_of_operations_at_ci95_low": -248613,
+  "annual_usd_net_of_operations_at_ci95_high": 448877,
+  "psa_pnl_usd_net_of_operations_at_ci95_low": -1294506,
+  "psa_pnl_usd_net_of_operations_at_ci95_high": -1368050,
+  "why_the_psa_pair_runs_the_other_way": "PSA's column falls as the probability rises, where the chain-wide figure rises. That is not a sign error: the value of a rollover avoided in PSA's column is negative, so a save that is more likely to have avoided a rollover is a save PSA paid more for. `psa_column` works that through.",
+  "sign_is_established": false,
+  "reading": "the base scenario's annual figure net of operations is USD 87,215 at the audit's point estimate of 0.0397, and it crosses zero at 0.037. Resampling the 29 per-save values the audit priced this arm on puts 31.7% of the distribution below that crossing, so the figure is positive with probability 0.68 on the audit's own resample and the 95% interval runs from USD -248,613 to USD 448,877. The interval contains zero. The gated arm is positive in expectation and NOT distinguishable from zero at this sample size, and any sentence that reads the point estimate as a demonstrated saving is reading past that."
+ },
+ "psa_column": {
+  "scenario": "base",
+  "metric": "psa_pnl_usd_net_of_operations",
+  "psa_pnl_usd_net_of_operations": -1329916,
+  "psa_value_per_rollover_avoided_usd": -2862.93,
+  "psa_pnl_expected_value_per_expedite_usd": -913.66,
+  "why_the_column_is_negative": "PSA_PNL per box-day is YARD_SLOT_MARGINAL minus STORAGE_PER_BOX_DAY, which is 5 minus 20 in the base scenario. A saved connection is a box that does not sit in the yard, so PSA does not bill the storage it would have billed, and the yard slot it frees is worth less than that storage at every value in this artifact's own ranges except the ones that set storage to zero",
+  "tornado": {
+   "metric": "psa_pnl_usd_net_of_operations, base scenario, one input at a time between its ends; the bottom line rather than the gross figure, so the operations rows swing too",
+   "metric_key": "psa_pnl_usd_net_of_operations",
+   "annual_usd_base": -1329916,
+   "rows": [
+    {
+     "input": "PRICE_REBOOKING_PROPOSALS",
+     "low_end": 0,
+     "high_end": 1,
+     "annual_usd_at_low": -1329916,
+     "annual_usd_at_high": -6981006,
+     "swing_usd": 5651090,
+     "swing_over_base": 4.249
+    },
+    {
+     "input": "BOXES_PER_CONNECTION",
+     "low_end": 8,
+     "high_end": 48,
+     "annual_usd_at_low": -4207161,
+     "annual_usd_at_high": -813836,
+     "swing_usd": 3393325,
+     "swing_over_base": 2.552
+    },
+    {
+     "input": "CONNECTION_DRIVEN_FRACTION",
+     "low_end": 0.05,
+     "high_end": 0.3,
+     "annual_usd_at_low": -443305,
+     "annual_usd_at_high": -2659832,
+     "swing_usd": 2216527,
+     "swing_over_base": 1.667
+    },
+    {
+     "input": "EXPIRY_SHARE_AT_STAFFED",
+     "low_end": 0.0497,
+     "high_end": 0.9845,
+     "annual_usd_at_low": -1847467,
+     "annual_usd_at_high": -269492,
+     "swing_usd": 1577975,
+     "swing_over_base": 1.187
+    },
+    {
+     "input": "EXPEDITE_COST_USD",
+     "low_end": 400.0,
+     "high_end": 1600.0,
+     "annual_usd_at_low": -854207,
+     "annual_usd_at_high": -2281333,
+     "swing_usd": 1427126,
+     "swing_over_base": 1.073
+    },
+    {
+     "input": "ROLLOVER_RATE",
+     "low_end": 0.1,
+     "high_end": 0.311,
+     "annual_usd_at_low": -599061,
+     "annual_usd_at_high": -1863080,
+     "swing_usd": 1264019,
+     "swing_over_base": 0.95
+    },
+    {
+     "input": "SAVE_RATE_AFTER_ESCALATION",
+     "low_end": 0.0,
+     "high_end": 0.579,
+     "annual_usd_at_low": -735457,
+     "annual_usd_at_high": -1882763,
+     "swing_usd": 1147306,
+     "swing_over_base": 0.863
+    },
+    {
+     "input": "CATCH_INCREMENT",
+     "low_end": 0.05,
+     "high_end": 0.3,
+     "annual_usd_at_low": -1026684,
+     "annual_usd_at_high": -2156460,
+     "swing_usd": 1129776,
+     "swing_over_base": 0.85
+    },
+    {
+     "input": "PLANNER_MISS_SHARE",
+     "low_end": 0.1,
+     "high_end": 0.6,
+     "annual_usd_at_low": -1001830,
+     "annual_usd_at_high": -1822045,
+     "swing_usd": 820215,
+     "swing_over_base": 0.617
+    },
+    {
+     "input": "STORAGE_PER_BOX_DAY",
+     "low_end": 0,
+     "high_end": 50,
+     "annual_usd_at_low": -1149688,
+     "annual_usd_at_high": -1600257,
+     "swing_usd": 450569,
+     "swing_over_base": 0.339
+    },
+    {
+     "input": "SUPERVISOR_MIN_PER_ESCALATION",
+     "low_end": 5,
+     "high_end": 20,
+     "annual_usd_at_low": -1225501,
+     "annual_usd_at_high": -1538746,
+     "swing_usd": 313245,
+     "swing_over_base": 0.236
+    },
+    {
+     "input": "OFFICER_USD_PER_HOUR",
+     "low_end": 40,
+     "high_end": 90,
+     "annual_usd_at_low": -1248806,
+     "annual_usd_at_high": -1451580,
+     "swing_usd": 202774,
+     "swing_over_base": 0.152
+    },
+    {
+     "input": "TEU_PER_BOX",
+     "low_end": 1.6,
+     "high_end": 1.8,
+     "annual_usd_at_low": -1413036,
+     "annual_usd_at_high": -1256032,
+     "swing_usd": 157004,
+     "swing_over_base": 0.118
+    },
+    {
+     "input": "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY",
+     "low_end": 0,
+     "high_end": 15,
+     "annual_usd_at_low": -1374973,
+     "annual_usd_at_high": -1239802,
+     "swing_usd": 135171,
+     "swing_over_base": 0.102
+    },
+    {
+     "input": "DAYS_PER_ROLL",
+     "low_end": 5,
+     "high_end": 10,
+     "annual_usd_at_low": -1291296,
+     "annual_usd_at_high": -1387846,
+     "swing_usd": 96550,
+     "swing_over_base": 0.073
+    },
+    {
+     "input": "TS_SHARE",
+     "low_end": 0.85,
+     "high_end": 0.9,
+     "annual_usd_at_low": -1256032,
+     "annual_usd_at_high": -1329916,
+     "swing_usd": 73884,
+     "swing_over_base": 0.056
+    },
+    {
+     "input": "CARGO_VALUE_PER_TEU",
+     "low_end": 30000,
+     "high_end": 50000,
+     "annual_usd_at_low": -1329916,
+     "annual_usd_at_high": -1329916,
+     "swing_usd": 0,
+     "swing_over_base": 0.0
+    },
+    {
+     "input": "CARRYING_RATE",
+     "low_end": 0.15,
+     "high_end": 0.25,
+     "annual_usd_at_low": -1329916,
+     "annual_usd_at_high": -1329916,
+     "swing_usd": 0,
+     "swing_over_base": 0.0
+    },
+    {
+     "input": "DD_PER_BOX_DAY",
+     "low_end": 0,
+     "high_end": 150,
+     "annual_usd_at_low": -1329916,
+     "annual_usd_at_high": -1329916,
+     "swing_usd": 0,
+     "swing_over_base": 0.0
+    },
+    {
+     "input": "RESTOW_COST_USD",
+     "low_end": 1200.0,
+     "high_end": 4800.0,
+     "annual_usd_at_low": -1329916,
+     "annual_usd_at_high": -1329916,
+     "swing_usd": 0,
+     "swing_over_base": 0.0
+    }
+   ],
+   "not_swung_because_single_valued": [
+    "REBOOK_COST_USD"
+   ],
+   "top_two": [
+    "PRICE_REBOOKING_PROPOSALS",
+    "BOXES_PER_CONNECTION"
+   ],
+   "expectation_before_running": "EXPEDITE_COST_USD first, because at the audit's roll probability the spend dominates the net of every save, then CONNECTION_DRIVEN_FRACTION or PLANNER_MISS_SHARE",
+   "expectation_held": false,
+   "what_it_means": "the ranked swing says which assumption a reader should argue with first; the base is below zero at USD -1,329,916, so a swing is stated against its magnitude, and an input that adds saves moves the figure further below zero rather than above it, because each save loses money at these prices"
+  },
+  "breakeven": {
+   "roll_probability_for_zero_psa_expected_value_per_expedite": null,
+   "roll_probability_reading": "no roll probability puts PSA's own line at zero at these prices: the value of a rollover avoided IN PSA'S COLUMN is negative, so raising the probability that a save avoided a rollover makes PSA's number worse, not better. That is the whole finding on this column, and it is a fact about the commercial arrangement rather than about the agent",
+   "yard_slot_margin_for_zero_psa_expected_value_per_expedite_usd_per_box_day": 125.58,
+   "yard_slot_margin_stated_range": [
+    0,
+    15
+   ],
+   "yard_slot_margin_reading": "one expedite reaches zero for PSA when a freed yard slot-day is worth USD 125.58, against a stated range of 0 to 15. That is 8.4 times the top of the range this artifact itself argues for, and the range is CHOSEN with NONE FOUND, so a reader who wants PSA's column positive is arguing for a yard slot worth an order of magnitude more than anything on this page"
+  },
+  "corners": {
+   "inputs_swung": [
+    "STORAGE_PER_BOX_DAY",
+    "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY",
+    "DAYS_PER_ROLL",
+    "BOXES_PER_CONNECTION",
+    "EXPEDITE_COST_USD"
+   ],
+   "n_corners": 32,
+   "method": "every combination of the ends of every stated range that enters PSA's per-expedite line, evaluated through compute(); exhaustive, not a chosen corner",
+   "best": {
+    "overrides": {
+     "STORAGE_PER_BOX_DAY": 0,
+     "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY": 15,
+     "DAYS_PER_ROLL": 10,
+     "BOXES_PER_CONNECTION": 48,
+     "EXPEDITE_COST_USD": 400.0
+    },
+    "psa_value_per_rollover_avoided_usd": 7200,
+    "psa_pnl_expected_value_per_expedite_usd": -114.16,
+    "writes_a_gate_on_psa_would_propose": 9
+   },
+   "worst": {
+    "overrides": {
+     "STORAGE_PER_BOX_DAY": 50,
+     "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY": 0,
+     "DAYS_PER_ROLL": 10,
+     "BOXES_PER_CONNECTION": 48,
+     "EXPEDITE_COST_USD": 1600.0
+    },
+    "psa_value_per_rollover_avoided_usd": -24000,
+    "psa_pnl_expected_value_per_expedite_usd": -2552.8,
+    "writes_a_gate_on_psa_would_propose": 0
+   },
+   "best_at_the_expedites_own_cost": {
+    "overrides": {
+     "STORAGE_PER_BOX_DAY": 0,
+     "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY": 15,
+     "DAYS_PER_ROLL": 10,
+     "BOXES_PER_CONNECTION": 48
+    },
+    "psa_value_per_rollover_avoided_usd": 7200,
+    "psa_pnl_expected_value_per_expedite_usd": -514.16,
+    "writes_a_gate_on_psa_would_propose": 0
+   },
+   "corners_with_a_positive_psa_expedite": 0,
+   "reading": "at the most favourable corner of every range at once, one expedite is worth USD -114.16 to PSA and at the least favourable USD -2,552.80. No combination of this model's own inputs makes an expedite pay for PSA. That is one computed sentence and it is the most useful thing on this page for a terminal manager"
+  },
+  "gate_priced_on_psa": {
+   "candidates": 173,
+   "candidate_source": "evalx/results/save-value-audit-n500.json per_save[].sensitivity_120_samples",
+   "rule": "twin/ev_gate.gate_for_option: p_roll_avoided x VALUE_PER_ROLLOVER >= cost_usd, with VALUE_PER_ROLLOVER read from VALUE_PER_SAVE_BY_BENEFICIARY.PSA_PNL instead of VALUE_PER_SAVE",
+   "writes_proposed_at_base": 0,
+   "writes_proposed_at_the_best_corner_of_every_range": 9,
+   "writes_proposed_at_any_corner_at_the_expedites_own_cost": 0,
+   "at_risk_scenarios": 299,
+   "reading": "a gate priced on PSA's own column proposes 0 writes out of 173 candidates at the base inputs and 0 at any corner of every stated range with the expedite at its own cost of USD 800: it would carry all 299 at-risk connections as ADVISE_ONLY and write nothing. The shipped gate proposes writes because it is priced on the chain, and the chain's value lands on the shipper. That is a finding about who pays for the action rather than a defect in the gate, and a terminal buying this would price the expedite as a rebilled service or not at all"
+  }
+ },
+ "value_row_sensitivity": {
+  "scenario": "base",
+  "rows_are": "every row of value_inputs(), all of which are CHOSEN and all of which say NONE FOUND",
+  "candidates": 173,
+  "candidate_source": "evalx/results/save-value-audit-n500.json per_save[].sensitivity_120_samples",
+  "reconstruction_check": {
+   "writes_at_the_shipped_value": 29,
+   "expedites_the_gated_sweep_executed": 29,
+   "agrees": true,
+   "why_this_check_is_here": "the write counts below are a reconstruction of the gate's rule over the gate-off arm's audited candidates, not a rerun of the sweep. Applying the rule at the shipped value has to reproduce the number of expedites the gated sweep actually executed, or the reconstruction is not the gate"
+  },
+  "rows": [
+   {
+    "input": "DAYS_PER_ROLL",
+    "kind": "CHOSEN",
+    "low_end": 5,
+    "high_end": 10,
+    "at_low": {
+     "value_per_rollover_avoided_usd": 19394.34,
+     "gate_threshold_roll_probability": 0.0412,
+     "writes_the_gate_would_propose": 21,
+     "annual_usd_net_of_operations": -279059,
+     "psa_pnl_usd_net_of_operations": -1291296
+    },
+    "at_high": {
+     "value_per_rollover_avoided_usd": 38788.69,
+     "gate_threshold_roll_probability": 0.0206,
+     "writes_the_gate_would_propose": 41,
+     "annual_usd_net_of_operations": 636627,
+     "psa_pnl_usd_net_of_operations": -1387846
+    }
+   },
+   {
+    "input": "DD_PER_BOX_DAY",
+    "kind": "CHOSEN",
+    "low_end": 0,
+    "high_end": 150,
+    "at_low": {
+     "value_per_rollover_avoided_usd": 8065.88,
+     "gate_threshold_roll_probability": 0.0992,
+     "writes_the_gate_would_propose": 0,
+     "annual_usd_net_of_operations": -813922,
+     "psa_pnl_usd_net_of_operations": -1329916
+    },
+    "at_high": {
+     "value_per_rollover_avoided_usd": 36695.18,
+     "gate_threshold_roll_probability": 0.0218,
+     "writes_the_gate_would_propose": 41,
+     "annual_usd_net_of_operations": 537784,
+     "psa_pnl_usd_net_of_operations": -1329916
+    }
+   },
+   {
+    "input": "STORAGE_PER_BOX_DAY",
+    "kind": "CHOSEN",
+    "low_end": 0,
+    "high_end": 50,
+    "at_low": {
+     "value_per_rollover_avoided_usd": 27152.08,
+     "gate_threshold_roll_probability": 0.0295,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 87215,
+     "psa_pnl_usd_net_of_operations": -1149688
+    },
+    "at_high": {
+     "value_per_rollover_avoided_usd": 27152.08,
+     "gate_threshold_roll_probability": 0.0295,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 87215,
+     "psa_pnl_usd_net_of_operations": -1600257
+    }
+   },
+   {
+    "input": "CARGO_VALUE_PER_TEU",
+    "kind": "CHOSEN",
+    "low_end": 30000,
+    "high_end": 50000,
+    "at_low": {
+     "value_per_rollover_avoided_usd": 25374.19,
+     "gate_threshold_roll_probability": 0.0315,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 3274,
+     "psa_pnl_usd_net_of_operations": -1329916
+    },
+    "at_high": {
+     "value_per_rollover_avoided_usd": 28929.97,
+     "gate_threshold_roll_probability": 0.0277,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 171157,
+     "psa_pnl_usd_net_of_operations": -1329916
+    }
+   },
+   {
+    "input": "CARRYING_RATE",
+    "kind": "CHOSEN",
+    "low_end": 0.15,
+    "high_end": 0.25,
+    "at_low": {
+     "value_per_rollover_avoided_usd": 25374.19,
+     "gate_threshold_roll_probability": 0.0315,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 3274,
+     "psa_pnl_usd_net_of_operations": -1329916
+    },
+    "at_high": {
+     "value_per_rollover_avoided_usd": 28929.97,
+     "gate_threshold_roll_probability": 0.0277,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 171157,
+     "psa_pnl_usd_net_of_operations": -1329916
+    }
+   },
+   {
+    "input": "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY",
+    "kind": "CHOSEN",
+    "low_end": 0,
+    "high_end": 15,
+    "at_low": {
+     "value_per_rollover_avoided_usd": 26197.77,
+     "gate_threshold_roll_probability": 0.0305,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 42158,
+     "psa_pnl_usd_net_of_operations": -1374973
+    },
+    "at_high": {
+     "value_per_rollover_avoided_usd": 29060.7,
+     "gate_threshold_roll_probability": 0.0275,
+     "writes_the_gate_would_propose": 29,
+     "annual_usd_net_of_operations": 177329,
+     "psa_pnl_usd_net_of_operations": -1239802
+    }
+   }
+  ],
+  "all_rows_at_their_low_ends": {
+   "value_per_rollover_avoided_usd": 2857.33,
+   "gate_threshold_roll_probability": 0.28,
+   "writes_the_gate_would_propose": 0,
+   "annual_usd_net_of_operations": -1059839,
+   "psa_pnl_usd_net_of_operations": -1194745
+  },
+  "all_rows_at_their_high_ends": {
+   "value_per_rollover_avoided_usd": 60862.94,
+   "gate_threshold_roll_probability": 0.0131,
+   "writes_the_gate_would_propose": 52,
+   "annual_usd_net_of_operations": 1678843,
+   "psa_pnl_usd_net_of_operations": -1645314
+  },
+  "writes_across_the_single_row_ends": {
+   "min": 0,
+   "max": 41
+  },
+  "what_it_means": "the number of approval cards this product raises is set end to end by rows with no source. Moving one row at a time between its own stated ends takes the writes proposed from 0 to 41 against the 29 the shipped arm executed; moving all of them together takes it from 0 to 52. The gate's threshold is unsourced, so this is the behaviour of the shipped control across the full range of it rather than a claim that the chosen ends are right"
+ },
+ "sources": {
+  "sweep": "evalx/results/sweep-full-n500-evgate.json",
+  "live": "evalx/results/sweep-live-n100.final.json",
+  "oracle": "evalx/results/validity-oracle-n320.json",
+  "save_value_audit": "evalx/results/save-value-audit-n500-evgate.json",
+  "oversight_load": "evalx/results/oversight-load.json",
+  "save_value_bootstrap": "evalx/results/save-value-bootstrap-n500-evgate.json",
+  "save_value_audit_ungated": "evalx/results/save-value-audit-n500.json"
+ },
+ "inputs": {
+  "TEU_YEAR_PSA": {
+   "pessimistic": {
+    "kind": "CITED",
+    "value": 44500000,
+    "url": "https://www.globalpsa.com/wp-content/uploads/2026/01/nr260114.pdf",
+    "date": "2026-01-14",
+    "verbatim": "PSA's flagship terminal in Singapore also set a new record and registered a throughput of 44.5 million TEUs, representing more than 8% increase.",
+    "note": "PSA International news release, 'PSA International's 2025 Container Throughput Performance'."
+   },
+   "base": {
+    "kind": "CITED",
+    "value": 44500000,
+    "url": "https://www.globalpsa.com/wp-content/uploads/2026/01/nr260114.pdf",
+    "date": "2026-01-14",
+    "verbatim": "PSA's flagship terminal in Singapore also set a new record and registered a throughput of 44.5 million TEUs, representing more than 8% increase.",
+    "note": "PSA International news release, 'PSA International's 2025 Container Throughput Performance'."
+   },
+   "optimistic": {
+    "kind": "CITED",
+    "value": 44500000,
+    "url": "https://www.globalpsa.com/wp-content/uploads/2026/01/nr260114.pdf",
+    "date": "2026-01-14",
+    "verbatim": "PSA's flagship terminal in Singapore also set a new record and registered a throughput of 44.5 million TEUs, representing more than 8% increase.",
+    "note": "PSA International news release, 'PSA International's 2025 Container Throughput Performance'."
+   }
+  },
+  "TS_SHARE": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.85,
+    "why": "A five-point haircut on the MPA 2024 share, because the share is carried forward one year and stated as 'around 90%'. No 2025 figure was found.",
+    "range": [
+     0.85,
+     0.9
+    ]
+   },
+   "base": {
+    "kind": "CITED",
+    "value": 0.9,
+    "url": "https://www.mpa.gov.sg/media-centre/details/strong-growth-momentum-for-maritime-singapore",
+    "date": "2025-01-15",
+    "verbatim": "Around 90% of Singapore's container throughput is for transshipment to other destinations.",
+    "note": "Maritime and Port Authority of Singapore, 'Strong growth momentum for Maritime Singapore'. Stated for 2024 and applied to 2025 throughput; that carry-forward is a choice and is labelled as one here."
+   },
+   "optimistic": {
+    "kind": "CITED",
+    "value": 0.9,
+    "url": "https://www.mpa.gov.sg/media-centre/details/strong-growth-momentum-for-maritime-singapore",
+    "date": "2025-01-15",
+    "verbatim": "Around 90% of Singapore's container throughput is for transshipment to other destinations.",
+    "note": "Maritime and Port Authority of Singapore, 'Strong growth momentum for Maritime Singapore'. Stated for 2024 and applied to 2025 throughput; that carry-forward is a choice and is labelled as one here."
+   }
+  },
+  "TEU_PER_BOX": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 1.8,
+    "why": "NONE FOUND for a PSA TEU factor. A box is one or two TEU; a 40-foot-heavy mix sits near 1.8, a 20-foot-heavy mix near 1.6. The higher factor gives FEWER boxes for the same TEU, so it is the pessimistic end for the volume of connections.",
+    "range": [
+     1.6,
+     1.8
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 1.7,
+    "why": "NONE FOUND for a PSA TEU factor; the midpoint of the 1.6 to 1.8 mix.",
+    "range": [
+     1.6,
+     1.8
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 1.6,
+    "why": "NONE FOUND for a PSA TEU factor; the 20-foot-heavy end of the mix.",
+    "range": [
+     1.6,
+     1.8
+    ]
+   }
+  },
+  "BOXES_PER_CONNECTION": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 27.266,
+    "constant": "twin/generate.py: generate_world, box_count = rng.randint(8, 48)",
+    "derivation": "mean box_count of the target connection over the 500 sweep worlds, regenerated from twin.generate.generate_world with seed 42 through evalx.sweep_local's world_seed, N_CONNECTIONS and profile cycle; NOT a measurement of any terminal: the draw is uniform on the constant's range, whose expectation is 28",
+    "range": [
+     8,
+     48
+    ],
+    "n_worlds": 500,
+    "per_world_box_count": [
+     12,
+     13,
+     40,
+     17,
+     27,
+     46,
+     36,
+     44,
+     21,
+     9,
+     28,
+     20,
+     12,
+     17,
+     10,
+     22,
+     17,
+     23,
+     42,
+     9,
+     26,
+     22,
+     18,
+     27,
+     44,
+     27,
+     9,
+     33,
+     30,
+     9,
+     14,
+     39,
+     10,
+     27,
+     15,
+     44,
+     32,
+     36,
+     27,
+     9,
+     11,
+     39,
+     17,
+     30,
+     18,
+     37,
+     40,
+     19,
+     15,
+     10,
+     21,
+     14,
+     25,
+     37,
+     43,
+     17,
+     46,
+     10,
+     32,
+     48,
+     36,
+     35,
+     28,
+     19,
+     26,
+     45,
+     43,
+     46,
+     20,
+     29,
+     44,
+     33,
+     23,
+     33,
+     48,
+     45,
+     44,
+     25,
+     46,
+     25,
+     12,
+     24,
+     20,
+     38,
+     21,
+     13,
+     24,
+     11,
+     43,
+     24,
+     36,
+     26,
+     25,
+     8,
+     21,
+     23,
+     43,
+     9,
+     8,
+     29,
+     22,
+     8,
+     22,
+     33,
+     22,
+     14,
+     33,
+     39,
+     35,
+     14,
+     34,
+     18,
+     42,
+     23,
+     39,
+     15,
+     39,
+     43,
+     21,
+     26,
+     41,
+     47,
+     34,
+     12,
+     45,
+     33,
+     40,
+     14,
+     15,
+     14,
+     38,
+     33,
+     22,
+     17,
+     20,
+     43,
+     41,
+     20,
+     40,
+     27,
+     36,
+     19,
+     33,
+     13,
+     14,
+     40,
+     29,
+     35,
+     42,
+     23,
+     30,
+     23,
+     22,
+     13,
+     15,
+     20,
+     26,
+     46,
+     18,
+     9,
+     28,
+     28,
+     9,
+     22,
+     18,
+     42,
+     27,
+     37,
+     35,
+     18,
+     13,
+     12,
+     15,
+     36,
+     24,
+     48,
+     9,
+     8,
+     46,
+     43,
+     18,
+     21,
+     19,
+     33,
+     18,
+     15,
+     37,
+     32,
+     15,
+     20,
+     36,
+     17,
+     24,
+     14,
+     46,
+     10,
+     28,
+     33,
+     21,
+     16,
+     11,
+     46,
+     19,
+     19,
+     28,
+     24,
+     13,
+     17,
+     39,
+     28,
+     47,
+     17,
+     13,
+     9,
+     23,
+     24,
+     24,
+     19,
+     18,
+     33,
+     41,
+     24,
+     17,
+     21,
+     15,
+     48,
+     13,
+     16,
+     33,
+     28,
+     46,
+     10,
+     40,
+     43,
+     35,
+     25,
+     17,
+     40,
+     45,
+     17,
+     47,
+     19,
+     25,
+     23,
+     22,
+     19,
+     8,
+     21,
+     15,
+     40,
+     34,
+     19,
+     41,
+     19,
+     40,
+     41,
+     25,
+     40,
+     11,
+     24,
+     34,
+     25,
+     19,
+     15,
+     43,
+     32,
+     44,
+     15,
+     43,
+     40,
+     42,
+     31,
+     9,
+     39,
+     46,
+     20,
+     30,
+     27,
+     44,
+     36,
+     18,
+     10,
+     44,
+     19,
+     44,
+     33,
+     10,
+     36,
+     30,
+     45,
+     20,
+     39,
+     15,
+     15,
+     21,
+     27,
+     18,
+     19,
+     14,
+     39,
+     12,
+     25,
+     42,
+     19,
+     31,
+     34,
+     39,
+     31,
+     11,
+     26,
+     36,
+     26,
+     17,
+     20,
+     48,
+     20,
+     23,
+     12,
+     31,
+     11,
+     29,
+     35,
+     30,
+     28,
+     26,
+     19,
+     37,
+     30,
+     19,
+     23,
+     17,
+     9,
+     46,
+     20,
+     38,
+     18,
+     45,
+     44,
+     45,
+     38,
+     26,
+     35,
+     34,
+     36,
+     36,
+     23,
+     11,
+     27,
+     38,
+     30,
+     44,
+     14,
+     48,
+     47,
+     40,
+     46,
+     22,
+     35,
+     36,
+     45,
+     41,
+     24,
+     37,
+     17,
+     17,
+     9,
+     11,
+     27,
+     8,
+     18,
+     47,
+     43,
+     48,
+     12,
+     40,
+     31,
+     19,
+     13,
+     17,
+     42,
+     30,
+     22,
+     14,
+     24,
+     20,
+     41,
+     37,
+     25,
+     28,
+     27,
+     19,
+     26,
+     44,
+     23,
+     8,
+     25,
+     46,
+     39,
+     22,
+     28,
+     22,
+     44,
+     47,
+     37,
+     21,
+     41,
+     19,
+     42,
+     8,
+     37,
+     38,
+     14,
+     34,
+     38,
+     10,
+     16,
+     25,
+     32,
+     31,
+     22,
+     43,
+     23,
+     27,
+     18,
+     48,
+     8,
+     38,
+     29,
+     37,
+     37,
+     28,
+     37,
+     9,
+     8,
+     27,
+     8,
+     13,
+     34,
+     17,
+     26,
+     18,
+     24,
+     43,
+     18,
+     38,
+     39,
+     14,
+     15,
+     30,
+     31,
+     35,
+     9,
+     20,
+     21,
+     46,
+     27,
+     22,
+     39,
+     12,
+     47,
+     33,
+     40,
+     42,
+     19,
+     34,
+     15,
+     40,
+     22,
+     26,
+     40,
+     11,
+     34,
+     31,
+     25,
+     41,
+     16,
+     43,
+     47,
+     17,
+     28,
+     47,
+     15,
+     8,
+     26,
+     26,
+     11,
+     33,
+     48,
+     13,
+     36,
+     18,
+     33,
+     44,
+     36,
+     30,
+     21,
+     13,
+     16,
+     8,
+     48
+    ],
+    "range_meaning": "the draw range of ONE connection, not an interval on the mean; the impact tornado swings it. Under version 2.0.0 the annual figure barely depended on it; since 2.1.0 it is the largest swing, because the action spend is charged per connection while the value accrues per box, so a small box group loses most"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 27.266,
+    "constant": "twin/generate.py: generate_world, box_count = rng.randint(8, 48)",
+    "derivation": "mean box_count of the target connection over the 500 sweep worlds, regenerated from twin.generate.generate_world with seed 42 through evalx.sweep_local's world_seed, N_CONNECTIONS and profile cycle; NOT a measurement of any terminal: the draw is uniform on the constant's range, whose expectation is 28",
+    "range": [
+     8,
+     48
+    ],
+    "n_worlds": 500,
+    "per_world_box_count": [
+     12,
+     13,
+     40,
+     17,
+     27,
+     46,
+     36,
+     44,
+     21,
+     9,
+     28,
+     20,
+     12,
+     17,
+     10,
+     22,
+     17,
+     23,
+     42,
+     9,
+     26,
+     22,
+     18,
+     27,
+     44,
+     27,
+     9,
+     33,
+     30,
+     9,
+     14,
+     39,
+     10,
+     27,
+     15,
+     44,
+     32,
+     36,
+     27,
+     9,
+     11,
+     39,
+     17,
+     30,
+     18,
+     37,
+     40,
+     19,
+     15,
+     10,
+     21,
+     14,
+     25,
+     37,
+     43,
+     17,
+     46,
+     10,
+     32,
+     48,
+     36,
+     35,
+     28,
+     19,
+     26,
+     45,
+     43,
+     46,
+     20,
+     29,
+     44,
+     33,
+     23,
+     33,
+     48,
+     45,
+     44,
+     25,
+     46,
+     25,
+     12,
+     24,
+     20,
+     38,
+     21,
+     13,
+     24,
+     11,
+     43,
+     24,
+     36,
+     26,
+     25,
+     8,
+     21,
+     23,
+     43,
+     9,
+     8,
+     29,
+     22,
+     8,
+     22,
+     33,
+     22,
+     14,
+     33,
+     39,
+     35,
+     14,
+     34,
+     18,
+     42,
+     23,
+     39,
+     15,
+     39,
+     43,
+     21,
+     26,
+     41,
+     47,
+     34,
+     12,
+     45,
+     33,
+     40,
+     14,
+     15,
+     14,
+     38,
+     33,
+     22,
+     17,
+     20,
+     43,
+     41,
+     20,
+     40,
+     27,
+     36,
+     19,
+     33,
+     13,
+     14,
+     40,
+     29,
+     35,
+     42,
+     23,
+     30,
+     23,
+     22,
+     13,
+     15,
+     20,
+     26,
+     46,
+     18,
+     9,
+     28,
+     28,
+     9,
+     22,
+     18,
+     42,
+     27,
+     37,
+     35,
+     18,
+     13,
+     12,
+     15,
+     36,
+     24,
+     48,
+     9,
+     8,
+     46,
+     43,
+     18,
+     21,
+     19,
+     33,
+     18,
+     15,
+     37,
+     32,
+     15,
+     20,
+     36,
+     17,
+     24,
+     14,
+     46,
+     10,
+     28,
+     33,
+     21,
+     16,
+     11,
+     46,
+     19,
+     19,
+     28,
+     24,
+     13,
+     17,
+     39,
+     28,
+     47,
+     17,
+     13,
+     9,
+     23,
+     24,
+     24,
+     19,
+     18,
+     33,
+     41,
+     24,
+     17,
+     21,
+     15,
+     48,
+     13,
+     16,
+     33,
+     28,
+     46,
+     10,
+     40,
+     43,
+     35,
+     25,
+     17,
+     40,
+     45,
+     17,
+     47,
+     19,
+     25,
+     23,
+     22,
+     19,
+     8,
+     21,
+     15,
+     40,
+     34,
+     19,
+     41,
+     19,
+     40,
+     41,
+     25,
+     40,
+     11,
+     24,
+     34,
+     25,
+     19,
+     15,
+     43,
+     32,
+     44,
+     15,
+     43,
+     40,
+     42,
+     31,
+     9,
+     39,
+     46,
+     20,
+     30,
+     27,
+     44,
+     36,
+     18,
+     10,
+     44,
+     19,
+     44,
+     33,
+     10,
+     36,
+     30,
+     45,
+     20,
+     39,
+     15,
+     15,
+     21,
+     27,
+     18,
+     19,
+     14,
+     39,
+     12,
+     25,
+     42,
+     19,
+     31,
+     34,
+     39,
+     31,
+     11,
+     26,
+     36,
+     26,
+     17,
+     20,
+     48,
+     20,
+     23,
+     12,
+     31,
+     11,
+     29,
+     35,
+     30,
+     28,
+     26,
+     19,
+     37,
+     30,
+     19,
+     23,
+     17,
+     9,
+     46,
+     20,
+     38,
+     18,
+     45,
+     44,
+     45,
+     38,
+     26,
+     35,
+     34,
+     36,
+     36,
+     23,
+     11,
+     27,
+     38,
+     30,
+     44,
+     14,
+     48,
+     47,
+     40,
+     46,
+     22,
+     35,
+     36,
+     45,
+     41,
+     24,
+     37,
+     17,
+     17,
+     9,
+     11,
+     27,
+     8,
+     18,
+     47,
+     43,
+     48,
+     12,
+     40,
+     31,
+     19,
+     13,
+     17,
+     42,
+     30,
+     22,
+     14,
+     24,
+     20,
+     41,
+     37,
+     25,
+     28,
+     27,
+     19,
+     26,
+     44,
+     23,
+     8,
+     25,
+     46,
+     39,
+     22,
+     28,
+     22,
+     44,
+     47,
+     37,
+     21,
+     41,
+     19,
+     42,
+     8,
+     37,
+     38,
+     14,
+     34,
+     38,
+     10,
+     16,
+     25,
+     32,
+     31,
+     22,
+     43,
+     23,
+     27,
+     18,
+     48,
+     8,
+     38,
+     29,
+     37,
+     37,
+     28,
+     37,
+     9,
+     8,
+     27,
+     8,
+     13,
+     34,
+     17,
+     26,
+     18,
+     24,
+     43,
+     18,
+     38,
+     39,
+     14,
+     15,
+     30,
+     31,
+     35,
+     9,
+     20,
+     21,
+     46,
+     27,
+     22,
+     39,
+     12,
+     47,
+     33,
+     40,
+     42,
+     19,
+     34,
+     15,
+     40,
+     22,
+     26,
+     40,
+     11,
+     34,
+     31,
+     25,
+     41,
+     16,
+     43,
+     47,
+     17,
+     28,
+     47,
+     15,
+     8,
+     26,
+     26,
+     11,
+     33,
+     48,
+     13,
+     36,
+     18,
+     33,
+     44,
+     36,
+     30,
+     21,
+     13,
+     16,
+     8,
+     48
+    ],
+    "range_meaning": "the draw range of ONE connection, not an interval on the mean; the impact tornado swings it. Under version 2.0.0 the annual figure barely depended on it; since 2.1.0 it is the largest swing, because the action spend is charged per connection while the value accrues per box, so a small box group loses most"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 27.266,
+    "constant": "twin/generate.py: generate_world, box_count = rng.randint(8, 48)",
+    "derivation": "mean box_count of the target connection over the 500 sweep worlds, regenerated from twin.generate.generate_world with seed 42 through evalx.sweep_local's world_seed, N_CONNECTIONS and profile cycle; NOT a measurement of any terminal: the draw is uniform on the constant's range, whose expectation is 28",
+    "range": [
+     8,
+     48
+    ],
+    "n_worlds": 500,
+    "per_world_box_count": [
+     12,
+     13,
+     40,
+     17,
+     27,
+     46,
+     36,
+     44,
+     21,
+     9,
+     28,
+     20,
+     12,
+     17,
+     10,
+     22,
+     17,
+     23,
+     42,
+     9,
+     26,
+     22,
+     18,
+     27,
+     44,
+     27,
+     9,
+     33,
+     30,
+     9,
+     14,
+     39,
+     10,
+     27,
+     15,
+     44,
+     32,
+     36,
+     27,
+     9,
+     11,
+     39,
+     17,
+     30,
+     18,
+     37,
+     40,
+     19,
+     15,
+     10,
+     21,
+     14,
+     25,
+     37,
+     43,
+     17,
+     46,
+     10,
+     32,
+     48,
+     36,
+     35,
+     28,
+     19,
+     26,
+     45,
+     43,
+     46,
+     20,
+     29,
+     44,
+     33,
+     23,
+     33,
+     48,
+     45,
+     44,
+     25,
+     46,
+     25,
+     12,
+     24,
+     20,
+     38,
+     21,
+     13,
+     24,
+     11,
+     43,
+     24,
+     36,
+     26,
+     25,
+     8,
+     21,
+     23,
+     43,
+     9,
+     8,
+     29,
+     22,
+     8,
+     22,
+     33,
+     22,
+     14,
+     33,
+     39,
+     35,
+     14,
+     34,
+     18,
+     42,
+     23,
+     39,
+     15,
+     39,
+     43,
+     21,
+     26,
+     41,
+     47,
+     34,
+     12,
+     45,
+     33,
+     40,
+     14,
+     15,
+     14,
+     38,
+     33,
+     22,
+     17,
+     20,
+     43,
+     41,
+     20,
+     40,
+     27,
+     36,
+     19,
+     33,
+     13,
+     14,
+     40,
+     29,
+     35,
+     42,
+     23,
+     30,
+     23,
+     22,
+     13,
+     15,
+     20,
+     26,
+     46,
+     18,
+     9,
+     28,
+     28,
+     9,
+     22,
+     18,
+     42,
+     27,
+     37,
+     35,
+     18,
+     13,
+     12,
+     15,
+     36,
+     24,
+     48,
+     9,
+     8,
+     46,
+     43,
+     18,
+     21,
+     19,
+     33,
+     18,
+     15,
+     37,
+     32,
+     15,
+     20,
+     36,
+     17,
+     24,
+     14,
+     46,
+     10,
+     28,
+     33,
+     21,
+     16,
+     11,
+     46,
+     19,
+     19,
+     28,
+     24,
+     13,
+     17,
+     39,
+     28,
+     47,
+     17,
+     13,
+     9,
+     23,
+     24,
+     24,
+     19,
+     18,
+     33,
+     41,
+     24,
+     17,
+     21,
+     15,
+     48,
+     13,
+     16,
+     33,
+     28,
+     46,
+     10,
+     40,
+     43,
+     35,
+     25,
+     17,
+     40,
+     45,
+     17,
+     47,
+     19,
+     25,
+     23,
+     22,
+     19,
+     8,
+     21,
+     15,
+     40,
+     34,
+     19,
+     41,
+     19,
+     40,
+     41,
+     25,
+     40,
+     11,
+     24,
+     34,
+     25,
+     19,
+     15,
+     43,
+     32,
+     44,
+     15,
+     43,
+     40,
+     42,
+     31,
+     9,
+     39,
+     46,
+     20,
+     30,
+     27,
+     44,
+     36,
+     18,
+     10,
+     44,
+     19,
+     44,
+     33,
+     10,
+     36,
+     30,
+     45,
+     20,
+     39,
+     15,
+     15,
+     21,
+     27,
+     18,
+     19,
+     14,
+     39,
+     12,
+     25,
+     42,
+     19,
+     31,
+     34,
+     39,
+     31,
+     11,
+     26,
+     36,
+     26,
+     17,
+     20,
+     48,
+     20,
+     23,
+     12,
+     31,
+     11,
+     29,
+     35,
+     30,
+     28,
+     26,
+     19,
+     37,
+     30,
+     19,
+     23,
+     17,
+     9,
+     46,
+     20,
+     38,
+     18,
+     45,
+     44,
+     45,
+     38,
+     26,
+     35,
+     34,
+     36,
+     36,
+     23,
+     11,
+     27,
+     38,
+     30,
+     44,
+     14,
+     48,
+     47,
+     40,
+     46,
+     22,
+     35,
+     36,
+     45,
+     41,
+     24,
+     37,
+     17,
+     17,
+     9,
+     11,
+     27,
+     8,
+     18,
+     47,
+     43,
+     48,
+     12,
+     40,
+     31,
+     19,
+     13,
+     17,
+     42,
+     30,
+     22,
+     14,
+     24,
+     20,
+     41,
+     37,
+     25,
+     28,
+     27,
+     19,
+     26,
+     44,
+     23,
+     8,
+     25,
+     46,
+     39,
+     22,
+     28,
+     22,
+     44,
+     47,
+     37,
+     21,
+     41,
+     19,
+     42,
+     8,
+     37,
+     38,
+     14,
+     34,
+     38,
+     10,
+     16,
+     25,
+     32,
+     31,
+     22,
+     43,
+     23,
+     27,
+     18,
+     48,
+     8,
+     38,
+     29,
+     37,
+     37,
+     28,
+     37,
+     9,
+     8,
+     27,
+     8,
+     13,
+     34,
+     17,
+     26,
+     18,
+     24,
+     43,
+     18,
+     38,
+     39,
+     14,
+     15,
+     30,
+     31,
+     35,
+     9,
+     20,
+     21,
+     46,
+     27,
+     22,
+     39,
+     12,
+     47,
+     33,
+     40,
+     42,
+     19,
+     34,
+     15,
+     40,
+     22,
+     26,
+     40,
+     11,
+     34,
+     31,
+     25,
+     41,
+     16,
+     43,
+     47,
+     17,
+     28,
+     47,
+     15,
+     8,
+     26,
+     26,
+     11,
+     33,
+     48,
+     13,
+     36,
+     18,
+     33,
+     44,
+     36,
+     30,
+     21,
+     13,
+     16,
+     8,
+     48
+    ],
+    "range_meaning": "the draw range of ONE connection, not an interval on the mean; the impact tornado swings it. Under version 2.0.0 the annual figure barely depended on it; since 2.1.0 it is the largest swing, because the action spend is charged per connection while the value accrues per box, so a small box group loses most"
+   }
+  },
+  "ROLLOVER_RATE": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.1,
+    "why": "A post-pandemic normalisation well below the dated aggregate; no current Singapore rollover series is public.",
+    "range": [
+     0.1,
+     0.311
+    ]
+   },
+   "base": {
+    "kind": "CITED",
+    "value": 0.222,
+    "url": "https://container-news.com/rollover-cargo-still-on-the-increase-says-ocean-insights/",
+    "date": "2020-11-24",
+    "verbatim": "rose to 28.5% last month, up from 26.9% in September and 22.2% in October 2019",
+    "note": "Container News, 'Rollover cargo still on the increase says Ocean Insights'. An aggregate across leading transhipment hubs, NOT Singapore alone, and dated October 2019. Ocean Insights counts a rollover as cargo that left a port on a different vessel than originally scheduled."
+   },
+   "optimistic": {
+    "kind": "CITED",
+    "value": 0.311,
+    "url": "https://www.supplychaindive.com/news/rolled-cargo-port-maersk-msc-coronavirus-singapore/589626/",
+    "date": "2020-11-24",
+    "verbatim": "Singapore ... saw its rollover ratio increase to 31.1% in October from 30.2% in September.",
+    "note": "Singapore, October 2020, pandemic-distorted; the optimistic end of the chain because a higher rollover rate means more connections RELAY could address."
+   }
+  },
+  "CONNECTION_DRIVEN_FRACTION": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.05,
+    "why": "Ocean Insights counts EVERY rollover, and most are carrier capacity decisions RELAY cannot touch. RELAY addresses only the subset where a late inbound arrival breaks a transhipment connection. No public split of rollovers by cause was found.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0.15,
+    "why": "Ocean Insights counts EVERY rollover, and most are carrier capacity decisions RELAY cannot touch. RELAY addresses only the subset where a late inbound arrival breaks a transhipment connection. No public split of rollovers by cause was found.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 0.3,
+    "why": "Ocean Insights counts EVERY rollover, and most are carrier capacity decisions RELAY cannot touch. RELAY addresses only the subset where a late inbound arrival breaks a transhipment connection. No public split of rollovers by cause was found.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   }
+  },
+  "SAVE_RATE": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.097,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "save_rate",
+     "mean"
+    ],
+    "ci95": [
+     0.0669,
+     0.1304
+    ],
+    "note": "the POOLED rate: connections saved by an executed expedite over all at-risk scenarios; rebooking proposals are excluded because the carrier decides them. Reported and NOT used in the arithmetic since 2.1.0, because it spreads 173 saves over 299 scenarios of which 35 were escalated and never remediated; the two class-conditional rows below replace it"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.097,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "save_rate",
+     "mean"
+    ],
+    "ci95": [
+     0.0669,
+     0.1304
+    ],
+    "note": "the POOLED rate: connections saved by an executed expedite over all at-risk scenarios; rebooking proposals are excluded because the carrier decides them. Reported and NOT used in the arithmetic since 2.1.0, because it spreads 173 saves over 299 scenarios of which 35 were escalated and never remediated; the two class-conditional rows below replace it"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.097,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "save_rate",
+     "mean"
+    ],
+    "ci95": [
+     0.0669,
+     0.1304
+    ],
+    "note": "the POOLED rate: connections saved by an executed expedite over all at-risk scenarios; rebooking proposals are excluded because the carrier decides them. Reported and NOT used in the arithmetic since 2.1.0, because it spreads 173 saves over 299 scenarios of which 35 were escalated and never remediated; the two class-conditional rows below replace it"
+   }
+  },
+  "AGENT_ONLY_CATCHES": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 35,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "agent_only_catches"
+    ],
+    "note": "at-risk connections only the agent flagged; rules-only missed them"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 35,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "agent_only_catches"
+    ],
+    "note": "at-risk connections only the agent flagged; rules-only missed them"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 35,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "agent_only_catches"
+    ],
+    "note": "at-risk connections only the agent flagged; rules-only missed them"
+   }
+  },
+  "AGENT_ONLY_ESCALATED": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 35,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "escalation_classes",
+     "insufficient_evidence"
+    ],
+    "note": "episodes the sweep escalated to a human as insufficient_evidence; equal to agent_only_catches, so every agent-only catch was escalated and none was saved by the sweep itself"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 35,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "escalation_classes",
+     "insufficient_evidence"
+    ],
+    "note": "episodes the sweep escalated to a human as insufficient_evidence; equal to agent_only_catches, so every agent-only catch was escalated and none was saved by the sweep itself"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 35,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "escalation_classes",
+     "insufficient_evidence"
+    ],
+    "note": "episodes the sweep escalated to a human as insufficient_evidence; equal to agent_only_catches, so every agent-only catch was escalated and none was saved by the sweep itself"
+   }
+  },
+  "SAVE_RATE_RULES_ALSO_FLAG": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.1098,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "saved_by_expedite"
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "over_minus_path": [
+     "agent_only_catches"
+    ],
+    "note": "the class-conditional save rate: saves over the at-risk scenarios that rules also flag, which is at_risk_scenarios minus agent_only_catches; the sweep's 173 saves all sit in that class, so this is the rate the remediation tranche actually observed"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.1098,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "saved_by_expedite"
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "over_minus_path": [
+     "agent_only_catches"
+    ],
+    "note": "the class-conditional save rate: saves over the at-risk scenarios that rules also flag, which is at_risk_scenarios minus agent_only_catches; the sweep's 173 saves all sit in that class, so this is the rate the remediation tranche actually observed"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.1098,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "saved_by_expedite"
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "over_minus_path": [
+     "agent_only_catches"
+    ],
+    "note": "the class-conditional save rate: saves over the at-risk scenarios that rules also flag, which is at_risk_scenarios minus agent_only_catches; the sweep's 173 saves all sit in that class, so this is the rate the remediation tranche actually observed"
+   }
+  },
+  "SAVE_RATE_AFTER_ESCALATION": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.0,
+    "why": "Of the agent-only catches, the share a human would save after RELAY escalates them. The sweep saved 0 of those 35 (agent_only_catches 35, escalation_classes.insufficient_evidence 35 in evalx/results/sweep-full-n500.final.json) because it escalates every one to a human and models no human follow-through, so the rate is UNMEASURED. Version 2.0.0 credited these catches with the pooled 0.579 save rate, which is a chosen assumption that was wearing a MEASURED label. Pessimistic 0 is what the sweep observed; optimistic is the pooled rate the rules-also-flag class achieved.",
+    "range": [
+     0.0,
+     0.579
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0.3,
+    "why": "Of the agent-only catches, the share a human would save after RELAY escalates them. The sweep saved 0 of those 35 (agent_only_catches 35, escalation_classes.insufficient_evidence 35 in evalx/results/sweep-full-n500.final.json) because it escalates every one to a human and models no human follow-through, so the rate is UNMEASURED. Version 2.0.0 credited these catches with the pooled 0.579 save rate, which is a chosen assumption that was wearing a MEASURED label. Pessimistic 0 is what the sweep observed; optimistic is the pooled rate the rules-also-flag class achieved.",
+    "range": [
+     0.0,
+     0.579
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 0.579,
+    "why": "Of the agent-only catches, the share a human would save after RELAY escalates them. The sweep saved 0 of those 35 (agent_only_catches 35, escalation_classes.insufficient_evidence 35 in evalx/results/sweep-full-n500.final.json) because it escalates every one to a human and models no human follow-through, so the rate is UNMEASURED. Version 2.0.0 credited these catches with the pooled 0.579 save rate, which is a chosen assumption that was wearing a MEASURED label. Pessimistic 0 is what the sweep observed; optimistic is the pooled rate the rules-also-flag class achieved.",
+    "range": [
+     0.0,
+     0.579
+    ]
+   }
+  },
+  "ROLL_PROBABILITY_GIVEN_SAVE": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.0397,
+    "source": "evalx/results/save-value-audit-n500-evgate.json",
+    "path": [
+     "headline",
+     "avoided_per_booked_save"
+    ],
+    "note": "expected rollovers avoided per booked expedite save: each of the 29 saves is re-priced in the simulator's own replicated transfer distribution, P(roll) without the expedite minus P(roll) with it, summed and divided by the saves booked. SIMULATOR-INTERNAL and yard-transfer variance only: a late vessel is not in this distribution, so for the advisory-driven class this is a floor, not an estimate. Basis: HELD OUT, an independent replication block the expected-value gate never saw, because this arm's population was selected by the gate on the in-sample draws (the in-sample figure is beside it in the audit under `selection.in_sample`). It is a mean over the arm's per-save values, so it carries a bootstrap interval read from the file beside the audit, and `sign_of_the_headline` says what share of that interval sits on the losing side of break-even",
+    "ci95": [
+     0.0293,
+     0.0509
+    ],
+    "ci95_source": "evalx/results/save-value-bootstrap-n500-evgate.json",
+    "ci95_path": [
+     "headline",
+     "avoided_per_booked_save_ci95"
+    ],
+    "ci95_method": "seeded non-parametric bootstrap of the mean: `resamples` draws of `n_saves` per-save probabilities with replacement, the mean of each",
+    "ci95_resamples": 10000,
+    "ci95_seed": 20260826,
+    "basis": "held_out",
+    "gate_selected_this_population": true,
+    "is_the_gates_own_criterion": false
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.0397,
+    "source": "evalx/results/save-value-audit-n500-evgate.json",
+    "path": [
+     "headline",
+     "avoided_per_booked_save"
+    ],
+    "note": "expected rollovers avoided per booked expedite save: each of the 29 saves is re-priced in the simulator's own replicated transfer distribution, P(roll) without the expedite minus P(roll) with it, summed and divided by the saves booked. SIMULATOR-INTERNAL and yard-transfer variance only: a late vessel is not in this distribution, so for the advisory-driven class this is a floor, not an estimate. Basis: HELD OUT, an independent replication block the expected-value gate never saw, because this arm's population was selected by the gate on the in-sample draws (the in-sample figure is beside it in the audit under `selection.in_sample`). It is a mean over the arm's per-save values, so it carries a bootstrap interval read from the file beside the audit, and `sign_of_the_headline` says what share of that interval sits on the losing side of break-even",
+    "ci95": [
+     0.0293,
+     0.0509
+    ],
+    "ci95_source": "evalx/results/save-value-bootstrap-n500-evgate.json",
+    "ci95_path": [
+     "headline",
+     "avoided_per_booked_save_ci95"
+    ],
+    "ci95_method": "seeded non-parametric bootstrap of the mean: `resamples` draws of `n_saves` per-save probabilities with replacement, the mean of each",
+    "ci95_resamples": 10000,
+    "ci95_seed": 20260826,
+    "basis": "held_out",
+    "gate_selected_this_population": true,
+    "is_the_gates_own_criterion": false
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.0397,
+    "source": "evalx/results/save-value-audit-n500-evgate.json",
+    "path": [
+     "headline",
+     "avoided_per_booked_save"
+    ],
+    "note": "expected rollovers avoided per booked expedite save: each of the 29 saves is re-priced in the simulator's own replicated transfer distribution, P(roll) without the expedite minus P(roll) with it, summed and divided by the saves booked. SIMULATOR-INTERNAL and yard-transfer variance only: a late vessel is not in this distribution, so for the advisory-driven class this is a floor, not an estimate. Basis: HELD OUT, an independent replication block the expected-value gate never saw, because this arm's population was selected by the gate on the in-sample draws (the in-sample figure is beside it in the audit under `selection.in_sample`). It is a mean over the arm's per-save values, so it carries a bootstrap interval read from the file beside the audit, and `sign_of_the_headline` says what share of that interval sits on the losing side of break-even",
+    "ci95": [
+     0.0293,
+     0.0509
+    ],
+    "ci95_source": "evalx/results/save-value-bootstrap-n500-evgate.json",
+    "ci95_path": [
+     "headline",
+     "avoided_per_booked_save_ci95"
+    ],
+    "ci95_method": "seeded non-parametric bootstrap of the mean: `resamples` draws of `n_saves` per-save probabilities with replacement, the mean of each",
+    "ci95_resamples": 10000,
+    "ci95_seed": 20260826,
+    "basis": "held_out",
+    "gate_selected_this_population": true,
+    "is_the_gates_own_criterion": false
+   }
+  },
+  "CATCH_INCREMENT": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 0.05,
+    "constant": "twin/generate.py:ESCALATE_FRACTION",
+    "derivation": "the agent's catches that rules-only misses are exactly the advisory-only class, whose share of connections is the generator constant ESCALATE_FRACTION = 0.15; the sweep's increment (catch_rate.agent_graph.mean minus catch_rate.rules_baseline.mean, read from evalx/results/sweep-full-n500.final.json) therefore recovers a generator parameter and is NOT a finding about any terminal. It is swept 0.05 / measured / 0.30 for that reason.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 0.1171,
+    "constant": "twin/generate.py:ESCALATE_FRACTION",
+    "derivation": "the agent's catches that rules-only misses are exactly the advisory-only class, whose share of connections is the generator constant ESCALATE_FRACTION = 0.15; the sweep's increment (catch_rate.agent_graph.mean minus catch_rate.rules_baseline.mean, read from evalx/results/sweep-full-n500.final.json) therefore recovers a generator parameter and is NOT a finding about any terminal. It is swept 0.05 / measured / 0.30 for that reason.",
+    "range": [
+     0.05,
+     0.3
+    ],
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "catch_rate",
+     "agent_graph",
+     "mean"
+    ],
+    "minus_path": [
+     "catch_rate",
+     "rules_baseline",
+     "mean"
+    ]
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 0.3,
+    "constant": "twin/generate.py:ESCALATE_FRACTION",
+    "derivation": "the agent's catches that rules-only misses are exactly the advisory-only class, whose share of connections is the generator constant ESCALATE_FRACTION = 0.15; the sweep's increment (catch_rate.agent_graph.mean minus catch_rate.rules_baseline.mean, read from evalx/results/sweep-full-n500.final.json) therefore recovers a generator parameter and is NOT a finding about any terminal. It is swept 0.05 / measured / 0.30 for that reason.",
+    "range": [
+     0.05,
+     0.3
+    ]
+   }
+  },
+  "INDEPENDENT_ORACLE_INCREMENT": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.1064,
+    "source": "evalx/results/validity-oracle-n320.json",
+    "path": [
+     "catch_rate_vs_independent_oracle",
+     "agent_graph",
+     "mean"
+    ],
+    "minus_path": [
+     "catch_rate_vs_independent_oracle",
+     "rules_baseline",
+     "mean"
+    ],
+    "note": "agent catch minus rules-baseline catch, both graded by the independent oracle; reported beside CATCH_INCREMENT as a cross-check and not used in the arithmetic, because on generated worlds it is the same generator share"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.1064,
+    "source": "evalx/results/validity-oracle-n320.json",
+    "path": [
+     "catch_rate_vs_independent_oracle",
+     "agent_graph",
+     "mean"
+    ],
+    "minus_path": [
+     "catch_rate_vs_independent_oracle",
+     "rules_baseline",
+     "mean"
+    ],
+    "note": "agent catch minus rules-baseline catch, both graded by the independent oracle; reported beside CATCH_INCREMENT as a cross-check and not used in the arithmetic, because on generated worlds it is the same generator share"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.1064,
+    "source": "evalx/results/validity-oracle-n320.json",
+    "path": [
+     "catch_rate_vs_independent_oracle",
+     "agent_graph",
+     "mean"
+    ],
+    "minus_path": [
+     "catch_rate_vs_independent_oracle",
+     "rules_baseline",
+     "mean"
+    ],
+    "note": "agent catch minus rules-baseline catch, both graded by the independent oracle; reported beside CATCH_INCREMENT as a cross-check and not used in the arithmetic, because on generated worlds it is the same generator share"
+   }
+  },
+  "PLANNER_MISS_SHARE": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.1,
+    "why": "Of the at-risk connections that rules-only ALSO flags, the share PSA's real counterfactual would fail to remediate without RELAY. The rules-only baseline remediates nothing by construction, so it is not PSA's counterfactual; PSA planners act on flags today. No measurement of that miss share exists, so it is a range.",
+    "range": [
+     0.1,
+     0.6
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0.3,
+    "why": "Of the at-risk connections that rules-only ALSO flags, the share PSA's real counterfactual would fail to remediate without RELAY. The rules-only baseline remediates nothing by construction, so it is not PSA's counterfactual; PSA planners act on flags today. No measurement of that miss share exists, so it is a range.",
+    "range": [
+     0.1,
+     0.6
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 0.6,
+    "why": "Of the at-risk connections that rules-only ALSO flags, the share PSA's real counterfactual would fail to remediate without RELAY. The rules-only baseline remediates nothing by construction, so it is not PSA's counterfactual; PSA planners act on flags today. No measurement of that miss share exists, so it is a range.",
+    "range": [
+     0.1,
+     0.6
+    ]
+   }
+  },
+  "EXPEDITE_COUNT": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 29,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.set_transfer_priority"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 29,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.set_transfer_priority"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 29,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.set_transfer_priority"
+    ]
+   }
+  },
+  "RESTOW_COUNT": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.create_restow_order"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.create_restow_order"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.create_restow_order"
+    ]
+   }
+  },
+  "REBOOK_COUNT": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 53,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.propose_rebooking"
+    ],
+    "note": "a proposal is a request, not a grant; NOT counted as saved"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 53,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.propose_rebooking"
+    ],
+    "note": "a proposal is a request, not a grant; NOT counted as saved"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 53,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "action_mix",
+     "portnet.propose_rebooking"
+    ],
+    "note": "a proposal is a request, not a grant; NOT counted as saved"
+   }
+  },
+  "SAVED_BY_EXPEDITE": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 29,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "saved_by_expedite"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 29,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "saved_by_expedite"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 29,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "agent_graph",
+     "saved_by_expedite"
+    ]
+   }
+  },
+  "AT_RISK_SCENARIOS": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 299,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "at_risk_scenarios"
+    ]
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 299,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "at_risk_scenarios"
+    ]
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 299,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "at_risk_scenarios"
+    ]
+   }
+  },
+  "RULES_BASELINE_SAVED": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "rules_baseline",
+     "saved_by_expedite"
+    ],
+    "note": "the rules-only baseline flags and does not remediate"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "rules_baseline",
+     "saved_by_expedite"
+    ],
+    "note": "the rules-only baseline flags and does not remediate"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "path": [
+     "connections_saved",
+     "rules_baseline",
+     "saved_by_expedite"
+    ],
+    "note": "the rules-only baseline flags and does not remediate"
+   }
+  },
+  "EXPEDITE_COST_USD": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 800.0,
+    "constant": "twin/solver.py:EXPEDITE_COST_USD",
+    "derivation": "the cost_usd_est every expedite option carries in the sweep's worlds; swung from half to double so the tornado can move the netting",
+    "range": [
+     400.0,
+     1600.0
+    ],
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 800.0,
+    "constant": "twin/solver.py:EXPEDITE_COST_USD",
+    "derivation": "the cost_usd_est every expedite option carries in the sweep's worlds; swung from half to double so the tornado can move the netting",
+    "range": [
+     400.0,
+     1600.0
+    ],
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 800.0,
+    "constant": "twin/solver.py:EXPEDITE_COST_USD",
+    "derivation": "the cost_usd_est every expedite option carries in the sweep's worlds; swung from half to double so the tornado can move the netting",
+    "range": [
+     400.0,
+     1600.0
+    ],
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   }
+  },
+  "RESTOW_COST_USD": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2400.0,
+    "constant": "twin/solver.py:RESTOW_COST_USD",
+    "derivation": "the cost_usd_est every restow option carries in the sweep's worlds; swung from half to double so the tornado can move the netting",
+    "range": [
+     1200.0,
+     4800.0
+    ],
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2400.0,
+    "constant": "twin/solver.py:RESTOW_COST_USD",
+    "derivation": "the cost_usd_est every restow option carries in the sweep's worlds; swung from half to double so the tornado can move the netting",
+    "range": [
+     1200.0,
+     4800.0
+    ],
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2400.0,
+    "constant": "twin/solver.py:RESTOW_COST_USD",
+    "derivation": "the cost_usd_est every restow option carries in the sweep's worlds; swung from half to double so the tornado can move the netting",
+    "range": [
+     1200.0,
+     4800.0
+    ],
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   }
+  },
+  "REBOOK_COST_USD": {
+   "pessimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2600.0,
+    "constant": "twin/generate.py:ROLLOVER_COST_RANGE_USD",
+    "derivation": "midpoint of the per-group rollover cost the generator draws for a rebooking candidate; used only when PRICE_REBOOKING_PROPOSALS is on",
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   },
+   "base": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2600.0,
+    "constant": "twin/generate.py:ROLLOVER_COST_RANGE_USD",
+    "derivation": "midpoint of the per-group rollover cost the generator draws for a rebooking candidate; used only when PRICE_REBOOKING_PROPOSALS is on",
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   },
+   "optimistic": {
+    "kind": "GENERATOR_DERIVED",
+    "value": 2600.0,
+    "constant": "twin/generate.py:ROLLOVER_COST_RANGE_USD",
+    "derivation": "midpoint of the per-group rollover cost the generator draws for a rebooking candidate; used only when PRICE_REBOOKING_PROPOSALS is on",
+    "borne_by": "PSA_PNL",
+    "borne_by_note": "the action is PSA's own yard work; the split assumes the terminal does not rebill it to the carrier"
+   }
+  },
+  "PRICE_REBOOKING_PROPOSALS": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0,
+    "why": "Off by default to match the saves rule: a rebooking proposal is neither a save nor, until the carrier accepts it, a cost. Set to 1 to price the proposals as spend; the artifact reports that variant beside the default.",
+    "range": [
+     0,
+     1
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0,
+    "why": "Off by default to match the saves rule: a rebooking proposal is neither a save nor, until the carrier accepts it, a cost. Set to 1 to price the proposals as spend; the artifact reports that variant beside the default.",
+    "range": [
+     0,
+     1
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 0,
+    "why": "Off by default to match the saves rule: a rebooking proposal is neither a save nor, until the carrier accepts it, a cost. Set to 1 to price the proposals as spend; the artifact reports that variant beside the default.",
+    "range": [
+     0,
+     1
+    ]
+   }
+  },
+  "DAYS_PER_ROLL": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 5,
+    "why": "Days a rolled box waits. Base is one liner service cycle: a rolled box waits for the next sailing of the same service, and deep-sea services call weekly. NONE FOUND: the Container News article cited for the rollover rate does not state the wait, and the forwarder guides consulted for demurrage could not be opened at their original addresses. Pessimistic is below one cycle because a hub with many services can re-route a rolled box onto another carrier's sailing or a feeder within days; optimistic is a missed weekly sailing plus slack.",
+    "range": [
+     5,
+     10
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 7,
+    "why": "Days a rolled box waits. Base is one liner service cycle: a rolled box waits for the next sailing of the same service, and deep-sea services call weekly. NONE FOUND: the Container News article cited for the rollover rate does not state the wait, and the forwarder guides consulted for demurrage could not be opened at their original addresses. Pessimistic is below one cycle because a hub with many services can re-route a rolled box onto another carrier's sailing or a feeder within days; optimistic is a missed weekly sailing plus slack.",
+    "range": [
+     5,
+     10
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 10,
+    "why": "Days a rolled box waits. Base is one liner service cycle: a rolled box waits for the next sailing of the same service, and deep-sea services call weekly. NONE FOUND: the Container News article cited for the rollover rate does not state the wait, and the forwarder guides consulted for demurrage could not be opened at their original addresses. Pessimistic is below one cycle because a hub with many services can re-route a rolled box onto another carrier's sailing or a feeder within days; optimistic is a missed weekly sailing plus slack.",
+    "range": [
+     5,
+     10
+    ]
+   }
+  },
+  "DD_PER_BOX_DAY": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0,
+    "why": "Demurrage per container-day, from freight-forwarder guides (freightamigo, ship4wd, hillebrandgori, freightos) that put it at USD 50 to 150; no carrier tariff was read for this model, so CHOSEN, not CITED. Pessimistic is 0 because a transhipment box never leaves carrier custody at the hub: demurrage is charged to a consignee holding a box past free time at destination, and a rollover at the hub does not by itself start that clock.",
+    "range": [
+     0,
+     150
+    ],
+    "beneficiary": "SHIPPER"
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 100,
+    "why": "Demurrage per container-day, from freight-forwarder guides (freightamigo, ship4wd, hillebrandgori, freightos) that put it at USD 50 to 150; no carrier tariff was read for this model, so CHOSEN, not CITED. Pessimistic is 0 because a transhipment box never leaves carrier custody at the hub: demurrage is charged to a consignee holding a box past free time at destination, and a rollover at the hub does not by itself start that clock.",
+    "range": [
+     0,
+     150
+    ],
+    "beneficiary": "SHIPPER"
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 150,
+    "why": "Demurrage per container-day, from freight-forwarder guides (freightamigo, ship4wd, hillebrandgori, freightos) that put it at USD 50 to 150; no carrier tariff was read for this model, so CHOSEN, not CITED. Pessimistic is 0 because a transhipment box never leaves carrier custody at the hub: demurrage is charged to a consignee holding a box past free time at destination, and a rollover at the hub does not by itself start that clock.",
+    "range": [
+     0,
+     150
+    ],
+    "beneficiary": "SHIPPER"
+   }
+  },
+  "STORAGE_PER_BOX_DAY": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0,
+    "why": "Port storage per container-day; the same guides quote USD 20 to 50. A PSA tariff was NONE FOUND, and the pessimistic end assumes the terminal waives it inside free time.",
+    "range": [
+     0,
+     50
+    ],
+    "note": "Booked as a TRANSFER, not a benefit: PSA bills the carrier for storage, so a save costs PSA the storage it would have billed (negative in the PSA_PNL column) and saves the carrier the same amount (positive in the CARRIER column). It nets to zero in the total. Version 2.0.0 added it to the value of a save as if it were PSA's benefit.",
+    "beneficiary": "CARRIER"
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 20,
+    "why": "Port storage per container-day; the same guides quote USD 20 to 50. A PSA tariff was NONE FOUND, and the pessimistic end assumes the terminal waives it inside free time.",
+    "range": [
+     0,
+     50
+    ],
+    "note": "Booked as a TRANSFER, not a benefit: PSA bills the carrier for storage, so a save costs PSA the storage it would have billed (negative in the PSA_PNL column) and saves the carrier the same amount (positive in the CARRIER column). It nets to zero in the total. Version 2.0.0 added it to the value of a save as if it were PSA's benefit.",
+    "beneficiary": "CARRIER"
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 50,
+    "why": "Port storage per container-day; the same guides quote USD 20 to 50. A PSA tariff was NONE FOUND, and the pessimistic end assumes the terminal waives it inside free time.",
+    "range": [
+     0,
+     50
+    ],
+    "note": "Booked as a TRANSFER, not a benefit: PSA bills the carrier for storage, so a save costs PSA the storage it would have billed (negative in the PSA_PNL column) and saves the carrier the same amount (positive in the CARRIER column). It nets to zero in the total. Version 2.0.0 added it to the value of a save as if it were PSA's benefit.",
+    "beneficiary": "CARRIER"
+   }
+  },
+  "CARGO_VALUE_PER_TEU": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 30000,
+    "why": "USD of cargo per TEU, for the carrying cost of a delayed shipment. NONE OPENED: the UNCTAD Review of Maritime Transport 2024 landing page and its Chapter III PDF were opened and carry no value-per-TEU table, so this is the order of magnitude quoted in trade press and is a choice.",
+    "range": [
+     30000,
+     50000
+    ],
+    "beneficiary": "SHIPPER"
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 40000,
+    "why": "USD of cargo per TEU, for the carrying cost of a delayed shipment. NONE OPENED: the UNCTAD Review of Maritime Transport 2024 landing page and its Chapter III PDF were opened and carry no value-per-TEU table, so this is the order of magnitude quoted in trade press and is a choice.",
+    "range": [
+     30000,
+     50000
+    ],
+    "beneficiary": "SHIPPER"
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 50000,
+    "why": "USD of cargo per TEU, for the carrying cost of a delayed shipment. NONE OPENED: the UNCTAD Review of Maritime Transport 2024 landing page and its Chapter III PDF were opened and carry no value-per-TEU table, so this is the order of magnitude quoted in trade press and is a choice.",
+    "range": [
+     30000,
+     50000
+    ],
+    "beneficiary": "SHIPPER"
+   }
+  },
+  "CARRYING_RATE": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.15,
+    "why": "Annual carrying cost of inventory in transit as a share of its value; a textbook range for finished goods, NONE FOUND for containerised cargo specifically.",
+    "range": [
+     0.15,
+     0.25
+    ],
+    "beneficiary": "SHIPPER"
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0.2,
+    "why": "Annual carrying cost of inventory in transit as a share of its value; a textbook range for finished goods, NONE FOUND for containerised cargo specifically.",
+    "range": [
+     0.15,
+     0.25
+    ],
+    "beneficiary": "SHIPPER"
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 0.25,
+    "why": "Annual carrying cost of inventory in transit as a share of its value; a textbook range for finished goods, NONE FOUND for containerised cargo specifically.",
+    "range": [
+     0.15,
+     0.25
+    ],
+    "beneficiary": "SHIPPER"
+   }
+  },
+  "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0,
+    "why": "What one yard slot-day is worth to PSA at the margin when a rolled box does not occupy it: the re-handling and congestion a full yard costs the terminal, not the storage tariff, which is a transfer. NONE FOUND: no PSA yard-cost figure is public. Pessimistic 0 says a slot has no marginal value when the yard is not full.",
+    "range": [
+     0,
+     15
+    ],
+    "beneficiary": "PSA_PNL"
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 5,
+    "why": "What one yard slot-day is worth to PSA at the margin when a rolled box does not occupy it: the re-handling and congestion a full yard costs the terminal, not the storage tariff, which is a transfer. NONE FOUND: no PSA yard-cost figure is public. Pessimistic 0 says a slot has no marginal value when the yard is not full.",
+    "range": [
+     0,
+     15
+    ],
+    "beneficiary": "PSA_PNL"
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 15,
+    "why": "What one yard slot-day is worth to PSA at the margin when a rolled box does not occupy it: the re-handling and congestion a full yard costs the terminal, not the storage tariff, which is a transfer. NONE FOUND: no PSA yard-cost figure is public. Pessimistic 0 says a slot has no marginal value when the yard is not full.",
+    "range": [
+     0,
+     15
+    ],
+    "beneficiary": "PSA_PNL"
+   }
+  },
+  "FRONTIER_USD_PER_EPISODE": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.0013,
+    "source": "evalx/results/sweep-live-n100.final.json",
+    "path": [
+     "cost_per_decision",
+     "counterfactual_frontier_usd_per_advisory_episode",
+     "mean"
+    ],
+    "note": "the same measured tokens priced at the frontier list price; a priced counterfactual, not a bill"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.0013,
+    "source": "evalx/results/sweep-live-n100.final.json",
+    "path": [
+     "cost_per_decision",
+     "counterfactual_frontier_usd_per_advisory_episode",
+     "mean"
+    ],
+    "note": "the same measured tokens priced at the frontier list price; a priced counterfactual, not a bill"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.0013,
+    "source": "evalx/results/sweep-live-n100.final.json",
+    "path": [
+     "cost_per_decision",
+     "counterfactual_frontier_usd_per_advisory_episode",
+     "mean"
+    ],
+    "note": "the same measured tokens priced at the frontier list price; a priced counterfactual, not a bill"
+   }
+  },
+  "ROUTED_USD_PER_EPISODE": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.0,
+    "source": "evalx/results/sweep-live-n100.final.json",
+    "path": [
+     "cost_per_decision",
+     "cost_usd_imputed_per_advisory_episode",
+     "mean"
+    ],
+    "note": "what the routed local tier is imputed at"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.0,
+    "source": "evalx/results/sweep-live-n100.final.json",
+    "path": [
+     "cost_per_decision",
+     "cost_usd_imputed_per_advisory_episode",
+     "mean"
+    ],
+    "note": "what the routed local tier is imputed at"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.0,
+    "source": "evalx/results/sweep-live-n100.final.json",
+    "path": [
+     "cost_per_decision",
+     "cost_usd_imputed_per_advisory_episode",
+     "mean"
+    ],
+    "note": "what the routed local tier is imputed at"
+   }
+  },
+  "EXPIRY_SHARE_AT_STAFFED": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 0.9845,
+    "why": "WHICH DESK the model prices, not a measurement of one desk. Every end is a cell of the same M/M/c model in evalx/results/oversight-load.json at p = 0.10 on the per_box_group unit with a 90-second read: pessimistic is one officer available 0.2 of the time (0.9845), base is one officer at the model's base availability of 0.5 (0.3563), optimistic is two officers at that availability (0.0497). Staffing the approval desk is a decision PSA would make, so it is an assumption here and it swings; the pessimistic end is strictly worse than base so the tornado can rank it, and the breakeven block prints the expiry share at which the bottom line reaches zero.",
+    "range": [
+     0.0497,
+     0.9845
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 0.3563,
+    "why": "WHICH DESK the model prices, not a measurement of one desk. Every end is a cell of the same M/M/c model in evalx/results/oversight-load.json at p = 0.10 on the per_box_group unit with a 90-second read: pessimistic is one officer available 0.2 of the time (0.9845), base is one officer at the model's base availability of 0.5 (0.3563), optimistic is two officers at that availability (0.0497). Staffing the approval desk is a decision PSA would make, so it is an assumption here and it swings; the pessimistic end is strictly worse than base so the tornado can rank it, and the breakeven block prints the expiry share at which the bottom line reaches zero.",
+    "range": [
+     0.0497,
+     0.9845
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 0.0497,
+    "why": "WHICH DESK the model prices, not a measurement of one desk. Every end is a cell of the same M/M/c model in evalx/results/oversight-load.json at p = 0.10 on the per_box_group unit with a 90-second read: pessimistic is one officer available 0.2 of the time (0.9845), base is one officer at the model's base availability of 0.5 (0.3563), optimistic is two officers at that availability (0.0497). Staffing the approval desk is a decision PSA would make, so it is an assumption here and it swings; the pessimistic end is strictly worse than base so the tornado can rank it, and the breakeven block prints the expiry share at which the bottom line reaches zero.",
+    "range": [
+     0.0497,
+     0.9845
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   }
+  },
+  "EXPIRY_SHARE_ONE_OFFICER": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.3563,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "by_officers",
+     "c1",
+     "expiry_share"
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.3563,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "by_officers",
+     "c1",
+     "expiry_share"
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.3563,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "by_officers",
+     "c1",
+     "expiry_share"
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   }
+  },
+  "EXPIRY_SHARE_TWO_OFFICERS": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.0497,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "by_officers",
+     "c2",
+     "expiry_share"
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.0497,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "by_officers",
+     "c2",
+     "expiry_share"
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.0497,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "by_officers",
+     "c2",
+     "expiry_share"
+    ],
+    "note": "the share of approval cards that expire into DENY_BY_DEFAULT before an officer reaches them, from the M/M/c desk model at p = 0.10 on the sweep's own unit and a 90-second read. A save the agent proposed and nobody landed is not a save, so SAVES_PER_AT_RISK is multiplied by (1 - this). The queue behind it was computed on the UNGATED card rate, and the gated arm raises fewer cards, so on the gated arm this is an upper bound on the expiry and the saving it removes"
+   }
+  },
+  "EXPIRY_SHARE_ONE_OFFICER_LOW_AVAILABILITY": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.9845,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "staffed_cell_by_availability",
+     "pessimistic",
+     "c1",
+     "expiry_share"
+    ],
+    "note": "the same one-officer M/M/1 desk with the officer available 0.2 of the time rather than 0.5, which is the oversight-load model's own pessimistic availability. Almost every card expires at that staffing"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.9845,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "staffed_cell_by_availability",
+     "pessimistic",
+     "c1",
+     "expiry_share"
+    ],
+    "note": "the same one-officer M/M/1 desk with the officer available 0.2 of the time rather than 0.5, which is the oversight-load model's own pessimistic availability. Almost every card expires at that staffing"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.9845,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "staffed_cell_by_availability",
+     "pessimistic",
+     "c1",
+     "expiry_share"
+    ],
+    "note": "the same one-officer M/M/1 desk with the officer available 0.2 of the time rather than 0.5, which is the oversight-load model's own pessimistic availability. Almost every card expires at that staffing"
+   }
+  },
+  "EXPIRY_SHARE_DEDICATED_DESK": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.1508,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "EXPIRY_SHARE_AT_STAFFED_CELL",
+     "at_full_availability_expiry_share"
+    ],
+    "note": "the alternative the oversight-load model names: the same one-officer desk dedicated to approvals (availability 1.0 rather than 0.5). Reported as a named alternative and not swept, because a dedicated desk is a staffing decision rather than an assumption about this one"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.1508,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "EXPIRY_SHARE_AT_STAFFED_CELL",
+     "at_full_availability_expiry_share"
+    ],
+    "note": "the alternative the oversight-load model names: the same one-officer desk dedicated to approvals (availability 1.0 rather than 0.5). Reported as a named alternative and not swept, because a dedicated desk is a staffing decision rather than an assumption about this one"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.1508,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "EXPIRY_SHARE_AT_STAFFED_CELL",
+     "at_full_availability_expiry_share"
+    ],
+    "note": "the alternative the oversight-load model names: the same one-officer desk dedicated to approvals (availability 1.0 rather than 0.5). Reported as a named alternative and not swept, because a dedicated desk is a staffing decision rather than an assumption about this one"
+   }
+  },
+  "OFFICERS_REQUIRED_P10_BOX_GROUP_R90": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.1971,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "offered_load_erlangs"
+    ],
+    "note": "the officer time the approval desk needs at p = 0.10 on the sweep's own unit (one decision per box group) at a 90-second read: cards per hour times response time over 3,600, a share of one officer's time averaged over the day, so officer-hours a year is this times 8,760; scaled to each scenario's at-risk population below"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.1971,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "offered_load_erlangs"
+    ],
+    "note": "the officer time the approval desk needs at p = 0.10 on the sweep's own unit (one decision per box group) at a 90-second read: cards per hour times response time over 3,600, a share of one officer's time averaged over the day, so officer-hours a year is this times 8,760; scaled to each scenario's at-risk population below"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.1971,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "r90",
+     "offered_load_erlangs"
+    ],
+    "note": "the officer time the approval desk needs at p = 0.10 on the sweep's own unit (one decision per box group) at a 90-second read: cards per hour times response time over 3,600, a share of one officer's time averaged over the day, so officer-hours a year is this times 8,760; scaled to each scenario's at-risk population below"
+   }
+  },
+  "AT_RISK_PER_DAY_P10_BOX_GROUP": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 236.72,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "at_risk_per_day"
+    ],
+    "note": "the at-risk connections a day that officers_required was computed for; the fluid model is linear in it"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 236.72,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "at_risk_per_day"
+    ],
+    "note": "the at-risk connections a day that officers_required was computed for; the fluid model is linear in it"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 236.72,
+    "source": "evalx/results/oversight-load.json",
+    "path": [
+     "grid",
+     "p10",
+     "per_box_group",
+     "at_risk_per_day"
+    ],
+    "note": "the at-risk connections a day that officers_required was computed for; the fluid model is linear in it"
+   }
+  },
+  "ESCALATIONS_PER_AT_RISK": {
+   "pessimistic": {
+    "kind": "MEASURED",
+    "value": 0.7258,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "advise_only"
+     ],
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "the sweep's 217 escalations over its 299 at-risk episodes, summed over every class the sweep records; the population this model scales is at-risk connections and every escalation was on an at-risk episode, so the per-at-risk rate is the one that applies. On the gated arm the advise_only class is most of it: the expected-value gate turns an action that does not pay into written advice, which costs a supervisor's reading time instead of an expedite"
+   },
+   "base": {
+    "kind": "MEASURED",
+    "value": 0.7258,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "advise_only"
+     ],
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "the sweep's 217 escalations over its 299 at-risk episodes, summed over every class the sweep records; the population this model scales is at-risk connections and every escalation was on an at-risk episode, so the per-at-risk rate is the one that applies. On the gated arm the advise_only class is most of it: the expected-value gate turns an action that does not pay into written advice, which costs a supervisor's reading time instead of an expedite"
+   },
+   "optimistic": {
+    "kind": "MEASURED",
+    "value": 0.7258,
+    "source": "evalx/results/sweep-full-n500-evgate.json",
+    "sum_paths": [
+     [
+      "escalation_classes",
+      "advise_only"
+     ],
+     [
+      "escalation_classes",
+      "insufficient_evidence"
+     ],
+     [
+      "escalation_classes",
+      "no_feasible_option"
+     ]
+    ],
+    "over_path": [
+     "at_risk_scenarios"
+    ],
+    "note": "the sweep's 217 escalations over its 299 at-risk episodes, summed over every class the sweep records; the population this model scales is at-risk connections and every escalation was on an at-risk episode, so the per-at-risk rate is the one that applies. On the gated arm the advise_only class is most of it: the expected-value gate turns an action that does not pay into written advice, which costs a supervisor's reading time instead of an expedite"
+   }
+  },
+  "OFFICER_USD_PER_HOUR": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 90,
+    "why": "Fully loaded USD per hour of a duty officer or supervisor on the approval desk. NONE FOUND for PSA; the range is a Singapore operations wage band with on-costs. Applied to both the desk and the supervisor's reading time.",
+    "range": [
+     40,
+     90
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 60,
+    "why": "Fully loaded USD per hour of a duty officer or supervisor on the approval desk. NONE FOUND for PSA; the range is a Singapore operations wage band with on-costs. Applied to both the desk and the supervisor's reading time.",
+    "range": [
+     40,
+     90
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 40,
+    "why": "Fully loaded USD per hour of a duty officer or supervisor on the approval desk. NONE FOUND for PSA; the range is a Singapore operations wage band with on-costs. Applied to both the desk and the supervisor's reading time.",
+    "range": [
+     40,
+     90
+    ]
+   }
+  },
+  "SUPERVISOR_MIN_PER_ESCALATION": {
+   "pessimistic": {
+    "kind": "CHOSEN",
+    "value": 20,
+    "why": "Minutes a duty supervisor spends reading one written escalation summary and deciding what to do with it. NONE FOUND; the oversight-load model names this time as outside its officer count.",
+    "range": [
+     5,
+     20
+    ]
+   },
+   "base": {
+    "kind": "CHOSEN",
+    "value": 10,
+    "why": "Minutes a duty supervisor spends reading one written escalation summary and deciding what to do with it. NONE FOUND; the oversight-load model names this time as outside its officer count.",
+    "range": [
+     5,
+     20
+    ]
+   },
+   "optimistic": {
+    "kind": "CHOSEN",
+    "value": 5,
+    "why": "Minutes a duty supervisor spends reading one written escalation summary and deciding what to do with it. NONE FOUND; the oversight-load model names this time as outside its officer count.",
+    "range": [
+     5,
+     20
+    ]
+   }
+  }
+ },
+ "scenarios": {
+  "pessimistic": {
+   "scenario": "pessimistic",
+   "p_at_risk": 0.005,
+   "p_source": "rollover chain",
+   "volume": {
+    "TS_TEU_YEAR": 37825000.0,
+    "TS_TEU_DAY": 103630.14,
+    "BOXES_DAY": 57572.3,
+    "CONNECTIONS_DAY": 2111.51
+   },
+   "at_risk_connections_year": 3853.5,
+   "tranches": {
+    "T_DETECT": 0.0,
+    "T_REMEDIATE": 0.010431,
+    "T_LEAD": 0.0,
+    "SAVES_PER_AT_RISK": 0.010431,
+    "EXPIRY_SHARE_AT_STAFFED": 0.9845,
+    "SAVES_PER_AT_RISK_REACHING_A_WRITE": 0.000162
+   },
+   "tranche_shares": {
+    "detect": 0.0,
+    "remediate": 1.0,
+    "lead": 0.0
+   },
+   "value": {
+    "CARRYING_USD_PER_BOX_DAY": 22.1918,
+    "STORAGE_TRANSFER_USD_PER_BOX_DAY": 0,
+    "VALUE_PER_BOX_DAY": 22.1918,
+    "VALUE_PER_BOX": 110.9589,
+    "VALUE_PER_SAVE": 3025.4055,
+    "VALUE_PER_BOX_DAY_BY_BENEFICIARY": {
+     "SHIPPER": 22.1918,
+     "CARRIER": 0,
+     "PSA_PNL": 0
+    },
+    "VALUE_PER_SAVE_BY_BENEFICIARY": {
+     "PSA_PNL": 0.0,
+     "CARRIER": 0.0,
+     "SHIPPER": 3025.4055
+    }
+   },
+   "spend": {
+    "EXECUTED_SPEND_USD": 23200.0,
+    "PROPOSAL_SPEND_USD_IF_PRICED": 137800.0,
+    "SPEND_USD_CHARGED": 23200.0,
+    "SPEND_PER_SAVE": 800.0
+   },
+   "roll_probability_given_save": 0.0397,
+   "net_per_save_usd": -679.89,
+   "net_per_save_usd_if_every_save_were_a_rollover": 2225.41,
+   "net_per_save_usd_by_beneficiary": {
+    "PSA_PNL": -800.0,
+    "CARRIER": 0.0,
+    "SHIPPER": 120.11
+   },
+   "saves_per_year": 0.6,
+   "saves_per_year_proposed_before_expiry": 40.2,
+   "expiry_share_at_staffed": 0.9845,
+   "annual_usd": -424,
+   "annual_usd_millions": -0.0,
+   "annual_usd_if_every_save_were_a_rollover": 1387,
+   "annual_usd_if_every_save_were_a_rollover_millions": 0.0,
+   "annual_usd_by_tranche": {
+    "detect": 0,
+    "remediate": -424,
+    "lead": 0
+   },
+   "annual_usd_by_beneficiary": {
+    "PSA_PNL": -498,
+    "CARRIER": 0,
+    "SHIPPER": 75
+   },
+   "annual_usd_by_beneficiary_millions": {
+    "PSA_PNL": -0.0,
+    "CARRIER": 0.0,
+    "SHIPPER": 0.0
+   },
+   "operations": {
+    "OFFICERS_FTE": 0.008791,
+    "OFFICER_DESK_USD_YEAR": 6930.43,
+    "ESCALATIONS_YEAR": 2796.87,
+    "SUPERVISOR_USD_YEAR": 83906.04,
+    "TOKENS_ROUTED_USD_YEAR": 0.0,
+    "TOTAL_USD_YEAR": 90836.47
+   },
+   "annual_usd_net_of_operations": -91260,
+   "annual_usd_net_of_operations_millions": -0.1,
+   "psa_pnl_usd_net_of_operations": -91335,
+   "psa_pnl_usd_net_of_operations_millions": -0.1,
+   "yard_slot_days_avoided": 3,
+   "yard_slot_days_avoided_if_every_save_were_a_rollover": 85,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 3025.41,
+    "roll_probability_given_save": 0.0397,
+    "expected_value_per_expedite_usd": 120.11,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": false,
+    "roll_probability_basis": "held_out",
+    "breakeven_roll_probability": 0.2644,
+    "psa_pnl_expected_value_per_expedite_usd": -800.0,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   },
+   "cost_side": {
+    "routed_usd_per_episode": 0.0,
+    "frontier_ceiling_usd_per_episode": 0.0013,
+    "frontier_ceiling_usd_year_if_every_at_risk_went_frontier": 5.01,
+    "note": "read from evalx/results/sweep-live-n100.final.json; the frontier row prices the same measured tokens at a list price and was never billed; the routed rate is what the operations line charges"
+   }
+  },
+  "base": {
+   "scenario": "base",
+   "p_at_risk": 0.0333,
+   "p_source": "rollover chain",
+   "volume": {
+    "TS_TEU_YEAR": 40050000.0,
+    "TS_TEU_DAY": 109726.03,
+    "BOXES_DAY": 64544.72,
+    "CONNECTIONS_DAY": 2367.22
+   },
+   "at_risk_connections_year": 28772.4,
+   "tranches": {
+    "T_DETECT": 0.03513,
+    "T_REMEDIATE": 0.029083,
+    "T_LEAD": 0.0,
+    "SAVES_PER_AT_RISK": 0.064213,
+    "EXPIRY_SHARE_AT_STAFFED": 0.3563,
+    "SAVES_PER_AT_RISK_REACHING_A_WRITE": 0.041334
+   },
+   "tranche_shares": {
+    "detect": 0.5471,
+    "remediate": 0.4529,
+    "lead": 0.0
+   },
+   "value": {
+    "CARRYING_USD_PER_BOX_DAY": 37.2603,
+    "STORAGE_TRANSFER_USD_PER_BOX_DAY": 20,
+    "VALUE_PER_BOX_DAY": 142.2603,
+    "VALUE_PER_BOX": 995.8219,
+    "VALUE_PER_SAVE": 27152.0804,
+    "VALUE_PER_BOX_DAY_BY_BENEFICIARY": {
+     "SHIPPER": 137.2603,
+     "CARRIER": 20,
+     "PSA_PNL": -15
+    },
+    "VALUE_PER_SAVE_BY_BENEFICIARY": {
+     "PSA_PNL": -2862.93,
+     "CARRIER": 3817.24,
+     "SHIPPER": 26197.7704
+    }
+   },
+   "spend": {
+    "EXECUTED_SPEND_USD": 23200.0,
+    "PROPOSAL_SPEND_USD_IF_PRICED": 137800.0,
+    "SPEND_USD_CHARGED": 23200.0,
+    "SPEND_PER_SAVE": 800.0
+   },
+   "roll_probability_given_save": 0.0397,
+   "net_per_save_usd": 277.94,
+   "net_per_save_usd_if_every_save_were_a_rollover": 26352.08,
+   "net_per_save_usd_by_beneficiary": {
+    "PSA_PNL": -913.66,
+    "CARRIER": 151.54,
+    "SHIPPER": 1040.05
+   },
+   "saves_per_year": 1189.3,
+   "saves_per_year_proposed_before_expiry": 1847.6,
+   "expiry_share_at_staffed": 0.3563,
+   "annual_usd": 330543,
+   "annual_usd_millions": 0.3,
+   "annual_usd_if_every_save_were_a_rollover": 31339779,
+   "annual_usd_if_every_save_were_a_rollover_millions": 31.3,
+   "annual_usd_by_tranche": {
+    "detect": 180836,
+    "remediate": 149707,
+    "lead": 0
+   },
+   "annual_usd_by_beneficiary": {
+    "PSA_PNL": -1086588,
+    "CARRIER": 180227,
+    "SHIPPER": 1236904
+   },
+   "annual_usd_by_beneficiary_millions": {
+    "PSA_PNL": -1.1,
+    "CARRIER": 0.2,
+    "SHIPPER": 1.2
+   },
+   "operations": {
+    "OFFICERS_FTE": 0.065635,
+    "OFFICER_DESK_USD_YEAR": 34497.73,
+    "ESCALATIONS_YEAR": 20883.02,
+    "SUPERVISOR_USD_YEAR": 208830.23,
+    "TOKENS_ROUTED_USD_YEAR": 0.0,
+    "TOTAL_USD_YEAR": 243327.96
+   },
+   "annual_usd_net_of_operations": 87215,
+   "annual_usd_net_of_operations_millions": 0.1,
+   "psa_pnl_usd_net_of_operations": -1329916,
+   "psa_pnl_usd_net_of_operations_millions": -1.3,
+   "yard_slot_days_avoided": 9011,
+   "yard_slot_days_avoided_if_every_save_were_a_rollover": 226987,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 27152.08,
+    "roll_probability_given_save": 0.0397,
+    "expected_value_per_expedite_usd": 1077.94,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": true,
+    "roll_probability_basis": "held_out",
+    "breakeven_roll_probability": 0.0295,
+    "psa_pnl_expected_value_per_expedite_usd": -913.66,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   },
+   "cost_side": {
+    "routed_usd_per_episode": 0.0,
+    "frontier_ceiling_usd_per_episode": 0.0013,
+    "frontier_ceiling_usd_year_if_every_at_risk_went_frontier": 37.4,
+    "note": "read from evalx/results/sweep-live-n100.final.json; the frontier row prices the same measured tokens at a list price and was never billed; the routed rate is what the operations line charges"
+   }
+  },
+  "optimistic": {
+   "scenario": "optimistic",
+   "p_at_risk": 0.0933,
+   "p_source": "rollover chain",
+   "volume": {
+    "TS_TEU_YEAR": 40050000.0,
+    "TS_TEU_DAY": 109726.03,
+    "BOXES_DAY": 68578.77,
+    "CONNECTIONS_DAY": 2515.18
+   },
+   "at_risk_connections_year": 85653.0,
+   "tranches": {
+    "T_DETECT": 0.1737,
+    "T_REMEDIATE": 0.046116,
+    "T_LEAD": 0.0,
+    "SAVES_PER_AT_RISK": 0.219816,
+    "EXPIRY_SHARE_AT_STAFFED": 0.0497,
+    "SAVES_PER_AT_RISK_REACHING_A_WRITE": 0.208891
+   },
+   "tranche_shares": {
+    "detect": 0.7902,
+    "remediate": 0.2098,
+    "lead": 0.0
+   },
+   "value": {
+    "CARRYING_USD_PER_BOX_DAY": 54.7945,
+    "STORAGE_TRANSFER_USD_PER_BOX_DAY": 50,
+    "VALUE_PER_BOX_DAY": 219.7945,
+    "VALUE_PER_BOX": 2197.9452,
+    "VALUE_PER_SAVE": 59929.174,
+    "VALUE_PER_BOX_DAY_BY_BENEFICIARY": {
+     "SHIPPER": 204.7945,
+     "CARRIER": 50,
+     "PSA_PNL": -35
+    },
+    "VALUE_PER_SAVE_BY_BENEFICIARY": {
+     "PSA_PNL": -9543.1,
+     "CARRIER": 13633.0,
+     "SHIPPER": 55839.274
+    }
+   },
+   "spend": {
+    "EXECUTED_SPEND_USD": 23200.0,
+    "PROPOSAL_SPEND_USD_IF_PRICED": 137800.0,
+    "SPEND_USD_CHARGED": 23200.0,
+    "SPEND_PER_SAVE": 800.0
+   },
+   "roll_probability_given_save": 0.0397,
+   "net_per_save_usd": 1579.19,
+   "net_per_save_usd_if_every_save_were_a_rollover": 59129.17,
+   "net_per_save_usd_by_beneficiary": {
+    "PSA_PNL": -1178.86,
+    "CARRIER": 541.23,
+    "SHIPPER": 2216.82
+   },
+   "saves_per_year": 17892.2,
+   "saves_per_year_proposed_before_expiry": 18827.9,
+   "expiry_share_at_staffed": 0.0497,
+   "annual_usd": 28255089,
+   "annual_usd_millions": 28.3,
+   "annual_usd_if_every_save_were_a_rollover": 1057948661,
+   "annual_usd_if_every_save_were_a_rollover_millions": 1057.9,
+   "annual_usd_by_tranche": {
+    "detect": 22327351,
+    "remediate": 5927738,
+    "lead": 0
+   },
+   "annual_usd_by_beneficiary": {
+    "PSA_PNL": -21092371,
+    "CARRIER": 9683776,
+    "SHIPPER": 39663684
+   },
+   "annual_usd_by_beneficiary_millions": {
+    "PSA_PNL": -21.1,
+    "CARRIER": 9.7,
+    "SHIPPER": 39.7
+   },
+   "operations": {
+    "OFFICERS_FTE": 0.19539,
+    "OFFICER_DESK_USD_YEAR": 68464.53,
+    "ESCALATIONS_YEAR": 62166.97,
+    "SUPERVISOR_USD_YEAR": 207223.24,
+    "TOKENS_ROUTED_USD_YEAR": 0.0,
+    "TOTAL_USD_YEAR": 275687.77
+   },
+   "annual_usd_net_of_operations": 27979401,
+   "annual_usd_net_of_operations_millions": 28.0,
+   "psa_pnl_usd_net_of_operations": -21368059,
+   "psa_pnl_usd_net_of_operations_millions": -21.4,
+   "yard_slot_days_avoided": 193676,
+   "yard_slot_days_avoided_if_every_save_were_a_rollover": 4878476,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 59929.17,
+    "roll_probability_given_save": 0.0397,
+    "expected_value_per_expedite_usd": 2379.19,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": true,
+    "roll_probability_basis": "held_out",
+    "breakeven_roll_probability": 0.0133,
+    "psa_pnl_expected_value_per_expedite_usd": -1178.86,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   },
+   "cost_side": {
+    "routed_usd_per_episode": 0.0,
+    "frontier_ceiling_usd_per_episode": 0.0013,
+    "frontier_ceiling_usd_year_if_every_at_risk_went_frontier": 111.35,
+    "note": "read from evalx/results/sweep-live-n100.final.json; the frontier row prices the same measured tokens at a list price and was never billed; the routed rate is what the operations line charges"
+   }
+  }
+ },
+ "p_grid": {
+  "note": "base scenario with the prevalence entered directly, for a reader who rejects the rollover chain. Population, stated once: AT_RISK_BEFORE_PLANNER, the share of transhipment connections that would break with no intervention, before PSA's planners or RELAY act on them; the sweep's at_risk_scenarios is that population, and the oversight-load grid uses the same p",
+  "p05": {
+   "scenario": "base",
+   "p_at_risk": 0.05,
+   "p_source": "direct",
+   "volume": {
+    "TS_TEU_YEAR": 40050000.0,
+    "TS_TEU_DAY": 109726.03,
+    "BOXES_DAY": 64544.72,
+    "CONNECTIONS_DAY": 2367.22
+   },
+   "at_risk_connections_year": 43201.8,
+   "tranches": {
+    "T_DETECT": 0.03513,
+    "T_REMEDIATE": 0.029083,
+    "T_LEAD": 0.0,
+    "SAVES_PER_AT_RISK": 0.064213,
+    "EXPIRY_SHARE_AT_STAFFED": 0.3563,
+    "SAVES_PER_AT_RISK_REACHING_A_WRITE": 0.041334
+   },
+   "tranche_shares": {
+    "detect": 0.5471,
+    "remediate": 0.4529,
+    "lead": 0.0
+   },
+   "value": {
+    "CARRYING_USD_PER_BOX_DAY": 37.2603,
+    "STORAGE_TRANSFER_USD_PER_BOX_DAY": 20,
+    "VALUE_PER_BOX_DAY": 142.2603,
+    "VALUE_PER_BOX": 995.8219,
+    "VALUE_PER_SAVE": 27152.0804,
+    "VALUE_PER_BOX_DAY_BY_BENEFICIARY": {
+     "SHIPPER": 137.2603,
+     "CARRIER": 20,
+     "PSA_PNL": -15
+    },
+    "VALUE_PER_SAVE_BY_BENEFICIARY": {
+     "PSA_PNL": -2862.93,
+     "CARRIER": 3817.24,
+     "SHIPPER": 26197.7704
+    }
+   },
+   "spend": {
+    "EXECUTED_SPEND_USD": 23200.0,
+    "PROPOSAL_SPEND_USD_IF_PRICED": 137800.0,
+    "SPEND_USD_CHARGED": 23200.0,
+    "SPEND_PER_SAVE": 800.0
+   },
+   "roll_probability_given_save": 0.0397,
+   "net_per_save_usd": 277.94,
+   "net_per_save_usd_if_every_save_were_a_rollover": 26352.08,
+   "net_per_save_usd_by_beneficiary": {
+    "PSA_PNL": -913.66,
+    "CARRIER": 151.54,
+    "SHIPPER": 1040.05
+   },
+   "saves_per_year": 1785.7,
+   "saves_per_year_proposed_before_expiry": 2774.1,
+   "expiry_share_at_staffed": 0.3563,
+   "annual_usd": 496311,
+   "annual_usd_millions": 0.5,
+   "annual_usd_if_every_save_were_a_rollover": 47056725,
+   "annual_usd_if_every_save_were_a_rollover_millions": 47.1,
+   "annual_usd_by_tranche": {
+    "detect": 271526,
+    "remediate": 224785,
+    "lead": 0
+   },
+   "annual_usd_by_beneficiary": {
+    "PSA_PNL": -1631513,
+    "CARRIER": 270612,
+    "SHIPPER": 1857213
+   },
+   "annual_usd_by_beneficiary_millions": {
+    "PSA_PNL": -1.6,
+    "CARRIER": 0.3,
+    "SHIPPER": 1.9
+   },
+   "operations": {
+    "OFFICERS_FTE": 0.098551,
+    "OFFICER_DESK_USD_YEAR": 51798.4,
+    "ESCALATIONS_YEAR": 31355.89,
+    "SUPERVISOR_USD_YEAR": 313558.9,
+    "TOKENS_ROUTED_USD_YEAR": 0.0,
+    "TOTAL_USD_YEAR": 365357.3
+   },
+   "annual_usd_net_of_operations": 130954,
+   "annual_usd_net_of_operations_millions": 0.1,
+   "psa_pnl_usd_net_of_operations": -1996871,
+   "psa_pnl_usd_net_of_operations_millions": -2.0,
+   "yard_slot_days_avoided": 13531,
+   "yard_slot_days_avoided_if_every_save_were_a_rollover": 340821,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 27152.08,
+    "roll_probability_given_save": 0.0397,
+    "expected_value_per_expedite_usd": 1077.94,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": true,
+    "roll_probability_basis": "held_out",
+    "breakeven_roll_probability": 0.0295,
+    "psa_pnl_expected_value_per_expedite_usd": -913.66,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   },
+   "cost_side": {
+    "routed_usd_per_episode": 0.0,
+    "frontier_ceiling_usd_per_episode": 0.0013,
+    "frontier_ceiling_usd_year_if_every_at_risk_went_frontier": 56.16,
+    "note": "read from evalx/results/sweep-live-n100.final.json; the frontier row prices the same measured tokens at a list price and was never billed; the routed rate is what the operations line charges"
+   }
+  },
+  "p10": {
+   "scenario": "base",
+   "p_at_risk": 0.1,
+   "p_source": "direct",
+   "volume": {
+    "TS_TEU_YEAR": 40050000.0,
+    "TS_TEU_DAY": 109726.03,
+    "BOXES_DAY": 64544.72,
+    "CONNECTIONS_DAY": 2367.22
+   },
+   "at_risk_connections_year": 86403.7,
+   "tranches": {
+    "T_DETECT": 0.03513,
+    "T_REMEDIATE": 0.029083,
+    "T_LEAD": 0.0,
+    "SAVES_PER_AT_RISK": 0.064213,
+    "EXPIRY_SHARE_AT_STAFFED": 0.3563,
+    "SAVES_PER_AT_RISK_REACHING_A_WRITE": 0.041334
+   },
+   "tranche_shares": {
+    "detect": 0.5471,
+    "remediate": 0.4529,
+    "lead": 0.0
+   },
+   "value": {
+    "CARRYING_USD_PER_BOX_DAY": 37.2603,
+    "STORAGE_TRANSFER_USD_PER_BOX_DAY": 20,
+    "VALUE_PER_BOX_DAY": 142.2603,
+    "VALUE_PER_BOX": 995.8219,
+    "VALUE_PER_SAVE": 27152.0804,
+    "VALUE_PER_BOX_DAY_BY_BENEFICIARY": {
+     "SHIPPER": 137.2603,
+     "CARRIER": 20,
+     "PSA_PNL": -15
+    },
+    "VALUE_PER_SAVE_BY_BENEFICIARY": {
+     "PSA_PNL": -2862.93,
+     "CARRIER": 3817.24,
+     "SHIPPER": 26197.7704
+    }
+   },
+   "spend": {
+    "EXECUTED_SPEND_USD": 23200.0,
+    "PROPOSAL_SPEND_USD_IF_PRICED": 137800.0,
+    "SPEND_USD_CHARGED": 23200.0,
+    "SPEND_PER_SAVE": 800.0
+   },
+   "roll_probability_given_save": 0.0397,
+   "net_per_save_usd": 277.94,
+   "net_per_save_usd_if_every_save_were_a_rollover": 26352.08,
+   "net_per_save_usd_by_beneficiary": {
+    "PSA_PNL": -913.66,
+    "CARRIER": 151.54,
+    "SHIPPER": 1040.05
+   },
+   "saves_per_year": 3571.4,
+   "saves_per_year_proposed_before_expiry": 5548.2,
+   "expiry_share_at_staffed": 0.3563,
+   "annual_usd": 992622,
+   "annual_usd_millions": 1.0,
+   "annual_usd_if_every_save_were_a_rollover": 94113450,
+   "annual_usd_if_every_save_were_a_rollover_millions": 94.1,
+   "annual_usd_by_tranche": {
+    "detect": 543052,
+    "remediate": 449571,
+    "lead": 0
+   },
+   "annual_usd_by_beneficiary": {
+    "PSA_PNL": -3263026,
+    "CARRIER": 541224,
+    "SHIPPER": 3714425
+   },
+   "annual_usd_by_beneficiary_millions": {
+    "PSA_PNL": -3.3,
+    "CARRIER": 0.5,
+    "SHIPPER": 3.7
+   },
+   "operations": {
+    "OFFICERS_FTE": 0.197102,
+    "OFFICER_DESK_USD_YEAR": 103596.8,
+    "ESCALATIONS_YEAR": 62711.78,
+    "SUPERVISOR_USD_YEAR": 627117.81,
+    "TOKENS_ROUTED_USD_YEAR": 0.0,
+    "TOTAL_USD_YEAR": 730714.6
+   },
+   "annual_usd_net_of_operations": 261908,
+   "annual_usd_net_of_operations_millions": 0.3,
+   "psa_pnl_usd_net_of_operations": -3993741,
+   "psa_pnl_usd_net_of_operations_millions": -4.0,
+   "yard_slot_days_avoided": 27061,
+   "yard_slot_days_avoided_if_every_save_were_a_rollover": 681642,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 27152.08,
+    "roll_probability_given_save": 0.0397,
+    "expected_value_per_expedite_usd": 1077.94,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": true,
+    "roll_probability_basis": "held_out",
+    "breakeven_roll_probability": 0.0295,
+    "psa_pnl_expected_value_per_expedite_usd": -913.66,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   },
+   "cost_side": {
+    "routed_usd_per_episode": 0.0,
+    "frontier_ceiling_usd_per_episode": 0.0013,
+    "frontier_ceiling_usd_year_if_every_at_risk_went_frontier": 112.32,
+    "note": "read from evalx/results/sweep-live-n100.final.json; the frontier row prices the same measured tokens at a list price and was never billed; the routed rate is what the operations line charges"
+   }
+  },
+  "p30": {
+   "scenario": "base",
+   "p_at_risk": 0.3,
+   "p_source": "direct",
+   "volume": {
+    "TS_TEU_YEAR": 40050000.0,
+    "TS_TEU_DAY": 109726.03,
+    "BOXES_DAY": 64544.72,
+    "CONNECTIONS_DAY": 2367.22
+   },
+   "at_risk_connections_year": 259211.0,
+   "tranches": {
+    "T_DETECT": 0.03513,
+    "T_REMEDIATE": 0.029083,
+    "T_LEAD": 0.0,
+    "SAVES_PER_AT_RISK": 0.064213,
+    "EXPIRY_SHARE_AT_STAFFED": 0.3563,
+    "SAVES_PER_AT_RISK_REACHING_A_WRITE": 0.041334
+   },
+   "tranche_shares": {
+    "detect": 0.5471,
+    "remediate": 0.4529,
+    "lead": 0.0
+   },
+   "value": {
+    "CARRYING_USD_PER_BOX_DAY": 37.2603,
+    "STORAGE_TRANSFER_USD_PER_BOX_DAY": 20,
+    "VALUE_PER_BOX_DAY": 142.2603,
+    "VALUE_PER_BOX": 995.8219,
+    "VALUE_PER_SAVE": 27152.0804,
+    "VALUE_PER_BOX_DAY_BY_BENEFICIARY": {
+     "SHIPPER": 137.2603,
+     "CARRIER": 20,
+     "PSA_PNL": -15
+    },
+    "VALUE_PER_SAVE_BY_BENEFICIARY": {
+     "PSA_PNL": -2862.93,
+     "CARRIER": 3817.24,
+     "SHIPPER": 26197.7704
+    }
+   },
+   "spend": {
+    "EXECUTED_SPEND_USD": 23200.0,
+    "PROPOSAL_SPEND_USD_IF_PRICED": 137800.0,
+    "SPEND_USD_CHARGED": 23200.0,
+    "SPEND_PER_SAVE": 800.0
+   },
+   "roll_probability_given_save": 0.0397,
+   "net_per_save_usd": 277.94,
+   "net_per_save_usd_if_every_save_were_a_rollover": 26352.08,
+   "net_per_save_usd_by_beneficiary": {
+    "PSA_PNL": -913.66,
+    "CARRIER": 151.54,
+    "SHIPPER": 1040.05
+   },
+   "saves_per_year": 10714.2,
+   "saves_per_year_proposed_before_expiry": 16644.6,
+   "expiry_share_at_staffed": 0.3563,
+   "annual_usd": 2977867,
+   "annual_usd_millions": 3.0,
+   "annual_usd_if_every_save_were_a_rollover": 282340349,
+   "annual_usd_if_every_save_were_a_rollover_millions": 282.3,
+   "annual_usd_by_tranche": {
+    "detect": 1629155,
+    "remediate": 1348712,
+    "lead": 0
+   },
+   "annual_usd_by_beneficiary": {
+    "PSA_PNL": -9789079,
+    "CARRIER": 1623671,
+    "SHIPPER": 11143276
+   },
+   "annual_usd_by_beneficiary_millions": {
+    "PSA_PNL": -9.8,
+    "CARRIER": 1.6,
+    "SHIPPER": 11.1
+   },
+   "operations": {
+    "OFFICERS_FTE": 0.591306,
+    "OFFICER_DESK_USD_YEAR": 310790.39,
+    "ESCALATIONS_YEAR": 188135.34,
+    "SUPERVISOR_USD_YEAR": 1881353.42,
+    "TOKENS_ROUTED_USD_YEAR": 0.0,
+    "TOTAL_USD_YEAR": 2192143.81
+   },
+   "annual_usd_net_of_operations": 785723,
+   "annual_usd_net_of_operations_millions": 0.8,
+   "psa_pnl_usd_net_of_operations": -11981223,
+   "psa_pnl_usd_net_of_operations_millions": -12.0,
+   "yard_slot_days_avoided": 81184,
+   "yard_slot_days_avoided_if_every_save_were_a_rollover": 2044926,
+   "expedite_economics": {
+    "value_per_rollover_avoided_usd": 27152.08,
+    "roll_probability_given_save": 0.0397,
+    "expected_value_per_expedite_usd": 1077.94,
+    "expedite_cost_usd": 800.0,
+    "worth_taking_at_audit_probability": true,
+    "roll_probability_basis": "held_out",
+    "breakeven_roll_probability": 0.0295,
+    "psa_pnl_expected_value_per_expedite_usd": -913.66,
+    "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+   },
+   "cost_side": {
+    "routed_usd_per_episode": 0.0,
+    "frontier_ceiling_usd_per_episode": 0.0013,
+    "frontier_ceiling_usd_year_if_every_at_risk_went_frontier": 336.97,
+    "note": "read from evalx/results/sweep-live-n100.final.json; the frontier row prices the same measured tokens at a list price and was never billed; the routed rate is what the operations line charges"
+   }
+  }
+ },
+ "rebooking_priced_variant": {
+  "scenario": "base",
+  "p_at_risk": 0.0333,
+  "p_source": "rollover chain",
+  "volume": {
+   "TS_TEU_YEAR": 40050000.0,
+   "TS_TEU_DAY": 109726.03,
+   "BOXES_DAY": 64544.72,
+   "CONNECTIONS_DAY": 2367.22
+  },
+  "at_risk_connections_year": 28772.4,
+  "tranches": {
+   "T_DETECT": 0.03513,
+   "T_REMEDIATE": 0.029083,
+   "T_LEAD": 0.0,
+   "SAVES_PER_AT_RISK": 0.064213,
+   "EXPIRY_SHARE_AT_STAFFED": 0.3563,
+   "SAVES_PER_AT_RISK_REACHING_A_WRITE": 0.041334
+  },
+  "tranche_shares": {
+   "detect": 0.5471,
+   "remediate": 0.4529,
+   "lead": 0.0
+  },
+  "value": {
+   "CARRYING_USD_PER_BOX_DAY": 37.2603,
+   "STORAGE_TRANSFER_USD_PER_BOX_DAY": 20,
+   "VALUE_PER_BOX_DAY": 142.2603,
+   "VALUE_PER_BOX": 995.8219,
+   "VALUE_PER_SAVE": 27152.0804,
+   "VALUE_PER_BOX_DAY_BY_BENEFICIARY": {
+    "SHIPPER": 137.2603,
+    "CARRIER": 20,
+    "PSA_PNL": -15
+   },
+   "VALUE_PER_SAVE_BY_BENEFICIARY": {
+    "PSA_PNL": -2862.93,
+    "CARRIER": 3817.24,
+    "SHIPPER": 26197.7704
+   }
+  },
+  "spend": {
+   "EXECUTED_SPEND_USD": 23200.0,
+   "PROPOSAL_SPEND_USD_IF_PRICED": 137800.0,
+   "SPEND_USD_CHARGED": 161000.0,
+   "SPEND_PER_SAVE": 5551.7241
+  },
+  "roll_probability_given_save": 0.0397,
+  "net_per_save_usd": -4473.79,
+  "net_per_save_usd_if_every_save_were_a_rollover": 21600.36,
+  "net_per_save_usd_by_beneficiary": {
+   "PSA_PNL": -5665.38,
+   "CARRIER": 151.54,
+   "SHIPPER": 1040.05
+  },
+  "saves_per_year": 1189.3,
+  "saves_per_year_proposed_before_expiry": 1847.6,
+  "expiry_share_at_staffed": 0.3563,
+  "annual_usd": -5320547,
+  "annual_usd_millions": -5.3,
+  "annual_usd_if_every_save_were_a_rollover": 25688689,
+  "annual_usd_if_every_save_were_a_rollover_millions": 25.7,
+  "annual_usd_by_tranche": {
+   "detect": -2910806,
+   "remediate": -2409741,
+   "lead": 0
+  },
+  "annual_usd_by_beneficiary": {
+   "PSA_PNL": -6737678,
+   "CARRIER": 180227,
+   "SHIPPER": 1236904
+  },
+  "annual_usd_by_beneficiary_millions": {
+   "PSA_PNL": -6.7,
+   "CARRIER": 0.2,
+   "SHIPPER": 1.2
+  },
+  "operations": {
+   "OFFICERS_FTE": 0.065635,
+   "OFFICER_DESK_USD_YEAR": 34497.73,
+   "ESCALATIONS_YEAR": 20883.02,
+   "SUPERVISOR_USD_YEAR": 208830.23,
+   "TOKENS_ROUTED_USD_YEAR": 0.0,
+   "TOTAL_USD_YEAR": 243327.96
+  },
+  "annual_usd_net_of_operations": -5563875,
+  "annual_usd_net_of_operations_millions": -5.6,
+  "psa_pnl_usd_net_of_operations": -6981006,
+  "psa_pnl_usd_net_of_operations_millions": -7.0,
+  "yard_slot_days_avoided": 9011,
+  "yard_slot_days_avoided_if_every_save_were_a_rollover": 226987,
+  "expedite_economics": {
+   "value_per_rollover_avoided_usd": 27152.08,
+   "roll_probability_given_save": 0.0397,
+   "expected_value_per_expedite_usd": 1077.94,
+   "expedite_cost_usd": 800.0,
+   "worth_taking_at_audit_probability": true,
+   "roll_probability_basis": "held_out",
+   "breakeven_roll_probability": 0.0295,
+   "psa_pnl_expected_value_per_expedite_usd": -913.66,
+   "note": "value x P against the expedite's own cost; the value is every party's, the PSA_PNL row is PSA's alone; computed, not assumed"
+  },
+  "cost_side": {
+   "routed_usd_per_episode": 0.0,
+   "frontier_ceiling_usd_per_episode": 0.0013,
+   "frontier_ceiling_usd_year_if_every_at_risk_went_frontier": 37.4,
+   "note": "read from evalx/results/sweep-live-n100.final.json; the frontier row prices the same measured tokens at a list price and was never billed; the routed rate is what the operations line charges"
+  }
+ },
+ "ratios": {
+  "optimistic_over_pessimistic_annual_if_every_save_were_a_rollover": 762760.4,
+  "annual_usd_by_scenario": {
+   "pessimistic": -424,
+   "base": 330543,
+   "optimistic": 28255089
+  },
+  "scenarios_below_zero_at_the_audit_probability": [
+   "pessimistic"
+  ],
+  "what_it_means": "the whole of this ratio is assumption: no measured input differs between the two scenarios. It is stated on the version 2.0.0 booking (P = 1) because at the audit's roll probability 1 of 3 scenarios (pessimistic) is below zero, and a ratio across a sign change says nothing"
+ },
+ "tornado": {
+  "metric": "annual_usd_net_of_operations, base scenario, one input at a time between its ends; the bottom line rather than the gross figure, so the operations rows swing too",
+  "metric_key": "annual_usd_net_of_operations",
+  "annual_usd_base": 87215,
+  "rows": [
+   {
+    "input": "PRICE_REBOOKING_PROPOSALS",
+    "low_end": 0,
+    "high_end": 1,
+    "annual_usd_at_low": 87215,
+    "annual_usd_at_high": -5563875,
+    "swing_usd": 5651090,
+    "swing_over_base": 64.795
+   },
+   {
+    "input": "BOXES_PER_CONNECTION",
+    "low_end": 8,
+    "high_end": 48,
+    "annual_usd_at_low": -2790030,
+    "annual_usd_at_high": 603295,
+    "swing_usd": 3393325,
+    "swing_over_base": 38.908
+   },
+   {
+    "input": "EXPEDITE_COST_USD",
+    "low_end": 400.0,
+    "high_end": 1600.0,
+    "annual_usd_at_low": 562924,
+    "annual_usd_at_high": -864202,
+    "swing_usd": 1427126,
+    "swing_over_base": 16.363
+   },
+   {
+    "input": "DD_PER_BOX_DAY",
+    "low_end": 0,
+    "high_end": 150,
+    "annual_usd_at_low": -813922,
+    "annual_usd_at_high": 537784,
+    "swing_usd": 1351706,
+    "swing_over_base": 15.499
+   },
+   {
+    "input": "DAYS_PER_ROLL",
+    "low_end": 5,
+    "high_end": 10,
+    "annual_usd_at_low": -279059,
+    "annual_usd_at_high": 636627,
+    "swing_usd": 915686,
+    "swing_over_base": 10.499
+   },
+   {
+    "input": "EXPIRY_SHARE_AT_STAFFED",
+    "low_end": 0.0497,
+    "high_end": 0.9845,
+    "annual_usd_at_low": 244656,
+    "annual_usd_at_high": -235369,
+    "swing_usd": 480025,
+    "swing_over_base": 5.504
+   },
+   {
+    "input": "SAVE_RATE_AFTER_ESCALATION",
+    "low_end": 0.0,
+    "high_end": 0.579,
+    "annual_usd_at_low": -93621,
+    "annual_usd_at_high": 255393,
+    "swing_usd": 349014,
+    "swing_over_base": 4.002
+   },
+   {
+    "input": "CATCH_INCREMENT",
+    "low_end": 0.05,
+    "high_end": 0.3,
+    "annual_usd_at_low": -5029,
+    "annual_usd_at_high": 338653,
+    "swing_usd": 343682,
+    "swing_over_base": 3.941
+   },
+   {
+    "input": "SUPERVISOR_MIN_PER_ESCALATION",
+    "low_end": 5,
+    "high_end": 20,
+    "annual_usd_at_low": 191630,
+    "annual_usd_at_high": -121615,
+    "swing_usd": 313245,
+    "swing_over_base": 3.592
+   },
+   {
+    "input": "PLANNER_MISS_SHARE",
+    "low_end": 0.1,
+    "high_end": 0.6,
+    "annual_usd_at_low": -12589,
+    "annual_usd_at_high": 236922,
+    "swing_usd": 249511,
+    "swing_over_base": 2.861
+   },
+   {
+    "input": "OFFICER_USD_PER_HOUR",
+    "low_end": 40,
+    "high_end": 90,
+    "annual_usd_at_low": 168325,
+    "annual_usd_at_high": -34449,
+    "swing_usd": 202774,
+    "swing_over_base": 2.325
+   },
+   {
+    "input": "CARGO_VALUE_PER_TEU",
+    "low_end": 30000,
+    "high_end": 50000,
+    "annual_usd_at_low": 3274,
+    "annual_usd_at_high": 171157,
+    "swing_usd": 167883,
+    "swing_over_base": 1.925
+   },
+   {
+    "input": "CARRYING_RATE",
+    "low_end": 0.15,
+    "high_end": 0.25,
+    "annual_usd_at_low": 3274,
+    "annual_usd_at_high": 171157,
+    "swing_usd": 167883,
+    "swing_over_base": 1.925
+   },
+   {
+    "input": "CONNECTION_DRIVEN_FRACTION",
+    "low_end": 0.05,
+    "high_end": 0.3,
+    "annual_usd_at_low": 29072,
+    "annual_usd_at_high": 174431,
+    "swing_usd": 145359,
+    "swing_over_base": 1.667
+   },
+   {
+    "input": "YARD_SLOT_MARGINAL_USD_PER_BOX_DAY",
+    "low_end": 0,
+    "high_end": 15,
+    "annual_usd_at_low": 42158,
+    "annual_usd_at_high": 177329,
+    "swing_usd": 135171,
+    "swing_over_base": 1.55
+   },
+   {
+    "input": "ROLLOVER_RATE",
+    "low_end": 0.1,
+    "high_end": 0.311,
+    "annual_usd_at_low": 39286,
+    "annual_usd_at_high": 122180,
+    "swing_usd": 82894,
+    "swing_over_base": 0.95
+   },
+   {
+    "input": "TEU_PER_BOX",
+    "low_end": 1.6,
+    "high_end": 1.8,
+    "annual_usd_at_low": 71681,
+    "annual_usd_at_high": 101024,
+    "swing_usd": 29343,
+    "swing_over_base": 0.336
+   },
+   {
+    "input": "TS_SHARE",
+    "low_end": 0.85,
+    "high_end": 0.9,
+    "annual_usd_at_low": 82370,
+    "annual_usd_at_high": 87215,
+    "swing_usd": 4845,
+    "swing_over_base": 0.056
+   },
+   {
+    "input": "RESTOW_COST_USD",
+    "low_end": 1200.0,
+    "high_end": 4800.0,
+    "annual_usd_at_low": 87215,
+    "annual_usd_at_high": 87215,
+    "swing_usd": 0,
+    "swing_over_base": 0.0
+   },
+   {
+    "input": "STORAGE_PER_BOX_DAY",
+    "low_end": 0,
+    "high_end": 50,
+    "annual_usd_at_low": 87215,
+    "annual_usd_at_high": 87215,
+    "swing_usd": 0,
+    "swing_over_base": 0.0
+   }
+  ],
+  "not_swung_because_single_valued": [
+   "REBOOK_COST_USD"
+  ],
+  "top_two": [
+   "PRICE_REBOOKING_PROPOSALS",
+   "BOXES_PER_CONNECTION"
+  ],
+  "expectation_before_running": "EXPEDITE_COST_USD first, because at the audit's roll probability the spend dominates the net of every save, then CONNECTION_DRIVEN_FRACTION or PLANNER_MISS_SHARE",
+  "expectation_held": false,
+  "what_it_means": "the ranked swing says which assumption a reader should argue with first; the base is above zero at USD 87,215, so a swing is stated against its magnitude, and an input that adds saves moves the figure further above zero, because at this arm's probability a save is worth more than it costs; an input that removes saves moves it back towards zero"
+ },
+ "honest_limits": [
+  "No PORTNET integration exists; nothing here was observed on a real terminal.",
+  "T_DETECT rests on SAVE_RATE_AFTER_ESCALATION, which is CHOSEN and swept from 0: the sweep escalated all 35 agent-only catches to a human and saved none, because it models no human follow-through, so no save rate for that class was measured. Version 2.0.0 credited it with the pooled 0.579.",
+  "ROLL_PROBABILITY_GIVEN_SAVE is the save-value audit's figure, simulator-internal and yard-transfer variance only; a late vessel is not in that distribution, so for the advisory-driven class it is a floor. The same figure is applied to the detect tranche, whose saves the audit did not price because the sweep never booked them; that is a further choice.",
+  "Whose USD it is, is a choice: demurrage and carrying cost to the shipper, storage as a transfer from the carrier to PSA, the expedite and restow spend and the desk to PSA with nothing rebilled. A terminal that rebills the expedite moves the spend to the carrier column.",
+  "The save rate counts executed expedites only; the 55 rebooking proposals per 500 scenarios are carrier decisions and are excluded from saves and, by default, from spend.",
+  "The catch increment is the generator's ESCALATE_FRACTION seen through the sweep; it is swept, not trusted.",
+  "T_LEAD is zero because detection lead changes no save in this simulator; the sweep's save rate is the same whatever the lead.",
+  "The rollover rate is an aggregate across leading transhipment hubs in October 2019, not a Singapore figure and not a current one; the p grid exists so a reader can replace the whole chain with one number.",
+  "Demurrage, cargo value, carrying rate, the yard slot margin, the officer rate and the supervisor's minutes are all chosen; the UNCTAD value-per-TEU table was looked for and not found in the pages opened.",
+  "The officer line prices the fluid model's fractional officer at an hourly rate; a desk that must be staffed whole around the clock costs more than that, and the oversight-load model says what happens when it is not.",
+  "The sweep's worlds are generated, not fitted to the recorded Singapore AIS (docs/SCALE-AND-VALIDITY.md names which parameters are chosen).",
+  "ROLL_PROBABILITY_GIVEN_SAVE is the mean of 29 per-save values on the gated arm, and `sign_of_the_headline` shows the annual figure crossing zero inside the bootstrap interval on that mean. The headline is positive in expectation and is not distinguishable from zero at this sample size; a bigger sweep, not a better sentence, is what would settle it.",
+  "The write counts in `value_row_sensitivity` and `psa_column.gate_priced_on_psa` are a reconstruction of the gate's own rule over the gate-off arm's audited candidates rather than a rerun of the sweep at each value. The reconstruction reproduces the gated arm's expedite count exactly at the shipped value, and the artifact records that check, but a rerun could differ where a changed value changes which option the solver picks rather than only whether it pays.",
+  "The annual figures in `value_row_sensitivity` hold the sweep's realised action counts fixed while the write column moves, so the two columns of that table answer different questions and are not two readings of one run."
+ ]
+}

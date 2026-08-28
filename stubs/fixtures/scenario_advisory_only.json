@@ -1,0 +1,93 @@
+{
+  "pack_schema_version": "1.0.0",
+  "pack_id": "PACK-ADVISORY-ONLY-01",
+  "label": "SYNTHETIC: all vessels, voyages, containers and terminal state are fictional",
+  "_frozen": "FROZEN 2026-08-24. THE C2 ARTEFACT: the advisory-only scenario class named in SPEC SC-9 / SIG-3, as a literal file with expected outcomes for BOTH lanes. The rules-only baseline (named component: baseline.rules_only, stubs/baseline_stub.py) flags NOTHING here, the only evidence is unparseable free text, while the agent lane escalates on CN-ESC-01 (golden_must_escalate.json). This split-screen is the on-camera ablation that proves the LLM is load-bearing.",
+  "description": "Nine transhipment boxes (BG-ESC-01) exist only in a messy agency advisory: the inbound vessel 'SEA PANTHER' has no IMO match in the schedule, no structured ETA, no yard location. The structured stream carries ONLY the outbound load window. A rules pipeline silently produces nothing; the agentic path parses, fails to fully reconcile, and visibly escalates with a written summary instead of guessing.",
+  "advisory": {
+    "advisory_id": "ADV-2026-0824-002",
+    "received_at": "2026-08-25T17:41:19+08:00",
+    "source": "agency_email:sg-agency-desk-ops",
+    "free_text": "fyi - SEA PANTHER (some lists show 'S.PANTHER' or SP 12E??) held ex PKG w/ engine issue, carries approx 9 t/s bxs for TEMASEK STAR V.0402E ex SIN. no firm ETA yet, agency will adv. pls hold planning. NB not sure if voyage is 12E or 012E in your system. rgds"
+  },
+  "events": [
+    {
+      "event_id": "EVT-ADVO-000001",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:05:00+08:00",
+      "registered_at": "2026-08-25T14:05:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-ESC-01",
+        "load_window_start": "2026-08-26T01:00:00+08:00",
+        "load_window_end": "2026-08-26T04:00:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    }
+  ],
+  "expected_outcomes": {
+    "fusion": {
+      "note": "the LLM parses but CANNOT fully reconcile, that is the point; fusion_completeness_score falls below FUSION_COMPLETENESS_THRESHOLD and the fact carries nulls, never guesses",
+      "fact": {
+        "fact_type": "carrier_advisory_reconciled",
+        "advisory_id": "ADV-2026-0824-002",
+        "vessel_imo": null,
+        "vessel_name_normalised": "SEA PANTHER",
+        "voyage_in": null,
+        "previous_eta": null,
+        "new_eta": null,
+        "eta_drift_minutes": null,
+        "outbound_vessel_name_normalised": "TEMASEK STAR",
+        "voyage_out": "0402E",
+        "cutoff_confirmed": "2026-08-26T04:00:00+08:00",
+        "rotation_change": null,
+        "affected_connections": [
+          "CN-ESC-01"
+        ],
+        "contradictions": []
+      },
+      "confidence": {
+        "method": "3-sample self-consistency vote",
+        "samples": 3,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "per_field": {
+          "vessel_identity": 0.55,
+          "voyage_in": 0.3,
+          "new_eta": 0.0,
+          "cutoff_confirmed": 0.85,
+          "rotation_change": 0.4
+        },
+        "fusion_completeness_score": 0.52
+      }
+    },
+    "agent_lane": {
+      "flags": [
+        "CN-ESC-01"
+      ],
+      "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "escalation": true,
+      "golden_ref": "golden_must_escalate.json",
+      "basis": "twin evidence completeness 0.40 < 0.60 -> refuse to compute margin, escalate with written summary, deny writes until resolved"
+    },
+    "baseline_rules_only": {
+      "component": "baseline.rules_only",
+      "flags": [],
+      "evaluated": [],
+      "basis": "the only structured event is a load window; no ETA exists in any structured feed and the advisory is not machine-readable, the rules lane silently produces nothing"
+    }
+  }
+}

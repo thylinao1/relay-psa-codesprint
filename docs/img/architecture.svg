@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 418" width="980" height="525" role="img" aria-label="RELAY architecture: evidence in, deterministic decision, human approval, gated write, tamper-evident trace" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8090A0"/></marker>
+    <marker id="ahv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#A594FF"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5A6878"/></marker>
+  </defs>
+  <style>
+    .pl{font-size:10.2px;font-weight:700;fill:#E8EDF2}
+    .nb{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:8.2px;fill:#8090A0}
+    .no{font-size:8.4px;fill:#8090A0}
+    .ttl{font-size:10px;font-weight:700;fill:#E8EDF2}
+    .lab{font-size:7.8px;letter-spacing:.8px;font-weight:700;fill:#8090A0}
+    .ln{stroke:#8090A0;stroke-width:1.1;fill:none}
+    .by{stroke:#5A6878;stroke-width:.9;fill:none;stroke-dasharray:3 2}
+  </style>
+
+  <rect x="0" y="0" width="780" height="418" rx="6" fill="#0A0F14"/>
+
+  <!-- inputs -->
+  <rect x="14" y="6" width="290" height="40" rx="3" fill="#111820" stroke="#46525F" stroke-width="1.1"/>
+  <text x="24" y="22" class="ttl">Structured terminal events</text>
+  <text x="24" y="35" class="no">six DCSA-shaped event types, ETA update to weather alert</text>
+  <line x1="78" y1="46" x2="78" y2="88" class="ln" marker-end="url(#ah)"/>
+
+  <rect x="316" y="6" width="290" height="40" rx="3" fill="#1C1733" stroke="#A594FF" stroke-width="1.1" stroke-dasharray="3 2"/>
+  <text x="326" y="22" class="ttl">Carrier advisory, free text</text>
+  <text x="326" y="35" class="no">one email; names and fields may be wrong or missing</text>
+  <line x1="326" y1="46" x2="326" y2="88" stroke="#A594FF" stroke-width="1.1" marker-end="url(#ahv)"/>
+
+  <!-- legend -->
+  <text x="618" y="14" class="lab">WHO OWNS THE STEP</text>
+  <rect x="618" y="20" width="8" height="8" fill="#1C1733" stroke="#A594FF" stroke-width=".8"/><text x="630" y="27" class="no">language model</text>
+  <rect x="618" y="32" width="8" height="8" fill="#101D2D" stroke="#5EA8F2" stroke-width=".8"/><text x="630" y="39" class="no">twin and solver</text>
+  <rect x="700" y="20" width="8" height="8" fill="#161E27" stroke="#5A6878" stroke-width=".8"/><text x="712" y="27" class="no">rule lookup</text>
+  <rect x="700" y="32" width="8" height="8" fill="#0F2118" stroke="#4ADE80" stroke-width=".8"/><text x="712" y="39" class="no">duty officer</text>
+  <rect x="618" y="44" width="8" height="8" fill="#241C0B" stroke="#F5B942" stroke-width=".8"/><text x="630" y="51" class="no">gated write</text>
+  <rect x="700" y="44" width="8" height="8" fill="#26151A" stroke="#F06A5E" stroke-width=".8"/><text x="712" y="51" class="no">deny or failure</text>
+
+  <!-- graph container -->
+  <rect x="8" y="60" width="764" height="238" rx="5" fill="none" stroke="#46525F" stroke-width="1.2"/>
+
+  <!-- structured-only bypass, above row A -->
+  <path d="M202,90 L202,72 L574,72 L574,88" class="by" marker-end="url(#ahg)"/>
+  <text x="470" y="69" class="no" text-anchor="middle">no advisory in the events: the model is never called</text>
+
+  <!-- row A -->
+  <g>
+    <rect x="22" y="90" width="112" height="46" rx="3" fill="#161E27" stroke="#5A6878" stroke-width="1"/>
+    <text x="30" y="106" class="pl">Ingest events</text><text x="30" y="118" class="nb">ingest_events</text><text x="30" y="129" class="no">rules</text>
+    <line x1="134" y1="113" x2="146" y2="113" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="146" y="90" width="112" height="46" rx="3" fill="#161E27" stroke="#5A6878" stroke-width="1"/>
+    <text x="154" y="106" class="pl">Count and route</text><text x="154" y="118" class="nb">classify</text><text x="154" y="129" class="no">rules; routing</text>
+    <line x1="258" y1="113" x2="270" y2="113" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="270" y="90" width="112" height="46" rx="3" fill="#1C1733" stroke="#A594FF" stroke-width="1.2"/>
+    <text x="278" y="106" class="pl">Read the email</text><text x="278" y="118" class="nb">fuse_advisory</text><text x="278" y="129" class="no">model; a voted fact</text>
+    <line x1="382" y1="113" x2="394" y2="113" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="394" y="90" width="112" height="46" rx="3" fill="#161E27" stroke="#5A6878" stroke-width="1"/>
+    <text x="402" y="106" class="pl">Check completeness</text><text x="402" y="118" class="nb">fusion_gate</text><text x="402" y="129" class="no">rule; 0.60 threshold</text>
+    <line x1="506" y1="113" x2="518" y2="113" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="518" y="90" width="112" height="46" rx="3" fill="#101D2D" stroke="#5EA8F2" stroke-width="1.2"/>
+    <text x="526" y="106" class="pl">Compute margin</text><text x="526" y="118" class="nb">assess_feasibility</text><text x="526" y="129" class="no">twin; P90 margin</text>
+
+    <!-- replan_terminal as a tool call hanging off assess_feasibility -->
+    <line x1="630" y1="113" x2="642" y2="113" class="by" marker-end="url(#ahg)"/>
+    <rect x="642" y="90" width="112" height="46" rx="3" fill="#111820" stroke="#5EA8F2" stroke-width="1.1" stroke-dasharray="3 2"/>
+    <text x="650" y="106" class="pl">Allocate jointly</text><text x="650" y="118" class="nb">twin.replan_terminal</text><text x="650" y="129" class="no">CP-SAT tool call</text>
+  </g>
+
+  <!-- connector down and loop back -->
+  <line x1="574" y1="136" x2="574" y2="150" class="ln"/>
+  <line x1="574" y1="150" x2="698" y2="150" class="ln"/>
+  <line x1="698" y1="150" x2="698" y2="176" class="ln" marker-end="url(#ah)"/>
+  <path d="M78,178 L78,158 L540,158 L540,138" class="ln" marker-end="url(#ah)" stroke-dasharray="4 2"/>
+  <text x="96" y="155" class="no">re-enter triage on the new margin; a refusal by the officer or a spent budget re-solves the rest</text>
+
+  <!-- row B, right to left -->
+  <g>
+    <rect x="642" y="178" width="112" height="46" rx="3" fill="#161E27" stroke="#5A6878" stroke-width="1"/>
+    <text x="650" y="194" class="pl">List the options</text><text x="650" y="206" class="nb">plan_options</text><text x="650" y="217" class="no">rules; dissent check</text>
+    <line x1="642" y1="201" x2="630" y2="201" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="518" y="178" width="112" height="46" rx="3" fill="#161E27" stroke="#5A6878" stroke-width="1"/>
+    <text x="526" y="194" class="pl">Look up the tier</text><text x="526" y="206" class="nb">policy_gate</text><text x="526" y="217" class="no">rules; row and scope</text>
+    <line x1="518" y1="201" x2="506" y2="201" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="394" y="178" width="112" height="46" rx="3" fill="#0F2118" stroke="#4ADE80" stroke-width="1.2"/>
+    <text x="402" y="194" class="pl">Ask the officer</text><text x="402" y="206" class="nb">request_approval</text><text x="402" y="217" class="no">card, token, 120 s</text>
+    <line x1="394" y1="201" x2="382" y2="201" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="270" y="178" width="112" height="46" rx="3" fill="#241C0B" stroke="#F5B942" stroke-width="1.2"/>
+    <text x="278" y="194" class="pl">Execute</text><text x="278" y="206" class="nb">execute_actions</text><text x="278" y="217" class="no">gated write; token</text>
+    <line x1="270" y1="201" x2="258" y2="201" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="146" y="178" width="112" height="46" rx="3" fill="#101D2D" stroke="#5EA8F2" stroke-width="1.2"/>
+    <text x="154" y="194" class="pl">Verify the effect</text><text x="154" y="206" class="nb">verify_effect</text><text x="154" y="217" class="no">twin re-checks margin</text>
+    <line x1="146" y1="201" x2="134" y2="201" class="ln" marker-end="url(#ah)"/>
+
+    <rect x="22" y="178" width="112" height="46" rx="3" fill="#161E27" stroke="#5A6878" stroke-width="1"/>
+    <text x="30" y="194" class="pl">Close or loop</text><text x="30" y="206" class="nb">close_episode</text><text x="30" y="217" class="no">rules; loops on steps</text>
+  </g>
+
+  <!-- T2 bypass below row B -->
+  <path d="M560,224 L560,234 L340,234 L340,226" class="by" marker-end="url(#ahg)"/>
+  <text x="100" y="243" class="no">T2 classes skip the card: rate limited, audited</text>
+  <line x1="300" y1="224" x2="300" y2="250" class="by" marker-end="url(#ahg)"/>
+
+  <!-- escalate and degrade strips -->
+  <line x1="500" y1="224" x2="500" y2="250" class="by" marker-end="url(#ahg)"/>
+  <line x1="610" y1="224" x2="610" y2="250" class="by" marker-end="url(#ahg)"/>
+  <rect x="400" y="252" width="354" height="40" rx="3" fill="#26151A" stroke="#F06A5E" stroke-width="1"/>
+  <text x="408" y="266" class="pl">Escalate, deny by default</text><text x="408" y="277" class="nb">escalate</text>
+  <text x="408" y="287" class="no">below 0.60, row 10, or no answer in 120 s; summary to the supervisor</text>
+
+  <rect x="22" y="252" width="366" height="40" rx="3" fill="#26151A" stroke="#F06A5E" stroke-width="1"/>
+  <text x="30" y="266" class="pl">Degrade on tool failure</text><text x="30" y="277" class="nb">degrade_monitor</text>
+  <text x="30" y="287" class="no">writes refused while the fault is active; clearance recorded as recovered</text>
+
+  <!-- tool layer -->
+  <line x1="500" y1="298" x2="500" y2="314" class="ln" marker-end="url(#ah)"/>
+  <text x="508" y="310" class="no">typed tool calls under one frozen contract</text>
+  <line x1="30" y1="298" x2="30" y2="370" class="ln" marker-end="url(#ah)"/>
+  <text x="38" y="310" class="no">each step appends an event</text>
+
+  <rect x="60" y="316" width="170" height="44" rx="3" fill="#111820" stroke="#5EA8F2" stroke-width="1.1"/>
+  <text x="68" y="332" class="pl">twin-mcp</text><text x="68" y="345" class="no">reads and simulation, open class</text>
+
+  <rect x="240" y="316" width="170" height="44" rx="3" fill="#111820" stroke="#F5B942" stroke-width="1.2"/>
+  <text x="248" y="332" class="pl">portnet-mock-mcp</text><text x="248" y="344" class="no">gated writes: token, credential,</text><text x="248" y="354" class="no">idempotency key, degraded check</text>
+
+  <rect x="420" y="316" width="170" height="44" rx="3" fill="#111820" stroke="#4ADE80" stroke-width="1.2"/>
+  <text x="428" y="332" class="pl">approval server</text><text x="428" y="344" class="no">sole issuer of approval tokens;</text><text x="428" y="354" class="no">single use; in-process here</text>
+
+  <rect x="600" y="316" width="170" height="44" rx="3" fill="#111820" stroke="#46525F" stroke-width="1"/>
+  <text x="608" y="332" class="pl">fault injector</text><text x="608" y="344" class="no">10 failure classes; one control;</text><text x="608" y="354" class="no">gate runs before the fault layer</text>
+
+  <rect x="14" y="372" width="474" height="42" rx="3" fill="#0F1620" stroke="#46525F" stroke-width="1"/>
+  <text x="24" y="388" class="pl" style="fill:#E8EDF2">tamper-evident ledger</text>
+  <text x="24" y="401" class="no" style="fill:#8090A0;font-size:7.6px">SHA-256 chain with a head anchor · 18 event types · CSA 4.3 fields · rationale kept apart from the audit record</text>
+
+  <rect x="500" y="372" width="270" height="42" rx="3" fill="#111820" stroke="#46525F" stroke-width="1"/>
+  <text x="508" y="388" class="pl">console, 127.0.0.1 only</text>
+  <text x="508" y="401" class="no">countdown board, approval cards, trace, oversight tiles</text>
+</svg>

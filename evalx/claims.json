@@ -1,0 +1,5731 @@
+{
+ "claims_registry_version": "1.0.0",
+ "purpose": "Every judge-facing number, bound to the measurement that produced it and the page that prints it. Checked by evalx/claims_check.py.",
+ "field_notes": {
+  "source": "results file, repo-relative",
+  "path": "dotted path inside that file, [i] for list indexes",
+  "format": "how the deliverable prints it: raw, int, int_comma, roundN, pctN, bool",
+  "expected": "the rendered string the registry asserts",
+  "printed_as": "the distinctive substring that must appear in every page in quoted_in; defaults to expected",
+  "quoted_in": "the deliverables that print this number"
+ },
+ "claims": [
+  {
+   "id": "ladder.regex.extraction_accuracy",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.regex.aggregate.extraction_accuracy",
+   "format": "round3",
+   "expected": "0.548",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.llama.extraction_accuracy",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.extraction_accuracy",
+   "format": "round3",
+   "expected": "0.575",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.regex.eta_invention_rate",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.regex.aggregate.eta_invention_rate",
+   "format": "round3",
+   "expected": "0.110",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.llama.eta_invention_rate",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.eta_invention_rate",
+   "format": "round3",
+   "expected": "0.477",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.regex.contradiction_recall",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.regex.aggregate.contradiction_flag_recall",
+   "format": "round3",
+   "expected": "0.471",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.llama.contradiction_recall",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.contradiction_flag_recall",
+   "format": "round3",
+   "expected": "1.000",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.regex.gate_routing",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.regex.aggregate.gate_routing_accuracy",
+   "format": "round3",
+   "expected": "0.865",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.llama.gate_routing",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.gate_routing_accuracy",
+   "format": "round3",
+   "expected": "0.845",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.regex.false_accepts",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.regex.aggregate.false_accepts",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "where the regex baseline ends at 4",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "(3 regex, 6 model)",
+    "(of 200) | 3 | 6 |",
+    "all 9 false accepts on both tiers",
+    "contains that to 6 false accepts",
+    "false accepts end to end 3 vs 6",
+    "| 3 | 6 | **3** |"
+   ]
+  },
+  {
+   "id": "ladder.llama.false_accepts",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.false_accepts",
+   "format": "int",
+   "expected": "10",
+   "printed_as": "10 false accepts in 200",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "9 false accepts in 200",
+    "contains that to 9 false accepts"
+   ]
+  },
+  {
+   "id": "ladder.llama.mean_latency_s",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.mean_latency_s",
+   "format": "round1",
+   "expected": "37.6",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.n",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.n",
+   "format": "int",
+   "expected": "200",
+   "printed_as": "n=200 advisories",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.tokens_per_advisory.mean",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "tokens_per_decision.advisory_episodes.mean",
+   "format": "int_comma",
+   "expected": "1,993",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "live100.tokens_per_advisory.ci_lo",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "tokens_per_decision.advisory_episodes.ci95[0]",
+   "format": "int_comma",
+   "expected": "1,991",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.tokens_per_advisory.ci_hi",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "tokens_per_decision.advisory_episodes.ci95[1]",
+   "format": "int_comma",
+   "expected": "1,995",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.tokens_in.mean",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "tokens_per_decision.advisory_tokens_in.mean",
+   "format": "int_comma",
+   "expected": "1,667",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.tokens_out.mean",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "tokens_per_decision.advisory_tokens_out.mean",
+   "format": "int",
+   "expected": "326",
+   "printed_as": "out 326",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.latency.mean",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "latency_s_per_decision.advisory_episodes.mean",
+   "format": "round1",
+   "expected": "17.9",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "live100.latency.ci_lo",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "latency_s_per_decision.advisory_episodes.ci95[0]",
+   "format": "round1",
+   "expected": "16.6",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.latency.ci_hi",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "latency_s_per_decision.advisory_episodes.ci95[1]",
+   "format": "round1",
+   "expected": "19.4",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.cost.frontier_counterfactual",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "cost_per_decision.counterfactual_frontier_usd_per_advisory_episode.mean",
+   "format": "round4",
+   "expected": "0.0013",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "live100.advisory_episodes",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "advisory_episodes",
+   "format": "int",
+   "expected": "55",
+   "printed_as": "55 advisory episodes",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "live100.outcome.escalated",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "outcome_mix.ESCALATED",
+   "format": "int",
+   "expected": "11",
+   "printed_as": "89 completed, 11 escalated",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "sweep500.catch_rate.rules_baseline",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "catch_rate.rules_baseline.mean",
+   "format": "round3",
+   "expected": "0.883",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.catch_rate.rules_ci_lo",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "catch_rate.rules_baseline.ci95[0]",
+   "format": "round3",
+   "expected": "0.846",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.catch_rate.rules_ci_hi",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "catch_rate.rules_baseline.ci95[1]",
+   "format": "round3",
+   "expected": "0.920",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.agent_only_catches",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "agent_only_catches",
+   "format": "int",
+   "expected": "35",
+   "printed_as": "35 agent-only catches",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "sweep500.saved_by_expedite",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "connections_saved.agent_graph.saved_by_expedite",
+   "format": "int",
+   "expected": "173",
+   "printed_as": "173 / 55",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "173 / 58"
+   ]
+  },
+  {
+   "id": "sweep500.save_rate",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "connections_saved.agent_graph.save_rate.mean",
+   "format": "round3",
+   "expected": "0.579",
+   "printed_as": "save rate 0.579",
+   "quoted_in": [
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.false_escalations",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "false_escalations.n_not_at_risk",
+   "format": "int",
+   "expected": "201",
+   "printed_as": "0/201",
+   "quoted_in": [
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.detection_lead.mean",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "detection_lead_minutes.mean",
+   "format": "round1",
+   "expected": "81.5",
+   "printed_as": "81.5 min",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.detection_lead.ci_lo",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "detection_lead_minutes.ci95[0]",
+   "format": "round1",
+   "expected": "72.0",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.detection_lead.ci_hi",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "detection_lead_minutes.ci95[1]",
+   "format": "round1",
+   "expected": "90.9",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "sweep500.n_scenarios",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "n_scenarios",
+   "format": "int",
+   "expected": "500",
+   "printed_as": "N = 500",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "external.instances",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.instances",
+   "format": "int",
+   "expected": "10",
+   "printed_as": "10 of 10 solved",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "external.matched_bks",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.matched_bks",
+   "format": "int",
+   "expected": "9",
+   "printed_as": "9 of 10 match the published best known solution",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "external.proved_optimal",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.proved_optimal",
+   "format": "int",
+   "expected": "8",
+   "printed_as": "8 of 10\nproved optimal",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "external.improved_bks",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.improved_published_bks",
+   "format": "int",
+   "expected": "1",
+   "printed_as": "1 of 10 improves it",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "external.total_ships",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.total_ships",
+   "format": "int",
+   "expected": "293",
+   "printed_as": "293 ships",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "external.solve_wall_max",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.solve_wall_s_max",
+   "format": "round1",
+   "expected": "120.3",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "solver.cpsat_saved_total",
+   "source": "twin/solver_quality.json",
+   "path": "aggregate.cpsat_saved_total",
+   "format": "int",
+   "expected": "423",
+   "printed_as": "423",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ],
+   "superseded": [
+    "saves 379",
+    "379, greedy",
+    "379 vs 376",
+    "saved 379"
+   ]
+  },
+  {
+   "id": "solver.greedy_saved_total",
+   "source": "twin/solver_quality.json",
+   "path": "aggregate.greedy_saved_total",
+   "format": "int",
+   "expected": "408",
+   "printed_as": "408",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ],
+   "superseded": [
+    "greedy 376",
+    "vs 376"
+   ]
+  },
+  {
+   "id": "solver.cpsat_save_rate",
+   "source": "twin/solver_quality.json",
+   "path": "aggregate.cpsat_save_rate",
+   "format": "pct1",
+   "expected": "74.6%",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ],
+   "printed_as": "74.6%",
+   "superseded": [
+    "66.8%"
+   ]
+  },
+  {
+   "id": "solver.greedy_save_rate",
+   "source": "twin/solver_quality.json",
+   "path": "aggregate.greedy_save_rate",
+   "format": "pct1",
+   "expected": "72.0%",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ],
+   "printed_as": "72.0%",
+   "superseded": [
+    "66.3%"
+   ]
+  },
+  {
+   "id": "solver.optimal_proofs",
+   "source": "twin/solver_quality.json",
+   "path": "aggregate.cpsat_optimal_proofs",
+   "format": "int",
+   "expected": "61",
+   "printed_as": "61 of 61",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "solver.broken_connections",
+   "source": "twin/solver_quality.json",
+   "path": "aggregate.broken_connections_total",
+   "format": "int",
+   "expected": "567",
+   "printed_as": "567 broken connections",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "README.md"
+   ]
+  },
+  {
+   "id": "memory.false_accepts_without",
+   "source": "evalx/results/memory-eval.json",
+   "path": "false_accepts_without_memory",
+   "format": "int",
+   "expected": "10",
+   "printed_as": "| false accepts without memory | 10 |",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "false accepts without memory | 6",
+    "avoids 4 of 9",
+    "4 of 9",
+    "| false accepts without memory | 9 |",
+    "avoids 4 of the 9 false accepts",
+    "4 of the 9 false accepts"
+   ]
+  },
+  {
+   "id": "memory.false_accepts_with",
+   "source": "evalx/results/memory-eval.json",
+   "path": "false_accepts_with_memory",
+   "format": "int",
+   "expected": "6",
+   "printed_as": "| false accepts with memory | **6** |",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "| false accepts with memory | **5** |"
+   ]
+  },
+  {
+   "id": "memory.extra_escalations",
+   "source": "evalx/results/memory-eval.json",
+   "path": "extra_escalations_introduced",
+   "format": "int",
+   "expected": "1",
+   "printed_as": "| extra escalations introduced | **1**",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "halves the false accepts on this corpus at no measured cost"
+   ]
+  },
+  {
+   "id": "memory.rows_replayed",
+   "source": "evalx/results/memory-eval.json",
+   "path": "rows_replayed",
+   "format": "int",
+   "expected": "200",
+   "printed_as": "recorded 200-advisory ladder run",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "behaviours.events_examined",
+   "source": "evalx/results/behaviours-conformance.json",
+   "path": "total_events_examined",
+   "format": "int",
+   "expected": "50",
+   "printed_as": "50 ledger events examined",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "behaviours.all_six",
+   "source": "evalx/results/behaviours-conformance.json",
+   "path": "all_six_demonstrated",
+   "format": "bool",
+   "expected": "true",
+   "printed_as": "all six",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "efficiency.tokens_saved_pct",
+   "source": "evalx/results/efficiency-eval.json",
+   "path": "tokens_saved_pct",
+   "format": "round1",
+   "expected": "33.8",
+   "printed_as": "33.8% fewer tokens",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "36.3% fewer tokens",
+    "30.6% fewer tokens"
+   ]
+  },
+  {
+   "id": "efficiency.baseline_per_advisory",
+   "source": "evalx/results/efficiency-eval.json",
+   "path": "arms.baseline_full_panel.tokens_per_advisory",
+   "format": "round1",
+   "expected": "4555.8",
+   "printed_as": "4,555.8",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "efficiency.efficient_per_advisory",
+   "source": "evalx/results/efficiency-eval.json",
+   "path": "arms.efficient_adaptive_plus_cache.tokens_per_advisory",
+   "format": "round1",
+   "expected": "3017.6",
+   "printed_as": "3,017.6",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ],
+   "superseded": [
+    "2,904.2",
+    "3,161.2"
+   ]
+  },
+  {
+   "id": "efficiency.tokens_saved_absolute",
+   "source": "evalx/results/efficiency-eval.json",
+   "path": "tokens_saved",
+   "format": "int_comma",
+   "expected": "49,222",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "printed_as": "49,222"
+  },
+  {
+   "id": "costcurve.tokens_per_advisory_episode",
+   "source": "evalx/results/cost-curve.json",
+   "path": "tokens_per_episode_advisory.mean",
+   "format": "round1",
+   "expected": "4689.7",
+   "printed_as": "4,689.7",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "probes.caught",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "totals.caught",
+   "format": "int",
+   "expected": "129",
+   "printed_as": "129 of 129",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md",
+    "docs/SECURITY-REVIEW.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ],
+   "superseded": [
+    "130 of 130 caught",
+    "130 probes",
+    "all 130 were caught"
+   ]
+  },
+  {
+   "id": "probes.cards_on_seeded",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "totals.cards_raised_on_seeded_episodes",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "approval cards raised on a seeded episode | **0**",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "oracle.verdict_agreement",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "agreement.verdict.mean",
+   "format": "round2",
+   "expected": "1.00",
+   "printed_as": "1.00 [1.00, 1.00]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "oracle.rules_baseline_catch",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "catch_rate_vs_independent_oracle.rules_baseline.mean",
+   "format": "round3",
+   "expected": "0.894",
+   "printed_as": "0.894",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle.n_scenarios",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "n_scenarios",
+   "format": "int",
+   "expected": "320",
+   "printed_as": "n=320",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "soak.episodes",
+   "source": "evalx/results/soak-profile.json",
+   "path": "episodes",
+   "format": "int_comma",
+   "expected": "10,000",
+   "printed_as": "10,000 episodes",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "soak.p99_ms",
+   "source": "evalx/results/soak-profile.json",
+   "path": "latency_ms.p99",
+   "format": "round1",
+   "expected": "21.7",
+   "printed_as": "p99 21.7 ms",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "soak.chain_failures",
+   "source": "evalx/results/soak-profile.json",
+   "path": "integrity.chain_failures",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "chain failures over 10,000 episodes | 0",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "ladder.hybrid.extraction_accuracy",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.extraction_accuracy",
+   "format": "round3",
+   "expected": "0.726",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "printed_as": "**0.726**",
+   "superseded": [
+    "**0.608**"
+   ]
+  },
+  {
+   "id": "ladder.hybrid.contradiction_recall",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.contradiction_flag_recall",
+   "format": "round3",
+   "expected": "1.000",
+   "printed_as": "| 0.471 | 1.000 | **1.000** |",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "ladder.hybrid.gate_routing",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.gate_routing_accuracy",
+   "format": "round3",
+   "expected": "0.850",
+   "printed_as": "| **0.865** | 0.845 | 0.850 |",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "| 0.865 | 0.845 | 0.860 |",
+    "| **0.865** | 0.845 | 0.845 |"
+   ]
+  },
+  {
+   "id": "ladder.hybrid.false_accepts",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.false_accepts",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "| 4 | 10 | **4** |",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "| 4 | 9 | **4** |"
+   ]
+  },
+  {
+   "id": "ladder.hybrid.eta_invention",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.eta_invention_rate",
+   "format": "round3",
+   "expected": "0.119",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/deck/relay-deck.html"
+   ],
+   "printed_as": "0.119",
+   "superseded": [
+    "ETA invention 0.358",
+    "eta invention rate | 0.110 | 0.477 | 0.358"
+   ]
+  },
+  {
+   "id": "weather.observations",
+   "source": "data/weather/frozen/MANIFEST.json",
+   "path": "assessments",
+   "format": "int",
+   "expected": "144",
+   "printed_as": "144 observations",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "92 observations",
+    "92 recorded NEA observations"
+   ],
+   "note": "the frozen NEA recording the weather tool reads; the live capture keeps growing, which is how this number went stale the first time"
+  },
+  {
+   "id": "weather.max_wind_knots",
+   "source": "data/weather/frozen/MANIFEST.json",
+   "path": "wind_knots.max",
+   "format": "round1",
+   "expected": "9.5",
+   "printed_as": "maximum 9.5 knots",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "weather.polls",
+   "source": "data/weather/frozen/MANIFEST.json",
+   "path": "files[0].polls",
+   "format": "int",
+   "expected": "144",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "printed_as": "144 polls"
+  },
+  {
+   "id": "claims.registered",
+   "source": "evalx/results/claims-check.json",
+   "path": "claims_registered",
+   "format": "int",
+   "expected": "461",
+   "printed_as": "461 claims registered",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "100 claims registered",
+    "106 claims registered",
+    "111 claims registered",
+    "138 claims registered",
+    "220 claims registered",
+    "231 claims registered",
+    "269 claims registered",
+    "271 claims registered",
+    "275 claims registered",
+    "276 claims registered",
+    "277 claims registered",
+    "313 claims registered",
+    "321 claims registered",
+    "325 claims registered",
+    "458 claims registered",
+    "460 claims registered",
+    "52 of 52 bound",
+    "79 claims registered",
+    "88 claims registered",
+    "Seventy headline numbers",
+    "binds 70 judge-facing numbers",
+    "reports 70 of 70"
+   ],
+   "note": "the checker's own headline, bound like everything it audits. Only the REGISTRY SIZE is bindable this way: it counts entries and does not depend on whether they pass. The pass/fail state is NOT a claim, see the note in claims_check.write_results."
+  },
+  {
+   "id": "probes.ablated_bcv_fired",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "ablated.by_class.contradicted_binding_constraint.fired",
+   "format": "int",
+   "expected": "37",
+   "printed_as": "0 of 37",
+   "quoted_in": [
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "catch 0 of 39",
+    "all 39 wrong"
+   ]
+  },
+  {
+   "id": "probes.control_episodes",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "control.episodes",
+   "format": "int",
+   "expected": "101",
+   "printed_as": "101 unseeded",
+   "quoted_in": [
+    "deliverables/QA-BANK.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "probes.episodes",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "episodes",
+   "format": "int",
+   "expected": "400",
+   "printed_as": "400 episodes",
+   "quoted_in": [
+    "deliverables/QA-BANK.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "fusion.injection_reached_tool",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.injection_resistance.aggregate.reached_a_tool_choice_on_approve",
+   "format": "int",
+   "expected": "3",
+   "printed_as": "3 reached a tool\nchoice",
+   "quoted_in": [
+    "README.md"
+   ]
+  },
+  {
+   "id": "fusion.injection_escalated_early",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.injection_resistance.aggregate.escalated_before_any_tool_choice",
+   "format": "int",
+   "expected": "9",
+   "printed_as": "9 of the 12 escalate",
+   "quoted_in": [
+    "README.md"
+   ]
+  },
+  {
+   "id": "mutation.probes",
+   "source": "evalx/results/mutation-probes.json",
+   "path": "probes",
+   "format": "int",
+   "expected": "56",
+   "printed_as": "56 probes, 56 caught",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "superseded": [
+    "16 probes",
+    "2 survived, 2 invalid",
+    "20 probes",
+    "25 probes: 25 caught",
+    "33 probes, 33 caught",
+    "53 probes, 53 caught",
+    "55 probes, 53 caught",
+    "55 probes, 55 caught"
+   ]
+  },
+  {
+   "id": "mutation.caught",
+   "source": "evalx/results/mutation-probes.json",
+   "path": "caught",
+   "format": "int",
+   "expected": "56",
+   "printed_as": "56 probes, 56 caught",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "superseded": [
+    "14 caught",
+    "2 survived, 2 invalid",
+    "24 caught, 1 survived",
+    "28 caught, 5 survived",
+    "33 probes, 33 caught",
+    "53 probes, 53 caught",
+    "55 probes, 53 caught",
+    "55 probes, 55 caught"
+   ]
+  },
+  {
+   "id": "mutation.survived",
+   "source": "evalx/results/mutation-probes.json",
+   "path": "survived",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 survived, 0 invalid",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md",
+    "deliverables/deck/relay-deck.html"
+   ],
+   "superseded": [
+    "0 survived, 2 invalid"
+   ]
+  },
+  {
+   "id": "mutation.invalid",
+   "source": "evalx/results/mutation-probes.json",
+   "path": "invalid",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 survived, 0 invalid",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md",
+    "deliverables/deck/relay-deck.html"
+   ],
+   "superseded": [
+    "0 survived, 2 invalid",
+    "2 survived, 2 invalid",
+    "33 probes, 33 caught",
+    "53 probes, 53 caught"
+   ]
+  },
+  {
+   "id": "census.controls",
+   "source": "docs/CONTROL-CENSUS.json",
+   "path": "controls",
+   "format": "int",
+   "expected": "56",
+   "printed_as": "56 controls named by the deliverables",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "superseded": [
+    "13 cannot be switched off with one line",
+    "49 controls named by the deliverables",
+    "55 controls named by the deliverables"
+   ]
+  },
+  {
+   "id": "census.probed",
+   "source": "docs/CONTROL-CENSUS.json",
+   "path": "probed",
+   "format": "int",
+   "expected": "48",
+   "printed_as": "48 of the 56 are probed",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "superseded": [
+    "13 cannot be switched off with one line",
+    "22 of the 49",
+    "30 of the 49 are probed",
+    "47 of the 55 are probed"
+   ]
+  },
+  {
+   "id": "census.out_of_scope",
+   "source": "docs/CONTROL-CENSUS.json",
+   "path": "out_of_scope",
+   "format": "int",
+   "expected": "3",
+   "printed_as": "3 live outside this code",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md",
+    "deliverables/deck/relay-deck.html"
+   ],
+   "superseded": [
+    "13 cannot be switched off with one line",
+    "6 are outside the probe script"
+   ]
+  },
+  {
+   "id": "census.no_probe",
+   "source": "docs/CONTROL-CENSUS.json",
+   "path": "no_probe",
+   "format": "int",
+   "expected": "5",
+   "printed_as": "5 are named as unprobed with the reason",
+   "quoted_in": [
+    "README.md",
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "superseded": [
+    "0 probeable controls are unprobed",
+    "13 cannot be switched off with one line",
+    "8 probeable controls are unprobed"
+   ]
+  },
+  {
+   "id": "ais.messages",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "denominators.messages_in_raw_recording",
+   "format": "int_comma",
+   "expected": "151,906",
+   "printed_as": "151,906 messages",
+   "quoted_in": [
+    "README.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.vessels_seen",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "denominators.vessels_seen",
+   "format": "int_comma",
+   "expected": "1,551",
+   "printed_as": "1,551 vessels seen",
+   "quoted_in": [
+    "README.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.moored_vessels",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "denominators.vessels_with_a_moored_transition",
+   "format": "int",
+   "expected": "146",
+   "printed_as": "146 with a moored transition",
+   "quoted_in": [
+    "README.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.warning_lead.n",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "warning_lead.n",
+   "format": "int",
+   "expected": "20",
+   "printed_as": "20 had a qualifying revision",
+   "quoted_in": [
+    "README.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.censored",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "censored.count",
+   "format": "int",
+   "expected": "126",
+   "printed_as": "126 censored",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.warning_lead.median",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "warning_lead.median_minutes",
+   "format": "round1",
+   "expected": "282.1",
+   "printed_as": "median warning lead 282.1 min",
+   "quoted_in": [
+    "README.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.warning_lead.mean",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "warning_lead.mean_minutes",
+   "format": "round1",
+   "expected": "459.1",
+   "printed_as": "mean 459.1 min",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.stale_first_eta",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "signal_vessels_whose_first_eta_was_already_past_when_first_seen",
+   "format": "int",
+   "expected": "8",
+   "printed_as": "8 of the 20 signal vessels",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.trigger_rate_per_day_60",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "trigger_rate_per_day_60",
+   "format": "round2",
+   "expected": "14.35",
+   "printed_as": "14.35 per day",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.hours_covered_24",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "per_day.2026-08-24.hours_covered",
+   "format": "round2",
+   "expected": "20.92",
+   "printed_as": "20.92 recorded hours",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.hours_covered_25",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "per_day.2026-08-25.hours_covered",
+   "format": "round2",
+   "expected": "9.18",
+   "printed_as": "9.18 on 25 August",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "ais.ks_d_vs_generator",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "ks_vs_generator_advisory_lead.D",
+   "format": "round2",
+   "expected": "0.56",
+   "printed_as": "KS D = 0.56",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "note": "the STRUCTURED stream's own warning on the two recorded Singapore AIS days: crew-entered broadcast ETAs, not the carrier advisory channel; an upper bound, see the results file label"
+  },
+  {
+   "id": "lead.slope_per_60min",
+   "source": "evalx/results/lead-dose-response.json",
+   "path": "logistic.slope_per_60min",
+   "format": "round2",
+   "expected": "-0.43",
+   "printed_as": "-0.43 log-odds per 60 minutes",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "lead.slope_ci_lo",
+   "source": "evalx/results/lead-dose-response.json",
+   "path": "logistic.slope_per_60min_ci95[0]",
+   "format": "round2",
+   "expected": "-1.75",
+   "printed_as": "CI -1.75 to 0.53",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "lead.slope_ci_hi",
+   "source": "evalx/results/lead-dose-response.json",
+   "path": "logistic.slope_per_60min_ci95[1]",
+   "format": "round2",
+   "expected": "0.53",
+   "printed_as": "-1.75 to 0.53, which contains zero",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "lead.n_with_advisory",
+   "source": "evalx/results/lead-dose-response.json",
+   "path": "population.at_risk_with_advisory",
+   "format": "int",
+   "expected": "158",
+   "printed_as": "158 at-risk scenarios that had an advisory",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "lead.intervention.changed",
+   "source": "evalx/results/lead-dose-response.json",
+   "path": "intervention.changed",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "changed 0 of 316 counterfactual re-runs",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "lead.intervention.unchanged",
+   "source": "evalx/results/lead-dose-response.json",
+   "path": "intervention.unchanged",
+   "format": "int",
+   "expected": "316",
+   "printed_as": "0 of 316 counterfactual re-runs",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "refusal.n",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "n",
+   "format": "int",
+   "expected": "60",
+   "printed_as": "over 60 generated cascade worlds",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.headline.pair_strictly_better",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "headline.pair_strictly_better",
+   "format": "int",
+   "expected": "26",
+   "printed_as": "on 26 of 60 worlds against the connection drop",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "superseded": [
+    "on 52 of 60 worlds",
+    "52 of 60 worlds strictly better",
+    "agreed with the filter on the other 8",
+    "every one of the 120 CP-SAT solves reported OPTIMAL",
+    "120 of 120 solves OPTIMAL",
+    "120/120 OPTIMAL"
+   ]
+  },
+  {
+   "id": "refusal.headline.agree",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "headline.agree",
+   "format": "int",
+   "expected": "34",
+   "printed_as": "agreed with it on the other 34",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.headline.pair_worse",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "headline.pair_worse",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "worse on 0 of the 60, and that zero is a property",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.class_mix.set_transfer_priority",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "refused_action_class_mix.set_transfer_priority",
+   "format": "int",
+   "expected": "36",
+   "printed_as": "set_transfer_priority on 36",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.class_mix.propose_rebooking",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "refused_action_class_mix.propose_rebooking",
+   "format": "int",
+   "expected": "15",
+   "printed_as": "propose_rebooking on 15",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.class_mix.restow_order",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "refused_action_class_mix.restow_order",
+   "format": "int",
+   "expected": "9",
+   "printed_as": "restow_order on 9 of the 60 worlds",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.refused_reproposed",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "refused_reproposed",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "offered again on 0 of 60",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.optimal_solves",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "optimal.solves",
+   "format": "int",
+   "expected": "540",
+   "printed_as": "of 540 CP-SAT solves reported OPTIMAL",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.optimal_proved",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "optimal.optimal",
+   "format": "int",
+   "expected": "540",
+   "printed_as": "540 of 540 CP-SAT solves reported OPTIMAL",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.regression.pair_strictly_better",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "regression_note.pair_strictly_better",
+   "format": "int",
+   "expected": "49",
+   "printed_as": "49 of 60 strictly better",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.regression.agree",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "regression_note.agree",
+   "format": "int",
+   "expected": "11",
+   "printed_as": "and 11 agree",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "impact.net_per_save.pessimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.pessimistic.net_per_save_usd",
+   "format": "int_comma",
+   "expected": "-680",
+   "printed_as": "minus USD 680 in the pessimistic scenario",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 12,826 in the pessimistic",
+    "12,826",
+    "minus USD 627 in the pessimistic scenario"
+   ]
+  },
+  {
+   "id": "impact.net_per_save.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.net_per_save_usd",
+   "format": "int_comma",
+   "expected": "278",
+   "printed_as": "plus USD 278 in the base scenario",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "USD 29,062 in the base",
+    "29,062",
+    "plus USD 750 in the base scenario"
+   ]
+  },
+  {
+   "id": "impact.net_per_save.optimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.optimistic.net_per_save_usd",
+   "format": "int_comma",
+   "expected": "1,579",
+   "printed_as": "plus USD 1,579 in the optimistic scenario",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 68,520 in the optimistic",
+    "68,520",
+    "plus USD 2,622 in the optimistic scenario"
+   ]
+  },
+  {
+   "id": "impact.spend_per_save.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.spend.SPEND_PER_SAVE",
+   "format": "int",
+   "expected": "800",
+   "printed_as": "USD 800 of the agent's own spend per save",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_millions.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_millions",
+   "format": "round1",
+   "expected": "0.3",
+   "printed_as": "USD 0.3 million a year before operations",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "USD 184.8 million",
+    "184.8",
+    "USD 0.8 million a year before operations"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_millions.pessimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.pessimistic.annual_usd_millions",
+   "format": "round1",
+   "expected": "-0.0",
+   "printed_as": "minus USD 0.0 million pessimistic",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "USD 4.1 million pessimistic",
+    "USD 4.1 million and USD 2444.9 million"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_millions.optimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.optimistic.annual_usd_millions",
+   "format": "round1",
+   "expected": "28.3",
+   "printed_as": "USD 28.3 million optimistic",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "USD 2444.9 million",
+    "2444.9",
+    "USD 44.2 million optimistic"
+   ]
+  },
+  {
+   "id": "impact.t_detect_share.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.tranche_shares.detect",
+   "format": "pct1",
+   "expected": "54.7%",
+   "printed_as": "detection tranche is 54.7% of the saves",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "30.7% of the saves",
+    "detection tranche is 62.5% of the saves"
+   ]
+  },
+  {
+   "id": "impact.saves_per_at_risk.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.tranches.SAVES_PER_AT_RISK",
+   "format": "round3",
+   "expected": "0.064",
+   "printed_as": "0.064 saves per at-risk connection",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "0.221 saves per at-risk connection",
+    "0.056 saves per at-risk connection"
+   ]
+  },
+  {
+   "id": "impact.p_at_risk.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.p_at_risk",
+   "format": "round4",
+   "expected": "0.0333",
+   "printed_as": "p = 0.0333",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "impact.opt_over_pess_ratio",
+   "source": "evalx/results/impact-model.json",
+   "path": "ratios.optimistic_over_pessimistic_annual_if_every_save_were_a_rollover",
+   "format": "int",
+   "expected": "762760",
+   "printed_as": "762760 times the pessimistic",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "590 times the pessimistic",
+    "23907 times the pessimistic"
+   ]
+  },
+  {
+   "id": "impact.p_grid.p10",
+   "source": "evalx/results/impact-model.json",
+   "path": "p_grid.p10.annual_usd_millions",
+   "format": "round1",
+   "expected": "1.0",
+   "printed_as": "USD 1.0 million at p = 0.10",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 555.0 million at p = 0.10",
+    "USD 2.3 million at p = 0.10"
+   ]
+  },
+  {
+   "id": "impact.yard_slot_days.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.yard_slot_days_avoided",
+   "format": "int_comma",
+   "expected": "9,011",
+   "printed_as": "9,011 yard slot-days",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "1,213,678 yard slot-days",
+    "11,341 yard slot-days"
+   ]
+  },
+  {
+   "id": "impact.tornado.first",
+   "source": "evalx/results/impact-model.json",
+   "path": "tornado.rows[0].input",
+   "format": "raw",
+   "expected": "PRICE_REBOOKING_PROPOSALS",
+   "printed_as": "the first is PRICE_REBOOKING_PROPOSALS",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "the first is CONNECTION_DRIVEN_FRACTION"
+   ]
+  },
+  {
+   "id": "impact.tornado.second",
+   "source": "evalx/results/impact-model.json",
+   "path": "tornado.rows[1].input",
+   "format": "raw",
+   "expected": "BOXES_PER_CONNECTION",
+   "printed_as": "the second is BOXES_PER_CONNECTION",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "the second is PLANNER_MISS_SHARE"
+   ]
+  },
+  {
+   "id": "impact.tornado.first_swing",
+   "source": "evalx/results/impact-model.json",
+   "path": "tornado.rows[0].swing_over_base",
+   "format": "round2",
+   "expected": "64.80",
+   "printed_as": "swing of 64.80 times",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "swing of 1.67 times the base",
+    "swing of 13.11 times"
+   ]
+  },
+  {
+   "id": "impact.boxes_per_connection",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.BOXES_PER_CONNECTION.base.value",
+   "format": "round1",
+   "expected": "27.3",
+   "printed_as": "27.3 boxes",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "impact.catch_increment.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.CATCH_INCREMENT.base.value",
+   "format": "round3",
+   "expected": "0.117",
+   "printed_as": "increment of 0.117",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "oversight.cards_per_at_risk",
+   "source": "evalx/results/oversight-load.json",
+   "path": "inputs.CARDS_PER_AT_RISK.base.value",
+   "format": "round3",
+   "expected": "0.799",
+   "printed_as": "0.799 cards per at-risk connection",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "oversight.escalations_per_episode",
+   "source": "evalx/results/oversight-load.json",
+   "path": "inputs.ESCALATIONS_PER_EPISODE.base.value",
+   "format": "round2",
+   "expected": "0.12",
+   "printed_as": "0.12 escalations per episode",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "oversight.officers.p10.per_box_group.r90",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.offered_load_erlangs",
+   "format": "round2",
+   "expected": "0.20",
+   "printed_as": "0.20 of one officer",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "offered load in erlangs, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600, the same arithmetic version 1 called officers_required; a share of one officer's reading time, not a headcount, which is why the row also prints utilisation and the one-per-shift coverage minimum"
+  },
+  {
+   "id": "oversight.expiry.p10.per_box_group.r90",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.by_officers.c1.expiry_share",
+   "format": "pct1",
+   "expected": "35.6%",
+   "printed_as": "35.6% of cards expire",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "100% of cards expire",
+    "the requirement is still 1.18 officers",
+    "short by one from below one is nobody on the desk"
+   ],
+   "note": "version 2: M/M/1 queue, one officer at the CHOSEN base availability of 0.5, share of cards whose queue wait exceeds the 120 s window less the 90 s read; version 1's fluid model printed 100% here (short by one from below one) and 0% when staffed"
+  },
+  {
+   "id": "oversight.officers.p10.per_box.r90",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box.r90.offered_load_erlangs",
+   "format": "round2",
+   "expected": "5.37",
+   "printed_as": "5.37 officers",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "offered load in erlangs, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600, the same arithmetic version 1 called officers_required; a share of one officer's reading time, not a headcount, which is why the row also prints utilisation and the one-per-shift coverage minimum"
+  },
+  {
+   "id": "oversight.expiry.p10.per_box.r90",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box.r90.smallest_stable_desk.expiry_share",
+   "format": "pct1",
+   "expected": "87.6%",
+   "printed_as": "87.6% of cards expire on the smallest stable desk",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "7.0% of cards expire",
+    "a shift staffed with five sees"
+   ],
+   "note": "per box at p = 0.10 and 90 s the offered load is 5.37 erlangs, 10.75 at 0.5 availability, so the smallest desk with a steady state is 11 officers at 0.977 utilisation; even that desk loses most cards to the 120 s window, which is the point: the deny window, not the headcount, is what a per-box desk would size first"
+  },
+  {
+   "id": "oversight.officers.p10.per_teu.r90",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_teu.r90.offered_load_erlangs",
+   "format": "round2",
+   "expected": "9.14",
+   "printed_as": "9.14 officers",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "offered load in erlangs, CARDS_PER_HOUR x RESPONSE_TIME_S / 3600, the same arithmetic version 1 called officers_required; a share of one officer's reading time, not a headcount, which is why the row also prints utilisation and the one-per-shift coverage minimum"
+  },
+  {
+   "id": "oversight.cards_per_hour.p10.per_box_group",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.cards_per_hour",
+   "format": "round1",
+   "expected": "7.9",
+   "printed_as": "7.9 cards an hour",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md",
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oversight.expedite_cards_multiple_of_demo_limit.p10.per_box_group",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.per_policy_row_cards_per_shift.row3_expedite_transfer.multiple_of_demo_limit",
+   "format": "round1",
+   "expected": "13.7",
+   "printed_as": "13.7 times the demo limit",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "oversight.queue_expiry.p10.per_box_group.r90.c2",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.by_officers.c2.expiry_share",
+   "format": "pct1",
+   "expected": "5.0%",
+   "printed_as": "5.0% with two officers",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "M/M/2 at the same cell: the second officer cuts the expiry share seven-fold"
+  },
+  {
+   "id": "oversight.queue_expiry_sim.p10.per_box_group.r90.c1",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.by_officers.c1.sim_fixed_read.expiry_share",
+   "format": "pct1",
+   "expected": "35.4%",
+   "printed_as": "35.4% in the seeded fixed-read simulation",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "the discrete-event check beside the closed form: Poisson arrivals, one server, read fixed at 90 s, 100,000 cards, seed 42"
+  },
+  {
+   "id": "oversight.utilisation.p10.per_box_group.r90.c1",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.by_officers.c1.utilisation",
+   "format": "round3",
+   "expected": "0.394",
+   "printed_as": "utilisation of 0.394",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "offered load 0.197 erlangs over one officer at the CHOSEN 0.5 availability; the 0.20 is a share of one officer's time and the coverage minimum is one per shift"
+  },
+  {
+   "id": "oversight.officer_availability.base",
+   "source": "evalx/results/oversight-load.json",
+   "path": "inputs.OFFICER_AVAILABILITY.base.value",
+   "format": "round1",
+   "expected": "0.5",
+   "printed_as": "availability of 0.5",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "CHOSEN, NONE FOUND; 0.2 / 0.5 / 1.0 across the scenarios"
+  },
+  {
+   "id": "oversight.expiry_at_full_availability.p10.per_box_group.r90.c1",
+   "source": "evalx/results/oversight-load.json",
+   "path": "EXPIRY_SHARE_AT_STAFFED_CELL.at_full_availability_expiry_share",
+   "format": "pct1",
+   "expected": "15.1%",
+   "printed_as": "15.1% on a dedicated desk",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "the same cell at availability 1.0, the optimistic end"
+  },
+  {
+   "id": "oversight.smallest_stable_desk.p10.per_box.r90",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box.r90.smallest_stable_desk.officers",
+   "format": "int",
+   "expected": "11",
+   "printed_as": "11 officers before the per-box queue has a steady state",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "floor(5.37 / 0.5) + 1; the per-box denominator is the one RELAY does not use"
+  },
+  {
+   "id": "ais_slip.mooring.events",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.events",
+   "format": "int",
+   "expected": "146",
+   "printed_as": "146 vessels moored",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.with_eta_in_force",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.with_eta_in_force",
+   "format": "int",
+   "expected": "127",
+   "printed_as": "127 had an ETA in force",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.stale_field",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.stale_field",
+   "format": "int",
+   "expected": "16",
+   "printed_as": "16 of those were stale fields",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.slip",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip",
+   "format": "int",
+   "expected": "74",
+   "printed_as": "74 band slips against mooring",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.silent_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent",
+   "format": "int",
+   "expected": "63",
+   "printed_as": "63 of the 74 band slips against mooring",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.silent_share_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent_share.share.mean",
+   "format": "round3",
+   "expected": "0.851",
+   "printed_as": "silent share of 0.851",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.silent_share_first.ci_lo",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent_share.share.ci95[0]",
+   "format": "round3",
+   "expected": "0.770",
+   "printed_as": "[0.770, 0.919]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.silent_share_first.ci_hi",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent_share.share.ci95[1]",
+   "format": "round3",
+   "expected": "0.919",
+   "printed_as": "[0.770, 0.919]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.slip",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.slip",
+   "format": "int",
+   "expected": "99",
+   "printed_as": "99 band slips against first arrival",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.silent_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.slip_split.from_first_observed_eta.silent",
+   "format": "int",
+   "expected": "93",
+   "printed_as": "93 of the 99 band slips against first arrival",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.silent_share_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.slip_split.from_first_observed_eta.silent_share.share.mean",
+   "format": "round3",
+   "expected": "0.939",
+   "printed_as": "silent share of 0.939",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.silent_share_first.ci_lo",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.slip_split.from_first_observed_eta.silent_share.share.ci95[0]",
+   "format": "round3",
+   "expected": "0.889",
+   "printed_as": "[0.889, 0.980]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.silent_share_first.ci_hi",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.slip_split.from_first_observed_eta.silent_share.share.ci95[1]",
+   "format": "round3",
+   "expected": "0.980",
+   "printed_as": "[0.889, 0.980]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.generator.escalate_fraction",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.escalate_fraction",
+   "format": "round2",
+   "expected": "0.15",
+   "printed_as": "`ESCALATE_FRACTION` of 0.15",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.broadcasts.compacted",
+   "source": "evalx/results/ais-slip.json",
+   "path": "broadcasts.compacted_eta_broadcasts",
+   "format": "int_comma",
+   "expected": "1,106",
+   "printed_as": "1,106 compacted ETA broadcasts",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.broadcasts.already_past",
+   "source": "evalx/results/ais-slip.json",
+   "path": "broadcasts.already_past_when_sent",
+   "format": "int",
+   "expected": "463",
+   "printed_as": "463 were already past when sent",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.residual_n",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.by_denominator.non_stale_eta_in_force.pooled.n",
+   "format": "int",
+   "expected": "111",
+   "printed_as": "111 vessels with a non-stale ETA in force at mooring",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.p",
+   "format": "round3",
+   "expected": "0.153",
+   "printed_as": "at most 0.153",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60.ci_lo",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.ci95[0]",
+   "format": "round3",
+   "expected": "0.090",
+   "printed_as": "[0.090, 0.216]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60.ci_hi",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.ci95[1]",
+   "format": "round3",
+   "expected": "0.216",
+   "printed_as": "[0.090, 0.216]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60.margin",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.m",
+   "format": "int",
+   "expected": "60",
+   "printed_as": "reached at the 60 minute margin",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.p_window_max_60",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.p",
+   "format": "round3",
+   "expected": "0.213",
+   "printed_as": "at most 0.213",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.p_window_max_60.ci_lo",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.ci95[0]",
+   "format": "round3",
+   "expected": "0.150",
+   "printed_as": "[0.150, 0.275]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.p_window_max_60.ci_hi",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.ci95[1]",
+   "format": "round3",
+   "expected": "0.275",
+   "printed_as": "[0.150, 0.275]",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.events",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.events",
+   "format": "int",
+   "expected": "231",
+   "printed_as": "231 vessels with a first arrival",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.no_eta",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.no_eta",
+   "format": "int",
+   "expected": "19",
+   "printed_as": "19 with no ETA at all",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.no_eta",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.no_eta",
+   "format": "int",
+   "expected": "56",
+   "printed_as": "56 with no ETA at all",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.with_eta_in_force",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.with_eta_in_force",
+   "format": "int",
+   "expected": "175",
+   "printed_as": "175 had an ETA in force",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.stale_field",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.stale_field",
+   "format": "int",
+   "expected": "15",
+   "printed_as": "15 of those were stale fields",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.residual_n",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.residual.by_denominator.non_stale_eta_in_force.pooled.n",
+   "format": "int",
+   "expected": "160",
+   "printed_as": "160 vessels with a non-stale ETA in force at first arrival",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.on_time",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.on_time",
+   "format": "int",
+   "expected": "10",
+   "printed_as": "10 arrived within the band",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.on_time",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.on_time",
+   "format": "int",
+   "expected": "18",
+   "printed_as": "18 arrived within the band",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.early",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.early",
+   "format": "int",
+   "expected": "27",
+   "printed_as": "27 arrived early",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.early",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.early",
+   "format": "int",
+   "expected": "43",
+   "printed_as": "43 arrived early",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.silent_prev",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_previous_broadcast.silent",
+   "format": "int",
+   "expected": "63",
+   "printed_as": "63 silent from the previous broadcast",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.silent_prev",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.slip_split.from_previous_broadcast.silent",
+   "format": "int",
+   "expected": "93",
+   "printed_as": "93 silent from the previous broadcast",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.median_miss",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_err_minutes.median",
+   "format": "round1",
+   "expected": "147.5",
+   "printed_as": "median miss of 147.5 minutes",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.median_miss",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.classes.slip_err_minutes.median",
+   "format": "round1",
+   "expected": "146.7",
+   "printed_as": "median miss of 146.7 minutes",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.eta_already_past",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.eta_in_force_already_past_when_sent",
+   "format": "int",
+   "expected": "65",
+   "printed_as": "65 of the 127",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.broadcasts.raw_static",
+   "source": "evalx/results/ais-slip.json",
+   "path": "broadcasts.raw_static_messages_in_recording",
+   "format": "int_comma",
+   "expected": "16,198",
+   "printed_as": "16,198 raw static messages",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.broadcasts.already_past_share",
+   "source": "evalx/results/ais-slip.json",
+   "path": "broadcasts.already_past_share",
+   "format": "round3",
+   "expected": "0.419",
+   "printed_as": "a share of 0.419",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_slip_gt_60",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.by_denominator.non_stale_eta_in_force.pooled.cells[11].p_slip_gt_m.mean",
+   "format": "round3",
+   "expected": "0.667",
+   "printed_as": "0.667 on the mooring basis",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.p_slip_gt_60",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.residual.by_denominator.non_stale_eta_in_force.pooled.cells[11].p_slip_gt_m.mean",
+   "format": "round3",
+   "expected": "0.619",
+   "printed_as": "0.619 on the arrival basis",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60.n_window",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.60.n_window",
+   "format": "int",
+   "expected": "17",
+   "printed_as": "17 of the 111 in the window",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_45",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.45.p",
+   "format": "round3",
+   "expected": "0.099",
+   "printed_as": "45 minute window it is at most 0.099",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60.stale_counted",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.all_eta_in_force_stale_counted.pooled.60.p",
+   "format": "round3",
+   "expected": "0.134",
+   "printed_as": "stale fields counted it is at most 0.134",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60.horizon_le_6h",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.horizon_le_6h.60.p",
+   "format": "round3",
+   "expected": "0.195",
+   "printed_as": "0.195 for an ETA in force at most six hours ahead",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.p_window_max_60.horizon_gt_6h",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.horizon_gt_6h.60.p",
+   "format": "round3",
+   "expected": "0.035",
+   "printed_as": "0.035 beyond six hours",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.p_window_max_45",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.pooled.45.p",
+   "format": "round3",
+   "expected": "0.150",
+   "printed_as": "45 minute window at most 0.150",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.arrival.p_window_max_60.horizon_le_6h",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.first_arrival.residual.p_window_max_over_at_risk_band.non_stale_eta_in_force.horizon_le_6h.60.p",
+   "format": "round3",
+   "expected": "0.283",
+   "printed_as": "highest cell of either table is 0.283",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.day24.slip",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.per_day.2026-08-24.slip",
+   "format": "int",
+   "expected": "52",
+   "printed_as": "52 slips on 24 August",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.day24.silent_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.per_day.2026-08-24.silent_slip.from_first_observed_eta",
+   "format": "int",
+   "expected": "46",
+   "printed_as": "46 of them silent",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.day25.slip",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.per_day.2026-08-25.slip",
+   "format": "int",
+   "expected": "22",
+   "printed_as": "22 slips on 25 August",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.mooring.day25.silent_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.per_day.2026-08-25.silent_slip.from_first_observed_eta",
+   "format": "int",
+   "expected": "17",
+   "printed_as": "17 of them silent",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.hours_covered_24",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.per_day.2026-08-24.hours_covered",
+   "format": "round2",
+   "expected": "20.92",
+   "printed_as": "20.92 and 9.18 recorded hours",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.hours_covered_25",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.per_day.2026-08-25.hours_covered",
+   "format": "round2",
+   "expected": "9.18",
+   "printed_as": "20.92 and 9.18 recorded hours",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.vessels_seen",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.vessels_seen",
+   "format": "int_comma",
+   "expected": "640",
+   "printed_as": "subset of 640 vessels",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.mooring.events",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.by_event_basis.mooring.classes.events",
+   "format": "int",
+   "expected": "133",
+   "printed_as": "133 moored",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.mooring.slip",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.by_event_basis.mooring.classes.slip",
+   "format": "int",
+   "expected": "72",
+   "printed_as": "63 of 72 band slips were silent",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.mooring.silent_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent",
+   "format": "int",
+   "expected": "63",
+   "printed_as": "63 of 72 band slips were silent",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.mooring.silent_share_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent_share.share.mean",
+   "format": "round3",
+   "expected": "0.875",
+   "printed_as": "a share of 0.875",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.arrival.slip",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.by_event_basis.first_arrival.classes.slip",
+   "format": "int",
+   "expected": "97",
+   "printed_as": "92 of 97, 0.949",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.arrival.silent_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.by_event_basis.first_arrival.classes.slip_split.from_first_observed_eta.silent",
+   "format": "int",
+   "expected": "92",
+   "printed_as": "92 of 97, 0.949",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.cargo.arrival.silent_share_first",
+   "source": "evalx/results/ais-slip.json",
+   "path": "cargo_tanker_subset.by_event_basis.first_arrival.classes.slip_split.from_first_observed_eta.silent_share.share.mean",
+   "format": "round3",
+   "expected": "0.949",
+   "printed_as": "92 of 97, 0.949",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.agreement.signal_vessels",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.agreement_with_warning_lead.signal_vessels_in_warning_lead",
+   "format": "int",
+   "expected": "20",
+   "printed_as": "the 20 signal vessels there",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.agreement.warned_here",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.agreement_with_warning_lead.warned_before_mooring_here",
+   "format": "int",
+   "expected": "20",
+   "printed_as": "the 20 warned-before-mooring vessels here",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.agreement.signal_slip",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.agreement_with_warning_lead.signal_vessels_by_outcome_here.slip",
+   "format": "int",
+   "expected": "11",
+   "printed_as": "11 went on to a band slip",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.agreement.signal_early",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.agreement_with_warning_lead.signal_vessels_by_outcome_here.early",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "4 arrived early",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.agreement.signal_on_time",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.agreement_with_warning_lead.signal_vessels_by_outcome_here.on_time",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "4 arrived within the band",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.agreement.signal_stale",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.agreement_with_warning_lead.signal_vessels_by_outcome_here.stale_field",
+   "format": "int",
+   "expected": "1",
+   "printed_as": "1 had a stale field in force",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.generator.structured_by_construction",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.structured_carries_the_fact_by_construction",
+   "format": "round2",
+   "expected": "0.85",
+   "printed_as": "0.85 of them by construction",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.generator.agent_only_catches",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.agent_only_catches",
+   "format": "int",
+   "expected": "35",
+   "printed_as": "35 of 299 at-risk scenarios, 0.117",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.generator.at_risk_scenarios",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.at_risk_scenarios",
+   "format": "int",
+   "expected": "299",
+   "printed_as": "35 of 299 at-risk scenarios, 0.117",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.generator.advisory_only_share",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.advisory_only_share_in_sweep",
+   "format": "round3",
+   "expected": "0.117",
+   "printed_as": "35 of 299 at-risk scenarios, 0.117",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.generator.rules_catch_rate",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.rules_baseline_catch_rate",
+   "format": "round3",
+   "expected": "0.883",
+   "printed_as": "catch rate of 0.883",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.rescale.mooring.moved_share",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.implied.mooring.from_first_observed_eta.structured_field_moved_before_event_share",
+   "format": "round3",
+   "expected": "0.149",
+   "printed_as": "0.149 of band slips on the mooring basis",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.rescale.arrival.moved_share",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.implied.first_arrival.from_first_observed_eta.structured_field_moved_before_event_share",
+   "format": "round3",
+   "expected": "0.061",
+   "printed_as": "0.061 on the arrival basis",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.rescale.mooring.advisory_only",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.implied.mooring.from_first_observed_eta.advisory_only_class_if_rescaled_at_sweep_scale",
+   "format": "int",
+   "expected": "255",
+   "printed_as": "255 of the 299 at-risk scenarios on the mooring basis",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.rescale.arrival.advisory_only",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.implied.first_arrival.from_first_observed_eta.advisory_only_class_if_rescaled_at_sweep_scale",
+   "format": "int",
+   "expected": "281",
+   "printed_as": "281 of the 299 on the arrival basis",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.same_fact_by_construction",
+   "source": "evalx/results/lead-dose-response.json",
+   "path": "same_fact_by_construction.advisory_and_edi_carry_the_same_fact",
+   "format": "int",
+   "expected": "158",
+   "printed_as": "same_fact_by_construction, 158 of 158",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "the construction section AD rescales on paper: every rebuilt pack's advisory and EDI event carry the same new_eta"
+  },
+  {
+   "id": "ais_slip.inputs.sha_matches_manifest",
+   "source": "evalx/results/ais-slip.json",
+   "path": "inputs.derived_sha256_matches_manifest",
+   "format": "bool",
+   "expected": "true",
+   "printed_as": "derived_sha256_matches_manifest is true in the file",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "ais_slip.agreement.identical_sets",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.agreement_with_warning_lead.identical_sets",
+   "format": "bool",
+   "expected": "true",
+   "printed_as": "identical_sets is true in the file",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "RECORDED_AIS, the crew-typed broadcast ETA against the vessel's own mooring and first-arrival events on the two recorded Singapore days; not the carrier advisory channel and not PORTNET; nothing in the file is a catch rate, see its label and honest_limits"
+  },
+  {
+   "id": "console.readiness.agreement_n",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "agreement.n",
+   "format": "int",
+   "expected": "12",
+   "printed_as": "agreed on 12 of 12 cards",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.readiness.agreement_agree",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "agreement.agree",
+   "format": "int",
+   "expected": "12",
+   "printed_as": "readiness and the refusing layer agreed on 12 of 12",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.readiness.blind_dead_approvals",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "blind.dead_approvals",
+   "format": "int",
+   "expected": "6",
+   "printed_as": "blind arm spent 6 of 12",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.readiness.preflight_dead_approvals",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "preflight.dead_approvals",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "preflight arm spent 0 of 12",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.readiness.preflight_withheld",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "preflight.withheld_by_readiness",
+   "format": "int",
+   "expected": "9",
+   "printed_as": "9 clicks withheld",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.readiness.budget_class_polls_spent",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "budget_polls.class_polls_spent",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 of 250 class polls spent",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.readiness.budget_class_polls",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "budget_polls.class_polls",
+   "format": "int",
+   "expected": "250",
+   "printed_as": "250 class polls",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.expiry.before_frozen_cards",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "displayed_expiry.before.cards_printing_the_constant_on_every_poll",
+   "format": "int",
+   "expected": "12",
+   "printed_as": "frozen on the fixture constant on 12 of 12 cards",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.expiry.after_frozen_cards",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "displayed_expiry.after.cards_frozen",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "frozen on 0 of 12 cards after",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.expiry.after_outside_tolerance",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "displayed_expiry.after.cards_outside_tolerance",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 of 12 cards outside 2 s of the server",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "console.expiry.after_polls_compared",
+   "source": "evalx/results/console-dead-approvals.json",
+   "path": "displayed_expiry.after.polls_compared",
+   "format": "int",
+   "expected": "54",
+   "printed_as": "over 54 polls",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "refusal.oversight.worlds_with_unsaved",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "oversight.worlds_with_unsaved_connections",
+   "format": "int",
+   "expected": "60",
+   "printed_as": "which it did on 60 of 60 worlds",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.oversight.escalated",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "oversight.escalated",
+   "format": "int",
+   "expected": "60",
+   "printed_as": "the episode ended ESCALATED on 60 of 60",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.oversight.named",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "oversight.unsaved_named_in_escalation",
+   "format": "int",
+   "expected": "60",
+   "printed_as": "named every unsaved connection on 60 of 60",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ]
+  },
+  {
+   "id": "refusal.oversight.completed_with_unsaved",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "oversight.completed_with_unsaved",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 of 60 ended COMPLETED with a connection unsaved",
+   "quoted_in": [
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "superseded": [
+    "58 of 60 worlds"
+   ]
+  },
+  {
+   "id": "impact.roll_probability_given_save",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.ROLL_PROBABILITY_GIVEN_SAVE.base.value",
+   "format": "round4",
+   "expected": "0.0397",
+   "printed_as": "0.0397 expected rollovers avoided per booked save",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "note": "read from evalx/results/save-value-audit-n500.json headline.avoided_per_booked_save; the number that shrinks version 2.0.0's booking",
+   "superseded": [
+    "0.0571 expected rollovers avoided per booked save"
+   ]
+  },
+  {
+   "id": "impact.save_rate_rules_also_flag",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.SAVE_RATE_RULES_ALSO_FLAG.base.value",
+   "format": "round3",
+   "expected": "0.110",
+   "printed_as": "save rate of 0.110 where rules also flag",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "save rate of 0.080 where rules also flag"
+   ]
+  },
+  {
+   "id": "impact.save_rate_after_escalation.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.SAVE_RATE_AFTER_ESCALATION.base.value",
+   "format": "round2",
+   "expected": "0.30",
+   "printed_as": "0.30 after escalation in the base",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.agent_only_escalated",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.AGENT_ONLY_ESCALATED.base.value",
+   "format": "int",
+   "expected": "35",
+   "printed_as": "escalated all 35 agent-only catches",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "impact.escalations_per_at_risk",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.ESCALATIONS_PER_AT_RISK.base.value",
+   "format": "round3",
+   "expected": "0.726",
+   "printed_as": "0.726 escalations per at-risk connection",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "0.749 escalations per at-risk connection"
+   ]
+  },
+  {
+   "id": "impact.value_per_rollover_avoided.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.value.VALUE_PER_SAVE",
+   "format": "int_comma",
+   "expected": "27,152",
+   "printed_as": "USD 27,152 per rollover avoided",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "README.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "impact.spend_per_save_priced.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "rebooking_priced_variant.spend.SPEND_PER_SAVE",
+   "format": "int_comma",
+   "expected": "5,552",
+   "printed_as": "USD 5,552 per save",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 7,486 per save"
+   ]
+  },
+  {
+   "id": "impact.expected_value_per_expedite.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.expedite_economics.expected_value_per_expedite_usd",
+   "format": "int_comma",
+   "expected": "1,078",
+   "printed_as": "USD 1,078 of expected value per expedite",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "USD 1,550 of expected value per expedite"
+   ]
+  },
+  {
+   "id": "impact.expected_value_per_expedite.optimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.optimistic.expedite_economics.expected_value_per_expedite_usd",
+   "format": "int_comma",
+   "expected": "2,379",
+   "printed_as": "USD 2,379 against the same USD 800",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 3,422 against the same USD 800"
+   ]
+  },
+  {
+   "id": "impact.breakeven_p.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.expedite_economics.breakeven_roll_probability",
+   "format": "round4",
+   "expected": "0.0295",
+   "printed_as": "break-even probability of 0.0295",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "impact.expedite_worth_taking.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.expedite_economics.worth_taking_at_audit_probability",
+   "format": "bool",
+   "expected": "true",
+   "printed_as": "worth_taking_at_audit_probability is true",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_if_p1.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_if_every_save_were_a_rollover_millions",
+   "format": "round1",
+   "expected": "31.3",
+   "printed_as": "USD 31.3 million if every save were a rollover avoided",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "USD 27.4 million if every save were a rollover avoided"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_if_p1.pessimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.pessimistic.annual_usd_if_every_save_were_a_rollover_millions",
+   "format": "round1",
+   "expected": "0.0",
+   "printed_as": "USD 0.0 million pessimistic on that booking",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_if_p1.optimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.optimistic.annual_usd_if_every_save_were_a_rollover_millions",
+   "format": "round1",
+   "expected": "1057.9",
+   "printed_as": "USD 1057.9 million optimistic on that booking",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 996.7 million optimistic on that booking"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_by_beneficiary.psa_pnl.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_by_beneficiary_millions.PSA_PNL",
+   "format": "round1",
+   "expected": "-1.1",
+   "printed_as": "minus USD 1.1 million in the PSA_PNL column",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "minus USD 1.0 million in the PSA_PNL column"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_by_beneficiary.carrier.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_by_beneficiary_millions.CARRIER",
+   "format": "round1",
+   "expected": "0.2",
+   "printed_as": "USD 0.2 million to the carrier",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_by_beneficiary.shipper.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_by_beneficiary_millions.SHIPPER",
+   "format": "round1",
+   "expected": "1.2",
+   "printed_as": "USD 1.2 million to the shipper",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "USD 1.6 million to the shipper"
+   ]
+  },
+  {
+   "id": "impact.operations_total.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.operations.TOTAL_USD_YEAR",
+   "format": "int_comma",
+   "expected": "243,328",
+   "printed_as": "USD 243,328 a year of desk and supervisor time",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "USD 250,061 a year of desk and supervisor time"
+   ]
+  },
+  {
+   "id": "impact.officers_fte.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.operations.OFFICERS_FTE",
+   "format": "round3",
+   "expected": "0.066",
+   "printed_as": "0.066 of one officer",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.escalations_year.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.operations.ESCALATIONS_YEAR",
+   "format": "int_comma",
+   "expected": "20,883",
+   "printed_as": "20,883 escalations a year",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "21,556 escalations a year"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_net_of_operations.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_net_of_operations_millions",
+   "format": "round1",
+   "expected": "0.1",
+   "printed_as": "USD 0.1 million net of operations",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "USD 0.5 million net of operations"
+   ]
+  },
+  {
+   "id": "impact.psa_pnl_net_of_operations.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.psa_pnl_usd_net_of_operations_millions",
+   "format": "round1",
+   "expected": "-1.3",
+   "printed_as": "minus USD 1.3 million in the PSA_PNL column net of operations",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "impact.psa_pnl_net_of_operations.optimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.optimistic.psa_pnl_usd_net_of_operations_millions",
+   "format": "round1",
+   "expected": "-21.4",
+   "printed_as": "minus USD 21.4 million in the optimistic scenario",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "minus USD 23.0 million in the optimistic scenario"
+   ]
+  },
+  {
+   "id": "impact.p_grid.p05",
+   "source": "evalx/results/impact-model.json",
+   "path": "p_grid.p05.annual_usd_millions",
+   "format": "round1",
+   "expected": "0.5",
+   "printed_as": "USD 0.5 million at p = 0.05",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 1.2 million at p = 0.05"
+   ]
+  },
+  {
+   "id": "impact.p_grid.p30",
+   "source": "evalx/results/impact-model.json",
+   "path": "p_grid.p30.annual_usd_millions",
+   "format": "round1",
+   "expected": "3.0",
+   "printed_as": "USD 3.0 million at p = 0.30",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "USD 7.0 million at p = 0.30"
+   ]
+  },
+  {
+   "id": "audit.spend_per_rollover_avoided",
+   "source": "evalx/results/save-value-audit-n500.json",
+   "path": "spend.spend_per_rollover_avoided_usd",
+   "format": "int_comma",
+   "expected": "60,835",
+   "printed_as": "USD 60,835 of expedite spend",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "README.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "impact.independent_oracle_increment",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.INDEPENDENT_ORACLE_INCREMENT.base.value",
+   "format": "round3",
+   "expected": "0.106",
+   "printed_as": "grades the same increment at 0.106",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "sweep.rebooking_proposals_pending_carrier",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "connections_saved.agent_graph.rebooking_proposals_pending_carrier",
+   "format": "int",
+   "expected": "55",
+   "printed_as": "173 / 55",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "173 / 58"
+   ]
+  },
+  {
+   "id": "sweep.escalation_no_feasible_option",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "escalation_classes.no_feasible_option",
+   "format": "int",
+   "expected": "25",
+   "printed_as": "35 / 25",
+   "quoted_in": [
+    "deliverables/ARCHITECTURE-AND-CONTROLS.md"
+   ],
+   "superseded": [
+    "35 / 33"
+   ]
+  },
+  {
+   "id": "evgate.arm.expedites.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.expedites_executed",
+   "format": "int",
+   "expected": "173",
+   "printed_as": "173 expedites with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "README.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.expedites.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.expedites_executed",
+   "format": "int",
+   "expected": "29",
+   "printed_as": "29 booked with the gate on",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "README.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "21 booked with the gate on"
+   ]
+  },
+  {
+   "id": "evgate.arm.expedite_spend.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.expedite_spend_usd",
+   "format": "int_comma",
+   "expected": "138,400",
+   "printed_as": "138,400 of expedite spend with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.expedite_spend.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.expedite_spend_usd",
+   "format": "int_comma",
+   "expected": "23,200",
+   "printed_as": "23,200 of expedite spend with the gate on",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "16,800 of expedite spend with the gate on"
+   ]
+  },
+  {
+   "id": "evgate.arm.restows.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.restows_executed",
+   "format": "int",
+   "expected": "11",
+   "printed_as": "11 restows with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.restows.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.restows_executed",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 restows with the gate on",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.rebookings.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.rebooking_proposals",
+   "format": "int",
+   "expected": "55",
+   "printed_as": "55 proposals with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.rebookings.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.rebooking_proposals",
+   "format": "int",
+   "expected": "53",
+   "printed_as": "53 proposals with the gate on",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "54 proposals with the gate on"
+   ]
+  },
+  {
+   "id": "evgate.arm.rollovers_avoided.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.expected_rollovers_avoided",
+   "format": "round3",
+   "expected": "2.275",
+   "printed_as": "2.275 rollovers avoided with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.rollovers_avoided.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.expected_rollovers_avoided",
+   "format": "round3",
+   "expected": "1.150",
+   "printed_as": "1.150 rollovers avoided with the gate on",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "1.200 rollovers avoided with the gate on"
+   ]
+  },
+  {
+   "id": "evgate.arm.roll_probability.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.roll_probability_given_save",
+   "format": "round4",
+   "expected": "0.0132",
+   "printed_as": "0.0132 per booked save with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.spend_per_rollover.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.spend_per_rollover_avoided_usd",
+   "format": "int_comma",
+   "expected": "19,745",
+   "printed_as": "19,745 of expedite spend per rollover avoided",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "README.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "14,000 of expedite spend per rollover avoided"
+   ]
+  },
+  {
+   "id": "evgate.arm.escalations_per_at_risk.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.escalations_per_at_risk",
+   "format": "round3",
+   "expected": "0.201",
+   "printed_as": "0.201 escalations per at-risk connection with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.advise_only.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.at_risk_ending_advise_only",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.advise_only.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.at_risk_ending_advise_only",
+   "format": "int",
+   "expected": "157",
+   "printed_as": "157 of 299 at-risk connections end ADVISE_ONLY",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "164 of 299 at-risk connections end ADVISE_ONLY"
+   ]
+  },
+  {
+   "id": "evgate.arm.spend_per_save.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.spend_per_save_usd",
+   "format": "int",
+   "expected": "953",
+   "printed_as": "953 per booked save with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.net_per_save.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.net_per_save_usd",
+   "format": "int",
+   "expected": "-594",
+   "printed_as": "minus 594 per save with the gate off",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.annual_millions.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.annual_usd_millions",
+   "format": "round1",
+   "expected": "-2.3",
+   "printed_as": "minus USD 2.3 million on the ungated arm",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.annual_net_ops_millions.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.annual_usd_net_of_operations_millions",
+   "format": "round1",
+   "expected": "-2.4",
+   "printed_as": "minus USD 2.4 million net of operations on the ungated arm",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.psa_pnl_net_ops_millions.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.psa_pnl_usd_net_of_operations_millions",
+   "format": "round1",
+   "expected": "-3.9",
+   "printed_as": "minus USD 3.9 million on the ungated arm net of operations",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.operations_total.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.operations_total_usd_year",
+   "format": "int_comma",
+   "expected": "92,244",
+   "printed_as": "USD 92,244 a year on the ungated arm",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.median_margin.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.median_margin_before_minutes",
+   "format": "round0",
+   "expected": "37",
+   "printed_as": "37 minutes on the ungated arm",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "evgate.arm.median_margin.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.median_margin_before_minutes",
+   "format": "round0",
+   "expected": "10",
+   "printed_as": "10 minutes of margin before the expedite",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "deliverables/QA-BANK.md"
+   ],
+   "superseded": [
+    "11 minutes of margin before the expedite"
+   ]
+  },
+  {
+   "id": "impact.saves_reaching_a_write.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.tranches.SAVES_PER_AT_RISK_REACHING_A_WRITE",
+   "format": "round3",
+   "expected": "0.041",
+   "printed_as": "0.041 saves that reach a write",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "0.036 saves that reach a write"
+   ]
+  },
+  {
+   "id": "impact.expiry_share_at_staffed.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.EXPIRY_SHARE_AT_STAFFED.base.value",
+   "format": "round4",
+   "expected": "0.3563",
+   "printed_as": "one-officer desk 0.3563 of cards expire",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.expiry_share_at_staffed.optimistic",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.EXPIRY_SHARE_AT_STAFFED.optimistic.value",
+   "format": "round4",
+   "expected": "0.0497",
+   "printed_as": "two-officer desk's 0.0497 instead",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.expiry_share_dedicated_desk",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.EXPIRY_SHARE_DEDICATED_DESK.base.value",
+   "format": "round4",
+   "expected": "0.1508",
+   "printed_as": "dedicated desk at full availability, 0.1508",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.breakeven.p_net_of_operations",
+   "source": "evalx/results/impact-model.json",
+   "path": "breakeven.roll_probability_for_zero_annual_net_of_operations",
+   "format": "round4",
+   "expected": "0.0370",
+   "printed_as": "reaches zero net of operations at 0.0370",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "reaches zero net of operations at 0.0383"
+   ]
+  },
+  {
+   "id": "impact.breakeven.value_per_save",
+   "source": "evalx/results/impact-model.json",
+   "path": "breakeven.value_per_rollover_for_zero_net_per_save_usd",
+   "format": "int_comma",
+   "expected": "20,151",
+   "printed_as": "zero at USD 20,151 per rollover avoided",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "zero at USD 14,011 per rollover avoided"
+   ]
+  },
+  {
+   "id": "impact.breakeven.value_net_of_operations",
+   "source": "evalx/results/impact-model.json",
+   "path": "breakeven.value_per_rollover_for_zero_annual_net_of_operations_usd",
+   "format": "int_comma",
+   "expected": "25,305",
+   "printed_as": "annual figure net of operations at USD 25,305",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "annual figure net of operations at USD 18,219"
+   ]
+  },
+  {
+   "id": "evgate.arm.expected_value_per_expedite.ungated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.expedite_economics.expected_value_per_expedite_usd",
+   "format": "int",
+   "expected": "358",
+   "printed_as": "USD 358 of expected value for an USD 800 expedite",
+   "quoted_in": [
+    "deliverables/QA-BANK.md"
+   ]
+  },
+  {
+   "id": "refusal.gate_on.agree",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "ev_gate.gate_on_arm.agree",
+   "format": "int",
+   "expected": "59",
+   "printed_as": "59 of 59 worlds that still have one",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "the refusal comparison on the GATED candidate set, which is the configuration that ships; the 26-of-60 headline beside it is the gate-off arm"
+  },
+  {
+   "id": "refusal.gate_on.pair_strictly_better",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "ev_gate.gate_on_arm.pair_strictly_better",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "strictly better on 0 and worse on 0",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md",
+    "docs/PRIOR-ART-AND-ORIGINALITY.md"
+   ],
+   "note": "on the gated candidate set the pair exclusion never beats the connection drop, because the gate has already removed the alternative options that made it better. The originality document is registered here on purpose: section 3 stakes the entry's novelty claim on this mechanism, so the arm in which the mechanism is worth nothing has to be printed on the same page, and the checker now enforces that pairing"
+  },
+  {
+   "id": "refusal.gate_on.optimal",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "ev_gate.gate_on_arm.optimal.optimal",
+   "format": "int",
+   "expected": "525",
+   "printed_as": "525 of 525 CP-SAT solves OPTIMAL",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "refusal.gate_on.connections_saved",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "ev_gate.gate_on_arm.connections_saved.solver_exclusion",
+   "format": "int",
+   "expected": "187",
+   "printed_as": "187 connections saved for USD 404,500 on either lane",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "evgate.audit.in_sample_probability.gated",
+   "source": "evalx/results/save-value-audit-n500-evgate.json",
+   "path": "selection.in_sample.avoided_per_booked_save",
+   "format": "round4",
+   "expected": "0.0489",
+   "printed_as": "the in-sample figure the gate selected on is 0.0489",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "the statistic the gate admitted these saves on; the shipped probability is the held-out one beside it, and the difference is the winner's curse the audit exists to expose"
+  },
+  {
+   "id": "impact.breakeven.expiry_share",
+   "source": "evalx/results/impact-model.json",
+   "path": "breakeven.expiry_share_for_zero_annual_net_of_operations",
+   "format": "round4",
+   "expected": "0.5261",
+   "printed_as": "reaches zero net of operations at an expiry share of 0.5261",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "note": "the desk share at which the bottom line crosses zero, found by bisecting compute() rather than by a closed form that could drift from it"
+  },
+  {
+   "id": "impact.sign.ci95_low",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.roll_probability_ci95[0]",
+   "format": "round4",
+   "expected": "0.0293",
+   "printed_as": "95% interval of 0.0293 to 0.0509",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.sign.share_below_breakeven",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.share_of_resamples_below_breakeven_net_of_operations",
+   "format": "pct1",
+   "expected": "31.7%",
+   "printed_as": "31.7% of the resamples fall below the breakeven",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.sign.p_above_zero",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.probability_annual_net_of_operations_above_zero",
+   "format": "round3",
+   "expected": "0.683",
+   "printed_as": "positive with probability 0.683 on this evidence",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.sign.annual_at_ci_low",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.annual_usd_net_of_operations_at_ci95_low",
+   "format": "int_comma",
+   "expected": "-248,613",
+   "printed_as": "minus USD 248,613 at the low end",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.sign.annual_at_ci_high",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.annual_usd_net_of_operations_at_ci95_high",
+   "format": "int_comma",
+   "expected": "448,877",
+   "printed_as": "plus USD 448,877 at the high end",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.psa.value_per_rollover",
+   "source": "evalx/results/impact-model.json",
+   "path": "psa_column.psa_value_per_rollover_avoided_usd",
+   "format": "round2",
+   "expected": "-2862.93",
+   "printed_as": "worth minus USD 2,862.93 to PSA specifically",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.psa.ev_per_expedite",
+   "source": "evalx/results/impact-model.json",
+   "path": "psa_column.psa_pnl_expected_value_per_expedite_usd",
+   "format": "round2",
+   "expected": "-913.66",
+   "printed_as": "PSA's expected value is minus USD 913.66",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.psa.gate_writes_at_base",
+   "source": "evalx/results/impact-model.json",
+   "path": "psa_column.gate_priced_on_psa.writes_proposed_at_base",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 writes out of 173 candidates at the base inputs",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ]
+  },
+  {
+   "id": "impact.save_rate_pooled",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.SAVE_RATE.base.value",
+   "format": "round3",
+   "expected": "0.097",
+   "printed_as": "save rate, pooled | MEASURED | 0.097",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "save rate, pooled | MEASURED | 0.070"
+   ]
+  },
+  {
+   "id": "impact.escalations_per_at_risk.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.ESCALATIONS_PER_AT_RISK.base.value",
+   "format": "round3",
+   "expected": "0.726",
+   "printed_as": "escalations per at-risk connection | MEASURED | 0.726",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "escalations per at-risk connection | MEASURED | 0.749"
+   ]
+  },
+  {
+   "id": "impact.arm.ev_per_expedite.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.expedite_economics.expected_value_per_expedite_usd",
+   "format": "int_comma",
+   "expected": "1,078",
+   "printed_as": "expected value is USD 1,078 against USD 800",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "expected value is USD 1,550 against USD 800"
+   ]
+  },
+  {
+   "id": "impact.arm.rebookings.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.rebooking_proposals",
+   "format": "int",
+   "expected": "53",
+   "printed_as": "prices the 53 proposals",
+   "quoted_in": [
+    "deliverables/EVIDENCE-SHEET.md"
+   ],
+   "superseded": [
+    "prices the 54 proposals"
+   ]
+  },
+  {
+   "id": "ais_slip.mooring.silent_first.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent",
+   "format": "int",
+   "expected": "63",
+   "printed_as": "63 of 74 vessels",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.mooring.silent_first"
+  },
+  {
+   "id": "ais_slip.mooring.slip.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip",
+   "format": "int",
+   "expected": "74",
+   "printed_as": "63 of 74 vessels",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.mooring.slip"
+  },
+  {
+   "id": "ais_slip.mooring.silent_share_first.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent_share.share.mean",
+   "format": "round3",
+   "expected": "0.851",
+   "printed_as": "silent share 0.851",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.mooring.silent_share_first"
+  },
+  {
+   "id": "ais_slip.mooring.silent_share_first.ci_lo.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent_share.share.ci95[0]",
+   "format": "round3",
+   "expected": "0.770",
+   "printed_as": "bootstrap 0.770 to 0.919",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.mooring.silent_share_first.ci_lo"
+  },
+  {
+   "id": "ais_slip.mooring.silent_share_first.ci_hi.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "by_event_basis.mooring.classes.slip_split.from_first_observed_eta.silent_share.share.ci95[1]",
+   "format": "round3",
+   "expected": "0.919",
+   "printed_as": "bootstrap 0.770 to 0.919",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.mooring.silent_share_first.ci_hi"
+  },
+  {
+   "id": "ais_slip.broadcasts.already_past.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "broadcasts.already_past_when_sent",
+   "format": "int",
+   "expected": "463",
+   "printed_as": "463 of 1,106 ETA broadcasts",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.broadcasts.already_past"
+  },
+  {
+   "id": "ais_slip.broadcasts.compacted.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "broadcasts.compacted_eta_broadcasts",
+   "format": "int_comma",
+   "expected": "1,106",
+   "printed_as": "463 of 1,106 ETA broadcasts",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.broadcasts.compacted"
+  },
+  {
+   "id": "ais.warning_lead.n.deck",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "warning_lead.n",
+   "format": "int",
+   "expected": "20",
+   "printed_as": "20 of 146 berthed vessels",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais.warning_lead.n"
+  },
+  {
+   "id": "ais.moored_vessels.deck",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "denominators.vessels_with_a_moored_transition",
+   "format": "int",
+   "expected": "146",
+   "printed_as": "20 of 146 berthed vessels",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais.moored_vessels"
+  },
+  {
+   "id": "ais.censored.deck",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "censored.count",
+   "format": "int",
+   "expected": "126",
+   "printed_as": "the other 126 had not",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais.censored"
+  },
+  {
+   "id": "ais.warning_lead.median.deck",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "warning_lead.median_minutes",
+   "format": "round1",
+   "expected": "282.1",
+   "printed_as": "the median lead was 282.1 minutes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais.warning_lead.median"
+  },
+  {
+   "id": "ais.vessels_seen.deck",
+   "source": "evalx/results/ais-warning-lead.json",
+   "path": "denominators.vessels_seen",
+   "format": "int_comma",
+   "expected": "1,551",
+   "printed_as": "1,551 vessels",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais.vessels_seen"
+  },
+  {
+   "id": "behaviours.events_examined.deck",
+   "source": "evalx/results/behaviours-conformance.json",
+   "path": "total_events_examined",
+   "format": "int",
+   "expected": "50",
+   "printed_as": "three real episodes (50 events)",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of behaviours.events_examined"
+  },
+  {
+   "id": "sweep500.n_scenarios.deck",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "n_scenarios",
+   "format": "int",
+   "expected": "500",
+   "printed_as": "500 seeded scenarios",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of sweep500.n_scenarios"
+  },
+  {
+   "id": "evgate.arm.expedites.ungated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.expedites_executed",
+   "format": "int",
+   "expected": "173",
+   "printed_as": "Expedites executed 173 29",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.expedites.ungated"
+  },
+  {
+   "id": "evgate.arm.expedites.gated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.expedites_executed",
+   "format": "int",
+   "expected": "29",
+   "printed_as": "Expedites executed 173 29",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.expedites.gated"
+  },
+  {
+   "id": "evgate.arm.expedite_spend.ungated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.expedite_spend_usd",
+   "format": "int_comma",
+   "expected": "138,400",
+   "printed_as": "Expedite spend $138,400 $23,200",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.expedite_spend.ungated"
+  },
+  {
+   "id": "evgate.arm.expedite_spend.gated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.expedite_spend_usd",
+   "format": "int_comma",
+   "expected": "23,200",
+   "printed_as": "Expedite spend $138,400 $23,200",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.expedite_spend.gated"
+  },
+  {
+   "id": "audit.spend_per_rollover_avoided.deck",
+   "source": "evalx/results/save-value-audit-n500.json",
+   "path": "spend.spend_per_rollover_avoided_usd",
+   "format": "int_comma",
+   "expected": "60,835",
+   "printed_as": "Spend per rollover avoided $60,835 $19,745",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of audit.spend_per_rollover_avoided"
+  },
+  {
+   "id": "evgate.arm.spend_per_rollover.gated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.spend_per_rollover_avoided_usd",
+   "format": "int_comma",
+   "expected": "19,745",
+   "printed_as": "Spend per rollover avoided $60,835 $19,745",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.spend_per_rollover.gated"
+  },
+  {
+   "id": "evgate.arm.advise_only.ungated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.at_risk_ending_advise_only",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "carried as advice 0 157 of 299",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.advise_only.ungated"
+  },
+  {
+   "id": "evgate.arm.advise_only.gated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.at_risk_ending_advise_only",
+   "format": "int",
+   "expected": "157",
+   "printed_as": "carried as advice 0 157 of 299",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.advise_only.gated"
+  },
+  {
+   "id": "ais_slip.generator.at_risk_scenarios.deck",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.at_risk_scenarios",
+   "format": "int",
+   "expected": "299",
+   "printed_as": "all 299 at-risk connections",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.generator.at_risk_scenarios"
+  },
+  {
+   "id": "evgate.audit.in_sample_probability.gated.deck",
+   "source": "evalx/results/save-value-audit-n500-evgate.json",
+   "path": "selection.in_sample.avoided_per_booked_save",
+   "format": "round4",
+   "expected": "0.0489",
+   "printed_as": "0.0489 in sample",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.audit.in_sample_probability.gated"
+  },
+  {
+   "id": "impact.roll_probability_given_save.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.ROLL_PROBABILITY_GIVEN_SAVE.base.value",
+   "format": "round4",
+   "expected": "0.0397",
+   "printed_as": "0.0397 held out",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.roll_probability_given_save"
+  },
+  {
+   "id": "mutation.probes.deck",
+   "source": "evalx/results/mutation-probes.json",
+   "path": "probes",
+   "format": "int",
+   "expected": "56",
+   "printed_as": "56 of 56",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of mutation.probes"
+  },
+  {
+   "id": "mutation.caught.deck",
+   "source": "evalx/results/mutation-probes.json",
+   "path": "caught",
+   "format": "int",
+   "expected": "56",
+   "printed_as": "56 of 56",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of mutation.caught"
+  },
+  {
+   "id": "census.probed.deck",
+   "source": "docs/CONTROL-CENSUS.json",
+   "path": "probed",
+   "format": "int",
+   "expected": "48",
+   "printed_as": "48 of 56",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of census.probed"
+  },
+  {
+   "id": "census.no_probe.deck",
+   "source": "docs/CONTROL-CENSUS.json",
+   "path": "no_probe",
+   "format": "int",
+   "expected": "5",
+   "printed_as": "5 are listed unprobed with the reason",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of census.no_probe"
+  },
+  {
+   "id": "census.controls.deck",
+   "source": "docs/CONTROL-CENSUS.json",
+   "path": "controls",
+   "format": "int",
+   "expected": "56",
+   "printed_as": "parsed from four documents 56",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of census.controls"
+  },
+  {
+   "id": "sweep500.catch_rate.rules_baseline.pct",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "catch_rate.rules_baseline.mean",
+   "format": "pct1",
+   "expected": "88.3%",
+   "printed_as": "rules alone flag 88.3%",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of sweep500.catch_rate.rules_baseline"
+  },
+  {
+   "id": "sweep500.false_escalations.deck",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "false_escalations.n_not_at_risk",
+   "format": "int",
+   "expected": "201",
+   "printed_as": "201 clean scenarios produce 0 false escalations",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of sweep500.false_escalations"
+  },
+  {
+   "id": "sweep500.agent_only_catches.deck",
+   "source": "evalx/results/sweep-full-n500.final.json",
+   "path": "agent_only_catches",
+   "format": "int",
+   "expected": "35",
+   "printed_as": "35 connections the rules cannot see",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of sweep500.agent_only_catches"
+  },
+  {
+   "id": "oracle.n_scenarios.deck",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "n_scenarios",
+   "format": "int",
+   "expected": "320",
+   "printed_as": "320 of 320 verdicts",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of oracle.n_scenarios"
+  },
+  {
+   "id": "ladder.hybrid.extraction_accuracy.deck",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.extraction_accuracy",
+   "format": "round3",
+   "expected": "0.726",
+   "printed_as": "0.726 share of 200 advisories",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ladder.hybrid.extraction_accuracy"
+  },
+  {
+   "id": "ladder.n.deck",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.n",
+   "format": "int",
+   "expected": "200",
+   "printed_as": "n = 200 advisories",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ladder.n"
+  },
+  {
+   "id": "ladder.hybrid.eta_invention.pct",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.eta_invention_rate",
+   "format": "pct1",
+   "expected": "11.9%",
+   "printed_as": "invents an ETA in 11.9%",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ladder.hybrid.eta_invention"
+  },
+  {
+   "id": "ladder.llama.eta_invention_rate.pct",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.eta_invention_rate",
+   "format": "pct1",
+   "expected": "47.7%",
+   "printed_as": "the model's 47.7%",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ladder.llama.eta_invention_rate"
+  },
+  {
+   "id": "ladder.hybrid.false_accepts.deck",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.false_accepts",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "4 wrong facts end to end against the model's 10",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ladder.hybrid.false_accepts"
+  },
+  {
+   "id": "ladder.llama.false_accepts.deck",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.aggregate.false_accepts",
+   "format": "int",
+   "expected": "10",
+   "printed_as": "4 wrong facts end to end against the model's 10",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ladder.llama.false_accepts"
+  },
+  {
+   "id": "ladder.hybrid.gate_routing.deck",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.gate_routing_accuracy",
+   "format": "round3",
+   "expected": "0.850",
+   "printed_as": "gate routing, 0.850",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ladder.hybrid.gate_routing"
+  },
+  {
+   "id": "soak.chain_failures.deck",
+   "source": "evalx/results/soak-profile.json",
+   "path": "integrity.chain_failures",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 chain failures",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of soak.chain_failures"
+  },
+  {
+   "id": "efficiency.tokens_saved_pct.deck",
+   "source": "evalx/results/efficiency-eval.json",
+   "path": "tokens_saved_pct",
+   "format": "round1",
+   "expected": "33.8",
+   "printed_as": "cuts 33.8% on the bench",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of efficiency.tokens_saved_pct"
+  },
+  {
+   "id": "oversight.queue_expiry.p10.per_box_group.r90.c2.deck",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.by_officers.c2.expiry_share",
+   "format": "pct1",
+   "expected": "5.0%",
+   "printed_as": "Two officers at half availability 5.0%",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of oversight.queue_expiry.p10.per_box_group.r90.c2"
+  },
+  {
+   "id": "oversight.expiry_at_full_availability.p10.per_box_group.r90.c1.deck",
+   "source": "evalx/results/oversight-load.json",
+   "path": "EXPIRY_SHARE_AT_STAFFED_CELL.at_full_availability_expiry_share",
+   "format": "pct1",
+   "expected": "15.1%",
+   "printed_as": "one officer at full availability 15.1%",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of oversight.expiry_at_full_availability.p10.per_box_group.r90.c1"
+  },
+  {
+   "id": "oversight.expiry.p10.per_box_group.r90.deck",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.by_officers.c1.expiry_share",
+   "format": "pct1",
+   "expected": "35.6%",
+   "printed_as": "One officer at half availability 35.6%",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of oversight.expiry.p10.per_box_group.r90"
+  },
+  {
+   "id": "evgate.arm.annual_net_ops_millions.ungated.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.ungated.annual_usd_net_of_operations_millions",
+   "format": "round1",
+   "expected": "-2.4",
+   "printed_as": "gate off, rejected −$2.4M",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of evgate.arm.annual_net_ops_millions.ungated"
+  },
+  {
+   "id": "impact.annual_usd_by_beneficiary.shipper.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_by_beneficiary_millions.SHIPPER",
+   "format": "round1",
+   "expected": "1.2",
+   "printed_as": "shipper +$1.2M",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.annual_usd_by_beneficiary.shipper.base"
+  },
+  {
+   "id": "impact.annual_usd_by_beneficiary.carrier.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_by_beneficiary_millions.CARRIER",
+   "format": "round1",
+   "expected": "0.2",
+   "printed_as": "carrier +$0.2M",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.annual_usd_by_beneficiary.carrier.base"
+  },
+  {
+   "id": "impact.annual_usd_by_beneficiary.psa_pnl.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_by_beneficiary_millions.PSA_PNL",
+   "format": "round1",
+   "expected": "-1.1",
+   "printed_as": "PSA −$1.1M",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.annual_usd_by_beneficiary.psa_pnl.base"
+  },
+  {
+   "id": "impact.psa_pnl_net_of_operations.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.psa_pnl_usd_net_of_operations_millions",
+   "format": "round1",
+   "expected": "-1.3",
+   "printed_as": "net of operations −$1.3M",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.psa_pnl_net_of_operations.base"
+  },
+  {
+   "id": "impact.value_per_rollover_avoided.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.value.VALUE_PER_SAVE",
+   "format": "int_comma",
+   "expected": "27,152",
+   "printed_as": "$27,152 to the chain",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.value_per_rollover_avoided.base"
+  },
+  {
+   "id": "impact.spend_per_save.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.spend.SPEND_PER_SAVE",
+   "format": "int",
+   "expected": "800",
+   "printed_as": "an $800 expedite still does not pay PSA",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.spend_per_save.base"
+  },
+  {
+   "id": "impact.breakeven.p_net_of_operations.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "breakeven.roll_probability_for_zero_annual_net_of_operations",
+   "format": "round4",
+   "expected": "0.0370",
+   "printed_as": "against a break-even of 0.0370",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.breakeven.p_net_of_operations"
+  },
+  {
+   "id": "impact.sign.ci95_low.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.roll_probability_ci95[0]",
+   "format": "round4",
+   "expected": "0.0293",
+   "printed_as": "between 0.0293 and 0.0509",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.sign.ci95_low"
+  },
+  {
+   "id": "impact.sign.p_above_zero.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.probability_annual_net_of_operations_above_zero",
+   "format": "round3",
+   "expected": "0.683",
+   "printed_as": "positive with probability 0.683",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of impact.sign.p_above_zero"
+  },
+  {
+   "id": "ais_slip.generator.structured_by_construction.pct",
+   "source": "evalx/results/ais-slip.json",
+   "path": "rescale_arithmetic.generator.structured_carries_the_fact_by_construction",
+   "format": "pct0",
+   "expected": "85%",
+   "printed_as": "the fact 85% of the time",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of ais_slip.generator.structured_by_construction"
+  },
+  {
+   "id": "refusal.gate_on.agree.deck",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "ev_gate.gate_on_arm.agree",
+   "format": "int",
+   "expected": "59",
+   "printed_as": "59 of 59 agree",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of refusal.gate_on.agree"
+  },
+  {
+   "id": "refusal.headline.pair_strictly_better.deck",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "headline.pair_strictly_better",
+   "format": "int",
+   "expected": "26",
+   "printed_as": "26 of 60 scenarios and worse on 0",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of refusal.headline.pair_strictly_better"
+  },
+  {
+   "id": "refusal.n.deck",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "n",
+   "format": "int",
+   "expected": "60",
+   "printed_as": "26 of 60 scenarios and worse on 0",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of refusal.n"
+  },
+  {
+   "id": "refusal.headline.pair_worse.deck",
+   "source": "evalx/results/refusal-resolve.json",
+   "path": "headline.pair_worse",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "26 of 60 scenarios and worse on 0",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of refusal.headline.pair_worse"
+  },
+  {
+   "id": "external.proved_optimal.deck",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.proved_optimal",
+   "format": "int",
+   "expected": "8",
+   "printed_as": "8 proved optimal",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of external.proved_optimal"
+  },
+  {
+   "id": "external.matched_bks.deck",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.matched_bks",
+   "format": "int",
+   "expected": "9",
+   "printed_as": "9 matching the published best-known solution",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of external.matched_bks"
+  },
+  {
+   "id": "external.improved_bks.deck",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "aggregate.improved_published_bks",
+   "format": "int",
+   "expected": "1",
+   "printed_as": "and 1 improving it",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of external.improved_bks"
+  },
+  {
+   "id": "live100.outcome.escalated.deck",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "outcome_mix.ESCALATED",
+   "format": "int",
+   "expected": "11",
+   "printed_as": "Episodes escalated of 100 11",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of live100.outcome.escalated"
+  },
+  {
+   "id": "memory.false_accepts_without.deck",
+   "source": "evalx/results/memory-eval.json",
+   "path": "false_accepts_without_memory",
+   "format": "int",
+   "expected": "10",
+   "printed_as": "False accepts without memory 10",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of memory.false_accepts_without"
+  },
+  {
+   "id": "memory.false_accepts_with.deck",
+   "source": "evalx/results/memory-eval.json",
+   "path": "false_accepts_with_memory",
+   "format": "int",
+   "expected": "6",
+   "printed_as": "False accepts with memory 6",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of memory.false_accepts_with"
+  },
+  {
+   "id": "memory.extra_escalations.deck",
+   "source": "evalx/results/memory-eval.json",
+   "path": "extra_escalations_introduced",
+   "format": "int",
+   "expected": "1",
+   "printed_as": "Extra escalations introduced 1",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of memory.extra_escalations"
+  },
+  {
+   "id": "memory.rows_replayed.deck",
+   "source": "evalx/results/memory-eval.json",
+   "path": "rows_replayed",
+   "format": "int",
+   "expected": "200",
+   "printed_as": "replayed on the 200 rows",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of memory.rows_replayed"
+  },
+  {
+   "id": "oracle.verdict_agreement.deck",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "agreement.verdict.mean",
+   "format": "round2",
+   "expected": "1.00",
+   "printed_as": "verdict agreement 1.00",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of oracle.verdict_agreement"
+  },
+  {
+   "id": "probes.cards_on_seeded.deck",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "totals.cards_raised_on_seeded_episodes",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 cards raised",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ],
+   "note": "the deck's rendering of probes.cards_on_seeded"
+  },
+  {
+   "id": "oracle_gate.hand_checks",
+   "source": "evalx/scorecard.json",
+   "path": "oracle_gate.checks",
+   "format": "int",
+   "expected": "28",
+   "printed_as": "28 hand checks",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "hero.margin.cn0002_before",
+   "source": "evalx/oracle_pack.json",
+   "path": "hero_pack.connections.CN-0002.margin_minutes",
+   "format": "round0",
+   "expected": "41",
+   "printed_as": "moves from 41 minutes at risk to 101 feasible",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "hero.margin.cn0002_after",
+   "source": "evalx/oracle_pack.json",
+   "path": "hero_pack.post_expedite_margin_CN-0002",
+   "format": "round0",
+   "expected": "101",
+   "printed_as": "41 minutes at risk to 101 feasible",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "hero.margin.cn0001",
+   "source": "evalx/oracle_pack.json",
+   "path": "hero_pack.connections.CN-0001.margin_minutes",
+   "format": "round0",
+   "expected": "390",
+   "printed_as": "moves from 390 to 135",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "hero.fusion_completeness",
+   "source": "evalx/oracle_pack.json",
+   "path": "hero_pack.fusion_completeness_score",
+   "format": "round2",
+   "expected": "0.87",
+   "printed_as": "Completeness 0.87 clears the 0.60 gate",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "twin.price.expedite",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.EXPEDITE_COST_USD.base.value",
+   "format": "int_comma",
+   "expected": "800",
+   "printed_as": "Expedite the yard transfer, $800",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "twin.price.rebooking",
+   "source": "evalx/results/cascade-evidence.json",
+   "path": "variants[0].joint_cpsat.plan[1].cost_usd_est",
+   "format": "int_comma",
+   "expected": "2,400",
+   "printed_as": "rebook, $2,400",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "cascade.joint_plan_cost",
+   "source": "evalx/results/cascade-evidence.json",
+   "path": "variants[0].joint_cpsat.total_cost_usd",
+   "format": "int_comma",
+   "expected": "5,600",
+   "printed_as": "single solve at $5,600",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "governance.attacks.run",
+   "source": "governance/results/attacks.json",
+   "path": "attacks_run",
+   "format": "int",
+   "expected": "12",
+   "printed_as": "12 of 12 attacks on the package",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "governance.attacks.held",
+   "source": "governance/results/attacks.json",
+   "path": "attacks_held",
+   "format": "int",
+   "expected": "12",
+   "printed_as": "12 of 12 attacks on the package",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "governance.conformance.passed",
+   "source": "governance/results/relay-conformance.json",
+   "path": "summary.passed",
+   "format": "int",
+   "expected": "206",
+   "printed_as": "206 of 206 conformance checks",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "governance.conformance.total",
+   "source": "governance/results/relay-conformance.json",
+   "path": "summary.total",
+   "format": "int",
+   "expected": "206",
+   "printed_as": "206 of 206 conformance checks",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "governance.conformance.byte_identical",
+   "source": "governance/results/relay-conformance.json",
+   "path": "summary.byte_identical_passed",
+   "format": "int",
+   "expected": "203",
+   "printed_as": "203 of them with byte-identical output",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle.at_risk_population.independent",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "at_risk_population.independent",
+   "format": "int",
+   "expected": "188",
+   "printed_as": "188 against 188",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle.at_risk_population.engine",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "at_risk_population.engine",
+   "format": "int",
+   "expected": "188",
+   "printed_as": "188 against 188",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle.verdict_agreement_n",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "agreement.verdict.n",
+   "format": "int",
+   "expected": "320",
+   "printed_as": "320 of 320 verdicts",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle.false_escalations.count",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "false_escalations_vs_independent_oracle.count",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "false escalations 0 of 132",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle.false_escalations.n_not_at_risk",
+   "source": "evalx/results/validity-oracle-n320.json",
+   "path": "false_escalations_vs_independent_oracle.n_not_at_risk",
+   "format": "int",
+   "expected": "132",
+   "printed_as": "false escalations 0 of 132",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle_power.mutations_tested",
+   "source": "evalx/results/oracle-mutation-power.json",
+   "path": "mutations_tested",
+   "format": "int",
+   "expected": "7",
+   "printed_as": "detected 4 of 7 times",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oracle_power.mutations_detected",
+   "source": "evalx/results/oracle-mutation-power.json",
+   "path": "mutations_detected",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "detected 4 of 7 times",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "fusion.injection.n_advisories",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.injection_resistance.aggregate.n_injection_advisories",
+   "format": "int",
+   "expected": "12",
+   "printed_as": "12 of 12 prompt-injection advisories",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "fusion.injection.unsafe_tool_calls",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.llama32-3b.injection_resistance.aggregate.unsafe_tool_calls_total",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 unsafe tool calls",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "approval.attacks.run",
+   "source": "evalx/results/approval-attacks.json",
+   "path": "attacks_run",
+   "format": "int",
+   "expected": "14",
+   "printed_as": "14 of 14 attacks on the approval path",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "approval.attacks.held",
+   "source": "evalx/results/approval-attacks.json",
+   "path": "attacks_held",
+   "format": "int",
+   "expected": "14",
+   "printed_as": "14 of 14 attacks on the approval path",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "chain.episodes_held",
+   "source": "evalx/results/oversight-chain.json",
+   "path": "episodes_held",
+   "format": "int",
+   "expected": "5",
+   "printed_as": "5 of 5 episodes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "chain.episodes_checked",
+   "source": "evalx/results/oversight-chain.json",
+   "path": "episodes_checked",
+   "format": "int",
+   "expected": "5",
+   "printed_as": "5 of 5 episodes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "soak.elapsed_min",
+   "source": "evalx/results/soak-profile.json",
+   "path": "elapsed_min",
+   "format": "round1",
+   "expected": "21.3",
+   "printed_as": "21.3 minutes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "soak.stuck_episodes",
+   "source": "evalx/results/soak-profile.json",
+   "path": "stuck_episodes.count",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 episodes stuck past 30",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "scale.append_ms_at_100",
+   "source": "evalx/results/scale-profile.json",
+   "path": "ledger_append_cost_curve.samples[0].append_ms",
+   "format": "round2",
+   "expected": "0.83",
+   "printed_as": "0.83 ms at chain length 100",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "scale.chain_length_100",
+   "source": "evalx/results/scale-profile.json",
+   "path": "ledger_append_cost_curve.samples[0].chain_length",
+   "format": "int",
+   "expected": "100",
+   "printed_as": "0.83 ms at chain length 100",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "scale.append_ms_at_500",
+   "source": "evalx/results/scale-profile.json",
+   "path": "ledger_append_cost_curve.samples[1].append_ms",
+   "format": "round2",
+   "expected": "3.16",
+   "printed_as": "3.16 ms at 500",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "scale.chain_length_500",
+   "source": "evalx/results/scale-profile.json",
+   "path": "ledger_append_cost_curve.samples[1].chain_length",
+   "format": "int",
+   "expected": "500",
+   "printed_as": "3.16 ms at 500",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "scale.volumes_min",
+   "source": "evalx/results/scale-profile.json",
+   "path": "volumes[0]",
+   "format": "int",
+   "expected": "50",
+   "printed_as": "50 to 5,000 episodes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "scale.volumes_max",
+   "source": "evalx/results/scale-profile.json",
+   "path": "volumes[3]",
+   "format": "int_comma",
+   "expected": "5,000",
+   "printed_as": "50 to 5,000 episodes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "costcurve.cost_usd_imputed_total",
+   "source": "evalx/results/cost-curve.json",
+   "path": "cost_usd_imputed_total",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "$0 imputed",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "costcurve.n_episodes",
+   "source": "evalx/results/cost-curve.json",
+   "path": "n_episodes",
+   "format": "int",
+   "expected": "30",
+   "printed_as": "five-sample build, 30 episodes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "oversight.sim_cards",
+   "source": "evalx/results/oversight-load.json",
+   "path": "grid.p10.per_box_group.r90.by_officers.c1.sim_fixed_read.n_cards",
+   "format": "int_comma",
+   "expected": "100,000",
+   "printed_as": "simulation over 100,000 cards",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.annual_net_of_operations.gated",
+   "source": "evalx/results/impact-model.json",
+   "path": "arms.gated.annual_usd_net_of_operations",
+   "format": "int_comma",
+   "expected": "87,215",
+   "printed_as": "+$87,215 a year for the chain",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.psa.value_per_rollover_best_corner",
+   "source": "evalx/results/impact-model.json",
+   "path": "psa_column.corners.best.psa_value_per_rollover_avoided_usd",
+   "format": "int_comma",
+   "expected": "7,200",
+   "printed_as": "worth $7,200 to PSA",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.storage_per_box_day.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.STORAGE_PER_BOX_DAY.base.value",
+   "format": "int",
+   "expected": "20",
+   "printed_as": "storage of $20 per box-day",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.yard_slot_marginal.base",
+   "source": "evalx/results/impact-model.json",
+   "path": "inputs.YARD_SLOT_MARGINAL_USD_PER_BOX_DAY.base.value",
+   "format": "int",
+   "expected": "5",
+   "printed_as": "yard slot worth $5 per box-day",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.sign.ci95_high",
+   "source": "evalx/results/impact-model.json",
+   "path": "sign_of_the_headline.roll_probability_ci95[1]",
+   "format": "round4",
+   "expected": "0.0509",
+   "printed_as": "between 0.0293 and 0.0509",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.model_version",
+   "source": "evalx/results/impact-model.json",
+   "path": "impact_model_version",
+   "format": "raw",
+   "expected": "2.3.0",
+   "printed_as": "impact model 2.3.0",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "external.bcn36A22.makespan",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "rows[7].makespan",
+   "format": "int",
+   "expected": "179",
+   "printed_as": "179 against 180",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "external.bcn36A22.bks",
+   "source": "evalx/results/external-benchmark.json",
+   "path": "rows[7].bks_makespan",
+   "format": "int",
+   "expected": "180",
+   "printed_as": "179 against 180",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.regex.mean_latency_s",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.regex.aggregate.mean_latency_s",
+   "format": "round1",
+   "expected": "0.0",
+   "printed_as": "Mean latency 0.0 s 37.6 s 40.3 s",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.hybrid.mean_latency_s",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "tiers.hybrid.aggregate.mean_latency_s",
+   "format": "round1",
+   "expected": "40.3",
+   "printed_as": "Mean latency 0.0 s 37.6 s 40.3 s",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.canonical",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.canonical.n",
+   "format": "int",
+   "expected": "64",
+   "printed_as": "64 canonical paraphrased advisories",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.benign_template",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.benign_template.n",
+   "format": "int",
+   "expected": "88",
+   "printed_as": "88 benign template variants",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.adversarial",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial.n",
+   "format": "int",
+   "expected": "48",
+   "printed_as": "48 adversarial items in six classes",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.prompt_injection",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial_by_class.prompt_injection.n",
+   "format": "int",
+   "expected": "12",
+   "printed_as": "prompt injection 12, fabrication bait 10",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.fabrication_bait",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial_by_class.fabrication_bait.n",
+   "format": "int",
+   "expected": "10",
+   "printed_as": "prompt injection 12, fabrication bait 10",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.contradiction_trap",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial_by_class.contradiction_trap.n",
+   "format": "int",
+   "expected": "8",
+   "printed_as": "contradiction trap 8, malformed 8, unicode trick 8, oversized 2",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.malformed",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial_by_class.malformed.n",
+   "format": "int",
+   "expected": "8",
+   "printed_as": "contradiction trap 8, malformed 8, unicode trick 8, oversized 2",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.unicode_trick",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial_by_class.unicode_trick.n",
+   "format": "int",
+   "expected": "8",
+   "printed_as": "contradiction trap 8, malformed 8, unicode trick 8, oversized 2",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.corpus.oversized",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial_by_class.oversized.n",
+   "format": "int",
+   "expected": "2",
+   "printed_as": "contradiction trap 8, malformed 8, unicode trick 8, oversized 2",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.hybrid.adversarial.false_accepts",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.hybrid.adversarial.false_accepts",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "4 false accepts there",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "ladder.regex.adversarial.false_accepts",
+   "source": "evalx/results/fusion-ladder.json",
+   "path": "subsets.regex.adversarial.false_accepts",
+   "format": "int",
+   "expected": "4",
+   "printed_as": "4 false accepts there",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "live100.n_completed",
+   "source": "evalx/results/sweep-live-n100.final.json",
+   "path": "n_completed",
+   "format": "int",
+   "expected": "100",
+   "printed_as": "Episodes escalated of 100 11",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "probes.writes_on_seeded",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "totals.writes_on_seeded_episodes",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 writes and 0 false flags",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "probes.control_false_flags",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "control.false_flags",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "0 false flags on 101 unseeded",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "probes.ablated_caught",
+   "source": "evalx/results/oversight-probes.json",
+   "path": "ablated.totals.caught",
+   "format": "int",
+   "expected": "0",
+   "printed_as": "caught 0 times",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.psa.breakeven_yard_slot_margin",
+   "source": "evalx/results/impact-model.json",
+   "path": "psa_column.breakeven.yard_slot_margin_for_zero_psa_expected_value_per_expedite_usd_per_box_day",
+   "format": "round2",
+   "printed_as": "$125.58 per box-day",
+   "expected": "125.58",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.operations_total.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.operations.TOTAL_USD_YEAR",
+   "format": "int_comma",
+   "printed_as": "$243,328",
+   "expected": "243,328",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  },
+  {
+   "id": "impact.annual_usd_millions.base.deck",
+   "source": "evalx/results/impact-model.json",
+   "path": "scenarios.base.annual_usd_millions",
+   "format": "round1",
+   "expected": "0.3",
+   "printed_as": "+$0.3M",
+   "quoted_in": [
+    "deliverables/deck/relay-deck.html"
+   ]
+  }
+ ]
+}

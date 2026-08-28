@@ -1,0 +1,206 @@
+{
+  "pack_schema_version": "1.0.0",
+  "pack_id": "PACK-CASCADE-01",
+  "label": "SYNTHETIC: all vessels, voyages, containers and terminal state are fictional; structurally faithful to DCSA Port Call 2.0 / JIT shapes",
+  "description": "THE CASCADE: a lightning stop suspends crane ops while the inbound MERLION EXPRESS slips to 22:30, breaking all three of its transhipment connections at once, CN-0001 AT_RISK (15 min), CN-0002 and CN-0003 INFEASIBLE, under a simultaneous rollover notice on the outbound and a HELD restow in the densest block. Three different action classes fire on one board (expedite / rebook / rebook) plus the permanent CN-ESC-01 escalation; a contradictory advisory rides the same window for the fusion lane.",
+  "expected_ref": "cascade.expected.json",
+  "advisory": {
+    "advisory_id": "ADV-SYN-CASCADE-001",
+    "received_at": "2026-08-25T20:41:00+08:00",
+    "source": "carrier_email:oceanlink-sg-ops-desk",
+    "free_text": "URGENT // MERLION EXP v.437-W, eta SIN slipping again, master says 25/08 2230 LT but our schedule desk still shows 2030?? pls treat 2230 as working figure. TEMASEK STAR V.0402E rotation may drop PKG next call, TBC. cutoff for 0402E t/s unchanged 26/08 0226 hrs we think. lightning at terminal side reported, adv if crane stop affects t/s. rgds",
+    "data_provenance": "SYNTHETIC",
+    "messiness_classes": [
+      "vessel_name_variant",
+      "voyage_code_confusion",
+      "partial_rotation",
+      "contradiction_vs_ais",
+      "ambiguous_cutoff"
+    ]
+  },
+  "events": [
+    {
+      "event_id": "EVT-CASC-000001",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:10:00+08:00",
+      "registered_at": "2026-08-25T14:10:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-0001",
+        "load_window_start": "2026-08-26T01:30:00+08:00",
+        "load_window_end": "2026-08-26T04:00:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CASC-000002",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:12:00+08:00",
+      "registered_at": "2026-08-25T14:12:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-0002",
+        "load_window_start": "2026-08-26T00:30:00+08:00",
+        "load_window_end": "2026-08-26T02:26:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CASC-000003",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:14:00+08:00",
+      "registered_at": "2026-08-25T14:14:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-0003",
+        "load_window_start": "2026-08-26T01:00:00+08:00",
+        "load_window_end": "2026-08-26T04:00:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CASC-000004",
+      "event_type": "weather_alert",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T19:40:00+08:00",
+      "registered_at": "2026-08-25T19:40:06+08:00",
+      "source_system": "WEATHER",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "alert_type": "LIGHTNING_STOP",
+        "station_id": "S117",
+        "value": 1.0,
+        "unit": "strike_within_km",
+        "threshold": 5.0,
+        "effective_from": "2026-08-25T19:40:00+08:00",
+        "effective_until": "2026-08-25T20:25:00+08:00",
+        "operational_impact": "CRANE_OPS_SUSPENDED"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CASC-000005",
+      "event_type": "vessel_eta_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T20:35:00+08:00",
+      "registered_at": "2026-08-25T20:35:04+08:00",
+      "source_system": "CARRIER_EDI",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "previous_eta": "2026-08-25T20:30:00+08:00",
+        "new_eta": "2026-08-25T22:30:00+08:00",
+        "eta_source": "CARRIER_SCHEDULE",
+        "drift_minutes": 120.0,
+        "position": null,
+        "berth": "T3-B12",
+        "affected_connections": [
+          "CN-0001",
+          "CN-0002",
+          "CN-0003"
+        ]
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CASC-000006",
+      "event_type": "carrier_schedule_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T20:50:00+08:00",
+      "registered_at": "2026-08-25T20:50:07+08:00",
+      "source_system": "CARRIER_EDI",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "carrier_code": "OCLK",
+        "service_code": "AEX1",
+        "voyage": "0402E",
+        "change_type": "ROLLOVER_NOTICE",
+        "new_eta": null,
+        "new_etd": null,
+        "affected_port": "SGSIN",
+        "effective_at": "2026-08-25T20:50:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-CASC-000007",
+      "event_type": "yard_move",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T21:00:00+08:00",
+      "registered_at": "2026-08-25T21:00:09+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "container_id": null,
+        "box_group_id": "BG-0003",
+        "move_type": "RESTOW",
+        "from_location": {
+          "block": "Y15",
+          "bay": 21,
+          "row": 5,
+          "tier": 3
+        },
+        "to_location": {
+          "block": "Y15",
+          "bay": 20,
+          "row": 1,
+          "tier": 1
+        },
+        "equipment_id": "ARMG-Y15-01",
+        "started_at": "2026-08-25T21:00:00+08:00",
+        "completed_at": null,
+        "status": "HELD"
+      },
+      "label": "SYNTHETIC"
+    }
+  ]
+}

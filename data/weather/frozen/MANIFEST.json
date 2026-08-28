@@ -1,0 +1,33 @@
+{
+ "what": "A frozen snapshot of the live NEA weather recording, committed so the weather integration is reproducible in a fresh clone. The recorder keeps writing date-named files under data/weather/ that stay gitignored because they grow; this file does not.",
+ "source": "data.gov.sg real-time APIs (NEA), Singapore Open Data Licence v1.0",
+ "licence": "Singapore Open Data Licence v1.0",
+ "station": "S117",
+ "station_name": "Banyan Road, the station nearest the Tuas terminals",
+ "provenance": "RECORDED",
+ "files": [
+  {
+   "path": "data/weather/frozen/weather-frozen.jsonl",
+   "sha256": "9a9e572a20315806507a7e3b7d1f4c0e5d7f0e88ab127c1ea79868691ffb6bbf",
+   "bytes": 3190567,
+   "polls": 144
+  }
+ ],
+ "window": {
+  "first_poll": "2026-08-24T17:54:04.792592+00:00",
+  "last_poll": "2026-08-25T06:52:00.924820+00:00"
+ },
+ "assessments": 144,
+ "conditions": {
+  "NO_EFFECT": 144
+ },
+ "wind_knots": {
+  "max": 9.5,
+  "min": 4.7
+ },
+ "transfer_time_multipliers": [
+  1.0
+ ],
+ "honest_finding": "Singapore was calm across the whole recording, so the multiplier is 1.0 on every observation and no margin moves. That is what the integration reports. The firing path (lightning stop, high wind) is exercised by tests with a supplied observation, and the thresholds are our stated assumption rather than a PSA operating policy.",
+ "re_freeze": "cat data/weather/weather-*.jsonl > data/weather/frozen/weather-frozen.jsonl && .venv/bin/python data/weather/frozen/rebuild_manifest.py --write"
+}

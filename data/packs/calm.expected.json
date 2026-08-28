@@ -1,0 +1,41 @@
+{
+  "expected_schema_version": "1.0.0",
+  "pack_id": "PACK-CALM-01",
+  "_note": "Expected END state after replaying calm.json through twin.ingest_event (fresh world overlay). Margins are exact per the CONTRACT §b1.2 deterministic definition; verified by data/tests/test_packs.py.",
+  "connections": {
+    "CN-0001": {
+      "verdict": "FEASIBLE",
+      "margin_minutes": 390.0,
+      "completeness_score": 1.0
+    },
+    "CN-0002": {
+      "verdict": "FEASIBLE",
+      "margin_minutes": 161.0,
+      "completeness_score": 1.0
+    },
+    "CN-0003": {
+      "verdict": "FEASIBLE",
+      "margin_minutes": 75.0,
+      "completeness_score": 1.0
+    },
+    "CN-ESC-01": {
+      "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "margin_minutes": null,
+      "completeness_score": 0.4
+    }
+  },
+  "must_escalate": [
+    "CN-ESC-01"
+  ],
+  "action_classes": {
+    "CN-0001": null,
+    "CN-0002": null,
+    "CN-0003": null,
+    "CN-ESC-01": "escalation_summary"
+  },
+  "baseline_rules_only": {
+    "component": "baseline.rules_only",
+    "flags": [],
+    "basis": "the only connection with structured eta + cut-off (CN-0002 via EVT-CALM-000001/2/3) ends at margin 131 min > 60, nothing to flag"
+  }
+}

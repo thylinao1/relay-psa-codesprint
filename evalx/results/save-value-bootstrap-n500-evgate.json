@@ -1,0 +1,79 @@
+{
+ "bootstrap_version": "1.0.0",
+ "label": "SIMULATOR-INTERNAL: the interval on a mean of simulator-internal values",
+ "first_sentence": "The headline probability of evalx/results/save-value-audit-n500-evgate.json is the mean of 29 per-save values on its held_out basis. This file resamples those values 10,000 times with replacement at seed 20260826 and publishes the interval, so a consumer that decides a sign from the mean can state how much of the resample distribution disagrees with it.",
+ "source": {
+  "audit": "evalx/results/save-value-audit-n500-evgate.json",
+  "audit_sha256": "7aa1064c4f1e2e1cc9b5c1a251a26326e23858e1af6e242c50d2b695c2a3bebb",
+  "audit_version": "1.1.0",
+  "path": "per_save[].held_out.p_roll_avoided",
+  "ev_gate_enabled": true
+ },
+ "headline": {
+  "avoided_per_booked_save": 0.0397,
+  "avoided_per_booked_save_ci95": [
+   0.0293,
+   0.0509
+  ],
+  "over_saves_booked": 29,
+  "basis": "held_out"
+ },
+ "bootstrap": {
+  "basis": "held_out",
+  "n_saves": 29,
+  "mean": 0.0397,
+  "resamples": 10000,
+  "seed": 20260826,
+  "method": "seeded non-parametric bootstrap of the mean: `resamples` draws of `n_saves` per-save probabilities with replacement, the mean of each",
+  "ci95": [
+   0.0293,
+   0.0509
+  ],
+  "quantiles": {
+   "q02": 0.0293,
+   "q05": 0.0307,
+   "q25": 0.0359,
+   "q50": 0.0394,
+   "q75": 0.0434,
+   "q95": 0.0491,
+   "q97": 0.0509
+  },
+  "per_save_values": [
+   0.0667,
+   0.05,
+   0.0333,
+   0.0417,
+   0.0083,
+   0.0,
+   0.0167,
+   0.0167,
+   0.0583,
+   0.025,
+   0.05,
+   0.0,
+   0.0083,
+   0.0167,
+   0.0333,
+   0.0917,
+   0.05,
+   0.0667,
+   0.1167,
+   0.0083,
+   0.0083,
+   0.0333,
+   0.0417,
+   0.1,
+   0.0417,
+   0.075,
+   0.025,
+   0.025,
+   0.0417
+  ],
+  "what_it_bounds": "the mean is over a handful of saves, so the sign of anything computed from it is a claim about this interval and not about the point estimate; a consumer that needs the sign asks what share of these resamples sits on the wrong side of its own break-even"
+ },
+ "honest_limits": [
+  "A bootstrap of 29 values resamples 29 values; it states the sampling spread of this mean and cannot repair a small sample.",
+  "The values are simulator-internal probabilities from yard-transfer variance only, so the interval inherits every limit the audit states on its own first line; a late vessel is not in it at either end.",
+  "The interval is on the mean of the per-save probabilities. It says nothing about whether the population of saves is the right one, which is what the audit's held-out block addresses separately."
+ ]
+}

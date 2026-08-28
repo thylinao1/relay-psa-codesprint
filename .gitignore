@@ -1,0 +1,44 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+build/
+.DS_Store
+*.log
+data/ais/*.jsonl
+data/ais/*.pid
+# The raw AIS recording above carries MMSI, IMO, call sign and ship name on every message
+# and stays out of the tree. What is committed is data/ais/frozen/MANIFEST.json (sha256 of
+# the raw files) and data/ais/derived/*.jsonl (pseudonymised rows). Neither is matched by
+# the pattern above; this comment records that the split is deliberate.
+stubs/fault_state.json
+stubs/approval_state.json
+stubs/approval_state.json.lock
+stubs/policy_counters.json
+stubs/world_state.json
+stubs/fault_state.json
+agentcore/skeleton.db
+evalx/out/
+evalx/sweep_ckpt/*.json
+data/external/
+data/weather/*.jsonl
+data/weather/*.pid
+# The live capture above keeps growing, so it cannot be a fixture. The FROZEN snapshot
+# is committed on purpose: without it the weather integration returns UNAVAILABLE in a
+# fresh clone and every claim about it is unverifiable. Pinned by
+# data/weather/frozen/MANIFEST.json.
+!data/weather/frozen/
+evalx/out/
+
+# ledger head anchors (written beside every chain)
+*.jsonl.head
+# ...but the frozen fixture chain ships WITH its anchor, or it cannot verify
+!stubs/fixtures/*.jsonl.head
+console/data/*.head
+# cross-episode shift memory: runtime state, never committed
+agentcore/shift_memory.json
+.mutation-probes.lock

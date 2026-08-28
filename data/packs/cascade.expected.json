@@ -1,0 +1,103 @@
+{
+ "_note": "Expected END state after replaying cascade.json through twin.ingest_event (fresh world overlay). One 120-minute inbound slip breaks three connections three different ways: recoverable internally (expedite), commercially (rebook x2), and the standing evidence escalation. Verified by data/tests/test_packs.py.",
+ "_note_after_agent": "The board AFTER the agent's three gated actions, and the distinction matters because it looks like a contradiction until it is read carefully. The CP-SAT allocation reports saves=['CN-0001','CN-0002','CN-0003'], while the board still shows CN-0002 and CN-0003 INFEASIBLE. Both are correct. The expedite on CN-0001 is an INTERNAL action the terminal controls, so it lands and the margin moves 15 -> 75 and the connection becomes FEASIBLE. The other two are REBOOKING PROPOSALS to a carrier: the box is allocated to the next sailing, which is what the solver counts as saved, but the margin against the ORIGINAL cut-off cannot move until the carrier grants, and RELAY refuses to assume that (CONTRACT b.2 tool 9: a request is not a grant). So the honest reading is one connection recovered outright and two with proposals pending carrier, which is exactly what an operator would be told.",
+ "action_classes": {
+  "CN-0001": "set_transfer_priority",
+  "CN-0002": "propose_rebooking",
+  "CN-0003": "propose_rebooking",
+  "CN-ESC-01": "escalation_summary"
+ },
+ "baseline_rules_only": {
+  "basis": "structured eta + cut-off exist for all three connections, so the rules lane sees this cascade too, the ablation gap is scenario_advisory_only.json, not this pack",
+  "component": "baseline.rules_only",
+  "dropped_advisory_reconciled_events": 0,
+  "first_signal_ts": "2026-08-25T20:35:04+08:00",
+  "flags": [
+   "CN-0001",
+   "CN-0002",
+   "CN-0003"
+  ]
+ },
+ "connections": {
+  "CN-0001": {
+   "completeness_score": 1.0,
+   "margin_minutes": 15.0,
+   "verdict": "AT_RISK"
+  },
+  "CN-0002": {
+   "completeness_score": 1.0,
+   "margin_minutes": -79.0,
+   "verdict": "INFEASIBLE"
+  },
+  "CN-0003": {
+   "completeness_score": 1.0,
+   "margin_minutes": -135.0,
+   "verdict": "INFEASIBLE"
+  },
+  "CN-ESC-01": {
+   "completeness_score": 0.4,
+   "margin_minutes": null,
+   "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE"
+  }
+ },
+ "connections_after_agent": {
+  "CN-0001": {
+   "completeness_score": 1.0,
+   "margin_minutes": 75.0,
+   "verdict": "FEASIBLE"
+  },
+  "CN-0002": {
+   "completeness_score": 1.0,
+   "margin_minutes": -79.0,
+   "verdict": "INFEASIBLE"
+  },
+  "CN-0003": {
+   "completeness_score": 1.0,
+   "margin_minutes": -135.0,
+   "verdict": "INFEASIBLE"
+  }
+ },
+ "expected_schema_version": "1.0.0",
+ "graph_outcome": {
+  "_note": "The joint-allocation case. One 120-minute inbound slip breaks three connections three different ways, they compete for one shift budget, and CP-SAT allocates one action to each in a single episode rather than the agent taking the worst connection and stopping. The action ORDER is the solver's deterministic rank, not margin order, which is why the expedite runs first.",
+  "actions_executed": [
+   "portnet.set_transfer_priority",
+   "portnet.propose_rebooking",
+   "portnet.propose_rebooking"
+  ],
+  "no_risk": false,
+  "outcome": "COMPLETED",
+  "required_trace_events": [
+   "tool_call",
+   "policy_gate",
+   "approval_requested",
+   "approval_granted",
+   "action_executed"
+  ],
+  "writes_executed": 3
+ },
+ "must_escalate": [
+  "CN-ESC-01"
+ ],
+ "option_checks": {
+  "CN-0001": {
+   "expedite_feasible_after": true,
+   "expedite_margin_after_minutes": 75.0,
+   "top_feasible_option": "OPT-CN-0001-EXPEDITE"
+  },
+  "CN-0002": {
+   "expedite_feasible_after": false,
+   "expedite_margin_after_minutes": -19.0,
+   "rebook_margin_after_minutes": 855.0,
+   "top_feasible_option": "OPT-CN-0002-REBOOK"
+  },
+  "CN-0003": {
+   "_note": "Y15 density 86% >= 85% threshold shaves the expedite gain to 45 min (CONTRACT \u00a7h density penalty)",
+   "expedite_feasible_after": false,
+   "expedite_margin_after_minutes": -90.0,
+   "rebook_margin_after_minutes": 705.0,
+   "top_feasible_option": "OPT-CN-0003-REBOOK"
+  }
+ },
+ "pack_id": "PACK-CASCADE-01"
+}

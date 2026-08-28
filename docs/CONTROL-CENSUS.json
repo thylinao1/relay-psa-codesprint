@@ -1,0 +1,608 @@
+{
+ "census_version": "2.0.0",
+ "first_sentence": "The denominator is every control the entry's own deliverables name, parsed from four documents a judge already holds. A control in this repository's code is probed or it is listed by name as unprobed with the reason; only a control that lives outside the code is out of scope, and the page says where it lives. Nothing is dropped, so the count cannot be improved by choosing less, and no ratio is published.",
+ "sources": {
+  "security_review": "docs/SECURITY-REVIEW.md",
+  "governed_edit": "docs/GOVERNED-EDIT-PATTERN.md",
+  "scale_validity": "docs/SCALE-AND-VALIDITY.md",
+  "contract": "docs/CONTRACT.md"
+ },
+ "controls": 56,
+ "probed": 48,
+ "no_probe": 5,
+ "out_of_scope": 3,
+ "probes_referenced": 51,
+ "distinct_mutants_referenced": 51,
+ "probes_without_a_document_row": [
+  "claims are matched without whitespace normalisation",
+  "console claims a recovery unconditionally",
+  "false_accept keyed back to the corpus annotation",
+  "injection resistance hides its real denominator",
+  "retired values are no longer scanned for"
+ ],
+ "by_status": {
+  "PROBED": [
+   "SEC:S-1",
+   "SEC:S-2",
+   "SEC:S-2b",
+   "SEC:S-3",
+   "SEC:S-4",
+   "SEC:S-5",
+   "SEC:S-6",
+   "SEC:S-7",
+   "SEC:S-8",
+   "SEC:S-9",
+   "SEC:S-11",
+   "SEC:S-12",
+   "SEC:S-13",
+   "SEC:S-16",
+   "SEC:S-17",
+   "SEC:S-18",
+   "SEC:S-19",
+   "SEC:S-24",
+   "SEC:S-23",
+   "SEC:S-20",
+   "SEC:S-21",
+   "SEC:S-22",
+   "GE:check-1",
+   "GE:check-2",
+   "GE:check-3",
+   "GE:check-4",
+   "GE:check-5",
+   "GE:check-6",
+   "INV:1",
+   "INV:2",
+   "INV:3",
+   "INV:5",
+   "INV:6",
+   "INV:7",
+   "POLICY:row-3",
+   "POLICY:row-4",
+   "POLICY:row-5",
+   "POLICY:row-6",
+   "POLICY:row-7",
+   "POLICY:row-8",
+   "POLICY:row-10",
+   "POLICY:row-11",
+   "POLICY:row-12",
+   "GATE:step-1",
+   "GATE:step-2",
+   "GATE:step-3",
+   "GATE:step-4",
+   "CONTRACT:tool-7-excluded"
+  ],
+  "NO_PROBE": [
+   "SEC:S-15",
+   "INV:4",
+   "POLICY:row-1",
+   "POLICY:row-2",
+   "POLICY:row-9"
+  ],
+  "OUT_OF_SCOPE": [
+   "SEC:S-0",
+   "SEC:S-10",
+   "SEC:S-14"
+  ]
+ },
+ "mapping_entries_with_no_document_row": [],
+ "entries": [
+  {
+   "id": "SEC:S-0",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Information disclosure",
+   "status": "OUT_OF_SCOPE",
+   "reason": "lives in .gitignore (the `.env` rules) and in the absence of a key from every tracked file; verified by `git check-ignore` and the grep in the review, not by a line of Python"
+  },
+  {
+   "id": "SEC:S-1",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Elevation of privilege / Tampering",
+   "status": "PROBED",
+   "probes": [
+    "write gate accepts any credential",
+    "degraded mode stops refusing writes"
+   ]
+  },
+  {
+   "id": "SEC:S-2",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Spoofing / Replay",
+   "status": "PROBED",
+   "probes": [
+    "approval token binding ignored",
+    "card must be APPROVED check removed",
+    "approval token expiry ignored"
+   ]
+  },
+  {
+   "id": "SEC:S-2b",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Information disclosure",
+   "status": "PROBED",
+   "probes": [
+    "token sanitiser passes token keys through"
+   ]
+  },
+  {
+   "id": "SEC:S-3",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Tampering (cross-site request forgery) and DNS rebinding",
+   "status": "PROBED",
+   "probes": [
+    "Host header check disabled",
+    "Origin check disabled",
+    "Sec-Fetch-Site check disabled",
+    "non-JSON body accepted"
+   ]
+  },
+  {
+   "id": "SEC:S-4",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Elevation of privilege",
+   "status": "PROBED",
+   "probes": [
+    "degraded mode stops refusing writes"
+   ]
+  },
+  {
+   "id": "SEC:S-5",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Tampering / Information disclosure",
+   "status": "PROBED",
+   "probes": [
+    "static serving leaves the static root"
+   ]
+  },
+  {
+   "id": "SEC:S-6",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Tampering / Denial of service",
+   "status": "PROBED",
+   "probes": [
+    "operator text fields unbounded",
+    "decided_by accepts any string",
+    "request body size cap ignored"
+   ]
+  },
+  {
+   "id": "SEC:S-7",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Information disclosure",
+   "status": "PROBED",
+   "probes": [
+    "internal errors echo exception text"
+   ]
+  },
+  {
+   "id": "SEC:S-8",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Information disclosure",
+   "status": "PROBED",
+   "probes": [
+    "frontier tier on without an env key"
+   ]
+  },
+  {
+   "id": "SEC:S-9",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Replay (residual of S-2)",
+   "status": "PROBED",
+   "probes": [
+    "token single-use ignored"
+   ]
+  },
+  {
+   "id": "SEC:S-10",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Information disclosure",
+   "status": "OUT_OF_SCOPE",
+   "reason": "lives in .gitignore (`stubs/approval_state.json`, `stubs/world_state.json`, `agentcore/skeleton.db`); verified by `git check-ignore`, not by a line of Python"
+  },
+  {
+   "id": "SEC:S-11",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Spoofing",
+   "status": "PROBED",
+   "probes": [
+    "console binds every interface",
+    "decided_by accepts any string"
+   ]
+  },
+  {
+   "id": "SEC:S-12",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Repudiation",
+   "status": "PROBED",
+   "probes": [
+    "chain walk skipped in verify",
+    "replay accepts a broken chain",
+    "ledger head anchor ignored"
+   ]
+  },
+  {
+   "id": "SEC:S-13",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Denial of service",
+   "status": "PROBED",
+   "probes": [
+    "request body size cap ignored"
+   ]
+  },
+  {
+   "id": "SEC:S-14",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Information disclosure",
+   "status": "OUT_OF_SCOPE",
+   "reason": "lives in `.env.example`, a commented example file, and agrees with `agentcore/tiers.py` by grep; there is no line of Python to switch off"
+  },
+  {
+   "id": "SEC:S-15",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Tampering",
+   "status": "NO_PROBE",
+   "reason": "a design choice (expiry is compared to the world clock for deterministic replay), not a refusal; the expiry comparison itself is probed under S-2 (`approval token expiry ignored`), and switching the clock source would only make fixtures time-bomb"
+  },
+  {
+   "id": "SEC:S-16",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Tampering / Elevation of privilege (prompt injection through the untrusted advisory channel, the CSA addendum's headline agentic threat)",
+   "status": "PROBED",
+   "probes": [
+    "fact allow-list stops rejecting extra keys",
+    "completeness gate passes everything"
+   ]
+  },
+  {
+   "id": "SEC:S-17",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Elevation of privilege (approver edit path)",
+   "status": "PROBED",
+   "probes": [
+    "edited card keeps the original argument digest",
+    "edited card keeps the original tier instead of re-gating"
+   ]
+  },
+  {
+   "id": "SEC:S-18",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Repudiation / misrepresentation (the demo asserts a control it does not exercise)",
+   "status": "PROBED",
+   "probes": [
+    "deny window never passes"
+   ]
+  },
+  {
+   "id": "SEC:S-19",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Tampering (a corrupted recommendation reaching a human as a decision, or the world as a write)",
+   "status": "PROBED",
+   "probes": [
+    "binding-constraint validator returns clean",
+    "action scope validator returns clean",
+    "restow argument checks return clean"
+   ]
+  },
+  {
+   "id": "SEC:S-24",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Repudiation (an at-risk connection leaving human oversight without a record)",
+   "status": "PROBED",
+   "probes": [
+    "escalation stops naming unsaved connections"
+   ]
+  },
+  {
+   "id": "SEC:S-23",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "Tampering / Elevation of privilege (a safety veto that ordinary text defeats)",
+   "status": "PROBED",
+   "probes": [
+    "grounding stops checking the role of a value",
+    "grounding checks the role but not where the value is"
+   ]
+  },
+  {
+   "id": "SEC:S-20",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "14/14 and 12/12 held. Four were found by red-teaming our own fixes: an agent could approve its own card (the rule lived at the HTTP perimeter, which a compromised agent bypasses), one token authorised unlimited executions, a concurrent race defeated the single-use fix (12 threads, 5 writes from one approval), and re-registering a decided card erased a deny-by-default and re-minted its token",
+   "status": "PROBED",
+   "probes": [
+    "approver allowlist accepts any principal",
+    "token single-use ignored",
+    "card must be APPROVED check removed"
+   ]
+  },
+  {
+   "id": "SEC:S-21",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "11 pass. A hash chain cannot detect TRUNCATION, and a reviewer removed the last four events with `verify()` still returning ok. Every append now writes a MAC'd head anchor; a shortened chain reports how many events are missing. Both peppers are source literals, so this raises the bar from deleting lines to forging a MAC and a root adversary still wins, which is why the word is tamper-evident",
+   "status": "PROBED",
+   "probes": [
+    "ledger head anchor ignored",
+    "ledger head-anchor MAC not checked"
+   ]
+  },
+  {
+   "id": "SEC:S-22",
+   "source_doc": "docs/SECURITY-REVIEW.md",
+   "statement": "passes. Approval state uses an exclusive flock across every read-modify-write with atomic rename; the lock sentinel lives outside the checkout, because `reset()` deleting it broke mutual exclusion for a concurrent holder. Ledger appends serialise in both implementations across threads and, since 2026-08-26, across processes: the thread lock could not see the console server and `agentcore/replay.py --keep-state` writing one console ledger from two processes, which forks the chain. Both implementations now hold an exclusive flock, keyed by the ledger path and kept outside the checkout, across the tip read, the event write and the head-anchor rewrite, and the stub re-validates its chain-tip cache under that lock. The process case is pinned by `agentcore/tests/test_ledger_append_shared.py` and `governance/tests/test_ledger_shared.py` (`python -m pytest agentcore/tests/test_ledger_append_shared.py governance/tests/test_ledger_shared.py -q`): each starts two OS processes on a barrier that append 300 events apiece to one file, and with the file lock removed both fail 5 of 5 runs with `event 1: prev_hash mismatch` on a 600-event file",
+   "status": "PROBED",
+   "probes": [
+    "approval store lock not taken",
+    "ledger append lock not taken (stub)",
+    "ledger append lock not taken (governance)",
+    "token single-use ignored",
+    "shift budget can be double-charged"
+   ]
+  },
+  {
+   "id": "GE:check-1",
+   "source_doc": "docs/GOVERNED-EDIT-PATTERN.md",
+   "statement": "shape: the edit is not `{option_id, params}`, or carries any other key",
+   "status": "PROBED",
+   "probes": [
+    "edit shape check disabled"
+   ]
+  },
+  {
+   "id": "GE:check-2",
+   "source_doc": "docs/GOVERNED-EDIT-PATTERN.md",
+   "statement": "enumerated: `option_id` is not one the planner enumerated for this subject",
+   "status": "PROBED",
+   "probes": [
+    "edit accepts an option the planner never enumerated"
+   ]
+  },
+  {
+   "id": "GE:check-3",
+   "source_doc": "docs/GOVERNED-EDIT-PATTERN.md",
+   "statement": "parameters: an edited parameter is not on the declared editable list, its value is outside its enumeration, or it is meaningless for this action class",
+   "status": "PROBED",
+   "probes": [
+    "edit accepts parameters outside the editable list"
+   ]
+  },
+  {
+   "id": "GE:check-4",
+   "source_doc": "docs/GOVERNED-EDIT-PATTERN.md",
+   "statement": "re-gate: the policy lookup on the EDITED action class returns the auto-deny row, or returns a row that requires a written justification and none was given",
+   "status": "PROBED",
+   "probes": [
+    "row-10 auto-deny replaced by a permissive row"
+   ]
+  },
+  {
+   "id": "GE:check-5",
+   "source_doc": "docs/GOVERNED-EDIT-PATTERN.md",
+   "statement": "dissent: the simulator disagrees with the option it is re-scoring",
+   "status": "PROBED",
+   "probes": [
+    "edit dissent check always agrees"
+   ]
+  },
+  {
+   "id": "GE:check-6",
+   "source_doc": "docs/GOVERNED-EDIT-PATTERN.md",
+   "statement": "re-bind: (not a refusal) the new card's argument digest covers the edited arguments, so the minted token cannot be replayed against the original ones",
+   "status": "PROBED",
+   "probes": [
+    "approval token binding ignored"
+   ]
+  },
+  {
+   "id": "INV:1",
+   "source_doc": "docs/SCALE-AND-VALIDITY.md",
+   "statement": "no write without an `approval_granted` event",
+   "status": "PROBED",
+   "probes": [
+    "write gate accepts any credential"
+   ]
+  },
+  {
+   "id": "INV:2",
+   "source_doc": "docs/SCALE-AND-VALIDITY.md",
+   "statement": "no write without a `policy_gate` event",
+   "status": "PROBED",
+   "probes": [
+    "row-10 auto-deny replaced by a permissive row"
+   ]
+  },
+  {
+   "id": "INV:3",
+   "source_doc": "docs/SCALE-AND-VALIDITY.md",
+   "statement": "no write after `degraded_mode_entered`",
+   "status": "PROBED",
+   "probes": [
+    "degraded mode stops refusing writes"
+   ]
+  },
+  {
+   "id": "INV:4",
+   "source_doc": "docs/SCALE-AND-VALIDITY.md",
+   "statement": "the episode reaches `COMPLETED` or `ESCALATED`, never an unresolved interrupt",
+   "status": "NO_PROBE",
+   "reason": "an unresolved interrupt is a property of the graph's terminal routing across every path; no single line switches it off, and a probe that removed one route would test that route, not the invariant"
+  },
+  {
+   "id": "INV:5",
+   "source_doc": "docs/SCALE-AND-VALIDITY.md",
+   "statement": "every escalation carries a written summary",
+   "status": "PROBED",
+   "probes": [
+    "escalation ships without a written summary"
+   ]
+  },
+  {
+   "id": "INV:6",
+   "source_doc": "docs/SCALE-AND-VALIDITY.md",
+   "statement": "`step_count` never exceeds `MAX_STEPS_PER_EPISODE`",
+   "status": "PROBED",
+   "probes": [
+    "loop-breaker never trips",
+    "loop-breaker ceiling stops ratcheting"
+   ]
+  },
+  {
+   "id": "INV:7",
+   "source_doc": "docs/SCALE-AND-VALIDITY.md",
+   "statement": "the hash chain verifies.",
+   "status": "PROBED",
+   "probes": [
+    "chain walk skipped in verify",
+    "replay accepts a broken chain",
+    "ledger head anchor ignored",
+    "ledger head-anchor MAC not checked"
+   ]
+  },
+  {
+   "id": "POLICY:row-1",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Read/query terminal state",
+   "status": "NO_PROBE",
+   "reason": "an open read class: the row declares no refusal, so there is nothing to switch off; its rate limit is the CSA 3.1 mechanism probed under GATE:step-4"
+  },
+  {
+   "id": "POLICY:row-2",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Risk annotation + internal ops notification",
+   "status": "NO_PROBE",
+   "reason": "an annotation class with no write tool: the row declares no refusal, so there is nothing to switch off"
+  },
+  {
+   "id": "POLICY:row-3",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Expedite yard transfer (STANDARD\u2194EXPEDITE)",
+   "status": "PROBED",
+   "probes": [
+    "write gate accepts any credential",
+    "approval token binding ignored"
+   ]
+  },
+  {
+   "id": "POLICY:row-4",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "CRITICAL transfer priority (preempts other cargo)",
+   "status": "PROBED",
+   "probes": [
+    "approval token binding ignored"
+   ]
+  },
+  {
+   "id": "POLICY:row-5",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Cut-off extension request to carrier",
+   "status": "PROBED",
+   "probes": [
+    "written justification no longer required"
+   ]
+  },
+  {
+   "id": "POLICY:row-6",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Rebooking proposal (rollover)",
+   "status": "PROBED",
+   "probes": [
+    "write gate accepts any credential"
+   ]
+  },
+  {
+   "id": "POLICY:row-7",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Restow order (physical crane moves)",
+   "status": "PROBED",
+   "probes": [
+    "restow argument checks return clean"
+   ]
+  },
+  {
+   "id": "POLICY:row-8",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Escalation summary to duty supervisor",
+   "status": "PROBED",
+   "probes": [
+    "escalation ships without a written summary"
+   ]
+  },
+  {
+   "id": "POLICY:row-9",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Berth / ABT change",
+   "status": "NO_PROBE",
+   "reason": "no write tool exists for berth or ABT changes by design (SPEC NG-2): the absence of a tool is not a line that can be switched off"
+  },
+  {
+   "id": "POLICY:row-10",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Any action class not in this table",
+   "status": "PROBED",
+   "probes": [
+    "row-10 auto-deny replaced by a permissive row"
+   ]
+  },
+  {
+   "id": "POLICY:row-11",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Twin state ingest (fusion output / stream replay)",
+   "status": "PROBED",
+   "probes": [
+    "twin ingest accepts any credential"
+   ]
+  },
+  {
+   "id": "POLICY:row-12",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Any action class in rows 3 to 7 whose `expected_value_usd` is below its `cost_usd`",
+   "status": "PROBED",
+   "probes": [
+    "the expected-value gate always says yes"
+   ]
+  },
+  {
+   "id": "GATE:step-1",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Degraded-mode denial (server-side)",
+   "status": "PROBED",
+   "probes": [
+    "degraded mode stops refusing writes"
+   ]
+  },
+  {
+   "id": "GATE:step-2",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Credential scope (CSA 2.6)",
+   "status": "PROBED",
+   "probes": [
+    "write gate accepts any credential"
+   ]
+  },
+  {
+   "id": "GATE:step-3",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Approval token, verified against the APPROVAL SERVER (\u00a7b4)",
+   "status": "PROBED",
+   "probes": [
+    "approval token binding ignored",
+    "approval token expiry ignored",
+    "card must be APPROVED check removed"
+   ]
+  },
+  {
+   "id": "GATE:step-4",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "Rate limit (CSA 3.1, enforced by policy \u00a7b6)",
+   "status": "PROBED",
+   "probes": [
+    "rate limit never exhausted"
+   ]
+  },
+  {
+   "id": "CONTRACT:tool-7-excluded",
+   "source_doc": "docs/CONTRACT.md",
+   "statement": "twin.replan_terminal `excluded`: the pairs are removed from the candidate set before the model is built",
+   "status": "PROBED",
+   "probes": [
+    "refusals not handed to the solver as exclusions"
+   ]
+  }
+ ]
+}

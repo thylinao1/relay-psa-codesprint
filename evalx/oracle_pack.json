@@ -1,0 +1,75 @@
+{
+  "oracle_version": "1.0.0",
+  "label": "SYNTHETIC: hand-computed from the FROZEN fixtures in stubs/fixtures/; every number's arithmetic is shown in evalx/oracle_pack.md",
+  "_rule": "The harness MUST reproduce every number here within the stated tolerance BEFORE any sweep number is quotable. evalx/sweep_local.py enforces this gate.",
+  "tolerance": {
+    "margin_minutes": 0.1,
+    "minutes": 0.1,
+    "score": 1e-06,
+    "rate": 1e-09
+  },
+  "hero_pack": {
+    "pack": "scenario_pack_hero.json",
+    "connections": {
+      "CN-0001": {
+        "verdict": "FEASIBLE",
+        "margin_minutes": 390.0,
+        "completeness_score": 1.0
+      },
+      "CN-0002": {
+        "verdict": "AT_RISK",
+        "margin_minutes": 41.0,
+        "completeness_score": 1.0
+      },
+      "CN-0003": {
+        "verdict": "INFEASIBLE",
+        "margin_minutes": -210.0,
+        "completeness_score": 1.0
+      },
+      "CN-ESC-01": {
+        "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+        "margin_minutes": null,
+        "completeness_score": 0.4
+      }
+    },
+    "post_expedite_margin_CN-0002": 101.0,
+    "fusion_completeness_score": 0.87,
+    "agent_first_flag_ts": "2026-08-25T19:05:00+08:00",
+    "baseline_first_flag_ts": "2026-08-25T21:10:00+08:00",
+    "baseline_flags": [
+      "CN-0002"
+    ],
+    "baseline_flag_margin_minutes": 41.0,
+    "baseline_dropped_advisory_reconciled_events": 1
+  },
+  "advisory_only_pack": {
+    "pack": "scenario_advisory_only.json",
+    "fusion_completeness_score": 0.52,
+    "agent_lane": {
+      "escalates": true,
+      "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "twin_completeness_score": 0.4,
+      "missing_fields": [
+        "discharge_estimate",
+        "eta",
+        "yard_location"
+      ]
+    },
+    "baseline_flags": [],
+    "carrier_notice_flags": []
+  },
+  "scorecard_expected": {
+    "detection_lead_minutes_vs_rules_only": 125.0,
+    "detection_lead_minutes_vs_carrier_notice": 125.0,
+    "at_risk_connections_across_packs": 2,
+    "connections_caught_agent": 2,
+    "connections_caught_rules_only": 1,
+    "connections_caught_carrier_notice": 1,
+    "connections_saved_by_agent_write": 1,
+    "expected_escalations": 1,
+    "false_escalations": 0,
+    "false_escalation_rate": 0.0,
+    "tokens_measured_per_hero_episode": 0,
+    "cost_usd_imputed_per_hero_episode": 0.0
+  }
+}

@@ -1,0 +1,1000 @@
+{
+ "mutation_probes_version": "3.0.0",
+ "label": "SYNTHETIC",
+ "verdict_rule": "CAUGHT only when the covering tests were green on the clean tree and, with the control off, pytest exited 1 with a named failing test that lives in a covering file, passed at baseline, and is one of the killers the probe named in advance. A kill made only by a test the probe did not name is INVALID (killed by an unexpected watcher). A watcher that is missing, red, empty, or never reaches the mutated module makes the probe INVALID, never CAUGHT. Exits 2, 4, 5 and timeouts are INVALID.",
+ "probes": 56,
+ "distinct_mutants": 56,
+ "caught": 56,
+ "survived": 0,
+ "skipped": 0,
+ "invalid": 0,
+ "ok": true,
+ "results": [
+  {
+   "name": "binding-constraint validator returns clean",
+   "control": "an option may not claim feasibility while naming the constraint that killed it",
+   "file": "agentcore/graph.py",
+   "mutant": "2a5f5bd954c0",
+   "covered_by": [
+    "evalx/tests/test_oversight_probes.py"
+   ],
+   "expected_killers": [
+    "evalx/tests/test_oversight_probes.py::test_seeded_wrong_recommendations_are_caught_with_zero_writes"
+   ],
+   "baseline_collected": 12,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "evalx/tests/test_oversight_probes.py::test_seeded_wrong_recommendations_are_caught_with_zero_writes",
+   "detail": "1 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "action scope validator returns clean",
+   "control": "the write handed to a card must be the action the planner costed, on the right box group",
+   "file": "agentcore/graph.py",
+   "mutant": "6b57bf39c61d",
+   "covered_by": [
+    "agentcore/tests/test_restow_scope_validator.py",
+    "evalx/tests/test_oversight_probes.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_restow_scope_validator.py::test_a_restow_option_carrying_a_different_tool_is_caught"
+   ],
+   "baseline_collected": 22,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_restow_scope_validator.py::test_a_restow_option_carrying_a_different_tool_is_caught",
+   "detail": "1 expected killer(s) failed with the control off; 7 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "restow argument checks return clean",
+   "control": "a crane move must stay in its block, actually move, and beat the cut-off",
+   "file": "agentcore/graph.py",
+   "mutant": "1537f6479c80",
+   "covered_by": [
+    "agentcore/tests/test_restow_scope_validator.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_restow_scope_validator.py::test_a_restow_that_does_not_move_the_boxes_is_caught"
+   ],
+   "baseline_collected": 10,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_restow_scope_validator.py::test_a_restow_that_does_not_move_the_boxes_is_caught",
+   "detail": "1 expected killer(s) failed with the control off; 3 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "loop-breaker never trips",
+   "control": "CSA 3.1 step budget, the runaway stop",
+   "file": "stubs/policy_stub.py",
+   "mutant": "830c07748d94",
+   "covered_by": [
+    "agentcore/tests/test_loop_breaker_never_shrinks.py",
+    "agentcore/tests/test_cascade_state_machine.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_loop_breaker_never_shrinks.py::test_the_breaker_still_trips_on_a_real_runaway"
+   ],
+   "baseline_collected": 26,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_loop_breaker_never_shrinks.py::test_the_breaker_still_trips_on_a_real_runaway",
+   "detail": "1 expected killer(s) failed with the control off; 2 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "loop-breaker ceiling stops ratcheting",
+   "control": "a ceiling that falls mid-episode trips on a human refusal",
+   "file": "stubs/policy_stub.py",
+   "mutant": "695a3db5e865",
+   "covered_by": [
+    "agentcore/tests/test_loop_breaker_never_shrinks.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_loop_breaker_never_shrinks.py::test_the_ceiling_does_not_fall_when_the_plan_is_discarded"
+   ],
+   "baseline_collected": 7,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_loop_breaker_never_shrinks.py::test_the_ceiling_does_not_fall_when_the_plan_is_discarded",
+   "detail": "1 expected killer(s) failed with the control off; 2 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "ledger head anchor ignored",
+   "control": "truncation detection: an anchor claiming more events than the file holds",
+   "file": "stubs/ledger_stub.py",
+   "mutant": "4f817914af73",
+   "covered_by": [
+    "twin/tests/test_ledger_truncation.py",
+    "console/tests/test_reset_leaves_a_verifiable_chain.py"
+   ],
+   "expected_killers": [
+    "twin/tests/test_ledger_truncation.py::test_an_intact_chain_verifies_and_says_the_anchor_verified"
+   ],
+   "baseline_collected": 18,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "twin/tests/test_ledger_truncation.py::test_an_intact_chain_verifies_and_says_the_anchor_verified",
+   "detail": "1 expected killer(s) failed with the control off; 11 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "console claims a recovery unconditionally",
+   "control": "the verify trace may only claim a recovery the measurement shows",
+   "file": "console/relay_api.py",
+   "mutant": "8f9e6dca49a1",
+   "covered_by": [
+    "console/tests/test_recovery_label_is_earned.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_recovery_label_is_earned.py::test_a_proposal_that_did_not_move_the_margin_is_not_called_a_recovery"
+   ],
+   "baseline_collected": 10,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_recovery_label_is_earned.py::test_a_proposal_that_did_not_move_the_margin_is_not_called_a_recovery",
+   "detail": "1 expected killer(s) failed with the control off; 3 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "shift budget can be double-charged",
+   "control": "one executed action, one entry against the CSA 3.1 shift budget",
+   "file": "agentcore/memory.py",
+   "mutant": "08618316387d",
+   "covered_by": [
+    "agentcore/tests/test_shift_memory_counts_once.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_shift_memory_counts_once.py::test_the_budget_counter_equals_the_number_of_writes"
+   ],
+   "baseline_collected": 3,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_shift_memory_counts_once.py::test_the_budget_counter_equals_the_number_of_writes",
+   "detail": "1 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "retired values are no longer scanned for",
+   "control": "a judge-facing page may not print a number the claim has superseded",
+   "file": "evalx/claims_check.py",
+   "mutant": "3a6d03b56397",
+   "covered_by": [
+    "evalx/tests/test_claims_check.py"
+   ],
+   "expected_killers": [
+    "evalx/tests/test_claims_check.py::test_a_superseded_value_printed_beside_the_current_one_is_caught"
+   ],
+   "baseline_collected": 29,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "evalx/tests/test_claims_check.py::test_a_superseded_value_printed_beside_the_current_one_is_caught",
+   "detail": "1 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "claims are matched without whitespace normalisation",
+   "control": "Markdown reflows, so a byte match misses the sentence a reader sees",
+   "file": "evalx/claims_check.py",
+   "mutant": "b245d5c16633",
+   "covered_by": [
+    "evalx/tests/test_claims_check.py"
+   ],
+   "expected_killers": [
+    "evalx/tests/test_claims_check.py::test_the_live_registry_passes_end_to_end"
+   ],
+   "baseline_collected": 29,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "evalx/tests/test_claims_check.py::test_the_live_registry_passes_end_to_end",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "false_accept keyed back to the corpus annotation",
+   "control": "a false accept is a measured outcome, not a row the corpus exempted",
+   "file": "evalx/fusion_eval.py",
+   "mutant": "eed49efd6802",
+   "covered_by": [
+    "evalx/tests/test_false_accept_is_measured.py"
+   ],
+   "expected_killers": [
+    "evalx/tests/test_false_accept_is_measured.py::test_the_scorer_does_not_read_must_escalate_directly"
+   ],
+   "baseline_collected": 15,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "evalx/tests/test_false_accept_is_measured.py::test_the_scorer_does_not_read_must_escalate_directly",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "injection resistance hides its real denominator",
+   "control": "9 of 12 escalate before any tool choice, so the load-bearing denominator is 3",
+   "file": "evalx/fusion_eval.py",
+   "mutant": "06fcf6646cca",
+   "covered_by": [
+    "evalx/tests/test_false_accept_is_measured.py"
+   ],
+   "expected_killers": [
+    "evalx/tests/test_false_accept_is_measured.py::test_the_aggregation_code_splits_the_denominator"
+   ],
+   "baseline_collected": 15,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "evalx/tests/test_false_accept_is_measured.py::test_the_aggregation_code_splits_the_denominator",
+   "detail": "1 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "grounding stops checking the role of a value",
+   "control": "a bare date or time is grounded only when the text asserts that field",
+   "file": "agentcore/fusion_router.py",
+   "mutant": "b03a8318a78e",
+   "covered_by": [
+    "agentcore/tests/test_grounding_checks_role.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_grounding_checks_role.py::test_a_cutoff_time_relabelled_as_an_eta_is_not_grounded"
+   ],
+   "baseline_collected": 35,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_grounding_checks_role.py::test_a_cutoff_time_relabelled_as_an_eta_is_not_grounded",
+   "detail": "1 expected killer(s) failed with the control off; 16 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "grounding checks the role but not where the value is",
+   "control": "the role probe is local to the value's sentence, not the whole advisory",
+   "file": "agentcore/fusion_router.py",
+   "mutant": "9f16d1c051ad",
+   "covered_by": [
+    "agentcore/tests/test_grounding_checks_role.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_grounding_checks_role.py::test_ordinary_ways_of_saying_an_eta_all_ground"
+   ],
+   "baseline_collected": 35,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_grounding_checks_role.py::test_ordinary_ways_of_saying_an_eta_all_ground[now",
+   "detail": "2 expected killer(s) failed with the control off; 4 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "approval token binding ignored",
+   "control": "a token is bound to exactly one tool and one argument digest",
+   "file": "stubs/approval_stub.py",
+   "mutant": "35bbe38d1405",
+   "covered_by": [
+    "agentcore/tests/test_approval_token_binding.py",
+    "agentcore/tests/test_approval_single_use.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_approval_token_binding.py::test_a_token_minted_for_one_argument_set_is_refused_for_another"
+   ],
+   "baseline_collected": 28,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_approval_token_binding.py::test_a_token_minted_for_one_argument_set_is_refused_for_another",
+   "detail": "1 expected killer(s) failed with the control off; 3 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "approval token expiry ignored",
+   "control": "a token outside its window is not a decision any more",
+   "file": "stubs/approval_stub.py",
+   "mutant": "6158672b0a87",
+   "covered_by": [
+    "agentcore/tests/test_approval_token_expiry.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_approval_token_expiry.py::test_a_token_is_refused_one_second_after_its_card_expires"
+   ],
+   "baseline_collected": 3,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_approval_token_expiry.py::test_a_token_is_refused_one_second_after_its_card_expires",
+   "detail": "1 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "token single-use ignored",
+   "control": "one human decision authorises one execution",
+   "file": "stubs/approval_stub.py",
+   "mutant": "1452bd00975b",
+   "covered_by": [
+    "agentcore/tests/test_approval_single_use.py",
+    "agentcore/tests/test_approval_concurrency.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_approval_single_use.py::test_one_approval_authorises_one_execution"
+   ],
+   "baseline_collected": 31,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_approval_single_use.py::test_one_approval_authorises_one_execution",
+   "detail": "1 expected killer(s) failed with the control off; 4 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "card must be APPROVED check removed",
+   "control": "S-2: a token may not outlive a denial or a withdrawal of its card",
+   "file": "stubs/approval_stub.py",
+   "mutant": "0627e365e997",
+   "covered_by": [
+    "agentcore/tests/test_token_does_not_outlive_its_card.py",
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_token_does_not_outlive_its_card.py::test_a_token_is_refused_once_its_card_is_no_longer_approved"
+   ],
+   "baseline_collected": 29,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_token_does_not_outlive_its_card.py::test_a_token_is_refused_once_its_card_is_no_longer_approved[DENIED]",
+   "detail": "3 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "degraded mode stops refusing writes",
+   "control": "when the system degrades to advisory, writes are refused server-side",
+   "file": "stubs/portnet_stub.py",
+   "mutant": "9b25c382579b",
+   "covered_by": [
+    "agentcore/tests/test_faults.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_faults.py::test_tool_failure_degrades_denies_writes_then_recovers"
+   ],
+   "baseline_collected": 11,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_faults.py::test_tool_failure_degrades_denies_writes_then_recovers",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "fact allow-list stops rejecting extra keys",
+   "control": "free text may not add a key the schema never declared",
+   "file": "agentcore/fusion.py",
+   "mutant": "1a420ed84315",
+   "covered_by": [
+    "agentcore/tests/test_fusion.py",
+    "agentcore/tests/test_fusion_adversarial.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_fusion_adversarial.py::test_fact_allowlist_rejects_instruction_field"
+   ],
+   "baseline_collected": 18,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_fusion_adversarial.py::test_fact_allowlist_rejects_instruction_field",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "completeness gate passes everything",
+   "control": "CONTRACT h: a fused fact below the 0.60 completeness score is escalated, not acted on",
+   "file": "agentcore/graph.py",
+   "mutant": "b8bb2c5fe83b",
+   "covered_by": [
+    "agentcore/tests/test_ablation.py",
+    "evalx/tests/test_harness_faults.py"
+   ],
+   "expected_killers": [
+    "evalx/tests/test_harness_faults.py::test_all_cases_pass"
+   ],
+   "baseline_collected": 15,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "evalx/tests/test_harness_faults.py::test_all_cases_pass",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "approver allowlist accepts any principal",
+   "control": "S-20: only a human principal may decide a card; an agent credential is refused",
+   "file": "stubs/approval_stub.py",
+   "mutant": "53d50191093e",
+   "covered_by": [
+    "agentcore/tests/test_approval_single_use.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_approval_single_use.py::test_a_non_human_principal_cannot_approve"
+   ],
+   "baseline_collected": 23,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_approval_single_use.py::test_a_non_human_principal_cannot_approve[relay-agent/executor@test]",
+   "detail": "8 expected killer(s) failed with the control off; 6 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "ledger head-anchor MAC not checked",
+   "control": "S-21: a forged or edited head anchor must be reported, not trusted",
+   "file": "stubs/ledger_stub.py",
+   "mutant": "dcc10d45714f",
+   "covered_by": [
+    "twin/tests/test_ledger_truncation.py"
+   ],
+   "expected_killers": [
+    "twin/tests/test_ledger_truncation.py::test_a_forged_anchor_is_caught"
+   ],
+   "baseline_collected": 13,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "twin/tests/test_ledger_truncation.py::test_a_forged_anchor_is_caught",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "write gate accepts any credential",
+   "control": "S-1: only a scoped executor credential may present a token to a write tool",
+   "file": "stubs/portnet_stub.py",
+   "mutant": "181a176ba7cd",
+   "covered_by": [
+    "agentcore/tests/test_deny_paths.py",
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_deny_paths.py::test_non_executor_credential_cannot_write"
+   ],
+   "baseline_collected": 32,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_deny_paths.py::test_non_executor_credential_cannot_write",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "row-10 auto-deny replaced by a permissive row",
+   "control": "CONTRACT c row 10: an action class with no policy row is denied and escalated",
+   "file": "stubs/policy_stub.py",
+   "mutant": "a0a689bb4cea",
+   "covered_by": [
+    "agentcore/tests/test_deny_paths.py",
+    "agentcore/tests/test_replay_packs.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_deny_paths.py::test_row10_auto_deny_for_unknown_action_class"
+   ],
+   "baseline_collected": 19,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_deny_paths.py::test_row10_auto_deny_for_unknown_action_class",
+   "detail": "1 expected killer(s) failed with the control off; 3 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "edit shape check disabled",
+   "control": "GE check 1: an edit that is not {option_id, params} is refused",
+   "file": "agentcore/whatif.py",
+   "mutant": "504d9e67b5fb",
+   "covered_by": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py",
+    "agentcore/tests/test_whatif_resume.py",
+    "console/tests/test_whatif_console.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_an_edited_plan_that_is_not_an_object_is_refused"
+   ],
+   "baseline_collected": 26,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_an_edited_plan_that_is_not_an_object_is_refused[free",
+   "detail": "4 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "edit accepts an option the planner never enumerated",
+   "control": "GE check 2: the edited option must be one the solver enumerated for this subject",
+   "file": "agentcore/whatif.py",
+   "mutant": "571047ca56b6",
+   "covered_by": [
+    "agentcore/tests/test_whatif_resume.py",
+    "console/tests/test_whatif_console.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_whatif_resume.py::test_free_form_edit_is_refused_denied_and_escalated"
+   ],
+   "baseline_collected": 14,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_whatif_resume.py::test_free_form_edit_is_refused_denied_and_escalated",
+   "detail": "1 expected killer(s) failed with the control off; 2 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "edit accepts parameters outside the editable list",
+   "control": "GE check 3: only the declared editable parameter, at an enumerated value",
+   "file": "agentcore/whatif.py",
+   "mutant": "fced30968a76",
+   "covered_by": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py",
+    "agentcore/tests/test_whatif_resume.py",
+    "console/tests/test_whatif_console.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_a_parameter_outside_the_editable_list_is_refused_even_with_a_valid_option"
+   ],
+   "baseline_collected": 26,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_a_parameter_outside_the_editable_list_is_refused_even_with_a_valid_option",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "edit dissent check always agrees",
+   "control": "GE check 5: the simulator must agree with the option it is re-scoring",
+   "file": "agentcore/whatif.py",
+   "mutant": "d5f87ded468f",
+   "covered_by": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py",
+    "agentcore/tests/test_whatif_resume.py",
+    "console/tests/test_whatif_console.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_a_simulator_that_disagrees_with_the_option_is_reported_as_dissent"
+   ],
+   "baseline_collected": 26,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_a_simulator_that_disagrees_with_the_option_is_reported_as_dissent",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "edited card keeps the original argument digest",
+   "control": "S-17 / GE check 6: the superseding card re-binds the token to the EDITED arguments",
+   "file": "agentcore/whatif.py",
+   "mutant": "bcf1eb520447",
+   "covered_by": [
+    "agentcore/tests/test_whatif_resume.py",
+    "console/tests/test_whatif_console.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_whatif_resume.py::test_edit_to_critical_priority_executes_edited_action"
+   ],
+   "baseline_collected": 14,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_whatif_resume.py::test_edit_to_critical_priority_executes_edited_action",
+   "detail": "1 expected killer(s) failed with the control off; 2 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "edited card keeps the original tier instead of re-gating",
+   "control": "S-17 / GE check 4: the policy row is re-run on the edited action class",
+   "file": "agentcore/whatif.py",
+   "mutant": "9b08170bcea1",
+   "covered_by": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py",
+    "agentcore/tests/test_whatif_resume.py",
+    "console/tests/test_whatif_console.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_the_edited_card_takes_its_tier_and_risk_from_the_re_run_policy_row"
+   ],
+   "baseline_collected": 26,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_the_edited_card_takes_its_tier_and_risk_from_the_re_run_policy_row",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "written justification no longer required",
+   "control": "CONTRACT c rows 4, 5, 7: a high-risk approval without a written justification is refused",
+   "file": "stubs/approval_stub.py",
+   "mutant": "334ba0cb52f3",
+   "covered_by": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py",
+    "agentcore/tests/test_whatif_resume.py",
+    "agentcore/tests/test_rate_and_cost.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_the_approval_server_itself_refuses_a_high_risk_approval_with_no_justification"
+   ],
+   "baseline_collected": 25,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_governed_edit_checks_are_load_bearing.py::test_the_approval_server_itself_refuses_a_high_risk_approval_with_no_justification",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "escalation ships without a written summary",
+   "control": "INV 5 / policy row 8: every escalation carries a written summary for the duty supervisor",
+   "file": "agentcore/graph.py",
+   "mutant": "daee477a32ef",
+   "covered_by": [
+    "agentcore/tests/test_escalation_carries_a_summary.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_escalation_carries_a_summary.py::test_an_escalation_with_no_summary_in_state_is_given_one"
+   ],
+   "baseline_collected": 3,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_escalation_carries_a_summary.py::test_an_escalation_with_no_summary_in_state_is_given_one",
+   "detail": "1 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "request body size cap ignored",
+   "control": "S-13: a POST body above MAX_BODY_BYTES is refused before it is read",
+   "file": "console/server.py",
+   "mutant": "1043a3de5f5c",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_an_oversized_body_is_refused_by_the_size_cap_before_it_is_read"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_an_oversized_body_is_refused_by_the_size_cap_before_it_is_read",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "Host header check disabled",
+   "control": "S-3: a Host that is not a loopback name on the bound port is refused, on writes before the body is read and on every /api/ read (DNS rebinding)",
+   "file": "console/server.py",
+   "mutant": "3d2545568d9c",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_rebound_host_with_matching_origin_is_refused",
+    "console/tests/test_security_gates.py::test_a_rebound_host_cannot_READ_the_oversight_record"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_rebound_host_with_matching_origin_is_refused[evil.example:{port}]",
+   "detail": "8 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "Origin check disabled",
+   "control": "S-3: a POST whose Origin is not this console is refused before the body is read",
+   "file": "console/server.py",
+   "mutant": "0a694a0bd032",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_cross_site_post_is_refused_before_any_side_effect"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_cross_site_post_is_refused_before_any_side_effect[headers0]",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "Sec-Fetch-Site check disabled",
+   "control": "S-3: a POST whose Sec-Fetch-Site is cross-site or same-site is refused before the body is read",
+   "file": "console/server.py",
+   "mutant": "2747853df0be",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_cross_site_post_is_refused_before_any_side_effect"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_cross_site_post_is_refused_before_any_side_effect[headers1]",
+   "detail": "2 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "non-JSON body accepted",
+   "control": "S-3: a non-empty POST body must be Content-Type application/json, else 415",
+   "file": "console/server.py",
+   "mutant": "40d04f35c626",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_simple_request_body_without_json_content_type_is_refused"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_simple_request_body_without_json_content_type_is_refused",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "operator text fields unbounded",
+   "control": "S-6: justification and decision_note are size-bounded server-side before they reach the approval server or the ledger",
+   "file": "console/relay_api.py",
+   "mutant": "451c2b6cb86a",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_decide_input_is_typed_and_bounded"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_decide_input_is_typed_and_bounded",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "decided_by accepts any string",
+   "control": "S-6 / S-11: decided_by must be a bounded human id before the decision is recorded",
+   "file": "console/relay_api.py",
+   "mutant": "b46534ac800a",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_decide_input_is_typed_and_bounded"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_decide_input_is_typed_and_bounded",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "internal errors echo exception text",
+   "control": "S-7: an unexpected exception reaches the client as its class name only",
+   "file": "console/server.py",
+   "mutant": "a63fa24be243",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_internal_errors_do_not_echo_exception_text"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_internal_errors_do_not_echo_exception_text",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "frontier tier on without an env key",
+   "control": "S-8: the frontier tier is OFF unless the operator sets the env key, and the kill switch wins",
+   "file": "agentcore/tiers.py",
+   "mutant": "d81f18dedd90",
+   "covered_by": [
+    "console/tests/test_security_gates.py",
+    "agentcore/tests/test_rate_and_cost.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_frontier_is_env_only_default_off_and_never_logs_the_key",
+    "agentcore/tests/test_rate_and_cost.py::test_frontier_default_off_stays_local_and_zero_cost"
+   ],
+   "baseline_collected": 30,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_frontier_is_env_only_default_off_and_never_logs_the_key",
+   "detail": "2 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "console binds every interface",
+   "control": "S-11: the console binds 127.0.0.1 only; there is no operator authentication behind it",
+   "file": "console/server.py",
+   "mutant": "64e52aaae62a",
+   "covered_by": [
+    "console/tests/test_console_binds_loopback_only.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_console_binds_loopback_only.py::test_the_console_binds_a_loopback_address_only"
+   ],
+   "baseline_collected": 1,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_console_binds_loopback_only.py::test_the_console_binds_a_loopback_address_only",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "static serving leaves the static root",
+   "control": "S-5: a static path is served only when its real path stays under STATIC_DIR",
+   "file": "console/server.py",
+   "mutant": "8bea6137abb5",
+   "covered_by": [
+    "console/tests/test_static_root_is_enforced.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_static_root_is_enforced.py::test_a_static_path_that_climbs_out_of_the_root_is_refused",
+    "console/tests/test_static_root_is_enforced.py::test_the_refusal_does_not_return_the_file_it_refused"
+   ],
+   "baseline_collected": 8,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_static_root_is_enforced.py::test_a_static_path_that_climbs_out_of_the_root_is_refused[/static/../server.py]",
+   "detail": "5 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "deny window never passes",
+   "control": "S-18: deny-by-default fires on the wall clock once the window has passed, on every poll and at the top of /decide",
+   "file": "console/relay_api.py",
+   "mutant": "0aed55ea4f98",
+   "covered_by": [
+    "console/tests/test_oversight_and_deny_window.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_oversight_and_deny_window.py::test_deny_window_enforces_at_whatever_value_is_configured",
+    "console/tests/test_oversight_and_deny_window.py::test_a_decision_arriving_after_the_window_is_refused"
+   ],
+   "baseline_collected": 29,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_oversight_and_deny_window.py::test_deny_window_enforces_at_whatever_value_is_configured[1]",
+   "detail": "4 expected killer(s) failed with the control off; 3 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "token sanitiser passes token keys through",
+   "control": "S-2b: approval-token material is stripped from every payload the console serialises",
+   "file": "console/relay_api.py",
+   "mutant": "99c76ab95df7",
+   "covered_by": [
+    "console/tests/test_security_gates.py"
+   ],
+   "expected_killers": [
+    "console/tests/test_security_gates.py::test_token_absent_from_every_endpoint_including_errors"
+   ],
+   "baseline_collected": 24,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "console/tests/test_security_gates.py::test_token_absent_from_every_endpoint_including_errors",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "twin ingest accepts any credential",
+   "control": "CONTRACT c row 11: twin ingest is fusion/executor credentials only (CSA 2.6)",
+   "file": "stubs/twin_stub.py",
+   "mutant": "4cf94f450c7c",
+   "covered_by": [
+    "agentcore/tests/test_ingest_credential_scope.py",
+    "twin/tests/test_mcp_server.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_ingest_credential_scope.py::test_a_planner_credential_cannot_ingest",
+    "twin/tests/test_mcp_server.py::test_ingest_credential_gate_holds_over_mcp"
+   ],
+   "baseline_collected": 12,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_ingest_credential_scope.py::test_a_planner_credential_cannot_ingest[relay-agent/planner@test]",
+   "detail": "7 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "replay accepts a broken chain",
+   "control": "S-12 / INV 7: a chain that does not verify refuses replay",
+   "file": "stubs/ledger_stub.py",
+   "mutant": "f35cbf37f7aa",
+   "covered_by": [
+    "twin/tests/test_ledger_truncation.py"
+   ],
+   "expected_killers": [
+    "twin/tests/test_ledger_truncation.py::test_replay_refuses_a_truncated_chain"
+   ],
+   "baseline_collected": 13,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "twin/tests/test_ledger_truncation.py::test_replay_refuses_a_truncated_chain",
+   "detail": "1 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "chain walk skipped in verify",
+   "control": "S-12 / INV 7: an edited or reordered event breaks the hash chain and verify says so",
+   "file": "stubs/ledger_stub.py",
+   "mutant": "5e7f0403bea9",
+   "covered_by": [
+    "twin/tests/test_ledger_truncation.py"
+   ],
+   "expected_killers": [
+    "twin/tests/test_ledger_truncation.py::test_editing_an_event_is_still_caught_by_the_chain"
+   ],
+   "baseline_collected": 13,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "twin/tests/test_ledger_truncation.py::test_editing_an_event_is_still_caught_by_the_chain",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "approval store lock not taken",
+   "control": "S-22: every approval read-modify-write runs under an exclusive file lock",
+   "file": "stubs/approval_stub.py",
+   "mutant": "a42477cf89bd",
+   "covered_by": [
+    "agentcore/tests/test_approval_concurrency.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_approval_concurrency.py::test_one_approval_survives_a_race_at_the_verify_layer",
+    "agentcore/tests/test_approval_concurrency.py::test_one_approval_survives_a_race_through_the_real_write_path"
+   ],
+   "baseline_collected": 8,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_approval_concurrency.py::test_one_approval_survives_a_race_at_the_verify_layer[8]",
+   "detail": "3 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "ledger append lock not taken (stub)",
+   "control": "S-22: the stub ledger holds an exclusive file lock across the whole append, so two processes cannot fork the chain",
+   "file": "stubs/ledger_stub.py",
+   "mutant": "4b0decc7d454",
+   "covered_by": [
+    "agentcore/tests/test_ledger_append_shared.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_ledger_append_shared.py::test_two_processes_appending_to_one_ledger_do_not_fork_the_chain"
+   ],
+   "baseline_collected": 6,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_ledger_append_shared.py::test_two_processes_appending_to_one_ledger_do_not_fork_the_chain",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "ledger append lock not taken (governance)",
+   "control": "S-22: the governance ledger holds an exclusive file lock across the whole append, so two processes cannot fork the chain",
+   "file": "governance/ledger.py",
+   "mutant": "157b2a375be9",
+   "covered_by": [
+    "governance/tests/test_ledger_shared.py"
+   ],
+   "expected_killers": [
+    "governance/tests/test_ledger_shared.py::test_two_processes_appending_to_one_ledger_do_not_fork_the_chain"
+   ],
+   "baseline_collected": 2,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "governance/tests/test_ledger_shared.py::test_two_processes_appending_to_one_ledger_do_not_fork_the_chain",
+   "detail": "1 expected killer(s) failed with the control off"
+  },
+  {
+   "name": "rate limit never exhausted",
+   "control": "CONTRACT gate step 4 / CSA 3.1: each new write consumes one unit of its action class budget and is refused once it is spent",
+   "file": "stubs/policy_stub.py",
+   "mutant": "e5683865cac8",
+   "covered_by": [
+    "agentcore/tests/test_rate_and_cost.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_rate_and_cost.py::test_consume_rate_refuses_once_budget_exhausted",
+    "agentcore/tests/test_rate_and_cost.py::test_repeated_writes_past_limit_are_rate_limited_server_side"
+   ],
+   "baseline_collected": 6,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_rate_and_cost.py::test_repeated_writes_past_limit_are_rate_limited_server_side",
+   "detail": "2 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "the expected-value gate always says yes",
+   "control": "CONTRACT c row 12: an action class in rows 3 to 7 whose expected_value_usd is below its cost_usd is T0 advise only, never T1",
+   "file": "twin/ev_gate.py",
+   "mutant": "06cb88ceddd3",
+   "covered_by": [
+    "twin/tests/test_ev_gate.py",
+    "agentcore/tests/test_ev_gate_ledger.py"
+   ],
+   "expected_killers": [
+    "twin/tests/test_ev_gate.py::test_an_at_risk_connection_at_55_minutes_is_advise_only_and_infeasible_passes",
+    "agentcore/tests/test_ev_gate_ledger.py::test_the_hero_expedite_is_advise_only_with_its_three_numbers"
+   ],
+   "baseline_collected": 20,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "twin/tests/test_ev_gate.py::test_an_at_risk_connection_at_55_minutes_is_advise_only_and_infeasible_passes",
+   "detail": "2 expected killer(s) failed with the control off; 6 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "refusals not handed to the solver as exclusions",
+   "control": "CONTRACT tool 7: refused (connection, option) pairs are removed from the solver's candidate set before the model is built",
+   "file": "agentcore/graph.py",
+   "mutant": "6dbb48c1447f",
+   "covered_by": [
+    "agentcore/tests/test_refusal_is_a_solver_input.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_refusal_is_a_solver_input.py::test_the_refused_pair_is_passed_to_the_solver_as_excluded"
+   ],
+   "baseline_collected": 5,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_refusal_is_a_solver_input.py::test_the_refused_pair_is_passed_to_the_solver_as_excluded",
+   "detail": "1 expected killer(s) failed with the control off; 2 other baseline-green test(s) also failed"
+  },
+  {
+   "name": "escalation stops naming unsaved connections",
+   "control": "S-24: whichever path raises an escalation, every at-risk connection with no write this episode is named to the supervisor",
+   "file": "agentcore/graph.py",
+   "mutant": "005a265d6e99",
+   "covered_by": [
+    "agentcore/tests/test_unsaved_connections_escalate.py"
+   ],
+   "expected_killers": [
+    "agentcore/tests/test_unsaved_connections_escalate.py::test_every_escalation_path_names_the_unsaved_connections"
+   ],
+   "baseline_collected": 15,
+   "baseline_green": true,
+   "status": "CAUGHT",
+   "killing_test": "agentcore/tests/test_unsaved_connections_escalate.py::test_every_escalation_path_names_the_unsaved_connections[gated",
+   "detail": "2 expected killer(s) failed with the control off; 1 other baseline-green test(s) also failed"
+  }
+ ],
+ "method": "each probe disables exactly one control in place, runs the tests that are supposed to cover it, and restores the file. A probe that SURVIVES means the suite passes with that control off, so nothing tests it. This is the oversight ablation argument applied to the test suite rather than the agent."
+}

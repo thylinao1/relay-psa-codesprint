@@ -1,0 +1,1703 @@
+{
+  "adapter_caveats": [
+    "RELAY's production solver re-plans transhipment connections under CSA 3.1 action budgets; this benchmark is a berth allocation problem. The mapping exercises the same CP-SAT machinery (interval scheduling, no-overlap-2d, pinned seed, single worker) on independent real-derived data; it does not claim RELAY plans berths in production (SPEC NG-2 keeps berth planning out of RELAY's write authority).",
+    "Completion times use the benchmark repository's inclusive period convention (completion = start + handling - 1); the reported makespan subtracts 1 from the CP-SAT end-time objective. Verified against the published best known solutions.",
+    "The instance set is GPL-3. It is cited as a benchmark and downloaded at run time into the gitignored data/external/bap/ directory, never vendored (CONTRACT licence guardrail). Only this script and the results JSON are committed.",
+    "Instances in this set have unit berth lengths, so integer quay positions coincide with berth boundaries; the per-row unit_berths flag records this.",
+    "Every returned schedule is re-checked by an independent verifier (no CP-SAT involved): arrivals, quay bounds, pairwise time-space disjointness. A row may only claim improves_published_bks when that verifier passes and the makespan stays at or above the published dual bound."
+  ],
+  "aggregate": {
+    "improved_published_bks": 1,
+    "instances": 10,
+    "matched_bks": 9,
+    "proved_optimal": 8,
+    "solutions_verified": 10,
+    "solve_wall_s_max": 120.251,
+    "solve_wall_s_mean": 26.031,
+    "solved": 10,
+    "total_ships": 293,
+    "with_bks_reference": 10
+  },
+  "digest": "65083ba3df7b3f57c723df6732407259d676f45ebad2c234a6fda4b944a42df4",
+  "digest_note": "sha256 over the canonical document minus wall-clock fields; every digested field is a pure function of the instances and the solver pins",
+  "external_benchmark_version": "1.0.0",
+  "instances_expected": [
+    "bcn_24B_2",
+    "bcn_24B_12",
+    "bcn_24B_22",
+    "bcn_24B_32",
+    "bcn_24B_42",
+    "bcn_36A_2",
+    "bcn_36A_12",
+    "bcn_36A_22",
+    "bcn_36A_32",
+    "bcn_36A_42"
+  ],
+  "instances_missing": [],
+  "label": "EXTERNAL REAL-DERIVED BENCHMARK - Port of Barcelona 2024 container ship movements (quays 24B and 36A), instance set and best known solutions from github.com/alberto-santini/berth-allocation-problems",
+  "problem_type": "hyb|dyn|fix|max(comp) berth allocation (Bierwirth-Meisel notation)",
+  "rows": [
+    {
+      "best_bound": 162,
+      "bks_dual_bound": 162.0,
+      "bks_makespan": 162.0,
+      "improves_published_bks": false,
+      "instance": "bcn_24B_2",
+      "makespan": 162,
+      "matches_bks": true,
+      "n_berths": 20,
+      "n_ships": 12,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 0,
+          "ship": 0,
+          "start": 16
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 149
+        },
+        {
+          "pos": 0,
+          "ship": 2,
+          "start": 36
+        },
+        {
+          "pos": 0,
+          "ship": 3,
+          "start": 109
+        },
+        {
+          "pos": 4,
+          "ship": 4,
+          "start": 16
+        },
+        {
+          "pos": 0,
+          "ship": 5,
+          "start": 120
+        },
+        {
+          "pos": 4,
+          "ship": 6,
+          "start": 109
+        },
+        {
+          "pos": 0,
+          "ship": 7,
+          "start": 26
+        },
+        {
+          "pos": 5,
+          "ship": 8,
+          "start": 119
+        },
+        {
+          "pos": 0,
+          "ship": 9,
+          "start": 6
+        },
+        {
+          "pos": 0,
+          "ship": 10,
+          "start": 63
+        },
+        {
+          "pos": 8,
+          "ship": 11,
+          "start": 78
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 0.047,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 193,
+      "bks_dual_bound": 193.0,
+      "bks_makespan": 193.0,
+      "improves_published_bks": false,
+      "instance": "bcn_24B_12",
+      "makespan": 193,
+      "matches_bks": true,
+      "n_berths": 20,
+      "n_ships": 17,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 0,
+          "ship": 0,
+          "start": 27
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 115
+        },
+        {
+          "pos": 0,
+          "ship": 2,
+          "start": 141
+        },
+        {
+          "pos": 0,
+          "ship": 3,
+          "start": 0
+        },
+        {
+          "pos": 0,
+          "ship": 4,
+          "start": 47
+        },
+        {
+          "pos": 7,
+          "ship": 5,
+          "start": 123
+        },
+        {
+          "pos": 0,
+          "ship": 6,
+          "start": 72
+        },
+        {
+          "pos": 7,
+          "ship": 7,
+          "start": 4
+        },
+        {
+          "pos": 7,
+          "ship": 8,
+          "start": 41
+        },
+        {
+          "pos": 7,
+          "ship": 9,
+          "start": 104
+        },
+        {
+          "pos": 13,
+          "ship": 10,
+          "start": 28
+        },
+        {
+          "pos": 5,
+          "ship": 11,
+          "start": 142
+        },
+        {
+          "pos": 4,
+          "ship": 12,
+          "start": 25
+        },
+        {
+          "pos": 7,
+          "ship": 13,
+          "start": 56
+        },
+        {
+          "pos": 0,
+          "ship": 14,
+          "start": 126
+        },
+        {
+          "pos": 15,
+          "ship": 15,
+          "start": 82
+        },
+        {
+          "pos": 0,
+          "ship": 16,
+          "start": 163
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 0.002,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 168,
+      "bks_dual_bound": 184.0000000000002,
+      "bks_makespan": 186.0,
+      "improves_published_bks": false,
+      "instance": "bcn_24B_22",
+      "makespan": 186,
+      "matches_bks": true,
+      "n_berths": 20,
+      "n_ships": 24,
+      "proved_optimal": false,
+      "schedule": [
+        {
+          "pos": 15,
+          "ship": 0,
+          "start": 129
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 22
+        },
+        {
+          "pos": 4,
+          "ship": 2,
+          "start": 4
+        },
+        {
+          "pos": 15,
+          "ship": 3,
+          "start": 174
+        },
+        {
+          "pos": 12,
+          "ship": 4,
+          "start": 25
+        },
+        {
+          "pos": 4,
+          "ship": 5,
+          "start": 53
+        },
+        {
+          "pos": 0,
+          "ship": 6,
+          "start": 132
+        },
+        {
+          "pos": 0,
+          "ship": 7,
+          "start": 169
+        },
+        {
+          "pos": 12,
+          "ship": 8,
+          "start": 3
+        },
+        {
+          "pos": 11,
+          "ship": 9,
+          "start": 63
+        },
+        {
+          "pos": 0,
+          "ship": 10,
+          "start": 98
+        },
+        {
+          "pos": 0,
+          "ship": 11,
+          "start": 116
+        },
+        {
+          "pos": 8,
+          "ship": 12,
+          "start": 138
+        },
+        {
+          "pos": 0,
+          "ship": 13,
+          "start": 32
+        },
+        {
+          "pos": 0,
+          "ship": 14,
+          "start": 75
+        },
+        {
+          "pos": 9,
+          "ship": 15,
+          "start": 153
+        },
+        {
+          "pos": 10,
+          "ship": 16,
+          "start": 121
+        },
+        {
+          "pos": 15,
+          "ship": 17,
+          "start": 155
+        },
+        {
+          "pos": 0,
+          "ship": 18,
+          "start": 53
+        },
+        {
+          "pos": 7,
+          "ship": 19,
+          "start": 83
+        },
+        {
+          "pos": 11,
+          "ship": 20,
+          "start": 87
+        },
+        {
+          "pos": 15,
+          "ship": 21,
+          "start": 103
+        },
+        {
+          "pos": 15,
+          "ship": 22,
+          "start": 86
+        },
+        {
+          "pos": 10,
+          "ship": 23,
+          "start": 172
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 120.195,
+      "status": "FEASIBLE",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 171,
+      "bks_dual_bound": 171.0,
+      "bks_makespan": 171.0,
+      "improves_published_bks": false,
+      "instance": "bcn_24B_32",
+      "makespan": 171,
+      "matches_bks": true,
+      "n_berths": 20,
+      "n_ships": 22,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 0,
+          "ship": 0,
+          "start": 6
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 101
+        },
+        {
+          "pos": 0,
+          "ship": 2,
+          "start": 118
+        },
+        {
+          "pos": 0,
+          "ship": 3,
+          "start": 58
+        },
+        {
+          "pos": 8,
+          "ship": 4,
+          "start": 111
+        },
+        {
+          "pos": 0,
+          "ship": 5,
+          "start": 136
+        },
+        {
+          "pos": 4,
+          "ship": 6,
+          "start": 27
+        },
+        {
+          "pos": 7,
+          "ship": 7,
+          "start": 52
+        },
+        {
+          "pos": 5,
+          "ship": 8,
+          "start": 136
+        },
+        {
+          "pos": 12,
+          "ship": 9,
+          "start": 138
+        },
+        {
+          "pos": 12,
+          "ship": 10,
+          "start": 74
+        },
+        {
+          "pos": 0,
+          "ship": 11,
+          "start": 77
+        },
+        {
+          "pos": 6,
+          "ship": 12,
+          "start": 74
+        },
+        {
+          "pos": 5,
+          "ship": 13,
+          "start": 89
+        },
+        {
+          "pos": 0,
+          "ship": 14,
+          "start": 151
+        },
+        {
+          "pos": 1,
+          "ship": 15,
+          "start": 45
+        },
+        {
+          "pos": 4,
+          "ship": 16,
+          "start": 7
+        },
+        {
+          "pos": 14,
+          "ship": 17,
+          "start": 23
+        },
+        {
+          "pos": 0,
+          "ship": 18,
+          "start": 89
+        },
+        {
+          "pos": 10,
+          "ship": 19,
+          "start": 32
+        },
+        {
+          "pos": 13,
+          "ship": 20,
+          "start": 88
+        },
+        {
+          "pos": 15,
+          "ship": 21,
+          "start": 41
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 0.209,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 175,
+      "bks_dual_bound": 175.0,
+      "bks_makespan": 175.0,
+      "improves_published_bks": false,
+      "instance": "bcn_24B_42",
+      "makespan": 175,
+      "matches_bks": true,
+      "n_berths": 20,
+      "n_ships": 27,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 8,
+          "ship": 0,
+          "start": 150
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 104
+        },
+        {
+          "pos": 0,
+          "ship": 2,
+          "start": 12
+        },
+        {
+          "pos": 8,
+          "ship": 3,
+          "start": 114
+        },
+        {
+          "pos": 8,
+          "ship": 4,
+          "start": 165
+        },
+        {
+          "pos": 12,
+          "ship": 5,
+          "start": 10
+        },
+        {
+          "pos": 0,
+          "ship": 6,
+          "start": 115
+        },
+        {
+          "pos": 12,
+          "ship": 7,
+          "start": 105
+        },
+        {
+          "pos": 5,
+          "ship": 8,
+          "start": 24
+        },
+        {
+          "pos": 0,
+          "ship": 9,
+          "start": 39
+        },
+        {
+          "pos": 5,
+          "ship": 10,
+          "start": 4
+        },
+        {
+          "pos": 12,
+          "ship": 11,
+          "start": 29
+        },
+        {
+          "pos": 6,
+          "ship": 12,
+          "start": 130
+        },
+        {
+          "pos": 0,
+          "ship": 13,
+          "start": 160
+        },
+        {
+          "pos": 14,
+          "ship": 14,
+          "start": 49
+        },
+        {
+          "pos": 12,
+          "ship": 15,
+          "start": 61
+        },
+        {
+          "pos": 8,
+          "ship": 16,
+          "start": 42
+        },
+        {
+          "pos": 8,
+          "ship": 17,
+          "start": 106
+        },
+        {
+          "pos": 15,
+          "ship": 18,
+          "start": 143
+        },
+        {
+          "pos": 1,
+          "ship": 19,
+          "start": 147
+        },
+        {
+          "pos": 5,
+          "ship": 20,
+          "start": 81
+        },
+        {
+          "pos": 0,
+          "ship": 21,
+          "start": 134
+        },
+        {
+          "pos": 0,
+          "ship": 22,
+          "start": 6
+        },
+        {
+          "pos": 8,
+          "ship": 23,
+          "start": 56
+        },
+        {
+          "pos": 11,
+          "ship": 24,
+          "start": 139
+        },
+        {
+          "pos": 0,
+          "ship": 25,
+          "start": 77
+        },
+        {
+          "pos": 0,
+          "ship": 26,
+          "start": 91
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 1.798,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 176,
+      "bks_dual_bound": 176.0,
+      "bks_makespan": 176.0,
+      "improves_published_bks": false,
+      "instance": "bcn_36A_2",
+      "makespan": 176,
+      "matches_bks": true,
+      "n_berths": 29,
+      "n_ships": 32,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 0,
+          "ship": 0,
+          "start": 30
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 120
+        },
+        {
+          "pos": 0,
+          "ship": 2,
+          "start": 24
+        },
+        {
+          "pos": 3,
+          "ship": 3,
+          "start": 119
+        },
+        {
+          "pos": 0,
+          "ship": 4,
+          "start": 98
+        },
+        {
+          "pos": 0,
+          "ship": 5,
+          "start": 48
+        },
+        {
+          "pos": 0,
+          "ship": 6,
+          "start": 13
+        },
+        {
+          "pos": 5,
+          "ship": 7,
+          "start": 55
+        },
+        {
+          "pos": 0,
+          "ship": 8,
+          "start": 76
+        },
+        {
+          "pos": 7,
+          "ship": 9,
+          "start": 119
+        },
+        {
+          "pos": 5,
+          "ship": 10,
+          "start": 12
+        },
+        {
+          "pos": 5,
+          "ship": 11,
+          "start": 81
+        },
+        {
+          "pos": 5,
+          "ship": 12,
+          "start": 99
+        },
+        {
+          "pos": 12,
+          "ship": 13,
+          "start": 110
+        },
+        {
+          "pos": 20,
+          "ship": 14,
+          "start": 109
+        },
+        {
+          "pos": 10,
+          "ship": 15,
+          "start": 75
+        },
+        {
+          "pos": 0,
+          "ship": 16,
+          "start": 160
+        },
+        {
+          "pos": 11,
+          "ship": 17,
+          "start": 12
+        },
+        {
+          "pos": 11,
+          "ship": 18,
+          "start": 23
+        },
+        {
+          "pos": 16,
+          "ship": 19,
+          "start": 76
+        },
+        {
+          "pos": 16,
+          "ship": 20,
+          "start": 90
+        },
+        {
+          "pos": 7,
+          "ship": 21,
+          "start": 154
+        },
+        {
+          "pos": 18,
+          "ship": 22,
+          "start": 15
+        },
+        {
+          "pos": 3,
+          "ship": 23,
+          "start": 29
+        },
+        {
+          "pos": 11,
+          "ship": 24,
+          "start": 64
+        },
+        {
+          "pos": 0,
+          "ship": 25,
+          "start": 108
+        },
+        {
+          "pos": 0,
+          "ship": 26,
+          "start": 132
+        },
+        {
+          "pos": 0,
+          "ship": 27,
+          "start": 141
+        },
+        {
+          "pos": 4,
+          "ship": 28,
+          "start": 142
+        },
+        {
+          "pos": 0,
+          "ship": 29,
+          "start": 148
+        },
+        {
+          "pos": 23,
+          "ship": 30,
+          "start": 91
+        },
+        {
+          "pos": 8,
+          "ship": 31,
+          "start": 142
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 0.128,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 178,
+      "bks_dual_bound": 178.0,
+      "bks_makespan": 178.0,
+      "improves_published_bks": false,
+      "instance": "bcn_36A_12",
+      "makespan": 178,
+      "matches_bks": true,
+      "n_berths": 29,
+      "n_ships": 49,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 4,
+          "ship": 0,
+          "start": 140
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 10
+        },
+        {
+          "pos": 12,
+          "ship": 2,
+          "start": 145
+        },
+        {
+          "pos": 25,
+          "ship": 3,
+          "start": 168
+        },
+        {
+          "pos": 8,
+          "ship": 4,
+          "start": 125
+        },
+        {
+          "pos": 4,
+          "ship": 5,
+          "start": 8
+        },
+        {
+          "pos": 0,
+          "ship": 6,
+          "start": 51
+        },
+        {
+          "pos": 20,
+          "ship": 7,
+          "start": 95
+        },
+        {
+          "pos": 12,
+          "ship": 8,
+          "start": 15
+        },
+        {
+          "pos": 4,
+          "ship": 9,
+          "start": 50
+        },
+        {
+          "pos": 0,
+          "ship": 10,
+          "start": 60
+        },
+        {
+          "pos": 17,
+          "ship": 11,
+          "start": 51
+        },
+        {
+          "pos": 0,
+          "ship": 12,
+          "start": 70
+        },
+        {
+          "pos": 4,
+          "ship": 13,
+          "start": 73
+        },
+        {
+          "pos": 8,
+          "ship": 14,
+          "start": 100
+        },
+        {
+          "pos": 20,
+          "ship": 15,
+          "start": 124
+        },
+        {
+          "pos": 12,
+          "ship": 16,
+          "start": 7
+        },
+        {
+          "pos": 0,
+          "ship": 17,
+          "start": 23
+        },
+        {
+          "pos": 19,
+          "ship": 18,
+          "start": 12
+        },
+        {
+          "pos": 12,
+          "ship": 19,
+          "start": 35
+        },
+        {
+          "pos": 24,
+          "ship": 20,
+          "start": 89
+        },
+        {
+          "pos": 15,
+          "ship": 21,
+          "start": 150
+        },
+        {
+          "pos": 12,
+          "ship": 22,
+          "start": 122
+        },
+        {
+          "pos": 20,
+          "ship": 23,
+          "start": 105
+        },
+        {
+          "pos": 5,
+          "ship": 24,
+          "start": 144
+        },
+        {
+          "pos": 4,
+          "ship": 25,
+          "start": 166
+        },
+        {
+          "pos": 23,
+          "ship": 26,
+          "start": 150
+        },
+        {
+          "pos": 9,
+          "ship": 27,
+          "start": 134
+        },
+        {
+          "pos": 10,
+          "ship": 28,
+          "start": 82
+        },
+        {
+          "pos": 16,
+          "ship": 29,
+          "start": 121
+        },
+        {
+          "pos": 18,
+          "ship": 30,
+          "start": 158
+        },
+        {
+          "pos": 17,
+          "ship": 31,
+          "start": 35
+        },
+        {
+          "pos": 0,
+          "ship": 32,
+          "start": 91
+        },
+        {
+          "pos": 4,
+          "ship": 33,
+          "start": 60
+        },
+        {
+          "pos": 15,
+          "ship": 34,
+          "start": 96
+        },
+        {
+          "pos": 25,
+          "ship": 35,
+          "start": 158
+        },
+        {
+          "pos": 25,
+          "ship": 36,
+          "start": 111
+        },
+        {
+          "pos": 0,
+          "ship": 37,
+          "start": 160
+        },
+        {
+          "pos": 12,
+          "ship": 38,
+          "start": 159
+        },
+        {
+          "pos": 7,
+          "ship": 39,
+          "start": 58
+        },
+        {
+          "pos": 21,
+          "ship": 40,
+          "start": 52
+        },
+        {
+          "pos": 17,
+          "ship": 41,
+          "start": 84
+        },
+        {
+          "pos": 15,
+          "ship": 42,
+          "start": 103
+        },
+        {
+          "pos": 16,
+          "ship": 43,
+          "start": 137
+        },
+        {
+          "pos": 0,
+          "ship": 44,
+          "start": 115
+        },
+        {
+          "pos": 22,
+          "ship": 45,
+          "start": 33
+        },
+        {
+          "pos": 0,
+          "ship": 46,
+          "start": 41
+        },
+        {
+          "pos": 0,
+          "ship": 47,
+          "start": 144
+        },
+        {
+          "pos": 20,
+          "ship": 48,
+          "start": 84
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 9.406,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 175,
+      "bks_dual_bound": 175.0,
+      "bks_makespan": 180.0,
+      "improves_published_bks": true,
+      "instance": "bcn_36A_22",
+      "makespan": 179,
+      "matches_bks": false,
+      "n_berths": 29,
+      "n_ships": 43,
+      "proved_optimal": false,
+      "schedule": [
+        {
+          "pos": 11,
+          "ship": 0,
+          "start": 80
+        },
+        {
+          "pos": 11,
+          "ship": 1,
+          "start": 137
+        },
+        {
+          "pos": 4,
+          "ship": 2,
+          "start": 68
+        },
+        {
+          "pos": 0,
+          "ship": 3,
+          "start": 169
+        },
+        {
+          "pos": 7,
+          "ship": 4,
+          "start": 135
+        },
+        {
+          "pos": 21,
+          "ship": 5,
+          "start": 129
+        },
+        {
+          "pos": 13,
+          "ship": 6,
+          "start": 159
+        },
+        {
+          "pos": 21,
+          "ship": 7,
+          "start": 95
+        },
+        {
+          "pos": 12,
+          "ship": 8,
+          "start": 25
+        },
+        {
+          "pos": 17,
+          "ship": 9,
+          "start": 72
+        },
+        {
+          "pos": 7,
+          "ship": 10,
+          "start": 79
+        },
+        {
+          "pos": 11,
+          "ship": 11,
+          "start": 96
+        },
+        {
+          "pos": 11,
+          "ship": 12,
+          "start": 128
+        },
+        {
+          "pos": 0,
+          "ship": 13,
+          "start": 12
+        },
+        {
+          "pos": 8,
+          "ship": 14,
+          "start": 26
+        },
+        {
+          "pos": 12,
+          "ship": 15,
+          "start": 48
+        },
+        {
+          "pos": 21,
+          "ship": 16,
+          "start": 73
+        },
+        {
+          "pos": 3,
+          "ship": 17,
+          "start": 78
+        },
+        {
+          "pos": 8,
+          "ship": 18,
+          "start": 60
+        },
+        {
+          "pos": 15,
+          "ship": 19,
+          "start": 98
+        },
+        {
+          "pos": 1,
+          "ship": 20,
+          "start": 98
+        },
+        {
+          "pos": 13,
+          "ship": 21,
+          "start": 167
+        },
+        {
+          "pos": 4,
+          "ship": 22,
+          "start": 155
+        },
+        {
+          "pos": 7,
+          "ship": 23,
+          "start": 6
+        },
+        {
+          "pos": 20,
+          "ship": 24,
+          "start": 23
+        },
+        {
+          "pos": 21,
+          "ship": 25,
+          "start": 47
+        },
+        {
+          "pos": 20,
+          "ship": 26,
+          "start": 161
+        },
+        {
+          "pos": 0,
+          "ship": 27,
+          "start": 39
+        },
+        {
+          "pos": 0,
+          "ship": 28,
+          "start": 129
+        },
+        {
+          "pos": 0,
+          "ship": 29,
+          "start": 144
+        },
+        {
+          "pos": 12,
+          "ship": 30,
+          "start": 73
+        },
+        {
+          "pos": 25,
+          "ship": 31,
+          "start": 87
+        },
+        {
+          "pos": 7,
+          "ship": 32,
+          "start": 125
+        },
+        {
+          "pos": 7,
+          "ship": 33,
+          "start": 100
+        },
+        {
+          "pos": 11,
+          "ship": 34,
+          "start": 120
+        },
+        {
+          "pos": 0,
+          "ship": 35,
+          "start": 156
+        },
+        {
+          "pos": 4,
+          "ship": 36,
+          "start": 147
+        },
+        {
+          "pos": 14,
+          "ship": 37,
+          "start": 11
+        },
+        {
+          "pos": 0,
+          "ship": 38,
+          "start": 72
+        },
+        {
+          "pos": 25,
+          "ship": 39,
+          "start": 73
+        },
+        {
+          "pos": 12,
+          "ship": 40,
+          "start": 147
+        },
+        {
+          "pos": 18,
+          "ship": 41,
+          "start": 8
+        },
+        {
+          "pos": 15,
+          "ship": 42,
+          "start": 129
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 120.251,
+      "status": "FEASIBLE",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 180,
+      "bks_dual_bound": 180.0,
+      "bks_makespan": 180.0,
+      "improves_published_bks": false,
+      "instance": "bcn_36A_32",
+      "makespan": 180,
+      "matches_bks": true,
+      "n_berths": 29,
+      "n_ships": 34,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 24,
+          "ship": 0,
+          "start": 96
+        },
+        {
+          "pos": 15,
+          "ship": 1,
+          "start": 111
+        },
+        {
+          "pos": 21,
+          "ship": 2,
+          "start": 78
+        },
+        {
+          "pos": 0,
+          "ship": 3,
+          "start": 128
+        },
+        {
+          "pos": 3,
+          "ship": 4,
+          "start": 39
+        },
+        {
+          "pos": 18,
+          "ship": 5,
+          "start": 46
+        },
+        {
+          "pos": 22,
+          "ship": 6,
+          "start": 166
+        },
+        {
+          "pos": 12,
+          "ship": 7,
+          "start": 132
+        },
+        {
+          "pos": 24,
+          "ship": 8,
+          "start": 101
+        },
+        {
+          "pos": 5,
+          "ship": 9,
+          "start": 145
+        },
+        {
+          "pos": 15,
+          "ship": 10,
+          "start": 67
+        },
+        {
+          "pos": 8,
+          "ship": 11,
+          "start": 60
+        },
+        {
+          "pos": 8,
+          "ship": 12,
+          "start": 89
+        },
+        {
+          "pos": 19,
+          "ship": 13,
+          "start": 97
+        },
+        {
+          "pos": 18,
+          "ship": 14,
+          "start": 22
+        },
+        {
+          "pos": 7,
+          "ship": 15,
+          "start": 165
+        },
+        {
+          "pos": 0,
+          "ship": 16,
+          "start": 3
+        },
+        {
+          "pos": 0,
+          "ship": 17,
+          "start": 76
+        },
+        {
+          "pos": 0,
+          "ship": 18,
+          "start": 61
+        },
+        {
+          "pos": 17,
+          "ship": 19,
+          "start": 132
+        },
+        {
+          "pos": 5,
+          "ship": 20,
+          "start": 117
+        },
+        {
+          "pos": 14,
+          "ship": 21,
+          "start": 157
+        },
+        {
+          "pos": 7,
+          "ship": 22,
+          "start": 4
+        },
+        {
+          "pos": 25,
+          "ship": 23,
+          "start": 21
+        },
+        {
+          "pos": 19,
+          "ship": 24,
+          "start": 122
+        },
+        {
+          "pos": 1,
+          "ship": 25,
+          "start": 151
+        },
+        {
+          "pos": 1,
+          "ship": 26,
+          "start": 117
+        },
+        {
+          "pos": 22,
+          "ship": 27,
+          "start": 141
+        },
+        {
+          "pos": 11,
+          "ship": 28,
+          "start": 16
+        },
+        {
+          "pos": 11,
+          "ship": 29,
+          "start": 38
+        },
+        {
+          "pos": 24,
+          "ship": 30,
+          "start": 68
+        },
+        {
+          "pos": 17,
+          "ship": 31,
+          "start": 77
+        },
+        {
+          "pos": 12,
+          "ship": 32,
+          "start": 115
+        },
+        {
+          "pos": 0,
+          "ship": 33,
+          "start": 168
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 8.046,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    },
+    {
+      "best_bound": 169,
+      "bks_dual_bound": 169.0,
+      "bks_makespan": 169.0,
+      "improves_published_bks": false,
+      "instance": "bcn_36A_42",
+      "makespan": 169,
+      "matches_bks": true,
+      "n_berths": 29,
+      "n_ships": 33,
+      "proved_optimal": true,
+      "schedule": [
+        {
+          "pos": 0,
+          "ship": 0,
+          "start": 31
+        },
+        {
+          "pos": 0,
+          "ship": 1,
+          "start": 156
+        },
+        {
+          "pos": 0,
+          "ship": 2,
+          "start": 129
+        },
+        {
+          "pos": 0,
+          "ship": 3,
+          "start": 43
+        },
+        {
+          "pos": 4,
+          "ship": 4,
+          "start": 105
+        },
+        {
+          "pos": 4,
+          "ship": 5,
+          "start": 130
+        },
+        {
+          "pos": 17,
+          "ship": 6,
+          "start": 132
+        },
+        {
+          "pos": 0,
+          "ship": 7,
+          "start": 5
+        },
+        {
+          "pos": 7,
+          "ship": 8,
+          "start": 18
+        },
+        {
+          "pos": 14,
+          "ship": 9,
+          "start": 95
+        },
+        {
+          "pos": 9,
+          "ship": 10,
+          "start": 120
+        },
+        {
+          "pos": 9,
+          "ship": 11,
+          "start": 102
+        },
+        {
+          "pos": 21,
+          "ship": 12,
+          "start": 134
+        },
+        {
+          "pos": 8,
+          "ship": 13,
+          "start": 32
+        },
+        {
+          "pos": 14,
+          "ship": 14,
+          "start": 37
+        },
+        {
+          "pos": 21,
+          "ship": 15,
+          "start": 111
+        },
+        {
+          "pos": 5,
+          "ship": 16,
+          "start": 138
+        },
+        {
+          "pos": 14,
+          "ship": 17,
+          "start": 6
+        },
+        {
+          "pos": 0,
+          "ship": 18,
+          "start": 63
+        },
+        {
+          "pos": 21,
+          "ship": 19,
+          "start": 15
+        },
+        {
+          "pos": 8,
+          "ship": 20,
+          "start": 53
+        },
+        {
+          "pos": 21,
+          "ship": 21,
+          "start": 86
+        },
+        {
+          "pos": 14,
+          "ship": 22,
+          "start": 119
+        },
+        {
+          "pos": 0,
+          "ship": 23,
+          "start": 92
+        },
+        {
+          "pos": 7,
+          "ship": 24,
+          "start": 0
+        },
+        {
+          "pos": 25,
+          "ship": 25,
+          "start": 19
+        },
+        {
+          "pos": 12,
+          "ship": 26,
+          "start": 52
+        },
+        {
+          "pos": 25,
+          "ship": 27,
+          "start": 34
+        },
+        {
+          "pos": 16,
+          "ship": 28,
+          "start": 57
+        },
+        {
+          "pos": 13,
+          "ship": 29,
+          "start": 136
+        },
+        {
+          "pos": 7,
+          "ship": 30,
+          "start": 65
+        },
+        {
+          "pos": 12,
+          "ship": 31,
+          "start": 69
+        },
+        {
+          "pos": 4,
+          "ship": 32,
+          "start": 161
+        }
+      ],
+      "solution_verified": true,
+      "solve_wall_s": 0.226,
+      "status": "OPTIMAL",
+      "unit_berths": true,
+      "within_bks_bounds": true
+    }
+  ],
+  "solver_pins": {
+    "deterministic_seed": 42,
+    "engine": "OR-Tools CP-SAT (same machinery as twin/solver.py)",
+    "model": "interval variables + add_no_overlap_2d over time x quay space",
+    "num_search_workers": 1,
+    "time_limit_s": 120.0
+  }
+}

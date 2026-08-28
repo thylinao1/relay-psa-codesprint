@@ -1,0 +1,144 @@
+{
+  "profile_version": "1.0.0",
+  "kind": "validity",
+  "label": "SYNTHETIC seeded twin.generate worlds. Ground truth here is evalx/independent_oracle.py, a second implementation of the CONTRACT section b.1 rule that imports no RELAY code, NOT the engine the agent calls.",
+  "run_id": "validity-n320-seed42",
+  "oracle_verified": true,
+  "seed": 42,
+  "n_scenarios": 320,
+  "oracle_version": "1.0.0",
+  "contract_source": "docs/CONTRACT.md section b.1 tool 2 (twin.feasibility_check)",
+  "verdict_mix_independent": {
+    "FEASIBLE": 132,
+    "AT_RISK": 118,
+    "INFEASIBLE": 50,
+    "ESCALATE_INSUFFICIENT_EVIDENCE": 20
+  },
+  "verdict_mix_engine": {
+    "FEASIBLE": 132,
+    "AT_RISK": 118,
+    "INFEASIBLE": 50,
+    "ESCALATE_INSUFFICIENT_EVIDENCE": 20
+  },
+  "independent_escalation_reasons": {
+    "completeness_below_gate": 20
+  },
+  "agreement": {
+    "verdict": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n": 320,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "margin_within_0_1_min": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n": 320,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "completeness_exact": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n": 320,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "all_three": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n": 320,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "disagreement_count": 0,
+    "disagreement_classes": {}
+  },
+  "strict_reading_sensitivity": {
+    "flipped_cases": 0,
+    "examples": [],
+    "note": "STRICT counts a field as evidenced only when its boolean is true AND the value it asserts is present; zero flips means the two readings of the contract sentence coincide on this scenario set"
+  },
+  "at_risk_population": {
+    "independent": 188,
+    "engine": 188,
+    "label_disagreement": 0
+  },
+  "catch_rate_vs_independent_oracle": {
+    "agent_graph": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n": 188,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "rules_baseline": {
+      "mean": 0.8936,
+      "ci95": [
+        0.8457,
+        0.9362
+      ],
+      "n": 188,
+      "distinct_values": 2,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "agent_misses": [],
+    "rules_misses_count": 20
+  },
+  "catch_rate_vs_engine_oracle": {
+    "agent_graph": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n": 188,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "rules_baseline": {
+      "mean": 0.8936,
+      "ci95": [
+        0.8457,
+        0.9415
+      ],
+      "n": 188,
+      "distinct_values": 2,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "note": "the self-graded number the judge panel objected to, kept so the two can be compared side by side"
+  },
+  "false_escalations_vs_independent_oracle": {
+    "count": 0,
+    "n_not_at_risk": 132,
+    "rate": 0.0,
+    "scenario_ids": []
+  },
+  "all_chains_verified": true,
+  "results_digest": "299a9359eb01bcbade5b3202fbf34a5f04f2ee564f5860a8b4d70e4358e2a10b",
+  "independent_oracle_inputs": "evalx/results/independent-oracle-inputs-n320.json"
+}

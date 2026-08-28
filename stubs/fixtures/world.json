@@ -1,0 +1,316 @@
+{
+  "world_schema_version": "1.0.0",
+  "label": "SYNTHETIC: all vessels, voyages, containers and terminal state are fictional; structurally faithful to DCSA Port Call 2.0 / PORTNET-style shapes",
+  "as_of": "2026-08-25T18:00:00+08:00",
+  "terminal": "TUAS-T3",
+  "vessel_schedule": [
+    {
+      "imo": "9700001",
+      "vessel_name": "MERLION EXPRESS",
+      "voyage_in": "437W",
+      "voyage_out": "438E",
+      "berth": "T3-B12",
+      "berthing_dt": "2026-08-25T21:10:00+08:00",
+      "unberthing_dt": "2026-08-26T10:00:00+08:00",
+      "terminal": "TUAS-T3",
+      "status": "CONFIRMED"
+    },
+    {
+      "imo": "9700002",
+      "vessel_name": "TEMASEK STAR",
+      "voyage_in": "0401W",
+      "voyage_out": "0402E",
+      "berth": "T3-B08",
+      "berthing_dt": "2026-08-25T23:00:00+08:00",
+      "unberthing_dt": "2026-08-26T08:30:00+08:00",
+      "terminal": "TUAS-T3",
+      "status": "CONFIRMED"
+    },
+    {
+      "imo": "9700003",
+      "vessel_name": "RAFFLES WAVE",
+      "voyage_in": "0510W",
+      "voyage_out": "0511E",
+      "berth": "T3-B05",
+      "berthing_dt": "2026-08-26T20:00:00+08:00",
+      "unberthing_dt": "2026-08-27T09:00:00+08:00",
+      "terminal": "TUAS-T3",
+      "status": "CONFIRMED"
+    }
+  ],
+  "yard_state": {
+    "as_of": "2026-08-25T18:00:00+08:00",
+    "blocks": [
+      {
+        "block_id": "Y12",
+        "capacity_teu": 1200,
+        "occupied_teu": 984,
+        "density_pct": 82.0,
+        "restow_queue_depth": 4
+      },
+      {
+        "block_id": "Y15",
+        "capacity_teu": 1400,
+        "occupied_teu": 1204,
+        "density_pct": 86.0,
+        "restow_queue_depth": 9
+      },
+      {
+        "block_id": "Y21",
+        "capacity_teu": 1000,
+        "occupied_teu": 780,
+        "density_pct": 78.0,
+        "restow_queue_depth": 2
+      }
+    ]
+  },
+  "box_groups": [
+    {
+      "box_group_id": "BG-0001",
+      "box_count": 42,
+      "container_ids_sample": [
+        "TCLU3001001",
+        "TCLU3001002",
+        "TCLU3001003",
+        "TCLU3001004",
+        "TCLU3001005"
+      ],
+      "inbound_voyage": "437W",
+      "outbound_voyage": "0402E",
+      "yard_locations": [
+        {
+          "block": "Y21",
+          "bay": 6,
+          "row": 2,
+          "tier": 1
+        }
+      ],
+      "dg_class": null,
+      "reefer_count": 0,
+      "cut_off": "2026-08-26T04:00:00+08:00",
+      "transfer_priority": "STANDARD"
+    },
+    {
+      "box_group_id": "BG-0002",
+      "box_count": 17,
+      "container_ids_sample": [
+        "MSKU4810073",
+        "TGHU7332019",
+        "TGHU7332020",
+        "FCIU8114467",
+        "FCIU8114468"
+      ],
+      "inbound_voyage": "437W",
+      "outbound_voyage": "0402E",
+      "yard_locations": [
+        {
+          "block": "Y12",
+          "bay": 14,
+          "row": 3,
+          "tier": 2
+        }
+      ],
+      "dg_class": null,
+      "reefer_count": 2,
+      "cut_off": "2026-08-26T02:26:00+08:00",
+      "transfer_priority": "STANDARD"
+    },
+    {
+      "box_group_id": "BG-0003",
+      "box_count": 18,
+      "container_ids_sample": [
+        "CAIU9020551",
+        "CAIU9020552",
+        "CAIU9020553",
+        "SEGU5518890",
+        "SEGU5518891"
+      ],
+      "inbound_voyage": "437W",
+      "outbound_voyage": "0402E",
+      "yard_locations": [
+        {
+          "block": "Y15",
+          "bay": 21,
+          "row": 5,
+          "tier": 3
+        }
+      ],
+      "dg_class": "3",
+      "reefer_count": 0,
+      "cut_off": "2026-08-26T04:00:00+08:00",
+      "transfer_priority": "STANDARD"
+    },
+    {
+      "box_group_id": "BG-ESC-01",
+      "box_count": 9,
+      "container_ids_sample": [
+        "BEAU2204411",
+        "BEAU2204412",
+        "BEAU2204413"
+      ],
+      "inbound_voyage": null,
+      "outbound_voyage": "0402E",
+      "yard_locations": [],
+      "dg_class": null,
+      "reefer_count": 0,
+      "cut_off": "2026-08-26T04:00:00+08:00",
+      "transfer_priority": "STANDARD"
+    }
+  ],
+  "connections": [
+    {
+      "connection_id": "CN-0001",
+      "box_group_id": "BG-0001",
+      "status": "ACTIVE",
+      "inbound": {
+        "vessel_imo": "9700001",
+        "vessel_name": "MERLION EXPRESS",
+        "voyage_in": "437W",
+        "eta": "2026-08-25T16:15:00+08:00",
+        "berth": "T3-B12"
+      },
+      "outbound": {
+        "vessel_imo": "9700002",
+        "vessel_name": "TEMASEK STAR",
+        "voyage_out": "0402E",
+        "etd": "2026-08-26T08:30:00+08:00",
+        "berth": "T3-B08"
+      },
+      "cut_off": "2026-08-26T04:00:00+08:00",
+      "yard_block": "Y21",
+      "estimates": {
+        "discharge_minutes": 180.0,
+        "yard_transfer_minutes": 90.0,
+        "restow_minutes": 0.0,
+        "buffer_p90_minutes": 45.0
+      },
+      "evidence": {
+        "eta": true,
+        "cut_off": true,
+        "discharge_estimate": true,
+        "yard_location": true,
+        "yard_transfer_estimate": true
+      },
+      "rebook_candidates": []
+    },
+    {
+      "connection_id": "CN-0002",
+      "box_group_id": "BG-0002",
+      "status": "ACTIVE",
+      "inbound": {
+        "vessel_imo": "9700001",
+        "vessel_name": "MERLION EXPRESS",
+        "voyage_in": "437W",
+        "eta": "2026-08-25T20:30:00+08:00",
+        "berth": "T3-B12"
+      },
+      "outbound": {
+        "vessel_imo": "9700002",
+        "vessel_name": "TEMASEK STAR",
+        "voyage_out": "0402E",
+        "etd": "2026-08-26T08:30:00+08:00",
+        "berth": "T3-B08"
+      },
+      "cut_off": "2026-08-26T02:26:00+08:00",
+      "yard_block": "Y12",
+      "estimates": {
+        "discharge_minutes": 180.0,
+        "yard_transfer_minutes": 90.0,
+        "restow_minutes": 0.0,
+        "buffer_p90_minutes": 45.0
+      },
+      "evidence": {
+        "eta": true,
+        "cut_off": true,
+        "discharge_estimate": true,
+        "yard_location": true,
+        "yard_transfer_estimate": true
+      },
+      "rebook_candidates": [
+        {
+          "vessel_name": "RAFFLES WAVE",
+          "voyage_out": "0511E",
+          "cut_off": "2026-08-26T18:00:00+08:00",
+          "rollover_cost_usd": 2400.0
+        }
+      ]
+    },
+    {
+      "connection_id": "CN-0003",
+      "box_group_id": "BG-0003",
+      "status": "ACTIVE",
+      "inbound": {
+        "vessel_imo": "9700001",
+        "vessel_name": "MERLION EXPRESS",
+        "voyage_in": "437W",
+        "eta": "2026-08-25T23:45:00+08:00",
+        "berth": "T3-B12"
+      },
+      "outbound": {
+        "vessel_imo": "9700002",
+        "vessel_name": "TEMASEK STAR",
+        "voyage_out": "0402E",
+        "etd": "2026-08-26T08:30:00+08:00",
+        "berth": "T3-B08"
+      },
+      "cut_off": "2026-08-26T04:00:00+08:00",
+      "yard_block": "Y15",
+      "estimates": {
+        "discharge_minutes": 240.0,
+        "yard_transfer_minutes": 120.0,
+        "restow_minutes": 60.0,
+        "buffer_p90_minutes": 45.0
+      },
+      "evidence": {
+        "eta": true,
+        "cut_off": true,
+        "discharge_estimate": true,
+        "yard_location": true,
+        "yard_transfer_estimate": true
+      },
+      "rebook_candidates": [
+        {
+          "vessel_name": "RAFFLES WAVE",
+          "voyage_out": "0511E",
+          "cut_off": "2026-08-26T18:00:00+08:00",
+          "rollover_cost_usd": 2400.0
+        }
+      ]
+    },
+    {
+      "connection_id": "CN-ESC-01",
+      "box_group_id": "BG-ESC-01",
+      "status": "ACTIVE",
+      "inbound": {
+        "vessel_imo": null,
+        "vessel_name": "SEA PANTHER (advisory only)",
+        "voyage_in": null,
+        "eta": null,
+        "berth": null
+      },
+      "outbound": {
+        "vessel_imo": "9700002",
+        "vessel_name": "TEMASEK STAR",
+        "voyage_out": "0402E",
+        "etd": "2026-08-26T08:30:00+08:00",
+        "berth": "T3-B08"
+      },
+      "cut_off": "2026-08-26T04:00:00+08:00",
+      "yard_block": null,
+      "estimates": {
+        "discharge_minutes": null,
+        "yard_transfer_minutes": 90.0,
+        "restow_minutes": null,
+        "buffer_p90_minutes": 45.0
+      },
+      "evidence": {
+        "eta": false,
+        "cut_off": true,
+        "discharge_estimate": false,
+        "yard_location": false,
+        "yard_transfer_estimate": true
+      },
+      "rebook_candidates": []
+    }
+  ]
+}

@@ -1,0 +1,833 @@
+{
+  "as_of": "2026-08-24T01:43:18.144032+00:00",
+  "camera_policy": "vessel handles are deterministic pseudonyms (SYNTH-<hash>); *_internal identifiers (MMSI/IMO) are for reconciliation only and must NEVER appear on camera or in slides (SPEC CON-5)",
+  "flagged_arrivals_schema_version": "1.0.0",
+  "flags": [
+    {
+      "destination": "PGBG",
+      "details": {
+        "broadcast_eta": "2026-08-10T09:30:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 19693.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9359466,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538005255,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-09B7DC"
+    },
+    {
+      "destination": "EGPSD>PEBGB",
+      "details": {
+        "broadcast_eta": "2026-08-23T11:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 883.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9993975,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 477155200,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-18D284"
+    },
+    {
+      "destination": "PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-23T09:15:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 988.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9424273,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 241330000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-21BC29"
+    },
+    {
+      "destination": "SGP AWW",
+      "details": {
+        "broadcast_eta": "2026-08-22T00:25:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 2958.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9618422,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 413468760,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-268B99"
+    },
+    {
+      "destination": "PEBGC SNG",
+      "details": {
+        "broadcast_eta": "2026-08-22T14:45:00+00:00",
+        "last_nav_status": null,
+        "overdue_minutes": 2098.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9240718,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 525119081,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-2915DB"
+    },
+    {
+      "destination": "SG SIN PEBGB",
+      "details": {
+        "broadcast_eta": "2026-08-24T00:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 103.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9980186,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636022127,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-2B011F"
+    },
+    {
+      "destination": "AEW ANCHORAGE",
+      "details": {
+        "broadcast_eta": "2026-08-23T21:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 283.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9392341,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 431824000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-3ADAEB"
+    },
+    {
+      "destination": "SG PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-23T08:15:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 1048.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9414321,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 352001236,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-477D50"
+    },
+    {
+      "destination": "BATAM",
+      "details": {
+        "broadcast_eta": "2026-08-23T10:30:00+00:00",
+        "last_nav_status": 8,
+        "overdue_minutes": 913.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9257888,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563002840,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-47DD70"
+    },
+    {
+      "destination": "SINGAPORE ANCHORAGE",
+      "details": {
+        "broadcast_eta": "2026-08-20T19:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 4723.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 1019931,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 205664000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-480541"
+    },
+    {
+      "destination": "SINGAPORE",
+      "details": {
+        "broadcast_eta": "2026-08-21T07:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 4003.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9254276,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 353058000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-4C658B"
+    },
+    {
+      "destination": "AEPA",
+      "details": {
+        "broadcast_eta": "2026-08-22T20:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 1783.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9380661,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636015349,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-4D2462"
+    },
+    {
+      "destination": "SGSIN",
+      "details": {
+        "broadcast_eta": "2026-08-20T14:00:00+00:00",
+        "last_nav_status": null,
+        "overdue_minutes": 5023.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9337523,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538011483,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-507048"
+    },
+    {
+      "destination": "PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-23T07:30:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 1093.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 1094216,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538012998,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-590BDE"
+    },
+    {
+      "destination": "SG PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-22T01:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 2923.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9885594,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538012062,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-611286"
+    },
+    {
+      "destination": "SGSIN-PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-23T15:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 643.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 1049390,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636025376,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-67B1E6"
+    },
+    {
+      "destination": "SINGAPORE PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-23T23:54:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 109.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9325960,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 403096001,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-6AF9F6"
+    },
+    {
+      "destination": "AEBA",
+      "details": {
+        "broadcast_eta": "2026-07-21T09:00:00+00:00",
+        "last_nav_status": 0,
+        "overdue_minutes": 48523.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9239719,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563014650,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-6C6B3A"
+    },
+    {
+      "destination": "SG-PWBGA",
+      "details": {
+        "broadcast_eta": "2026-08-22T15:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 2083.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 856377300,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 533133444,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-6D7E13"
+    },
+    {
+      "destination": "AEPB/C",
+      "details": {
+        "broadcast_eta": "2026-07-24T11:30:00+00:00",
+        "last_nav_status": 0,
+        "overdue_minutes": 44053.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9655391,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 566496000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-71A661"
+    },
+    {
+      "destination": "TWKHH>SGSIN",
+      "details": {
+        "broadcast_eta": "2026-08-20T07:00:00+00:00",
+        "last_nav_status": 0,
+        "overdue_minutes": 5443.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9265366,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636021167,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-721CDA"
+    },
+    {
+      "destination": "SG,PWBGA",
+      "details": {
+        "broadcast_eta": "2026-08-20T00:30:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 5833.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9667277,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563164600,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-739385"
+    },
+    {
+      "destination": "PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-22T00:30:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 2953.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9343754,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 352503000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-7A3FC4"
+    },
+    {
+      "destination": "SGSIN PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-23T04:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 1303.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9519133,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 440694000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-7FD874"
+    },
+    {
+      "destination": "SGSIN PGBG",
+      "details": {
+        "broadcast_eta": "2026-08-22T10:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 2383.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9732371,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 241452000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-920C85"
+    },
+    {
+      "destination": "SG SIN",
+      "details": {
+        "broadcast_eta": "2026-08-23T22:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 223.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9698252,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538005751,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-924871"
+    },
+    {
+      "destination": "PPFT<->BUKOM",
+      "details": {
+        "broadcast_eta": "2026-08-14T16:00:00+00:00",
+        "last_nav_status": 8,
+        "overdue_minutes": 13543.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9778741,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563142000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-929618"
+    },
+    {
+      "destination": "SG-AWPA",
+      "details": {
+        "broadcast_eta": "2026-08-06T10:00:00+00:00",
+        "last_nav_status": null,
+        "overdue_minutes": 25423.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9796597,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 466012000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-9CCE1C"
+    },
+    {
+      "destination": "SGSIN PEBGA",
+      "details": {
+        "broadcast_eta": "2026-08-24T00:30:00+00:00",
+        "last_nav_status": 0,
+        "overdue_minutes": 73.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9143453,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 564169000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-9E4BD5"
+    },
+    {
+      "destination": "PEBGC SGP",
+      "details": {
+        "broadcast_eta": "2026-08-20T07:30:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 5413.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9253258,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538002073,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-AB8AB7"
+    },
+    {
+      "destination": "SGSIN-AWPB>OMU12",
+      "details": {
+        "broadcast_eta": "2026-08-22T07:00:00+00:00",
+        "last_nav_status": null,
+        "overdue_minutes": 2563.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9766229,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563016300,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-AEE9E8"
+    },
+    {
+      "destination": "SG SIN",
+      "details": {
+        "broadcast_eta": "2026-08-22T03:56:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 2747.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9812743,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636024121,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-B9F1D9"
+    },
+    {
+      "destination": "BUKOM",
+      "details": {
+        "broadcast_eta": "2026-06-25T06:00:00+00:00",
+        "last_nav_status": 3,
+        "overdue_minutes": 86143.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 8359043,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 256162000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-C3BF59"
+    },
+    {
+      "destination": "SG SIN_PWBGA",
+      "details": {
+        "broadcast_eta": "2026-08-23T07:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 1123.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9564401,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 533057200,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-C41537"
+    },
+    {
+      "destination": "SINGAPORE PEBGB",
+      "details": {
+        "broadcast_eta": "2026-08-23T18:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 463.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9323962,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636012766,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-C65106"
+    },
+    {
+      "destination": "SGSIN",
+      "details": {
+        "broadcast_eta": "2026-08-19T10:00:00+00:00",
+        "last_nav_status": 0,
+        "overdue_minutes": 6703.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9411446,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 525121099,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-CC8C9D"
+    },
+    {
+      "destination": "PWBGA SG",
+      "details": {
+        "broadcast_eta": "2026-08-22T10:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 2383.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9936159,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636093296,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-D18E85"
+    },
+    {
+      "destination": "CNQID > SGSIN",
+      "details": {
+        "broadcast_eta": "2026-08-23T04:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 1303.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9736195,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 304343000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-D4A95E"
+    },
+    {
+      "destination": "SINGAPORE-AEPA",
+      "details": {
+        "broadcast_eta": "2026-08-23T14:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 703.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9752395,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 248672000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-DDE511"
+    },
+    {
+      "destination": "SGSIN PEBGC",
+      "details": {
+        "broadcast_eta": "2026-08-21T07:15:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 3988.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9460629,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 566212000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-E15BE2"
+    },
+    {
+      "destination": "SG AEW",
+      "details": {
+        "broadcast_eta": "2026-08-23T16:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 583.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 8027781,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 228308600,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-E2AFBB"
+    },
+    {
+      "destination": "SGSIN PEBGA",
+      "details": {
+        "broadcast_eta": "2026-08-23T13:20:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 743.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9565869,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538011461,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-E2D72C"
+    },
+    {
+      "destination": "SINGAPORE",
+      "details": {
+        "broadcast_eta": "2026-03-02T03:00:00+00:00",
+        "last_nav_status": 0,
+        "overdue_minutes": 251923.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9869605,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563105900,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-E45A6D"
+    },
+    {
+      "destination": "EPBGC",
+      "details": {
+        "broadcast_eta": "2026-08-23T20:30:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 313.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9394325,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 352002843,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-E99AEA"
+    },
+    {
+      "destination": "SG SIN",
+      "details": {
+        "broadcast_eta": "2026-08-23T09:15:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 988.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9775385,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 269066000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-EAB3C4"
+    },
+    {
+      "destination": "SINGAPUR",
+      "details": {
+        "broadcast_eta": "2026-08-23T18:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 463.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9364784,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636019052,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-EEA5F5"
+    },
+    {
+      "destination": "SG PGBG",
+      "details": {
+        "broadcast_eta": "2026-08-14T20:30:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 13273.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9859246,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 370679000,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-F7F1F4"
+    },
+    {
+      "destination": "SG SIN",
+      "details": {
+        "broadcast_eta": "2026-08-23T01:00:00+00:00",
+        "last_nav_status": 1,
+        "overdue_minutes": 1483.3
+      },
+      "flag_type": "ETA_OVERDUE",
+      "imo_internal": 9943360,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636022164,
+      "observed_at": "2026-08-24T01:43:18.144032+00:00",
+      "vessel": "SYNTH-F9A5B4"
+    },
+    {
+      "destination": "BDCGP",
+      "details": {
+        "eta_drift_minutes": 8038.0,
+        "new_eta": "2026-08-29T12:00:00+00:00",
+        "previous_eta": "2026-08-23T22:02:00+00:00"
+      },
+      "flag_type": "ETA_REVISION",
+      "imo_internal": 1051070,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 352006880,
+      "observed_at": "2026-08-24T01:31:05.593586+00:00",
+      "vessel": "SYNTH-4D24EB"
+    },
+    {
+      "destination": "PGBG",
+      "details": {
+        "gap_end": "2026-08-24T01:32:13.708229+00:00",
+        "gap_minutes": 54.0,
+        "gap_start": "2026-08-24T00:38:13.943127+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": 9359466,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 538005255,
+      "observed_at": "2026-08-24T01:32:13.708229+00:00",
+      "vessel": "SYNTH-09B7DC"
+    },
+    {
+      "destination": "SG PEBGC",
+      "details": {
+        "gap_end": "2026-08-24T01:35:23.753213+00:00",
+        "gap_minutes": 56.9,
+        "gap_start": "2026-08-24T00:38:27.413949+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": 9414321,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 352001236,
+      "observed_at": "2026-08-24T01:35:23.753213+00:00",
+      "vessel": "SYNTH-477D50"
+    },
+    {
+      "destination": null,
+      "details": {
+        "gap_end": "2026-08-24T01:40:26.220928+00:00",
+        "gap_minutes": 45.5,
+        "gap_start": "2026-08-24T00:54:57.646321+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": null,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563027730,
+      "observed_at": "2026-08-24T01:40:26.220928+00:00",
+      "vessel": "SYNTH-6C0B29"
+    },
+    {
+      "destination": null,
+      "details": {
+        "gap_end": "2026-08-24T01:38:23.777103+00:00",
+        "gap_minutes": 46.5,
+        "gap_start": "2026-08-24T00:51:54.496998+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": null,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 565173000,
+      "observed_at": "2026-08-24T01:38:23.777103+00:00",
+      "vessel": "SYNTH-74134A"
+    },
+    {
+      "destination": "PEBGC",
+      "details": {
+        "gap_end": "2026-08-24T01:40:23.292796+00:00",
+        "gap_minutes": 72.0,
+        "gap_start": "2026-08-24T00:28:21.687974+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": 9343754,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 352503000,
+      "observed_at": "2026-08-24T01:40:23.292796+00:00",
+      "vessel": "SYNTH-7A3FC4"
+    },
+    {
+      "destination": null,
+      "details": {
+        "gap_end": "2026-08-24T01:18:51.061992+00:00",
+        "gap_minutes": 49.8,
+        "gap_start": "2026-08-24T00:29:00.315102+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": 9386110,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 563009210,
+      "observed_at": "2026-08-24T01:18:51.061992+00:00",
+      "vessel": "SYNTH-BDE05B"
+    },
+    {
+      "destination": null,
+      "details": {
+        "gap_end": "2026-08-24T01:29:04.514537+00:00",
+        "gap_minutes": 51.0,
+        "gap_start": "2026-08-24T00:38:03.817457+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": null,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 215221000,
+      "observed_at": "2026-08-24T01:29:04.514537+00:00",
+      "vessel": "SYNTH-D56014"
+    },
+    {
+      "destination": "SG SIN",
+      "details": {
+        "gap_end": "2026-08-24T01:27:39.249599+00:00",
+        "gap_minutes": 51.0,
+        "gap_start": "2026-08-24T00:36:39.522832+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": 9775385,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 269066000,
+      "observed_at": "2026-08-24T01:27:39.249599+00:00",
+      "vessel": "SYNTH-EAB3C4"
+    },
+    {
+      "destination": "SG SIN",
+      "details": {
+        "gap_end": "2026-08-24T01:20:02.625767+00:00",
+        "gap_minutes": 48.0,
+        "gap_start": "2026-08-24T00:32:02.260422+00:00"
+      },
+      "flag_type": "REPORTING_GAP",
+      "imo_internal": 9943360,
+      "label": "RECORDED_AIS",
+      "mmsi_internal": 636022164,
+      "observed_at": "2026-08-24T01:20:02.625767+00:00",
+      "vessel": "SYNTH-F9A5B4"
+    }
+  ],
+  "label": "RECORDED_AIS",
+  "source": {
+    "files": [
+      "ais-20260824.jsonl"
+    ],
+    "provider": "aisstream.io websocket recording, Singapore box",
+    "rows_parsed": 1796,
+    "vessels_seen": 228
+  },
+  "thresholds": {
+    "eta_overdue_min_minutes": 60.0,
+    "eta_revision_min_minutes": 30.0,
+    "reporting_gap_min_minutes": 45.0
+  }
+}

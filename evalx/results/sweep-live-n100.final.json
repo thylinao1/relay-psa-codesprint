@@ -1,0 +1,143 @@
+{
+  "sweep_version": "1.0.0",
+  "label": "SYNTHETIC scenarios (twin.generate worlds, same seeded distribution as sweep_local) through the FULL relay_decision_graph in --mode=live: real llama3.2:3b 3-sample fusion on free-text scenario advisories",
+  "engine": {
+    "agent_graph_live": "agentcore/replay.py -> agentcore.graph.relay_decision_graph --mode=live",
+    "local_model": "llama3.2:3b"
+  },
+  "run_id": "live-n100",
+  "oracle_verified": true,
+  "seed": 42,
+  "n_requested": 100,
+  "n_completed": 100,
+  "partial": false,
+  "advisory_episodes": 55,
+  "structured_only_episodes": 45,
+  "outcome_mix": {
+    "COMPLETED": 89,
+    "ESCALATED": 11
+  },
+  "escalation_classes": {
+    "insufficient_evidence": 4,
+    "no_feasible_option": 7
+  },
+  "action_mix": {
+    "none": 58,
+    "portnet.set_transfer_priority": 29,
+    "portnet.propose_rebooking": 13
+  },
+  "fusion_funnel": {
+    "advisory_episodes": 55,
+    "fusion_produced_fact": 55,
+    "gate_refused_below_threshold": 0,
+    "reconciled_fact_ingested": 55,
+    "note": "advisory quality on the eval-side ground-truth set is measured separately by evalx/fusion_eval.py (n=64); this funnel measures the live node inside full episodes"
+  },
+  "tokens_per_decision": {
+    "advisory_episodes": {
+      "mean": 1992.8364,
+      "ci95": [
+        1990.7818,
+        1994.9273
+      ],
+      "n": 55,
+      "distinct_values": 23,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "advisory_tokens_in": {
+      "mean": 1667.2364,
+      "ci95": [
+        1666.2,
+        1668.3818
+      ],
+      "n": 55,
+      "distinct_values": 7,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "advisory_tokens_out": {
+      "mean": 325.6,
+      "ci95": [
+        324.2182,
+        326.8909
+      ],
+      "n": 55,
+      "distinct_values": 15,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "structured_only_episodes": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 45,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "label": "MEASURED: Ollama prompt_eval_count / eval_count summed off the ledger"
+  },
+  "latency_s_per_decision": {
+    "advisory_episodes": {
+      "mean": 17.8908,
+      "ci95": [
+        16.6213,
+        19.3845
+      ],
+      "n": 55,
+      "distinct_values": 55,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "structured_only_episodes": {
+      "mean": 0.0097,
+      "ci95": [
+        0.0085,
+        0.0109
+      ],
+      "n": 45,
+      "distinct_values": 12,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "label": "MEASURED: wall-clock per full episode by this runner on the recording machine (M2 Air, 8 GB, local Ollama); includes the 3-sample fusion vote where an advisory is present"
+  },
+  "cost_per_decision": {
+    "cost_usd_imputed_total": 0.0,
+    "cost_usd_imputed_per_advisory_episode": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 55,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "counterfactual_frontier_usd_total": 0.072279,
+    "counterfactual_frontier_usd_per_advisory_episode": {
+      "mean": 0.0013,
+      "ci95": [
+        0.0013,
+        0.0013
+      ],
+      "n": 55,
+      "distinct_values": 34,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "pricing_label": "cost_usd_imputed at provider list price, snapshot 2026-08-24; tokens measured, dollars imputed (SPEC SC-11); local tier imputed $0 (self-hosted)",
+    "note": "actual routing runs the local tier (imputed $0, stated); the counterfactual row prices the SAME measured tokens at the frontier list price (gemini-2.5-flash snapshot 2026-08-24) so the local-tier saving is a number, not a claim"
+  },
+  "tokens_total": {
+    "in": 91698,
+    "out": 17908
+  },
+  "saved_by_expedite": 29,
+  "all_chains_verified": true,
+  "note": "simulator-internal SYNTHETIC scenarios; the simulated approver approves every card; advisory times are rendered to the minute so fused ETAs are minute-truncated relative to the generated world clock (stated, sub-minute effect); LLM token counts and latency are measured quantities and vary between runs; quotable only with oracle_verified=true"
+}

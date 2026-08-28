@@ -1,0 +1,101 @@
+{
+ "what": "The recorded Singapore AIS days behind the structured-stream warning-lead measurement (data/ais_warning_lead.py). The raw files stay gitignored because every message carries MMSI, IMO, call sign and ship name; this manifest pins them by sha256 so the committed derived file can be traced to exactly the bytes that produced it.",
+ "source": "aisstream.io WebSocket, Singapore box (data/ais_recorder.py BOX); licence position recorded in THIRD-PARTY.md",
+ "provenance": "RECORDED",
+ "recorder_not_running": true,
+ "files": [
+  {
+   "path": "data/ais/ais-20260824.jsonl",
+   "day": "2026-08-24",
+   "sha256": "40e93eadaa0fc3f3591d217fff1e6c8126a4015882f64ec70da368ce53a37d9c",
+   "bytes": 63557567,
+   "messages": 101551,
+   "by_type": {
+    "PositionReport": 80725,
+    "ShipStaticData": 11077,
+    "StandardClassBPositionReport": 9736,
+    "SubscriptionConfirmation": 13
+   },
+   "first_received_at": "2026-08-24T00:27:14.027802+00:00",
+   "last_received_at": "2026-08-24T23:59:59.150449+00:00",
+   "span_hours": 23.55,
+   "gaps_over_2min": [
+    [
+     "2026-08-24T05:44:06.271177+00:00",
+     "2026-08-24T05:53:25.192584+00:00",
+     9.3
+    ],
+    [
+     "2026-08-24T06:25:33.458637+00:00",
+     "2026-08-24T07:24:00.055516+00:00",
+     58.4
+    ],
+    [
+     "2026-08-24T08:30:49.297592+00:00",
+     "2026-08-24T09:06:16.843044+00:00",
+     35.5
+    ],
+    [
+     "2026-08-24T09:39:08.714138+00:00",
+     "2026-08-24T09:54:54.848253+00:00",
+     15.8
+    ],
+    [
+     "2026-08-24T13:34:51.508110+00:00",
+     "2026-08-24T14:13:21.003693+00:00",
+     38.5
+    ]
+   ],
+   "gap_minutes": 157.5,
+   "hours_covered": 20.92,
+   "partial_day": true
+  },
+  {
+   "path": "data/ais/ais-20260825.jsonl",
+   "day": "2026-08-25",
+   "sha256": "53d4d60daca23cee2fce21718be4d43eb06e970b7ba95c1d4242f05f64dba420",
+   "bytes": 31599183,
+   "messages": 50355,
+   "by_type": {
+    "PositionReport": 39594,
+    "ShipStaticData": 5121,
+    "StandardClassBPositionReport": 5635,
+    "SubscriptionConfirmation": 5
+   },
+   "first_received_at": "2026-08-25T00:00:00.175150+00:00",
+   "last_received_at": "2026-08-25T10:20:51.265030+00:00",
+   "span_hours": 10.35,
+   "gaps_over_2min": [
+    [
+     "2026-08-25T04:58:19.047644+00:00",
+     "2026-08-25T05:50:11.493419+00:00",
+     51.9
+    ],
+    [
+     "2026-08-25T08:16:43.275610+00:00",
+     "2026-08-25T08:34:47.465917+00:00",
+     18.1
+    ]
+   ],
+   "gap_minutes": 70.0,
+   "hours_covered": 9.18,
+   "partial_day": true
+  }
+ ],
+ "derived": {
+  "path": "data/ais/derived/eta-revisions-20260824-25.jsonl",
+  "sha256": "2243607ca0299a3780492733b4880969ec25395c8f245eb0851884af875641a9",
+  "bytes": 503942,
+  "rows": 3413,
+  "vessels": 1551,
+  "by_kind": {
+   "position": 1846,
+   "static": 1190,
+   "position_b": 377
+  },
+  "compaction": "one row per change of (eta, nav_status, in_box, ship_type) per vessel and message kind; first row of each run kept"
+ },
+ "pseudonymisation": "data/extract_drift.pseudonym: SYNTH-<first 6 hex of sha256('RELAY-2026-SYNTH:' + MMSI)>. A pseudonym, not anonymisation: the salt is a source literal and the MMSI space is enumerable. No MMSI, IMO, call sign, ship name, position or dimension is in the derived file.",
+ "gap_threshold_seconds": 120.0,
+ "re_freeze": ".venv/bin/python data/ais_derive.py && .venv/bin/python data/ais/frozen/rebuild_manifest.py --write"
+}

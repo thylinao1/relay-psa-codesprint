@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 320" width="980" height="320" role="img" aria-label="The expected-value gate over the same 500 scenarios: expedites booked fall from 173 to 29, and expedite spend per rollover avoided falls from 60,835 US dollars to 19,745" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif">
+  <style>
+    .ttl{font-size:15px;font-weight:700;fill:#E8EDF2}
+    .sub{font-size:11.5px;fill:#8090A0}
+    .pnl{font-size:12px;font-weight:700;fill:#E8EDF2}
+    .lab{font-size:11.5px;fill:#E8EDF2}
+    .ax{font-size:10.5px;fill:#8090A0}
+    .note{font-size:11.5px;fill:#E8EDF2}
+    .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px;font-weight:700}
+    .src{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;fill:#8090A0}
+  </style>
+
+  <rect x="0" y="0" width="980" height="320" rx="6" fill="#0A0F14"/>
+  <text x="32" y="34" class="ttl">The expected-value gate, over the same 500 scenarios</text>
+  <text x="32" y="54" class="sub">Every candidate action is priced before it can reach an approval card.</text>
+
+  <rect x="20" y="72" width="460" height="204" rx="5" fill="#111820"/>
+  <text x="40" y="96" class="pnl">Expedites booked</text>
+  <text x="40" y="113" class="ax">count over 500 scenarios</text>
+  <rect x="130" y="136" width="92" height="112" rx="3" fill="#F5B942"/>
+  <text x="176" y="128" class="num" fill="#F5B942" text-anchor="middle">173</text>
+  <text x="176" y="266" class="lab" text-anchor="middle">gate off</text>
+  <rect x="290" y="229.2" width="92" height="18.8" rx="3" fill="#4ADE80"/>
+  <text x="336" y="221.2" class="num" fill="#4ADE80" text-anchor="middle">29</text>
+  <text x="336" y="266" class="lab" text-anchor="middle">gate on</text>
+  <line x1="44" y1="248" x2="456" y2="248" stroke="#3A4654" stroke-width="1"/>
+
+  <rect x="500" y="72" width="460" height="204" rx="5" fill="#111820"/>
+  <text x="520" y="96" class="pnl">Expedite spend per rollover avoided</text>
+  <text x="520" y="113" class="ax">US dollars</text>
+  <rect x="610" y="136" width="92" height="112" rx="3" fill="#F5B942"/>
+  <text x="656" y="128" class="num" fill="#F5B942" text-anchor="middle">$60,835</text>
+  <text x="656" y="266" class="lab" text-anchor="middle">gate off</text>
+  <rect x="770" y="211.6" width="92" height="36.4" rx="3" fill="#4ADE80"/>
+  <text x="816" y="203.6" class="num" fill="#4ADE80" text-anchor="middle">$19,745</text>
+  <text x="816" y="266" class="lab" text-anchor="middle">gate on</text>
+  <line x1="524" y1="248" x2="936" y2="248" stroke="#3A4654" stroke-width="1"/>
+
+  <text x="32" y="298" class="note">An option whose expected value sits below its cost is carried as priced advice rather than booked.</text>
+  <text x="32" y="316" class="src">source: evalx/results/impact-model.json and evalx/results/save-value-audit-n500.json</text>
+</svg>

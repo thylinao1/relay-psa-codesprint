@@ -1,0 +1,109 @@
+{
+  "sweep_version": "2.0.0",
+  "label": "SYNTHETIC: twin.generate worlds (calm/disruption/cascade profiles) through baseline.rules_only and the FULL relay_decision_graph (replay LLM tier)",
+  "engine": {
+    "rules_baseline": "stubs.baseline_stub.rules_only",
+    "agent_graph": "agentcore/replay.py -> agentcore.graph.relay_decision_graph"
+  },
+  "run_id": "sweep-seed42-n500",
+  "oracle_verified": true,
+  "seed": 42,
+  "n_scenarios": 500,
+  "phases_completed": [
+    "rules_baseline",
+    "agent_graph"
+  ],
+  "verdict_mix": {
+    "FEASIBLE": 201,
+    "AT_RISK": 186,
+    "INFEASIBLE": 78,
+    "ESCALATE_INSUFFICIENT_EVIDENCE": 35
+  },
+  "at_risk_scenarios": 299,
+  "detection_lead_minutes": {
+    "mean": 81.4773,
+    "ci95": [
+      72.0492,
+      90.9242
+    ],
+    "n": 264,
+    "distinct_values": 109,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+  },
+  "detection_lead_given_advisory_minutes": {
+    "mean": 136.1392,
+    "ci95": [
+      126.7848,
+      145.2658
+    ],
+    "n": 158,
+    "distinct_values": 108,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+  },
+  "agent_only_catches": 35,
+  "catch_rate": {
+    "agent_graph": {
+      "mean": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n": 299,
+      "distinct_values": 1,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    },
+    "rules_baseline": {
+      "mean": 0.8829,
+      "ci95": [
+        0.8462,
+        0.9197
+      ],
+      "n": 299,
+      "distinct_values": 2,
+      "resamples": 1000,
+      "method": "seeded bootstrap of the mean"
+    }
+  },
+  "connections_saved": {
+    "agent_graph": {
+      "saved_by_expedite": 173,
+      "save_rate": {
+        "mean": 0.5786,
+        "ci95": [
+          0.5251,
+          0.6321
+        ],
+        "n": 299,
+        "distinct_values": 2,
+        "resamples": 1000,
+        "method": "seeded bootstrap of the mean"
+      },
+      "rebooking_proposals_pending_carrier": 55
+    },
+    "rules_baseline": {
+      "saved_by_expedite": 0,
+      "note": "baseline.rules_only flags only; it has no remediation path"
+    }
+  },
+  "false_escalations": {
+    "count": 0,
+    "n_not_at_risk": 201,
+    "rate": 0.0
+  },
+  "escalation_classes": {
+    "insufficient_evidence": 35,
+    "no_feasible_option": 25
+  },
+  "action_mix": {
+    "none": 261,
+    "portnet.set_transfer_priority": 173,
+    "portnet.propose_rebooking": 55,
+    "portnet.create_restow_order": 11
+  },
+  "all_chains_verified": true,
+  "results_digest": "2b27e6c4f9283c11a4f5cf83a988240b993cea19cf33c9881e7cec7ca37098b5",
+  "note": "simulator-internal numbers from seeded SYNTHETIC twin.generate worlds; the fusion product is pre-reconciled (hero-pack mechanism) so the sweep measures the deterministic decision path downstream of fusion; the simulated approver approves every card; quotable only with oracle_verified=true; the cluster upgrade is conditional and never on the demo path"
+}

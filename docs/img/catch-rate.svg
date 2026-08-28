@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 300" width="980" height="300" role="img" aria-label="Catch rate on at-risk connections: the rules-only baseline reaches 0.883, the agent reaches 1.000" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif">
+  <style>
+    .ttl{font-size:15px;font-weight:700;fill:#E8EDF2}
+    .sub{font-size:11.5px;fill:#8090A0}
+    .lab{font-size:12px;fill:#E8EDF2}
+    .ax{font-size:10.5px;fill:#8090A0}
+    .note{font-size:11.5px;fill:#E8EDF2}
+    .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px;font-weight:700}
+    .src{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;fill:#8090A0}
+    .grid{stroke:#1C2530;stroke-width:1}
+  </style>
+
+  <rect x="0" y="0" width="980" height="300" rx="6" fill="#0A0F14"/>
+  <text x="32" y="34" class="ttl">Catch rate on at-risk connections</text>
+  <text x="32" y="54" class="sub">500 generated scenarios, 299 of them at risk. The same event stream through both lanes.</text>
+
+  <rect x="20" y="72" width="940" height="158" rx="5" fill="#111820"/>
+
+  <line x1="254" y1="90" x2="254" y2="206" class="grid"/>
+  <line x1="375.5" y1="90" x2="375.5" y2="206" class="grid"/>
+  <line x1="497" y1="90" x2="497" y2="206" class="grid"/>
+  <line x1="618.5" y1="90" x2="618.5" y2="206" class="grid"/>
+  <line x1="740" y1="90" x2="740" y2="206" class="grid"/>
+  <line x1="254" y1="206" x2="740" y2="206" stroke="#3A4654" stroke-width="1"/>
+  <text x="254" y="221" class="ax" text-anchor="middle">0.00</text>
+  <text x="375.5" y="221" class="ax" text-anchor="middle">0.25</text>
+  <text x="497" y="221" class="ax" text-anchor="middle">0.50</text>
+  <text x="618.5" y="221" class="ax" text-anchor="middle">0.75</text>
+  <text x="740" y="221" class="ax" text-anchor="middle">1.00</text>
+
+  <text x="240" y="114" class="lab" text-anchor="end">rules-only baseline</text>
+  <rect x="254" y="98" width="429.1" height="24" rx="3" fill="#8090A0"/>
+  <line x1="665.2" y1="110" x2="701.1" y2="110" stroke="#E8EDF2" stroke-width="1.6"/>
+  <line x1="665.2" y1="103" x2="665.2" y2="117" stroke="#E8EDF2" stroke-width="1.6"/>
+  <line x1="701.1" y1="103" x2="701.1" y2="117" stroke="#E8EDF2" stroke-width="1.6"/>
+  <text x="760" y="114" class="num" fill="#E8EDF2">0.883</text>
+  <text x="818" y="114" class="ax">95% CI 0.846 to 0.920</text>
+
+  <text x="240" y="166" class="lab" text-anchor="end">agent</text>
+  <rect x="254" y="150" width="486" height="24" rx="3" fill="#4ADE80"/>
+  <text x="760" y="166" class="num" fill="#4ADE80">1.000</text>
+  <text x="818" y="166" class="ax">true by construction</text>
+
+  <text x="497" y="245" class="ax" text-anchor="middle">share of at-risk connections detected before the cut-off</text>
+
+  <text x="32" y="270" class="note">35 at-risk connections were caught by the agent and missed by the rules. Of the 201 scenarios that were never at risk, 0 raised an escalation.</text>
+  <text x="32" y="290" class="src">source: evalx/results/sweep-full-n500.final.json</text>
+</svg>

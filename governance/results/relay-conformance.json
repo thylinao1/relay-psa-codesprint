@@ -1,0 +1,1279 @@
+{
+  "artifact": "governance/conformance.py",
+  "checks": [
+    {
+      "group": "table",
+      "kind": "byte_identical",
+      "name": "policy_table_rows_identical",
+      "ok": true
+    },
+    {
+      "group": "table",
+      "kind": "byte_identical",
+      "name": "auto_deny_row_identical",
+      "ok": true
+    },
+    {
+      "group": "table",
+      "kind": "byte_identical",
+      "name": "approval_card_key_set_identical",
+      "ok": true
+    },
+    {
+      "group": "table",
+      "kind": "byte_identical",
+      "name": "trace_field_set_identical",
+      "ok": true
+    },
+    {
+      "group": "table",
+      "kind": "byte_identical",
+      "name": "deterministic_card_timestamps_identical",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('twin.get_connections', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('twin.feasibility_check', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('twin.replan_options', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('twin.simulate_what_if', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.get_vessel_schedule', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.get_box_group', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.get_yard_state', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('console.annotate', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('ops.notify', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.set_transfer_priority', {\"priority\":\"STANDARD\"})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.set_transfer_priority', {\"priority\":\"EXPEDITE\"})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.set_transfer_priority', {\"priority\":\"CRITICAL\"})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.request_cutoff_extension', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.propose_rebooking', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.create_restow_order', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('escalation.notify', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('twin.ingest_fact', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('twin.ingest_event', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.set_transfer_priority', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.set_transfer_priority', {\"priority\":\"NOT_A_LEVEL\"})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('portnet.berth_change', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('relay.invent_new_action', {\"box_group_id\":\"BG-0002\"})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "lookup('', {})",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"EXPEDITE\"}) #1",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"EXPEDITE\"}) #2",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"EXPEDITE\"}) #3",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"EXPEDITE\"}) #4",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"EXPEDITE\"}) #5",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"EXPEDITE\"}) #6",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "rate_limited_error(portnet.set_transfer_priority) #6",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"EXPEDITE\"}) #7",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "rate_limited_error(portnet.set_transfer_priority) #7",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"CRITICAL\"}) #1",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"CRITICAL\"}) #2",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"CRITICAL\"}) #3",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "rate_limited_error(portnet.set_transfer_priority) #3",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.set_transfer_priority, {\"priority\":\"CRITICAL\"}) #4",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "rate_limited_error(portnet.set_transfer_priority) #4",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.create_restow_order, {}) #1",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.create_restow_order, {}) #2",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(portnet.create_restow_order, {}) #3",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "rate_limited_error(portnet.create_restow_order) #3",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(relay.invent_new_action, {}) #1",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "rate_limited_error(relay.invent_new_action) #1",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "consume_rate(relay.invent_new_action, {}) #2",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "rate_limited_error(relay.invent_new_action) #2",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #1",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #2",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #3",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #4",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #5",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #6",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #7",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #8",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #9",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #10",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #11",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #12",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #13",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #14",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #15",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #16",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #17",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #18",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #19",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #20",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #21",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #22",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #23",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #24",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #25",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(corr-a) #26",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget(invalid correlation id)",
+      "ok": true
+    },
+    {
+      "group": "policy",
+      "kind": "byte_identical",
+      "name": "step_budget under INFINITE_LOOP",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "request_card(not an object)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "request_card(missing frozen key)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "request_card(bad args_digest)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "request_card(frozen fixture)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "get_card(pending)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "get_card(unknown)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(bad decision value)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(no approver id)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(unknown card)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(maker is checker: agent credential)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(maker is checker: non-human prefix)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(maker is checker: no prefix)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(maker is checker: trailing newline)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(approved without required justification)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(approved) incl. the minted token",
+      "ok": true
+    },
+    {
+      "detail": "APPR-8BD4AA5E6E912DECCDCC20AA",
+      "group": "approval",
+      "kind": "property",
+      "name": "token derivation is identical",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "request_card(re-register a decided card)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "get_card(after a refused re-registration)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "decide(already decided)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "get_card(after approval)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(valid)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(wrong tool)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(wrong args digest)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(fabricated token)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(empty token)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(expired)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(single use: first spend)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(single use: same key retried)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "verify_token(single use: second execution, new key)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "wait_decision(already decided card)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "wait_decision(pending, inside the window)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "wait_decision(timeout) deny-by-default + written summary",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "get_card(after deny-by-default)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "wait_decision(unknown card)",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "wait_decision under APPROVER_UNREACHABLE",
+      "ok": true
+    },
+    {
+      "group": "approval",
+      "kind": "byte_identical",
+      "name": "request_card under TOOL_FAILURE",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #1 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #1 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #2 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #2 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #3 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #3 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #4 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #4 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #5 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #5 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #6 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #6 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #7 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #7 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #8 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #8 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #9 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #9 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #10 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #10 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #11 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #11 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #12 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #12 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #13 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #13 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #14 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #14 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #15 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #15 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #16 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #16 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #17 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #17 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #18 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #18 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #19 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #19 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #20 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #20 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #21 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #21 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #22 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #22 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #23 sealed identically to RELAY",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append #23 reproduces the FROZEN fixture event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "verify",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "head",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "replay(corr-cn0002-20260825-01)",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "replay(corr-cn0002-20260825-02)",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "replay(all)",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append refuses a caller-supplied event_id",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append refuses an incomplete event",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "append refuses a non-object",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "verify detects the tamper at the same index",
+      "ok": true
+    },
+    {
+      "group": "ledger",
+      "kind": "byte_identical",
+      "name": "replay refuses a broken chain",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "bind_action(OPT-CN-0002-EXPEDITE, {})",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "bind_action(OPT-CN-0002-EXPEDITE, {\"priority\":\"CRITICAL\"})",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "bind_action(OPT-CN-0002-REBOOK, {})",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "bind_action(OPT-CN-0002-CUTOFF-EXT, {})",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(expedite, unchanged)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(expedite, unchanged) re-simulation",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(expedite, unchanged) argument digest",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(expedite raised to CRITICAL)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(expedite raised to CRITICAL) re-simulation",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(expedite raised to CRITICAL) argument digest",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(rebooking)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(rebooking) re-simulation",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(rebooking) argument digest",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(cut-off extension)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(cut-off extension) re-simulation",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(cut-off extension) argument digest",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(option that is not enumerable)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(priority on the wrong action class)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(priority value outside the enumeration)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(free-form parameter)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "resolve(not an object)",
+      "ok": true
+    },
+    {
+      "detail": "governance refuses, RELAY accepts and drops the extra key",
+      "group": "edit",
+      "kind": "property",
+      "name": "documented divergence: unsupported top-level edit keys are refused (RELAY ignores them)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "build_edited_card(expedite raised to CRITICAL)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "describe_variant(expedite raised to CRITICAL)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "build_edited_card(rebooking)",
+      "ok": true
+    },
+    {
+      "group": "edit",
+      "kind": "byte_identical",
+      "name": "describe_variant(rebooking)",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: empty idempotency key",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: no approval token",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: empty approval token",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: credential is not write-scoped",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: credential is not a string",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: fabricated token",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: degraded to advisory, writes denied server side",
+      "ok": true
+    },
+    {
+      "group": "gate",
+      "kind": "byte_identical",
+      "name": "refusal: valid token replayed against different arguments",
+      "ok": true
+    },
+    {
+      "detail": "",
+      "group": "gate",
+      "kind": "property",
+      "name": "the correctly bound token passes both gates",
+      "ok": true
+    }
+  ],
+  "claim": "the governance package reproduces RELAY's shipped policy, approval, ledger, governed-edit and write-gate behaviour byte for byte on the frozen fixtures",
+  "contract_version": "1.1.0",
+  "summary": {
+    "by_group": {
+      "approval": {
+        "passed": 36,
+        "total": 36
+      },
+      "edit": {
+        "passed": 26,
+        "total": 26
+      },
+      "gate": {
+        "passed": 9,
+        "total": 9
+      },
+      "ledger": {
+        "passed": 56,
+        "total": 56
+      },
+      "policy": {
+        "passed": 74,
+        "total": 74
+      },
+      "table": {
+        "passed": 5,
+        "total": 5
+      }
+    },
+    "byte_identical_checks": 203,
+    "byte_identical_passed": 203,
+    "failed": 0,
+    "passed": 206,
+    "total": 206
+  }
+}

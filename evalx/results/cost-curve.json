@@ -1,0 +1,299 @@
+{
+  "profile_version": "1.0.0",
+  "kind": "cost",
+  "label": "MEASURED: tokens summed per trace event by the `tier` field off the ledger; dollars IMPUTED at a dated list price (CONTRACT section f).",
+  "oracle_verified": true,
+  "seed": 42,
+  "n_episodes": 30,
+  "mode": "live",
+  "local_model": "llama3.2:3b",
+  "elapsed_s": 710.4,
+  "advisory_episodes": 14,
+  "structured_only_episodes": 16,
+  "advisory_fraction": 0.4667,
+  "tokens_by_tier": {
+    "rules": {
+      "events": 310,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd_imputed": 0.0
+    },
+    "local": {
+      "events": 28,
+      "tokens_in": 58080,
+      "tokens_out": 7576,
+      "cost_usd_imputed": 0.0
+    }
+  },
+  "tokens_per_episode_all": {
+    "mean": 2188.5333,
+    "ci95": [
+      1406.1667,
+      3123.7
+    ],
+    "n": 30,
+    "distinct_values": 11,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+  },
+  "tokens_per_episode_advisory": {
+    "mean": 4689.7143,
+    "ci95": [
+      4681.8571,
+      4697.9286
+    ],
+    "n": 14,
+    "distinct_values": 10,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+  },
+  "tokens_per_episode_structured_only": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n": 16,
+    "distinct_values": 1,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+  },
+  "latency_s_per_episode_advisory": {
+    "mean": 50.5027,
+    "ci95": [
+      48.4205,
+      52.9299
+    ],
+    "n": 14,
+    "distinct_values": 14,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+  },
+  "latency_s_per_episode_structured_only": {
+    "mean": 0.0103,
+    "ci95": [
+      0.0081,
+      0.0129
+    ],
+    "n": 16,
+    "distinct_values": 12,
+    "resamples": 1000,
+    "method": "seeded bootstrap of the mean"
+  },
+  "tokens_total": 65656,
+  "cost_usd_imputed_total": 0.0,
+  "counterfactual_frontier_usd_total": 0.036364,
+  "pricing_label": "cost_usd_imputed at provider list price, snapshot 2026-08-24; tokens measured, dollars imputed (SPEC SC-11); local tier imputed $0 (self-hosted)",
+  "episodes": [
+    {
+      "scenario_id": "SWP-42-00000",
+      "has_advisory": false,
+      "latency_s": 0.01,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00001",
+      "has_advisory": true,
+      "latency_s": 44.241,
+      "tokens_total": 4685,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00002",
+      "has_advisory": false,
+      "latency_s": 0.013,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00003",
+      "has_advisory": true,
+      "latency_s": 47.077,
+      "tokens_total": 4715,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00004",
+      "has_advisory": false,
+      "latency_s": 0.011,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00005",
+      "has_advisory": true,
+      "latency_s": 44.281,
+      "tokens_total": 4665,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00006",
+      "has_advisory": false,
+      "latency_s": 0.008,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00007",
+      "has_advisory": true,
+      "latency_s": 46.666,
+      "tokens_total": 4680,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00008",
+      "has_advisory": false,
+      "latency_s": 0.005,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00009",
+      "has_advisory": false,
+      "latency_s": 0.005,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00010",
+      "has_advisory": false,
+      "latency_s": 0.005,
+      "tokens_total": 0,
+      "outcome": "ESCALATED"
+    },
+    {
+      "scenario_id": "SWP-42-00011",
+      "has_advisory": false,
+      "latency_s": 0.005,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00012",
+      "has_advisory": false,
+      "latency_s": 0.02,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00013",
+      "has_advisory": true,
+      "latency_s": 49.596,
+      "tokens_total": 4690,
+      "outcome": "ESCALATED"
+    },
+    {
+      "scenario_id": "SWP-42-00014",
+      "has_advisory": false,
+      "latency_s": 0.015,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00015",
+      "has_advisory": false,
+      "latency_s": 0.006,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00016",
+      "has_advisory": true,
+      "latency_s": 50.776,
+      "tokens_total": 4680,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00017",
+      "has_advisory": true,
+      "latency_s": 55.145,
+      "tokens_total": 4680,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00018",
+      "has_advisory": true,
+      "latency_s": 47.914,
+      "tokens_total": 4700,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00019",
+      "has_advisory": true,
+      "latency_s": 54.795,
+      "tokens_total": 4660,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00020",
+      "has_advisory": true,
+      "latency_s": 55.974,
+      "tokens_total": 4696,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00021",
+      "has_advisory": true,
+      "latency_s": 58.771,
+      "tokens_total": 4700,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00022",
+      "has_advisory": true,
+      "latency_s": 50.569,
+      "tokens_total": 4700,
+      "outcome": "ESCALATED"
+    },
+    {
+      "scenario_id": "SWP-42-00023",
+      "has_advisory": false,
+      "latency_s": 0.014,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00024",
+      "has_advisory": true,
+      "latency_s": 51.921,
+      "tokens_total": 4710,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00025",
+      "has_advisory": false,
+      "latency_s": 0.007,
+      "tokens_total": 0,
+      "outcome": "ESCALATED"
+    },
+    {
+      "scenario_id": "SWP-42-00026",
+      "has_advisory": true,
+      "latency_s": 49.312,
+      "tokens_total": 4695,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00027",
+      "has_advisory": false,
+      "latency_s": 0.012,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00028",
+      "has_advisory": false,
+      "latency_s": 0.013,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    },
+    {
+      "scenario_id": "SWP-42-00029",
+      "has_advisory": false,
+      "latency_s": 0.016,
+      "tokens_total": 0,
+      "outcome": "COMPLETED"
+    }
+  ]
+}

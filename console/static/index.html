@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RELAY, Connection Guardian console</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0e13'/%3E%3Crect x='2' y='9' width='3' height='5' fill='%233fce7c'/%3E%3Crect x='6.5' y='5' width='3' height='9' fill='%23f2b135'/%3E%3Crect x='11' y='2' width='3' height='12' fill='%233fa7f2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/tokens.css">
+<link rel="stylesheet" href="/static/css/console.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wordmark">RELAY <small>· Connection Guardian · TUAS-T3</small></div>
+  <span class="chip synthetic" title="All terminal data is fabricated; structurally faithful to DCSA Port Call 2.0">SYNTHETIC</span>
+  <span id="mode-chip" class="chip mode-normal">NORMAL</span>
+  <span id="replay-chip" class="chip mode-replay" hidden>REPLAY LEDGER</span>
+  <div class="spacer"></div>
+  <div class="clockbox">
+    <div id="wall-clock" class="wall" aria-label="wall clock (SGT)">--:--:--</div>
+    <div class="asof">wall clock SGT · world as-of <span id="world-asof" class="mono">n/a</span></div>
+  </div>
+</header>
+
+<div id="offline-banner" class="banner-offline" role="alert">
+  Console API unreachable, retrying. The board below may be stale.
+</div>
+
+<main>
+  <div class="layout">
+    <section class="panel" aria-labelledby="board-title">
+      <div class="panel-head">
+        <h2 id="board-title">Connection countdown board</h2>
+        <span class="count" id="board-count"></span>
+        <div class="spacer"></div>
+        <span class="microlabel">P90 margin to cut-off, minutes</span>
+      </div>
+      <div id="board-body"><div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div></div>
+    </section>
+
+    <aside class="panel" aria-labelledby="approvals-title">
+      <div class="panel-head">
+        <h2 id="approvals-title">Approvals</h2>
+        <span class="count" id="approvals-count"></span>
+        <div class="spacer"></div>
+        <span class="microlabel">T1 ask-approve · deny-by-default <span id="deny-window">…</span></span>
+      </div>
+      <div id="approvals-body"><div class="skeleton-row"></div></div>
+    </aside>
+  </div>
+
+  <section class="panel plan-panel" aria-labelledby="plan-title">
+    <div class="panel-head">
+      <h2 id="plan-title">Joint recovery plan</h2>
+      <span class="count" id="plan-count"></span>
+      <div class="spacer"></div>
+      <span class="microlabel">one shared shift budget · CP-SAT, read-only</span>
+    </div>
+    <div id="plan-body"><div class="skeleton-row"></div></div>
+  </section>
+
+  <div class="band">
+    <section class="panel" aria-labelledby="trace-title">
+      <div class="panel-head">
+        <h2 id="trace-title">Execution trace</h2>
+        <span id="chain-chip" class="chip chain-ok" hidden>CHAIN VERIFIED</span>
+        <span class="count" id="trace-count"></span>
+        <div class="spacer"></div>
+        <span class="microlabel">tamper-evident ledger · rationale is not the audit record</span>
+      </div>
+      <div id="trace-body" class="trace-list"><div class="loading">Loading ledger…</div></div>
+    </section>
+
+    <section class="panel" aria-labelledby="gov-title">
+      <div class="panel-head">
+        <h2 id="gov-title">Oversight health</h2>
+        <div class="spacer"></div>
+        <span class="microlabel">denominators shown, always</span>
+      </div>
+      <div id="gov-body" class="tiles"><div class="skeleton-row"></div></div>
+    </section>
+  </div>
+</main>
+
+<footer class="controls-strip">
+  <div class="control-block">
+    <span class="microlabel">Fault injection: the one judge-operable control</span>
+    <button id="killswitch" class="killswitch" aria-pressed="false">
+      <span class="dot"></span>
+      <span id="killswitch-label">KILL carrier-schedule tool</span>
+    </button>
+  </div>
+  <div class="control-block">
+    <span class="microlabel">Ledger source</span>
+    <div class="switch" role="group" aria-label="replay mode">
+      <button id="src-live" class="on">LIVE</button>
+      <button id="src-fixture">REPLAY</button>
+    </div>
+  </div>
+  <div class="driver">
+    <span class="driver-note">Scenario driver (video take): steps the scripted demo path, not a fault control.</span>
+    <button class="btn ghost" data-demo="reset">reset</button>
+    <button class="btn ghost" data-demo="load_pack">load hero pack</button>
+    <button class="btn ghost" data-demo="advisory">advisory arrives</button>
+    <button class="btn ghost" data-demo="deny_run">deny-run</button>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

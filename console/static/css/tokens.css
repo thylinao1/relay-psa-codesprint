@@ -1,0 +1,53 @@
+/* RELAY console: design tokens (see console/DESIGN-DIRECTION.md).
+   Single deliberate dark control-room look; colors are STATE, not decoration. */
+:root {
+  /* ground + surfaces */
+  --ground: #0a0e13;
+  --panel: #10161d;
+  --panel-raised: #161e27;
+  --line: #232d38;
+  --line-strong: #31404f;
+
+  /* ink */
+  --ink: #dbe4ec;
+  --ink-dim: #8595a5;
+  --ink-faint: #55636f;
+
+  /* semantic status */
+  --ok: #3fce7c;
+  --ok-bg: rgba(63, 206, 124, 0.12);
+  --warn: #f2b135;
+  --warn-bg: rgba(242, 177, 53, 0.12);
+  --bad: #f2545b;
+  --bad-bg: rgba(242, 84, 91, 0.13);
+  --hold: #b58cf5;
+  --hold-bg: rgba(181, 140, 245, 0.13);
+  --act: #3fa7f2;
+  --act-bg: rgba(63, 167, 242, 0.14);
+  --rationale: #7b6ce0;
+  --rationale-bg: rgba(123, 108, 224, 0.10);
+
+  /* type */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --text-micro: 10px;
+  --text-small: 12px;
+  --text-base: 13.5px;
+  --text-title: 16px;
+  --text-clock: 22px;
+  --text-margin: 40px;
+
+  /* rhythm (4px base; section gaps breathe more than intra-panel gaps) */
+  --gap-1: 4px;
+  --gap-2: 8px;
+  --gap-3: 12px;
+  --gap-4: 20px;
+  --gap-5: 28px;
+
+  --radius-panel: 10px;
+  --radius-chip: 4px;
+
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

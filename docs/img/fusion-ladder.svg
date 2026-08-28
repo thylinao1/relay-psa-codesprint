@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 340" width="980" height="340" role="img" aria-label="Fusion tier ladder over 200 advisories: extraction accuracy and contradiction flag recall across the regex tier, the local 3B model and the hybrid router" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif">
+  <style>
+    .ttl{font-size:15px;font-weight:700;fill:#E8EDF2}
+    .sub{font-size:11.5px;fill:#8090A0}
+    .lab{font-size:12px;fill:#E8EDF2}
+    .ax{font-size:10.5px;fill:#8090A0}
+    .note{font-size:11.5px;fill:#E8EDF2}
+    .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:12px;font-weight:700}
+    .src{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;fill:#8090A0}
+    .grid{stroke:#1C2530;stroke-width:1}
+  </style>
+
+  <rect x="0" y="0" width="980" height="340" rx="6" fill="#0A0F14"/>
+  <text x="32" y="34" class="ttl">Fusion tier ladder, 200 advisories</text>
+  <text x="32" y="54" class="sub">The same advisory corpus read three ways. Higher is better on both measures.</text>
+
+  <rect x="20" y="72" width="940" height="204" rx="5" fill="#111820"/>
+
+  <line x1="180" y1="104" x2="920" y2="104" class="grid"/>
+  <line x1="180" y1="139" x2="920" y2="139" class="grid"/>
+  <line x1="180" y1="174" x2="920" y2="174" class="grid"/>
+  <line x1="180" y1="209" x2="920" y2="209" class="grid"/>
+  <line x1="180" y1="244" x2="920" y2="244" stroke="#3A4654" stroke-width="1"/>
+  <text x="170" y="108" class="ax" text-anchor="end">1.00</text>
+  <text x="170" y="143" class="ax" text-anchor="end">0.75</text>
+  <text x="170" y="178" class="ax" text-anchor="end">0.50</text>
+  <text x="170" y="213" class="ax" text-anchor="end">0.25</text>
+  <text x="170" y="248" class="ax" text-anchor="end">0.00</text>
+  <text x="48" y="174" class="ax" text-anchor="middle" transform="rotate(-90 48 174)">score, 0 to 1</text>
+
+  <rect x="229.3" y="167.3" width="68" height="76.7" rx="3" fill="#A594FF"/>
+  <text x="263.3" y="159.3" class="num" fill="#A594FF" text-anchor="middle">0.548</text>
+  <rect x="309.3" y="178.1" width="68" height="65.9" rx="3" fill="#5EA8F2"/>
+  <text x="343.3" y="170.1" class="num" fill="#5EA8F2" text-anchor="middle">0.471</text>
+  <text x="303.3" y="266" class="lab" text-anchor="middle">regex only</text>
+
+  <rect x="476" y="163.5" width="68" height="80.5" rx="3" fill="#A594FF"/>
+  <text x="510" y="155.5" class="num" fill="#A594FF" text-anchor="middle">0.575</text>
+  <rect x="556" y="104" width="68" height="140" rx="3" fill="#5EA8F2"/>
+  <text x="590" y="96" class="num" fill="#5EA8F2" text-anchor="middle">1.000</text>
+  <text x="550" y="266" class="lab" text-anchor="middle">local 3B model</text>
+
+  <rect x="722.7" y="142.4" width="68" height="101.6" rx="3" fill="#A594FF"/>
+  <text x="756.7" y="134.4" class="num" fill="#A594FF" text-anchor="middle">0.726</text>
+  <rect x="802.7" y="104" width="68" height="140" rx="3" fill="#5EA8F2"/>
+  <text x="836.7" y="96" class="num" fill="#5EA8F2" text-anchor="middle">1.000</text>
+  <text x="796.7" y="266" class="lab" text-anchor="middle">hybrid router</text>
+
+  <rect x="32" y="288" width="12" height="12" rx="2" fill="#A594FF"/>
+  <text x="52" y="298" class="ax">extraction accuracy</text>
+  <rect x="180" y="288" width="12" height="12" rx="2" fill="#5EA8F2"/>
+  <text x="200" y="298" class="ax">contradiction flag recall</text>
+  <text x="948" y="298" class="src" text-anchor="end">source: evalx/results/fusion-ladder.json</text>
+
+  <text x="32" y="322" class="note">The router keeps the model tier's recall and raises extraction accuracy above either tier on its own.</text>
+</svg>

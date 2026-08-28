@@ -1,0 +1,183 @@
+{
+  "pack_schema_version": "1.0.0",
+  "pack_id": "PACK-NO-POLICY-TRIGGER-01",
+  "label": "SYNTHETIC: all vessels, voyages, containers and terminal state are fictional; the hero board (scenario_pack_hero.json events, re-numbered) plus ONE declared scripted planner proposal",
+  "description": "THE ROW-10 TRIGGER (CONTRACT §c row 10, MGF deny-by-default): the hero board (CN-0002 at 41 min) where the planner's cheapest 'feasible' remedy is to shift the outbound berth window (ABT) by +90 min at T3-B08, a berth/ABT change is policy row 9, which has NO write tool by design (SPEC NG-2), so policy.lookup resolves it to row 10: AUTO-DENY + escalate before any approval card is raised. The frozen twin re-planner never proposes this class (that is precisely why row 10 exists), so the proposal is a declared scripted_trigger that agentcore/replay.py inserts into the twin's real option list; ranking, the dissent check (real twin.simulate_what_if), the policy lookup and the auto-deny branch are the real system. Everything else is byte-identical to the hero pack.",
+  "expected_ref": "no_policy_trigger.expected.json",
+  "advisory_ref": "ADV-2026-0824-001",
+  "scripted_trigger": {
+    "kind": "planner_proposal_out_of_table",
+    "connection_id": "CN-0002",
+    "why": "berth/ABT change = CONTRACT §c row 9 (T0 only, no write tool exists by design, SPEC NG-2) -> policy.lookup falls to row 10 AUTO-DENY; the twin re-planner cannot produce this class from data because no tool exists for it",
+    "option": {
+      "option_id": "OPT-CN-0002-BERTH-WINDOW",
+      "action_class": "berth_window_shift",
+      "description": "SCRIPTED TRIGGER (data/packs/no_policy_trigger.json): shift TEMASEK STAR 0402E berth window at T3-B08 by +90 min so BG-0002 makes the connection, a berth/ABT change, outside RELAY's write authority (CONTRACT §c row 9 / SPEC NG-2)",
+      "cost_usd_est": 0.0,
+      "margin_gained_minutes": 90.0,
+      "margin_after_minutes": 131.0,
+      "binding_constraint": null,
+      "feasible_after": true
+    },
+    "console_steps_ref": "deliverables/NO-POLICY-TRIGGER.md"
+  },
+  "events": [
+    {
+      "event_id": "EVT-NOPOL-000001",
+      "event_type": "load_window_set",
+      "event_classifier": "PLN",
+      "occurred_at": "2026-08-25T14:00:00+08:00",
+      "registered_at": "2026-08-25T14:00:05+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700002",
+        "name": "TEMASEK STAR",
+        "mmsi": "563000002"
+      },
+      "payload": {
+        "voyage_out": "0402E",
+        "box_group_id": "BG-0002",
+        "load_window_start": "2026-08-26T00:30:00+08:00",
+        "load_window_end": "2026-08-26T02:26:00+08:00",
+        "berth": "T3-B08",
+        "etd": "2026-08-26T08:30:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-NOPOL-000002",
+      "event_type": "weather_alert",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T17:30:00+08:00",
+      "registered_at": "2026-08-25T17:30:10+08:00",
+      "source_system": "WEATHER",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "alert_type": "WIND_LIMIT",
+        "station_id": "S117",
+        "value": 38.0,
+        "unit": "km/h",
+        "threshold": 60.0,
+        "effective_from": "2026-08-25T17:30:00+08:00",
+        "effective_until": null,
+        "operational_impact": "NONE"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-NOPOL-000003",
+      "event_type": "vessel_eta_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T20:30:00+08:00",
+      "registered_at": "2026-08-25T19:05:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "previous_eta": "2026-08-25T16:15:00+08:00",
+        "new_eta": "2026-08-25T20:30:00+08:00",
+        "eta_source": "ADVISORY_RECONCILED",
+        "drift_minutes": 255.0,
+        "position": {
+          "lat": 1.1385,
+          "lon": 103.6355
+        },
+        "berth": "T3-B12",
+        "affected_connections": [
+          "CN-0002"
+        ],
+        "advisory_id": "ADV-2026-0824-001"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-NOPOL-000004",
+      "event_type": "yard_move",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T18:40:00+08:00",
+      "registered_at": "2026-08-25T18:41:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": null,
+      "payload": {
+        "container_id": null,
+        "box_group_id": "BG-0002",
+        "move_type": "DISCHARGE_TO_YARD",
+        "from_location": null,
+        "to_location": {
+          "block": "Y12",
+          "bay": 14,
+          "row": 3,
+          "tier": 2
+        },
+        "equipment_id": "ARMG-Y12-02",
+        "started_at": "2026-08-25T18:10:00+08:00",
+        "completed_at": "2026-08-25T18:40:00+08:00",
+        "status": "COMPLETED"
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-NOPOL-000005",
+      "event_type": "discharge_complete",
+      "event_classifier": "ACT",
+      "occurred_at": "2026-08-25T18:35:00+08:00",
+      "registered_at": "2026-08-25T18:36:00+08:00",
+      "source_system": "TOS",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "voyage_in": "437W",
+        "box_group_id": "BG-0001",
+        "containers_discharged": 42,
+        "berth": "T3-B12",
+        "completed_at": "2026-08-25T18:35:00+08:00",
+        "crane_count": 3,
+        "avg_moves_per_hour": 28.5
+      },
+      "label": "SYNTHETIC"
+    },
+    {
+      "event_id": "EVT-NOPOL-000006",
+      "event_type": "carrier_schedule_update",
+      "event_classifier": "EST",
+      "occurred_at": "2026-08-25T21:05:00+08:00",
+      "registered_at": "2026-08-25T21:10:00+08:00",
+      "source_system": "CARRIER_EDI",
+      "un_location_code": "SGSIN",
+      "facility_code": "TUAS-T3",
+      "vessel": {
+        "imo": "9700001",
+        "name": "MERLION EXPRESS",
+        "mmsi": "563000001"
+      },
+      "payload": {
+        "carrier_code": "OCLK",
+        "service_code": "AEX1",
+        "voyage": "437W",
+        "change_type": "DELAY",
+        "new_eta": "2026-08-25T20:30:00+08:00",
+        "new_etd": null,
+        "affected_port": "SGSIN",
+        "effective_at": "2026-08-25T21:05:00+08:00"
+      },
+      "label": "SYNTHETIC"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "expected_schema_version": "1.0.0",
+  "pack_id": "PACK-DISRUPTION-01",
+  "_note": "Expected END state after replaying disruption.json through twin.ingest_event (fresh world overlay). The recorded 103-minute real drift takes CN-0002 from 41.0 to -62.0 minutes. CN-0003 is INFEASIBLE at the frozen-world baseline (-210.0) and stays so; its feasible exit is also a rebooking. Verified by data/tests/test_packs.py.",
+  "connections": {
+    "CN-0001": {
+      "verdict": "FEASIBLE",
+      "margin_minutes": 390.0,
+      "completeness_score": 1.0
+    },
+    "CN-0002": {
+      "verdict": "INFEASIBLE",
+      "margin_minutes": -62.0,
+      "completeness_score": 1.0
+    },
+    "CN-0003": {
+      "verdict": "INFEASIBLE",
+      "margin_minutes": -210.0,
+      "completeness_score": 1.0
+    },
+    "CN-ESC-01": {
+      "verdict": "ESCALATE_INSUFFICIENT_EVIDENCE",
+      "margin_minutes": null,
+      "completeness_score": 0.4
+    }
+  },
+  "must_escalate": [
+    "CN-ESC-01"
+  ],
+  "action_classes": {
+    "CN-0001": null,
+    "CN-0002": "propose_rebooking",
+    "CN-0003": "propose_rebooking",
+    "CN-ESC-01": "escalation_summary"
+  },
+  "option_checks": {
+    "CN-0002": {
+      "top_feasible_option": "OPT-CN-0002-REBOOK",
+      "expedite_margin_after_minutes": -2.0,
+      "expedite_feasible_after": false,
+      "rebook_margin_after_minutes": 872.0,
+      "cutoff_extension_feasible_after": false,
+      "_note": "expedite recovers only 60 of the 122-minute deficit; the cut-off extension is a REQUEST, never feasible_after=true (CONTRACT §b1 tool 3)"
+    }
+  },
+  "baseline_rules_only": {
+    "component": "baseline.rules_only",
+    "flags": [
+      "CN-0002"
+    ],
+    "first_signal_ts": "2026-08-25T21:40:00+08:00",
+    "margin_minutes": -62.0,
+    "verdict": "INFEASIBLE",
+    "dropped_advisory_reconciled_events": 0,
+    "basis": "per component semantics first_signal_ts is the LAST structured eta signal (the 21:40 carrier EDI); the 19:20 AIS event was also rules-visible, this pack demonstrates the real-drift trigger, not the ablation gap (that is scenario_advisory_only.json)"
+  }
+}
